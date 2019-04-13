@@ -5,9 +5,9 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
 import QuanLyKS_GUI.Login;
+import QuanLyKS_GUI.Register;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JMenuBar;
@@ -66,6 +66,16 @@ public class frmMain extends JFrame {
 			}
 		});
 		mnNewMenu.add(mntmLogout);
+		
+		JMenuItem mntmRegister = new JMenuItem("Register");
+		mntmRegister.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Register frmRegister = new Register();
+				contentPane.add(frmRegister);
+				frmRegister.setVisible(true);
+			}
+		});
+		mnNewMenu.add(mntmRegister);
 		
 		JMenuItem mntmit = new JMenuItem("Eixt");
 		mnNewMenu.add(mntmit);

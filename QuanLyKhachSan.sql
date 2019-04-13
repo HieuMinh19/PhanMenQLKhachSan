@@ -5,6 +5,14 @@ use QUANLYKHACHSAN
 GO
 set dateformat ymd
 go
+create table ACCOUNT
+(
+	ID int identity(1,1) primary key,
+	Username varchar(20),
+	Password varchar(30),
+	Role int,
+)
+go
 create table CTDANHGIA
 (	ID int identity(1,1) primary key ,
 	NoiDung varchar(255),
@@ -121,10 +129,7 @@ create table CTDATPHONG
 )
 
 
-
-
-
-
+INSERT INTO ACCOUNT( Username, Password,Role) VALUES ('admin1', '123456', 1)
 
 
 
