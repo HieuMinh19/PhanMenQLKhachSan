@@ -1,12 +1,15 @@
 package QuanLyKS_GUI;
 
 import java.awt.EventQueue;
+import QuanLyKS_DAL.Account_DAL;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Register extends JInternalFrame {
 	private JTextField textField;
@@ -62,6 +65,13 @@ public class Register extends JInternalFrame {
 		getContentPane().add(passwordRetype);
 		
 		JButton btnRegister = new JButton("Register");
+		btnRegister.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Account_DAL account = new Account_DAL();
+				account.Insert();
+				
+			}
+		});
 		btnRegister.setBounds(141, 174, 89, 23);
 		getContentPane().add(btnRegister);
 

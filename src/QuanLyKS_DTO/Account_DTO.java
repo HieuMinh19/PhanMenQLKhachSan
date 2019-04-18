@@ -4,6 +4,7 @@ public class Account_DTO {
 	private int iID;
 	private String strUsername;
 	private String strPassword;
+	private int iRole;
 	
 	public Account_DTO() {
 	}
@@ -29,6 +30,13 @@ public class Account_DTO {
 	public void setPassword(String strPassword) {
 		this.strPassword = strPassword;
 	}
-	
+
+	public int getRole() {
+		return iRole;
+	}
+
+	public void setRole(int iRole) {
+		this.iRole = iRole;
+	}	
 	
 }
