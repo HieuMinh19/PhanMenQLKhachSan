@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import QuanLyKS_DTO.Account_DTO;
 import Utility.Result;
 public class Account_DAL {
-	public Result Insert(Account_DAL account)  {
+	public Result Insert(Account_DTO account)  {
 		PreparedStatement ptmt = null; 
 		String query = "INSERT INTO ACCOUNT(Username, Password, Role) VALUES (?, ?, ?)";
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();

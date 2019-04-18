@@ -2,6 +2,7 @@ package QuanLyKS_GUI;
 
 import java.awt.EventQueue;
 import QuanLyKS_DAL.Account_DAL;
+import QuanLyKS_DTO.Account_DTO;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -12,7 +13,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class Register extends JInternalFrame {
-	private JTextField textField;
+	private JTextField textUname;
 	private JPasswordField password;
 	private JPasswordField passwordRetype;
 
@@ -51,10 +52,10 @@ public class Register extends JInternalFrame {
 		lblRetypePassword.setBounds(52, 121, 120, 26);
 		getContentPane().add(lblRetypePassword);
 		
-		textField = new JTextField();
-		textField.setBounds(208, 52, 86, 20);
-		getContentPane().add(textField);
-		textField.setColumns(10);
+		textUname = new JTextField();
+		textUname.setBounds(208, 52, 86, 20);
+		getContentPane().add(textUname);
+		textUname.setColumns(10);
 		
 		password = new JPasswordField();
 		password.setBounds(208, 87, 86, 20);
@@ -68,7 +69,7 @@ public class Register extends JInternalFrame {
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Account_DAL account = new Account_DAL();
-				account.Insert();
+				account.Insert(account);
 				
 			}
 		});
