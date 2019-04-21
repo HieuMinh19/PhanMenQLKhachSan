@@ -3,16 +3,17 @@ package QuanLyKS_DTO;
 public class Account_DTO {
 	private int iID;
 	private String strUsername;
-	private String strPassword;
+	private char[] strPassword;
 	private int iRole;
 	
 	public Account_DTO() {
 	}
 	
-	public Account_DTO(String Username, String Password, int ID) {
+	public Account_DTO(String Username, char[] Password, int ID) {
 		this.iID = ID;
 		this.strPassword = Password;
 		this.strUsername = Username;
+		this.iRole = 2;
 	}
 	
 	public int getID() {
@@ -24,11 +25,11 @@ public class Account_DTO {
 	public void setUsername(String strUsername) {
 		this.strUsername = strUsername;
 	}
-	public String getPassword() {
+	public char[] getPassword() {
 		return strPassword;
 	}
-	public void setPassword(String strPassword) {
-		this.strPassword = strPassword;
+	public void setPassword(char[] cs) {
+		this.strPassword = cs;
 	}
 
 	public int getRole() {

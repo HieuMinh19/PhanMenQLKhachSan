@@ -1,5 +1,4 @@
 package QuanLyKS_DAL;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import java.sql.Connection;
@@ -8,23 +7,23 @@ import java.sql.PreparedStatement;
 import QuanLyKS_DTO.Account_DTO;
 import Utility.Result;
 public class Account_DAL {
-	public Result Insert(Account_DTO account)  {
+	public static Result Insert(Account_DTO account)  {
 		PreparedStatement ptmt = null; 
 		String query = "INSERT INTO ACCOUNT(Username, Password, Role) VALUES (?, ?, ?)";
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
 		
 		Connection conn = mycon.getConnection();
 		String uname = account.getUsername();
-		String pass = account.getPassword();
+		char[] pass = account.getPassword();
+		//ep kieu tu string sang char
+		String strPass = new String(pass);
 		int role = account.getRole();
 		try {
 			ptmt = conn.prepareStatement(query);
 			
 			ptmt.setString(1, uname);
-			ptmt.setString(2, pass);
+			ptmt.setString(2, strPass);
 			ptmt.setInt(3, role);
-			
-			ptmt.executeUpdate();
 			if( ptmt.executeUpdate() != 0) {
 				System.err.println("insert thanh cong account");
 				return new Result(true);

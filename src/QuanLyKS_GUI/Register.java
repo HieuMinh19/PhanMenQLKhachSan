@@ -3,10 +3,14 @@ package QuanLyKS_GUI;
 import java.awt.EventQueue;
 import QuanLyKS_DAL.Account_DAL;
 import QuanLyKS_DTO.Account_DTO;
+import Utility.Result;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import QuanLyKS_BUS.Account_BUS;
+
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -14,8 +18,11 @@ import java.awt.event.ActionEvent;
 
 public class Register extends JInternalFrame {
 	private JTextField textUname;
-	private JPasswordField password;
-	private JPasswordField passwordRetype;
+	private JPasswordField textPassword;
+	private JPasswordField textPasswordRetype;
+	private Account_BUS accountBus;
+	private Account_DTO accountDTO;
+	private Account_DAL accountDAL;
 
 	/**
 	 * Launch the application.
@@ -53,23 +60,33 @@ public class Register extends JInternalFrame {
 		getContentPane().add(lblRetypePassword);
 		
 		textUname = new JTextField();
+		textUname.setText("hieu1");
 		textUname.setBounds(208, 52, 86, 20);
 		getContentPane().add(textUname);
 		textUname.setColumns(10);
 		
-		password = new JPasswordField();
-		password.setBounds(208, 87, 86, 20);
-		getContentPane().add(password);
+		textPassword = new JPasswordField();
+		textPassword.setToolTipText("123");
+		textPassword.setBounds(208, 87, 86, 20);
+		getContentPane().add(textPassword);
 		
-		passwordRetype = new JPasswordField();
-		passwordRetype.setBounds(208, 124, 86, 20);
-		getContentPane().add(passwordRetype);
+		textPasswordRetype = new JPasswordField();
+		textPasswordRetype.setToolTipText("123");
+		textPasswordRetype.setBounds(208, 124, 86, 20);
+		getContentPane().add(textPasswordRetype);
 		
 		JButton btnRegister = new JButton("Register");
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Account_DAL account = new Account_DAL();
-				account.Insert(account);
+				 accountDTO = new Account_DTO();
+				 
+				 accountDTO.setUsername( textUname.getText() );
+				 accountDTO.setPassword( textPassword.getPassword() );
+				 accountDTO.setRole(2);
+//				 String name = textUname.getText();
+//				 String pass = textPassword.getToolTipText();
+//				 accountDAL.Insert(accountDTO);
+				 accountBus.Insert(accountDTO);
 				
 			}
 		});
