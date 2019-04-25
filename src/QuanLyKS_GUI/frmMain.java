@@ -1,8 +1,6 @@
 package QuanLyKS_GUI;
-
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -21,7 +19,6 @@ import javax.swing.border.LineBorder;
 import java.awt.SystemColor;
 
 public class frmMain extends JFrame {
-
 	/**
 	 * 
 	 */
@@ -65,8 +62,7 @@ public class frmMain extends JFrame {
 				frmLogin.setVisible(true);
 			}
 		});
-		mnNewMenu.add(mntmLogout);
-		
+		mnNewMenu.add(mntmLogout);		
 		JMenuItem mntmRegister = new JMenuItem("Register");
 		mntmRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

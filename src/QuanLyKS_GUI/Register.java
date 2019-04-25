@@ -7,6 +7,7 @@ import Utility.Result;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import QuanLyKS_BUS.Account_BUS;
@@ -14,6 +15,7 @@ import QuanLyKS_BUS.Account_BUS;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 import java.awt.event.ActionEvent;
 
 public class Register extends JInternalFrame {
@@ -78,16 +80,17 @@ public class Register extends JInternalFrame {
 		JButton btnRegister = new JButton("Register");
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				 accountDTO = new Account_DTO();
-				 
-				 accountDTO.setUsername( textUname.getText() );
-				 accountDTO.setPassword( textPassword.getPassword() );
-				 accountDTO.setRole(2);
-//				 String name = textUname.getText();
-//				 String pass = textPassword.getToolTipText();
-//				 accountDAL.Insert(accountDTO);
-				 accountBus.Insert(accountDTO);
-				
+				accountDTO = new Account_DTO(); 
+				accountDTO.setUsername( textUname.getText() );
+				boolean isValidPass = Arrays.equals(textPassword.getPassword(),textPasswordRetype.getPassword());
+				if(isValidPass){
+					 accountDTO.setPassword( textPassword.getPassword() );
+					 accountDTO.setRole(2);
+					 accountBus.Insert(accountDTO);
+					 JOptionPane.showMessageDialog(null, "Insert account Success", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);
+				 }else {
+					 JOptionPane.showMessageDialog(null, "2 Password is not the same", "Warning: " + "error Mesage", JOptionPane.INFORMATION_MESSAGE);
+				 }
 			}
 		});
 		btnRegister.setBounds(141, 174, 89, 23);
