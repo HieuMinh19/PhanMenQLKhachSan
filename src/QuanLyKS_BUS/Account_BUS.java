@@ -9,7 +9,7 @@ public class Account_BUS {
 	}
 	
 	public static Result Insert(Account_DTO account) {
-		
+
 		return Account_DAL.Insert(account);
 	}
 }

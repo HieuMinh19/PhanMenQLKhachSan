@@ -3,7 +3,7 @@ package Utility;
 public class Result {
 	private boolean flag;
 	private String appMessage;
-	private String sysMessage;
+	private StackTraceElement[] sysMessage;
 	
 	public Result(){
 		this.flag = true;
@@ -16,10 +16,10 @@ public class Result {
 		this.appMessage = null;
 		this.sysMessage = null;
 	}
-	public Result(String appMessage, boolean flag, String sysMessage){
+	public Result(String appMessage, boolean flag, StackTraceElement[] stackTraceElements){
 		this.appMessage = appMessage;
 		this.flag = flag;
-		this.sysMessage = sysMessage;	
+		this.sysMessage = stackTraceElements;	
 	}	
 	
 	public boolean isFlag() {
@@ -34,10 +34,10 @@ public class Result {
 	public void setAppMessage(String appMessage) {
 		this.appMessage = appMessage;
 	}
-	public String getSysMessage() {
+	public StackTraceElement[] getSysMessage() {
 		return sysMessage;
 	}
-	public void setSysMessage(String sysMessage) {
+	public void setSysMessage(StackTraceElement[] sysMessage) {
 		this.sysMessage = sysMessage;
 	}
 	

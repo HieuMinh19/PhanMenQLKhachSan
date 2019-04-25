@@ -11,7 +11,6 @@ public class Account_DAL {
 		PreparedStatement ptmt = null; 
 		String query = "INSERT INTO ACCOUNT(Username, Password, Role) VALUES (?, ?, ?)";
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
-		
 		Connection conn = mycon.getConnection();
 		String uname = account.getUsername();
 		char[] pass = account.getPassword();
@@ -33,13 +32,11 @@ public class Account_DAL {
 				System.err.println("khoi tao account that bai");
 				return new Result(false);
 			}
-				
-
-		} catch (SQLException e) {
+		} catch (SQLException ex) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.err.println(" ket noi that bai");
+			 return new  Result("Them hoc sinh khong thanh cong", false, ex.getStackTrace());
 		}
-		return null;
 	}
 }
