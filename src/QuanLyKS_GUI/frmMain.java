@@ -17,8 +17,6 @@ import java.awt.Color;
 import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 
-import com.sun.glass.events.WindowEvent;
-
 import java.awt.SystemColor;
 
 public class frmMain extends JFrame {
