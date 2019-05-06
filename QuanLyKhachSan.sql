@@ -73,7 +73,7 @@ create table DICHVU
 (
 	MaDichVu int identity(1,1) primary key,
 	TenDichVu varchar(50),
-	MaCTDichVu varchar(50),
+	MaCTDichVu int,
 )
 go
 create table CTHOADON
