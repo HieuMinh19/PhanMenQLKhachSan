@@ -113,9 +113,6 @@ public class frmMain extends JFrame {
 		mntmLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controlFrame(FRM_LOGIN);
-				
-//				contentPane.add(frmLogin);
-//				frmLogin.setVisible(true);
 			}
 		});
 		mnNewMenu.add(mntmLogout);		
@@ -131,10 +128,10 @@ public class frmMain extends JFrame {
 		JMenuItem mntmit = new JMenuItem("Eixt");
 		mnNewMenu.add(mntmit);
 		
-		JMenu mnDichVu = new JMenu("Dich Vu");
+		JMenu mnDichVu = new JMenu("D\u1ECBch v\u1EE5");
 		menuBar.add(mnDichVu);
 		
-		JMenuItem mntmQuanLyDich = new JMenuItem("Quan Ly Dich Vu");
+		JMenuItem mntmQuanLyDich = new JMenuItem("Qu\u1EA3n l\u00FD d\u1ECBch v\u1EE5");
 		mntmQuanLyDich.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controlFrame(FRM_QLDV);
