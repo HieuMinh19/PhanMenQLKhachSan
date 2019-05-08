@@ -1,10 +1,6 @@
 package QuanLyKS_GUI;
-
 import java.awt.EventQueue;
-import QuanLyKS_DAL.Account_DAL;
 import QuanLyKS_DTO.Account_DTO;
-import Utility.Result;
-
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -19,12 +15,14 @@ import java.util.Arrays;
 import java.awt.event.ActionEvent;
 
 public class Register extends JInternalFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField textUname;
 	private JPasswordField textPassword;
 	private JPasswordField textPasswordRetype;
-	private Account_BUS accountBus;
 	private Account_DTO accountDTO;
-	private Account_DAL accountDAL;
 
 	/**
 	 * Launch the application.
@@ -86,8 +84,10 @@ public class Register extends JInternalFrame {
 				if(isValidPass){
 					 accountDTO.setPassword( textPassword.getPassword() );
 					 accountDTO.setRole(2);
-					 accountBus.Insert(accountDTO);
-					 JOptionPane.showMessageDialog(null, "Insert account Success", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);
+					 if(  Account_BUS.Insert(accountDTO) == true)
+						 JOptionPane.showMessageDialog(null, "Insert account Success", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);
+					 else
+						 JOptionPane.showMessageDialog(null, "Insert account Fail", "Fail: " + "Success Mesage", JOptionPane.CLOSED_OPTION);
 				 }else {
 					 JOptionPane.showMessageDialog(null, "2 Password is not the same", "Warning: " + "error Mesage", JOptionPane.INFORMATION_MESSAGE);
 				 }
