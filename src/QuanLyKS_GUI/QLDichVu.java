@@ -5,11 +5,23 @@ import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import javax.swing.JInternalFrame;
 import javax.swing.JTable;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JScrollPane;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.awt.event.ActionEvent;
+
+import QuanLyKS_DAL.MyConnection;
+import net.proteanit.sql.DbUtils;
+
+
 
 public class QLDichVu extends JInternalFrame {
 	private JTable table;
@@ -84,27 +96,54 @@ public class QLDichVu extends JInternalFrame {
 	    
 		table_1 = new JTable(data, columnName);
 		table_1.setSize(225, 32);
-		table_1.setLocation(84, 96);
+		table_1.setLocation(103, 36);
 		table_1.setPreferredScrollableViewportSize(new Dimension(500, 50) );
 		table_1.setFillsViewportHeight(true);
 		
 		getContentPane().add(table_1);
 		
 		JLabel lblTesst = new JLabel("Ma DV");
-		lblTesst.setBounds(84, 71, 69, 14);
+		lblTesst.setBounds(103, 11, 69, 14);
 		getContentPane().add(lblTesst);
 		
 		JLabel lblTnDv = new JLabel("T\u00EAn DV");
-		lblTnDv.setBounds(163, 71, 71, 14);
+		lblTnDv.setBounds(182, 11, 71, 14);
 		getContentPane().add(lblTnDv);
 		
 		JLabel lblChiTietDv = new JLabel("Chi tiet DV");
-		lblChiTietDv.setBounds(238, 71, 71, 14);
+		lblChiTietDv.setBounds(257, 11, 71, 14);
 		getContentPane().add(lblChiTietDv);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(60, 107, 323, 93);
+		getContentPane().add(scrollPane);
+		
 		table_2 = new JTable();
-		table_2.setBounds(59, 166, 323, 93);
-		getContentPane().add(table_2);
+		scrollPane.setViewportView(table_2);
+		
+		JButton btnLoadData = new JButton("Load data");
+		btnLoadData.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				MyConnection mycon = new QuanLyKS_DAL.MyConnection();
+				Connection conn = mycon.getConnection();
+				PreparedStatement ptmt = null; 
+				String query = "SELECT * FROM DICHVU";
+				try {
+					ptmt = conn.prepareStatement(query);
+					ResultSet rs = ptmt.executeQuery();
+					
+					//DbUtils is a function of rs2xml.jar
+					table_2.setModel(DbUtils.resultSetToTableModel(rs));
+					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+		});
+		btnLoadData.setBounds(182, 220, 89, 23);
+		getContentPane().add(btnLoadData);
 
 	}
 }
