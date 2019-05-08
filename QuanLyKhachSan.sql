@@ -1,4 +1,4 @@
-GO
+﻿GO
 create Database QUANLYKHACHSAN
 GO
 use QUANLYKHACHSAN
@@ -132,9 +132,9 @@ create table CTDATPHONG
 INSERT INTO ACCOUNT( Username, Password,Role) VALUES ('admin1', '123456', 1)
 
 
-INSERT INTO CTDICHVU( MaCTDichVu, TenCTDichVu, GiaDV, SoLuong) VALUES (1, '?n s�ng', 20000, 1);
-INSERT INTO CTDICHVU( MaCTDichVu, TenCTDichVu, GiaDV, SoLuong) VALUES (2, '?n tr?a', 100000, 1);
+INSERT INTO CTDICHVU( TenCTDichVu, GiaDV, SoLuong) VALUES ( 'ăn sáng', 20000, 1);
+INSERT INTO CTDICHVU( TenCTDichVu, GiaDV, SoLuong) VALUES ( 'ăn trưa', 100000, 1);
 
 
-INSERT INTO DICHVU( MaCTDichVu, TenDichVu,MaCTDichVu) VALUES (1, '?n s�ng', 1);
-INSERT INTO DICHVU( MaCTDichVu, TenDichVu,MaCTDichVu) VALUES (2, '?n tr?a', 2);
+INSERT INTO DICHVU( TenDichVu,MaCTDichVu) VALUES ( 'ăn sáng', 1);
+INSERT INTO DICHVU( TenDichVu,MaCTDichVu) VALUES ( 'ăn trưa', 2);

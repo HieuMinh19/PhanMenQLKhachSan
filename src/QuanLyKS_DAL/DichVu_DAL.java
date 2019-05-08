@@ -11,7 +11,6 @@ public class DichVu_DAL {
 	DichVu_DTO DichVu = new DichVu_DTO();
 	
 	public DichVu_DAL() {
-		
 	}
 	
 	public ResultSet getListDV(){
@@ -25,11 +24,9 @@ public class DichVu_DAL {
 			ptmt = conn.prepareStatement(query);
 			ResultSet rs = ptmt.executeQuery();
 			return rs;
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
 		}
 		return null;	
 	}

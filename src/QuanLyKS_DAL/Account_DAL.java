@@ -5,9 +5,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 import QuanLyKS_DTO.Account_DTO;
-import Utility.Result;
+
 public class Account_DAL {
-	public static Result Insert(Account_DTO account)  {
+	public static boolean Insert(Account_DTO account)  {
 		PreparedStatement ptmt = null; 
 		String query = "INSERT INTO ACCOUNT(Username, Password, Role) VALUES (?, ?, ?)";
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
@@ -25,18 +25,18 @@ public class Account_DAL {
 			ptmt.setInt(3, role);
 			if( ptmt.executeUpdate() != 0) {
 				System.err.println("insert thanh cong account");
-				return new Result(true);
+				return true;
 			}
 				
 			else {
 				System.err.println("khoi tao account that bai");
-				return new Result(false);
+				return false;
 			}
 		} catch (SQLException ex) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.err.println(" ket noi that bai");
-			 return new  Result("Them hoc sinh khong thanh cong", false, ex.getStackTrace());
+			 return false;
 		}
 	}
 }
