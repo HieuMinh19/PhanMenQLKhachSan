@@ -132,4 +132,9 @@ create table CTDATPHONG
 INSERT INTO ACCOUNT( Username, Password,Role) VALUES ('admin1', '123456', 1)
 
 
+INSERT INTO CTDICHVU( MaCTDichVu, TenCTDichVu, GiaDV, SoLuong) VALUES (1, '?n sáng', 20000, 1);
+INSERT INTO CTDICHVU( MaCTDichVu, TenCTDichVu, GiaDV, SoLuong) VALUES (2, '?n tr?a', 100000, 1);
 
+
+INSERT INTO DICHVU( MaCTDichVu, TenDichVu,MaCTDichVu) VALUES (1, '?n sáng', 1);
+INSERT INTO DICHVU( MaCTDichVu, TenDichVu,MaCTDichVu) VALUES (2, '?n tr?a', 2);
