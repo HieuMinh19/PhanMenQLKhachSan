@@ -8,6 +8,7 @@ import java.util.Arrays;
 import javax.swing.JInternalFrame;
 import javax.swing.JTable;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
@@ -21,7 +22,7 @@ import java.awt.event.ActionEvent;
 import QuanLyKS_DAL.MyConnection;
 import net.proteanit.sql.DbUtils;
 
-
+import QuanLyKS_BUS.DichVu_BUS;
 
 public class QLDichVu extends JInternalFrame {
 	private JTable table;
@@ -124,20 +125,13 @@ public class QLDichVu extends JInternalFrame {
 		JButton btnLoadData = new JButton("Load data");
 		btnLoadData.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				MyConnection mycon = new QuanLyKS_DAL.MyConnection();
-				Connection conn = mycon.getConnection();
-				PreparedStatement ptmt = null; 
-				String query = "SELECT * FROM DICHVU";
-				try {
-					ptmt = conn.prepareStatement(query);
-					ResultSet rs = ptmt.executeQuery();
-					
-					//DbUtils is a function of rs2xml.jar
-					table_2.setModel(DbUtils.resultSetToTableModel(rs));
-					
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				DichVu_BUS dvBus = new DichVu_BUS();
+				ResultSet result = dvBus.selectAll();
+				
+				if(result != null) {
+					table_2.setModel(DbUtils.resultSetToTableModel(result));
+				}else {
+					JOptionPane.showMessageDialog(null, "get List Services not success", "Error: " + "error Mesage", JOptionPane.CLOSED_OPTION);
 				}
 				
 			}
