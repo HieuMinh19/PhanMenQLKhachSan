@@ -5,8 +5,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import QuanLyKS_GUI.Login;
+import QuanLyKS_GUI.Demo2;
 import QuanLyKS_GUI.Register;
-
 import javax.swing.JDesktopPane;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -27,12 +27,13 @@ public class frmMain extends JFrame {
 	static QLDichVu frmQLDV = new QLDichVu();
 	static Login frmLogin = new Login();
 	static Register frmRegister = new Register();
-	
+	static Demo2 frmDemo2 = new Demo2();
 	//deifne static varriable cho frame
 	static final int FRM_LOGIN = 1;
 	static final int FRM_REGISTER = 2;
 	static final int FRM_QLDV = 3;
-	
+	static final int FRM_DEMO = 4;
+        
 	private static final long serialVersionUID = 1L;
 	private static JPanel contentPane;
 
@@ -45,7 +46,7 @@ public class frmMain extends JFrame {
 				//close another frame
 				frmRegister.setVisible(false);
 				frmQLDV.setVisible(false);
-
+                                frmDemo2.setVisible(false);
 				//set current frame
 				contentPane.add(frmLogin);
 				frmLogin.setVisible(true);
@@ -66,10 +67,22 @@ public class frmMain extends JFrame {
 				//close another frame
 				frmLogin.setVisible(false);
 				frmRegister.setVisible(false);
-
+                                frmDemo2.setVisible(false);
 				//set current frame
 				contentPane.add(frmQLDV);
 				frmQLDV.setVisible(true);
+				break;
+                                
+                        	
+			case 4:
+				//close another frame
+				frmLogin.setVisible(false);
+				frmRegister.setVisible(false);
+                                frmQLDV.setVisible(false);
+                                
+				//set current frame
+				contentPane.add(frmDemo2);
+				frmDemo2.setVisible(true);
 				break;
 		}
 		
@@ -126,6 +139,19 @@ public class frmMain extends JFrame {
 		});
 		mnNewMenu.add(mntmRegister);
 		
+                //DEMO
+                JMenuItem mntmDemo = new JMenuItem("Demo");
+		mntmDemo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controlFrame(FRM_DEMO);
+				
+			}
+		});
+		mnNewMenu.add(mntmDemo);
+		
+                
+                
+                
 		JMenuItem mntmit = new JMenuItem("Eixt");
 		mnNewMenu.add(mntmit);
 		
