@@ -14,6 +14,9 @@ import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.awt.event.ActionEvent;
 
+import com.ibm.icu.text.SimpleDateFormat;
+import com.toedter.calendar.JCalendar;
+
 public class Register extends JInternalFrame {
 	/**
 	 * 
@@ -44,7 +47,7 @@ public class Register extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public Register() {
-		setBounds(100, 100, 409, 250);
+		setBounds(100, 100, 632, 352);
 		getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Username");
@@ -58,6 +61,9 @@ public class Register extends JInternalFrame {
 		JLabel lblRetypePassword = new JLabel("Retype password");
 		lblRetypePassword.setBounds(52, 121, 120, 26);
 		getContentPane().add(lblRetypePassword);
+		JCalendar dtNgayLap = new JCalendar();
+		dtNgayLap.setBounds(336, 42, 198, 153);
+		getContentPane().add(dtNgayLap);
 		
 		textUname = new JTextField();
 		textUname.setText("hieu1");
@@ -74,7 +80,6 @@ public class Register extends JInternalFrame {
 		textPasswordRetype.setToolTipText("123");
 		textPasswordRetype.setBounds(208, 124, 86, 20);
 		getContentPane().add(textPasswordRetype);
-		
 		JButton btnRegister = new JButton("Register");
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -84,6 +89,14 @@ public class Register extends JInternalFrame {
 				if(isValidPass){
 					 accountDTO.setPassword( textPassword.getPassword() );
 					 accountDTO.setRole(2);
+					 
+					 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+					 String date = sdf.format( dtNgayLap.getDate() );
+					 
+					 accountDTO.setNgayLap(date);
+					 
+					 
+					 
 					 if(  Account_BUS.Insert(accountDTO) == true)
 						 JOptionPane.showMessageDialog(null, "Insert account Success", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);
 					 else
@@ -93,9 +106,9 @@ public class Register extends JInternalFrame {
 				 }
 			}
 		});
-		btnRegister.setBounds(141, 174, 89, 23);
+		btnRegister.setBounds(137, 226, 89, 23);
 		getContentPane().add(btnRegister);
-
+		
+		
 	}
-
 }
