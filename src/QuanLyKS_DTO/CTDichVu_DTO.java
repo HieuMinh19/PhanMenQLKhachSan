@@ -3,15 +3,18 @@ package QuanLyKS_DTO;
 public class CTDichVu_DTO {
 	private int iMaCTDichVu;
 	private String strTenCTDichVu;
-	private int iGia;
 	private int iSoLuong;
 	
+	public CTDichVu_DTO(int iMaCTDichVu, String strTenCTDichVu, int iSoLuong) {
+		this.iMaCTDichVu = iMaCTDichVu;
+		this.strTenCTDichVu = strTenCTDichVu;
+		this.iSoLuong = iSoLuong;
+	}
+
 	public CTDichVu_DTO() {
 		iMaCTDichVu = 1;
 		strTenCTDichVu = null;
-		iGia = 0;
 		iSoLuong = 0;
-		
 	}
 
 	public int getMaCTDichVu() {
@@ -28,14 +31,6 @@ public class CTDichVu_DTO {
 
 	public void setTenCTDichVu(String strTenCTDichVu) {
 		this.strTenCTDichVu = strTenCTDichVu;
-	}
-
-	public int getGia() {
-		return iGia;
-	}
-
-	public void setGia(int iGia) {
-		this.iGia = iGia;
 	}
 
 	public int getSoLuong() {

@@ -6,9 +6,12 @@ public class CTHoaDon_DTO {
 	private int iMaDichVu;
 	
 	public CTHoaDon_DTO() {
-		iMaCTHoaDon = 1;
-		iMaHoaDon = 1;
-		iMaDichVu = 1;
+	}
+
+	public CTHoaDon_DTO(int iMaCTHoaDon,int iMaHoaDon,int iMaDichVu) {
+		this.iMaCTHoaDon = iMaCTHoaDon;
+		this.iMaHoaDon = iMaHoaDon;
+		this.iMaDichVu = iMaDichVu;
 	}
 
 	public int getMaCTHoaDon() {

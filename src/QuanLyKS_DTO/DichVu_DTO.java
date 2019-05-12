@@ -6,11 +6,12 @@ public class DichVu_DTO {
 	private String strTenDichVu;
 	private int iGiaDichVu;
 	
-	public DichVu_DTO(int MaDichVu, int MaCTDichVu, String TenDichVu, int GiaDichVu) {
-		this.iMaDichVu = MaDichVu;
-		this.iMaCTDichVu = MaCTDichVu;
-		this.strTenDichVu = TenDichVu;
-		this.iGiaDichVu = GiaDichVu;
+	
+	public DichVu_DTO(int iMaDichVu, int iMaCTDichVu, String strTenDichVu, int iGiaDichVu) {
+		this.iMaDichVu = iMaDichVu;
+		this.iMaCTDichVu = iMaCTDichVu;
+		this.strTenDichVu = strTenDichVu;
+		this.iGiaDichVu = iGiaDichVu;
 	}
 	
 	public DichVu_DTO() {
@@ -23,7 +24,7 @@ public class DichVu_DTO {
 	public int getMaDichVu() {
 		return iMaDichVu;
 	}
-	public void setMaDV(int iMaDichVu) {
+	public void setMaDichVu(int iMaDichVu) {
 		this.iMaDichVu = iMaDichVu;
 	}
 	public int getMaCTDichVu() {
