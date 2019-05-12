@@ -24,6 +24,7 @@ import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 import QuanLyKS_DAL.MyConnection;
+import QuanLyKS_DTO.DichVu_DTO;
 import net.proteanit.sql.DbUtils;
 
 import QuanLyKS_BUS.DichVu_BUS;
@@ -35,6 +36,13 @@ import java.awt.Scrollbar;
 import java.awt.ScrollPane;
 import java.awt.event.InputMethodListener;
 import java.awt.event.InputMethodEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.VetoableChangeListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.HierarchyListener;
+import java.awt.event.HierarchyEvent;
 
 public class QLDichVu extends JInternalFrame {
 	/**
@@ -46,6 +54,7 @@ public class QLDichVu extends JInternalFrame {
 	private JTextField txtTenDV;
 	private JTextField txtCTDV;
 	public static ResultSet DV;
+	private JTable table;
 	
 	/**
 	 * Launch the application.
@@ -70,14 +79,14 @@ public class QLDichVu extends JInternalFrame {
 		setBounds(100, 100, 584, 300);
 		getContentPane().setLayout(null);
 		
+		
+		
+		
+		
+		
 		JScrollPane scrListDV = new JScrollPane();
-		scrListDV.addInputMethodListener(new InputMethodListener() {
-			public void caretPositionChanged(InputMethodEvent arg0) {
-			}
-			public void inputMethodTextChanged(InputMethodEvent arg0) {
-				
-			}
-		});
+		
+		
 		scrListDV.addMouseListener(new MouseAdapter() {
 			 
 			public void mouseClicked(MouseEvent e) {
@@ -95,10 +104,9 @@ public class QLDichVu extends JInternalFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				DichVu_BUS dvBus = new DichVu_BUS();
 				ResultSet listDV = dvBus.selectAll();
-				
-				if(listDV != null) {
+				DV = dvBus.selectAll();
+				if(DV != null) {
 					table_2.setModel(DbUtils.resultSetToTableModel(listDV));
-					DV = listDV;
 				}else {
 					JOptionPane.showMessageDialog(null, "get List Services not success", "Error: " + "error Mesage", JOptionPane.CLOSED_OPTION);
 				}
@@ -139,11 +147,17 @@ public class QLDichVu extends JInternalFrame {
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			ResultSet abc = DV;
+			
+			DichVu_DTO dv = new DichVu_DTO();
 			try {
-				java.sql.Array a =  abc.getArray(1);
-				a.getArray();
+				while (DV.next()) {
+					
+					String temp = DV.getString("TenDichVu");
+					txtTenDV.setText(temp);
+					System.out.println(temp);
+				}
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
+				
 				e1.printStackTrace();
 			}
 			int m = 10;
@@ -151,6 +165,15 @@ public class QLDichVu extends JInternalFrame {
 		});
 		btnUpdate.setBounds(81, 203, 89, 23);
 		getContentPane().add(btnUpdate);
+		
+		JButton btnSelect = new JButton("Select");
+		btnSelect.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		btnSelect.setBounds(198, 218, 89, 23);
+		getContentPane().add(btnSelect);
 
 	}
 }

@@ -18,7 +18,7 @@ public class Account_DAL {
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
 		Connection conn = mycon.getConnection();
 		String uname = account.getUsername();
-		char[] pass = account.getPassword();
+		char[] pass = account.getPassword(); 
 		String dtNgayLap = account.getNgayLap();
 		//ep kieu tu string sang char
 		String strPass = new String(pass);

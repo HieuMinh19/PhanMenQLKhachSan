@@ -27,12 +27,12 @@ public class frmMain extends JFrame {
 	static QLDichVu frmQLDV = new QLDichVu();
 	static Login frmLogin = new Login();
 	static Register frmRegister = new Register();
-	
+	static frmDatPhong frmDatPhong = new frmDatPhong();
 	//deifne static varriable cho frame
 	static final int FRM_LOGIN = 1;
 	static final int FRM_REGISTER = 2;
 	static final int FRM_QLDV = 3;
-	
+	static final int FRM_DATPHONG = 4;
 	private static final long serialVersionUID = 1L;
 	private static JPanel contentPane;
 
@@ -41,11 +41,11 @@ public class frmMain extends JFrame {
 	 */
 	public static void controlFrame(int Frame) {
 		switch (Frame) {
-			case 1:
+			case 1: 
 				//close another frame
 				frmRegister.setVisible(false);
 				frmQLDV.setVisible(false);
-
+				frmDatPhong.setVisible(false);
 				//set current frame
 				contentPane.add(frmLogin);
 				frmLogin.setVisible(true);
@@ -55,7 +55,7 @@ public class frmMain extends JFrame {
 				//close another frame
 				frmLogin.setVisible(false);
 				frmQLDV.setVisible(false);
-
+				frmDatPhong.setVisible(false);
 				//set current frame
 				contentPane.add(frmRegister);
 				frmRegister.setVisible(true);
@@ -66,10 +66,22 @@ public class frmMain extends JFrame {
 				//close another frame
 				frmLogin.setVisible(false);
 				frmRegister.setVisible(false);
-
+				frmDatPhong.setVisible(false);
+				
 				//set current frame
 				contentPane.add(frmQLDV);
 				frmQLDV.setVisible(true);
+				break;
+				
+			case 4:
+				//close another frame
+				frmLogin.setVisible(false);
+				frmRegister.setVisible(false);
+				frmQLDV.setVisible(false);
+				
+				//set current frame
+				contentPane.add(frmDatPhong);
+				frmDatPhong.setVisible(true);
 				break;
 		}
 		
@@ -137,6 +149,18 @@ public class frmMain extends JFrame {
 			}
 		});
 		mnDichVu.add(mntmQuanLyDich);
+		
+		JMenu mnPhng = new JMenu("Ph\u00F2ng");
+		menuBar.add(mnPhng);
+		
+		JMenuItem mntmtPhng = new JMenuItem("\u0110\u1EB7t ph\u00F2ng");
+		mnPhng.add(mntmtPhng);
+		mntmtPhng.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controlFrame(FRM_DATPHONG);
+				
+			}
+		});
 		contentPane = new JPanel();
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		contentPane.setLayout(new BorderLayout(0, 0));
