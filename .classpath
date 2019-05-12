@@ -16,5 +16,6 @@
 	<classpathentry kind="lib" path="C:/Users/HieuUit/.p2/pool/plugins/org.eclipse.ui.forms_3.7.300.v20180828-1350.jar" sourcepath="C:/Users/HieuUit/.p2/pool/plugins/org.eclipse.ui.forms_3.7.300.v20180828-1350.jar"/>
 	<classpathentry kind="lib" path="D:/soft/Microsoft JDBC Driver 6.0 for SQL Server/sqljdbc_6.0/enu/jre8/sqljdbc42.jar"/>
 	<classpathentry kind="lib" path="Resuorces/rs2xml.jar"/>
+	<classpathentry kind="lib" path="jcalendar-1.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

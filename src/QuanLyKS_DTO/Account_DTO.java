@@ -1,19 +1,23 @@
 package QuanLyKS_DTO;
 
+import java.util.Date;
+
 public class Account_DTO {
 	private int iID;
 	private String strUsername;
 	private char[] strPassword;
 	private int iRole;
+	private String dtNgayLap;
 	
 	public Account_DTO() {
 	}
 	
-	public Account_DTO(String Username, char[] Password, int ID) {
+	public Account_DTO(String NgayLap ,String Username, char[] Password, int ID) {
 		this.iID = ID;
 		this.strPassword = Password;
 		this.strUsername = Username;
 		this.iRole = 2;
+		this.dtNgayLap = NgayLap;
 	}
 	
 	public int getID() {
@@ -38,6 +42,17 @@ public class Account_DTO {
 
 	public void setRole(int iRole) {
 		this.iRole = iRole;
-	}	
+	}
+
+	public String getNgayLap() {
+		return dtNgayLap;
+		
+	}
+
+	public void setNgayLap(String date) {
+		this.dtNgayLap = date;
+	}
+
+	
 	
 }

@@ -1,0 +1,1 @@
+SQLCMD -S DESKTOP-97J7D09 -E -i QuanLyKhachSan.sql
