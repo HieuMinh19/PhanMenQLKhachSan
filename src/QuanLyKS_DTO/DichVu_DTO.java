@@ -25,7 +25,7 @@ public class DichVu_DTO {
 	}
 	public void setMaDV(int iMaDichVu) {
 		this.iMaDichVu = iMaDichVu;
-	}
+	} 
 	public int getMaCTDichVu() {
 		return iMaCTDichVu;
 	}

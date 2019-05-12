@@ -1,4 +1,6 @@
 ﻿GO
+drop database QUANLYKHACHSAN
+GO
 create Database QUANLYKHACHSAN
 GO
 use QUANLYKHACHSAN
@@ -116,3 +118,8 @@ INSERT INTO CTDICHVU( TenCTDichVu, GiaDV, SoLuong) VALUES ( 'ăn trưa', 100000,
 /*insert table DICHVU*/
 INSERT INTO DICHVU( TenDichVu,MaCTDichVu) VALUES ( 'ăn sáng', 1);
 INSERT INTO DICHVU( TenDichVu,MaCTDichVu) VALUES ( 'ăn trưa', 2);
+
+/*insert table LOAIPHONG*/
+INSERT INTO LOAIPHONG( TenLoaiPhong, GiaPhong) VALUES ( 'VIP', 250000);
+INSERT INTO LOAIPHONG( TenLoaiPhong, GiaPhong) VALUES ( 'Thuong', 150000);
+

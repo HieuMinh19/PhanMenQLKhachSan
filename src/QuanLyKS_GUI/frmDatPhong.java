@@ -4,17 +4,22 @@
  * and open the template in the editor.
  */
 package QuanLyKS_GUI;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import QuanLyKS_DAL.DichVu_DAL;
+import QuanLyKS_DAL.LoaiPhong_DAL;
 
 /**
  *
  * @author MyPC
  */
-public class DatPhong extends javax.swing.JInternalFrame {
+public class frmDatPhong extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form DatPhong
      */
-    public DatPhong() {
+    public frmDatPhong() {
         initComponents();
     }
 
@@ -27,6 +32,15 @@ public class DatPhong extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+    	//prepare list
+    	DichVu_DAL dvDAL = new DichVu_DAL();
+        ResultSet rsListDV = dvDAL.getListDV();
+       
+        LoaiPhong_DAL lpDAL = new LoaiPhong_DAL();
+        ResultSet rsLP = lpDAL.getListLoaiPhong();
+    	
+    	
+    	
         txtTenKhachHang = new javax.swing.JTextField();
         txtNgaySinh = new javax.swing.JTextField();
         TenKhachHang = new javax.swing.JLabel();
@@ -72,11 +86,23 @@ public class DatPhong extends javax.swing.JInternalFrame {
 
         NgaySinh.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         NgaySinh.setText("NGÀY SINH");
-
-        cbxLoaiPhong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Phòng thường", "Phòng VIP" }));
+        
+       
+       
+        try {
+        	while(rsLP.next() ) {
+        		cbxLoaiPhong.addItem(rsLP.getString("TenLoaiPhong"));
+        		cbxLoaiPhong.getSelectedItem();
+		   }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+      
         cbxLoaiPhong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxLoaiPhongActionPerformed(evt);
+                
             }
         });
 
@@ -112,7 +138,7 @@ public class DatPhong extends javax.swing.JInternalFrame {
         TrangThai.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         TrangThai.setText("TRẠNG THÁI");
 
-        cbxTrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Còn", "Hết", " " }));
+        cbxTrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Còn", "Hết" }));
 
         btnDongY.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         btnDongY.setText("đồng ý");
@@ -131,7 +157,18 @@ public class DatPhong extends javax.swing.JInternalFrame {
         MaPhong.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         MaPhong.setText("MÃ PHÒNG");
 
-        cbxDichVu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dịch vụ 1", "Dịch vụ 2", "Dịch vụ 3" }));
+        
+        
+        try {
+        	while(rsListDV.next() ) {
+        		cbxDichVu.addItem(rsListDV.getString("TenDichVu"));
+        		cbxDichVu.getSelectedItem();
+		   }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
 
         DichVu.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         DichVu.setText("DỊCH VỤ");
