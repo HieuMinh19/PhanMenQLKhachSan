@@ -17,7 +17,7 @@ create table CTDANHGIA
 (	ID int identity(1,1) primary key ,
 	NoiDung varchar(255),
 	VoteSao float, 
-	NgayDanhGia datetime,
+	NgayDanhGia varchar(25),
 )
 go
 create table CHUCVU(
@@ -30,35 +30,26 @@ create table NHANVIEN
 (
 	MaNhanVien int identity(1,1) primary key,
 	TenNhanVien varchar(100),
-	NgaySinh datetime,
+	NgaySinh varchar(25),
 	CMND int, 
-	NgayVaoLam datetime,
+	NgayVaoLam varchar(25),
 	MaChucVu int,
-	
-	CONSTRAINT PC_MACHUCVU_FK FOREIGN KEY (MaChucVu)
-		REFERENCES CHUCVU(MaChucVu),
 )
 go	
 create table BANGPHANCONG
 (
 	MaPhanCong int identity(1,1) primary key,
-	NgayPhanCong datetime,
+	NgayPhanCong varchar(25),
 	LoaiCongViec varchar(50),
 	MaNhanVien int,
-	
-	CONSTRAINT PC_MANVIEN_FK FOREIGN KEY (MaNhanVien)
-		REFERENCES NHANVIEN(MaNhanVien),
 )
 
 create table HOADON
 (
 	MaHoaDon int identity(1,1) primary key,
-	NgayThuTien datetime,
+	NgayThuTien varchar(25),
 	SoTienThu int,
 	MaNhanVien int,
-	
-	CONSTRAINT FK_HOADON FOREIGN KEY (MaNhanVien)
-		REFERENCES NHANVIEN(MaNhanVien),
 )
 go
 create table CTDICHVU
@@ -81,11 +72,6 @@ create table CTHOADON
 	MaCTHoaDon int identity(1,1) primary key,
 	MaHoaDon int,
 	MaDichVu int,
-
-	CONSTRAINT FK_CTHOADON_HD FOREIGN KEY (MaHoaDon)
-		REFERENCES HOADON(MaHoaDon),
-	CONSTRAINT FK_CTHOADON_dv FOREIGN KEY (MaDichVu)
-		REFERENCES DICHVU(MaDichVu)	
 )
 go
 CREATE table LOAIPHONG
@@ -106,12 +92,7 @@ create table PHONG
 (
 	MaPhong int identity(1,1) primary key,
 	MaLoaiPhong int,
-	MaTrangThai int,
-
-	CONSTRAINT FK_PHONG_LP FOREIGN KEY (MaLoaiPhong)
-		REFERENCES LOAIPHONG(MaLoaiPhong),
-	CONSTRAINT FK_PHONG_TT FOREIGN KEY (MaTrangThai)
-		REFERENCES TRANGTHAI(MaTrangThai)	
+	MaTrangThai int,	
 )
 go
 create table CTDATPHONG
@@ -121,20 +102,17 @@ create table CTDATPHONG
 	CMNN varchar(20),
 	MaDichVu int,
 	MaPhong int, 
-
-	CONSTRAINT FK_CTDATPHONG_DV FOREIGN KEY (MaDichVu)
-		REFERENCES DICHVU(MaDichVu),
-	CONSTRAINT FK_CTDATPHONG_P FOREIGN KEY (MaPhong)
-		REFERENCES PHONG(MaPhong)	
 )
-
-
+/*insert table Account*/
 INSERT INTO ACCOUNT( Username, Password,Role) VALUES ('admin1', '123456', 1)
+INSERT INTO ACCOUNT( Username, Password,Role) VALUES ('duc', '123456', 2)
+/*insert table ChuongTrinhDanhGia*/
 
-
+INSERT INTO CTDANHGIA( NoiDung, VoteSao,NgayDanhGia) VALUES ('Che Độ Sạch sẽ', 3.5, '05/05/2019')
+INSERT INTO CTDANHGIA( NoiDung, VoteSao,NgayDanhGia) VALUES ('Dọn Vệ Sinh', 4.5, '10/06/2019')
+/*insert table CTDICHVU*/
 INSERT INTO CTDICHVU( TenCTDichVu, GiaDV, SoLuong) VALUES ( 'ăn sáng', 20000, 1);
 INSERT INTO CTDICHVU( TenCTDichVu, GiaDV, SoLuong) VALUES ( 'ăn trưa', 100000, 1);
-
-
+/*insert table DICHVU*/
 INSERT INTO DICHVU( TenDichVu,MaCTDichVu) VALUES ( 'ăn sáng', 1);
 INSERT INTO DICHVU( TenDichVu,MaCTDichVu) VALUES ( 'ăn trưa', 2);
