@@ -5,32 +5,23 @@ public class ChucVu_DTO {
 	private String strTenChucVu;
 	
 	public ChucVu_DTO() {
-		iMaChucVu = 1;
-		strTenChucVu = null;
 	}
-
+	public ChucVu_DTO(int iMaChucVu,String strTenChucVu) {
+		this.iMaChucVu = iMaChucVu;
+		this.strTenChucVu = strTenChucVu;
+	
+	}
 
 	public int getMaChucVu() {
 		return iMaChucVu;
 	}
-
-
-
-
 	public void setMaChucVu(int iMaChucVu) {
 		this.iMaChucVu = iMaChucVu;
 	}
 
-
-
-
 	public String getTenChucVu() {
 		return strTenChucVu;
 	}
-
-
-
-
 	public void setTenChucVu(String strTenChucVu) {
 		this.strTenChucVu = strTenChucVu;
 	}

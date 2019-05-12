@@ -13,10 +13,11 @@ create table ACCOUNT
 	Role int,
 )
 go
+
 create table CTDANHGIA
 (	ID int identity(1,1) primary key ,
 	NoiDung varchar(255),
-	VoteSao float, 
+	-- VoteSao float, 
 	NgayDanhGia varchar(25),
 )
 go
@@ -25,7 +26,7 @@ create table CHUCVU(
 	TenChucVu varchar(100),
 )
 go
-
+/*create Nhan Vien */
 create table NHANVIEN
 (
 	MaNhanVien int identity(1,1) primary key,
@@ -36,6 +37,7 @@ create table NHANVIEN
 	MaChucVu int,
 )
 go	
+/*create Bang Phan Cong*/
 create table BANGPHANCONG
 (
 	MaPhanCong int identity(1,1) primary key,
@@ -43,7 +45,7 @@ create table BANGPHANCONG
 	LoaiCongViec varchar(50),
 	MaNhanVien int,
 )
-
+/*create Hoa Don*/
 create table HOADON
 (
 	MaHoaDon int identity(1,1) primary key,
@@ -52,21 +54,24 @@ create table HOADON
 	MaNhanVien int,
 )
 go
+/*create Chi Tiet Dich Vu*/
 create table CTDICHVU
 (
 	MaCTDichVu int identity(1,1) primary key,
 	TenCTDichVu varchar(50),
-	GiaDV int,
 	SoLuong int,
 )
 go
+/*create Dich Vu*/
 create table DICHVU
 (
 	MaDichVu int identity(1,1) primary key,
 	TenDichVu varchar(50),
 	MaCTDichVu int,
+	GiaDichVu int,
 )
 go
+/*create table Chi Tiet Hoa Don*/
 create table CTHOADON
 (
 	MaCTHoaDon int identity(1,1) primary key,
@@ -74,6 +79,7 @@ create table CTHOADON
 	MaDichVu int,
 )
 go
+/*create table Loai Phong*/
 CREATE table LOAIPHONG
 (
 	MaLoaiPhong int  identity(1,1) primary key,
@@ -81,13 +87,14 @@ CREATE table LOAIPHONG
 	GiaPhong int,
 )
 GO
-
+/*create table Trang thai*/
 create table TRANGTHAI
 (
 	MaTrangThai int  identity(1,1) primary key,
-	TrenTrangThai varchar(20),
+	TenTrangThai varchar(20),
 )
 go
+/*create table Phong*/
 create table PHONG
 (
 	MaPhong int identity(1,1) primary key,
@@ -95,6 +102,7 @@ create table PHONG
 	MaTrangThai int,	
 )
 go
+/*create table Chi Tiet Dat Phong*/
 create table CTDATPHONG
 (
 	MaDatPhong int identity(1,1) primary key,
