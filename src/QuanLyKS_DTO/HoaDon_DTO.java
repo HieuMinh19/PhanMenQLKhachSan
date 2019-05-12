@@ -24,7 +24,7 @@ public class HoaDon_DTO {
 	public void setMaHoaDon(int iMaHoaDon) {
 		this.iMaHoaDon = iMaHoaDon;
 	}
-	public int getNgayThuTien() {
+	public String getNgayThuTien() {
 		return strNgayThuTien;
 	}
 
@@ -34,7 +34,7 @@ public class HoaDon_DTO {
 
 
 
-	public String getSoTienThu() {
+	public int getSoTienThu() {
 		return iSoTienThu;
 	}
 

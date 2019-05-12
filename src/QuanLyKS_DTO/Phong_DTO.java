@@ -5,10 +5,10 @@ public class Phong_DTO {
 	private int iMaLoaiPhong;
     private int iMaTrangThai;
 
-    public DichVu_DTO() {
+    public Phong_DTO() {
 		//
     }
-    public DichVu_DTO(int iMaPhong, int iMaLoaiPhong, int iMaTrangThai) {
+    public Phong_DTO(int iMaPhong, int iMaLoaiPhong, int iMaTrangThai) {
 		this.iMaPhong = iMaPhong;
 		this.iMaLoaiPhong = iMaLoaiPhong;
 		this.iMaTrangThai = iMaTrangThai;
@@ -32,7 +32,7 @@ public class Phong_DTO {
 	public int getMaTrangThai() {
 		return iMaTrangThai;
 	}
-	public void setMaTrangThai(String iMaTrangThai) {
+	public void setMaTrangThai(int iMaTrangThai) {
 		this.iMaTrangThai = iMaTrangThai;
 	}
 }

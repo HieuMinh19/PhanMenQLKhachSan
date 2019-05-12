@@ -5,11 +5,11 @@ public class CTDanhGia_DTO {
     private String strNoiDung;
     private String strNgayDanhGia;
 
-    public DichVu_DTO() {
+    public CTDanhGia_DTO() {
 	
     }
 
-    public DichVu_DTO(int iID,String strNoiDung,String strNgayDanhGia) {
+    public CTDanhGia_DTO(int iID,String strNoiDung,String strNgayDanhGia) {
 		this.iID  = iID;
 		this.strNoiDung = strNoiDung;
 		this.strNgayDanhGia = strNgayDanhGia;
