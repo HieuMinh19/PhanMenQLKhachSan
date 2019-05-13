@@ -7,12 +7,14 @@ use QUANLYKHACHSAN
 GO
 set dateformat ymd
 go
+drop table ACCOUNT
 create table ACCOUNT
 (
 	ID int identity(1,1) primary key,
 	Username varchar(20),
 	Password varchar(30),
 	Role int,
+	NgayLap varchar(50),
 )
 go
 
