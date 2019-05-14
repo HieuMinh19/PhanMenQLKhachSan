@@ -28,11 +28,13 @@ public class frmMain extends JFrame {
 	static Login frmLogin = new Login();
 	static Register frmRegister = new Register();
 	static frmDatPhong frmDatPhong = new frmDatPhong();
+	static DichVu frmDichVu = new DichVu();
 	//deifne static varriable cho frame
 	private static final int FRM_LOGIN = 1;
 	private static final int FRM_REGISTER = 2;
 	private static final int FRM_QLDV = 3;
 	private static final int FRM_DATPHONG = 4;
+	static final int FRM_DichVu = 5;
 	private static final long serialVersionUID = 1L;
 	private static JPanel contentPane;
 	
@@ -47,6 +49,7 @@ public class frmMain extends JFrame {
 				frmRegister.setVisible(false);
 				frmQLDV.setVisible(false);
 				frmDatPhong.setVisible(false);
+				frmDichVu.setVisible(false);
 				//set current frame
 				contentPane.add(frmLogin);
 				frmLogin.setVisible(true);
@@ -57,6 +60,7 @@ public class frmMain extends JFrame {
 				frmLogin.setVisible(false);
 				frmQLDV.setVisible(false);
 				frmDatPhong.setVisible(false);
+				frmDichVu.setVisible(false);
 				//set current frame
 				contentPane.add(frmRegister);
 				frmRegister.setVisible(true);
@@ -68,6 +72,7 @@ public class frmMain extends JFrame {
 				frmLogin.setVisible(false);
 				frmRegister.setVisible(false);
 				frmDatPhong.setVisible(false);
+				frmDichVu.setVisible(false);
 				
 				//set current frame
 				contentPane.add(frmQLDV);
@@ -79,10 +84,20 @@ public class frmMain extends JFrame {
 				frmLogin.setVisible(false);
 				frmRegister.setVisible(false);
 				frmQLDV.setVisible(false);
-				
+				frmDichVu.setVisible(false);
 				//set current frame
 				contentPane.add(frmDatPhong);
 				frmDatPhong.setVisible(true);
+				break;
+			case 5:
+				//close another frame
+				frmLogin.setVisible(false);
+				frmRegister.setVisible(false);
+				frmQLDV.setVisible(false);
+				frmDatPhong.setVisible(false);
+				//set current frame
+				contentPane.add(frmDichVu);
+				frmDichVu.setVisible(true);
 				break;
 		}
 	}
@@ -138,6 +153,13 @@ public class frmMain extends JFrame {
 		mnNewMenu.add(mntmit);
 		
 		JMenu mnDichVu = new JMenu("D\u1ECBch v\u1EE5");
+		JMenuItem mntmThemDichVu = new JMenuItem("thêm dich vu");
+		mntmThemDichVu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controlFrame(FRM_DichVu);
+			}
+		});
+		mnDichVu.add(mntmThemDichVu);
 		menuBar.add(mnDichVu);
 		
 		JMenuItem mntmQuanLyDich = new JMenuItem("Qu\u1EA3n l\u00FD d\u1ECBch v\u1EE5");
