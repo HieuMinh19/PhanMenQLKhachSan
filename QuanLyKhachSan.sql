@@ -111,9 +111,11 @@ create table CTDATPHONG
 (
 	MaDatPhong int identity(1,1) primary key,
 	TenKH varchar(100),
-	CMNN varchar(20),
+	CMND varchar(20),
 	MaDichVu int,
 	MaPhong int, 
+	NgayNhan varchar(25),
+	NgayTra varchar(25),
 )
 /*insert table Account*/
 INSERT INTO ACCOUNT( Username, Password,Role) VALUES ('admin1', '123456', 1)
