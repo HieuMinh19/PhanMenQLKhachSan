@@ -43,6 +43,7 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.HierarchyListener;
 import java.awt.event.HierarchyEvent;
+import javax.swing.JComboBox;
 
 public class QLDichVu extends JInternalFrame {
 	/**
@@ -50,10 +51,18 @@ public class QLDichVu extends JInternalFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JTable table_2;
-	private JTextField txtMaDV;
 	private JTextField txtTenDV;
 	private JTextField txtCTDV;
-	public static ResultSet DV;
+	public static DichVu_DTO []arrDV;
+	private static int lengthArr = 0;
+	static DichVu_BUS dvBus = new DichVu_BUS();	
+	public static ResultSet DV = dvBus.selectAll();
+	
+	
+	
+	
+
+	
 	private JTable table;
 	
 	/**
@@ -85,7 +94,7 @@ public class QLDichVu extends JInternalFrame {
 		
 		
 		JScrollPane scrListDV = new JScrollPane();
-		
+		JComboBox<Object> cbxMaDV = new javax.swing.JComboBox<>();
 		
 		scrListDV.addMouseListener(new MouseAdapter() {
 			 
@@ -102,15 +111,38 @@ public class QLDichVu extends JInternalFrame {
 		JButton btnLoadData = new JButton("Load list Service");
 		btnLoadData.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				DichVu_BUS dvBus = new DichVu_BUS();
+				
 				ResultSet listDV = dvBus.selectAll();
+				ResultSet subList = dvBus.selectAll();
 				DV = dvBus.selectAll();
-				if(DV != null) {
+
+				
+				if(listDV != null) {
 					table_2.setModel(DbUtils.resultSetToTableModel(listDV));
 				}else {
 					JOptionPane.showMessageDialog(null, "get List Services not success", "Error: " + "error Mesage", JOptionPane.CLOSED_OPTION);
 				}
-				
+				//load list MaDV from db
+				 try {
+			        	while(subList.next()) {
+			        		cbxMaDV.addItem(subList.getString("MaDichVu"));
+			        		cbxMaDV.getSelectedItem();
+			        		lengthArr++;
+					   }
+			        	//dem so dich vu
+			        	arrDV = new DichVu_DTO[lengthArr];
+			        	//set gia tri cho tung dich vu
+			        	for(int i = 0; i < lengthArr; i++) {
+			        		//arrDV[i].setMaDichVu(DV.getInt("MaDichVu"));
+			        		arrDV[i].setTenDichVu(DV.getString("TenDichVu"));
+			        		arrDV[i].setMaCTDichVu(DV.getInt("MaCTDichVu"));
+			        		arrDV[i].setGiaDichVu(DV.getInt("GiaDichVu"));
+			        	}
+			        		
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 			}
 		});
 		btnLoadData.setBounds(341, 214, 109, 30);
@@ -119,11 +151,6 @@ public class QLDichVu extends JInternalFrame {
 		JLabel lblMadichvu = new JLabel("M\u00E3 d\u1ECBch v\u1EE5");
 		lblMadichvu.setBounds(27, 59, 59, 14);
 		getContentPane().add(lblMadichvu);
-		
-		txtMaDV = new JTextField();
-		txtMaDV.setBounds(101, 56, 86, 20);
-		getContentPane().add(txtMaDV);
-		txtMaDV.setColumns(10);
 		
 		JLabel lblTnDchVu = new JLabel("T\u00EAn d\u1ECBch v\u1EE5");
 		lblTnDchVu.setBounds(27, 101, 59, 14);
@@ -146,21 +173,7 @@ public class QLDichVu extends JInternalFrame {
 		JButton btnUpdate = new JButton("Update");
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			ResultSet abc = DV;
 			
-			DichVu_DTO dv = new DichVu_DTO();
-			try {
-				while (DV.next()) {
-					
-					String temp = DV.getString("TenDichVu");
-					txtTenDV.setText(temp);
-					System.out.println(temp);
-				}
-			} catch (SQLException e1) {
-				
-				e1.printStackTrace();
-			}
-			int m = 10;
 			}
 		});
 		btnUpdate.setBounds(81, 203, 89, 23);
@@ -174,6 +187,27 @@ public class QLDichVu extends JInternalFrame {
 		});
 		btnSelect.setBounds(198, 218, 89, 23);
 		getContentPane().add(btnSelect);
+		
+		
+		cbxMaDV.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String valueSelect = cbxMaDV.getSelectedItem().toString();
+				for(int i = 0; i < lengthArr; i++) {
+					try {
+						if( DV.getString("MaDichVu") == valueSelect ) {
+							txtTenDV.setText( DV.getString("TenDichVu") );
+							txtCTDV.setText(DV.getString("TenCTDichVu"));
+						}
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		});
+		cbxMaDV.setBounds(106, 56, 81, 20);
+		getContentPane().add(cbxMaDV);
+//		
 
 	}
 }
