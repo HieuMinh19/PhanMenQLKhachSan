@@ -1,22 +1,23 @@
 package QuanLyKS_DTO;
 
-public class CTDATPHONG_DTO {
+public class CTDatPhong_DTO {
 	private int iMaDatPhong;
 	private String strTenKH;
-	private String strCMNN;
+	private String strCMND;
     private int iMaDichVu;
     private int iMaPhong;
-	
-	public CTDATPHONG_DTO() {
+	private String strNgayNhan;
+	private String strNgayTra;
+	public CTDatPhong_DTO() {
 	
 	}
 
-	public CTDATPHONG_DTO(int iMaDatPhong, String strTenKH, String strCMNN, int iMaDichVu, int iMaPhong ) {
-		this.iMaDatPhong = iMaDatPhong;
+	public CTDatPhong_DTO( String strTenKH, String strCMND, int iMaDichVu, String NgayNhan, String NgayTra ) {
 		this.strTenKH = strTenKH;
-		this.strCMNN = strCMNN;
+		this.strCMND = strCMND;
         this.iMaDichVu = iMaDichVu;
-        this.iMaPhong = iMaPhong;
+        this.strNgayNhan = NgayNhan;
+        this.strNgayTra = NgayTra;
 	}
 	
 	
@@ -35,10 +36,10 @@ public class CTDATPHONG_DTO {
     }
     
     public String getCMND() {
-		return strCMNN;
+		return strCMND;
 	}
 	public void setCMND(String strCMNN) {
-		this.strCMNN = strCMNN;
+		this.strCMND = strCMNN;
     }
 
     public int getMaDichVu() {
@@ -54,5 +55,21 @@ public class CTDATPHONG_DTO {
 	public void setMaPhong(int iMaPhong) {
 		this.iMaPhong = iMaPhong;
     }
+
+	public String getNgayNhan() {
+		return strNgayNhan;
+	}
+
+	public void setNgayNhan(String strNgayNhan) {
+		this.strNgayNhan = strNgayNhan;
+	}
+
+	public String getNgayTra() {
+		return strNgayTra;
+	}
+
+	public void setNgayTra(String strNgayTra) {
+		this.strNgayTra = strNgayTra;
+	}
 
 }

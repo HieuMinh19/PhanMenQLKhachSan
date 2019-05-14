@@ -29,12 +29,13 @@ public class frmMain extends JFrame {
 	static Register frmRegister = new Register();
 	static frmDatPhong frmDatPhong = new frmDatPhong();
 	//deifne static varriable cho frame
-	static final int FRM_LOGIN = 1;
-	static final int FRM_REGISTER = 2;
-	static final int FRM_QLDV = 3;
-	static final int FRM_DATPHONG = 4;
+	private static final int FRM_LOGIN = 1;
+	private static final int FRM_REGISTER = 2;
+	private static final int FRM_QLDV = 3;
+	private static final int FRM_DATPHONG = 4;
 	private static final long serialVersionUID = 1L;
 	private static JPanel contentPane;
+	
 
 	/**
 	 * Launch the application.
@@ -84,8 +85,6 @@ public class frmMain extends JFrame {
 				frmDatPhong.setVisible(true);
 				break;
 		}
-		
-			
 	}
 	
 	
@@ -158,7 +157,6 @@ public class frmMain extends JFrame {
 		mntmtPhng.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controlFrame(FRM_DATPHONG);
-				
 			}
 		});
 		contentPane = new JPanel();
