@@ -1,5 +1,6 @@
 package QuanLyKS_BUS;
 import java.sql.ResultSet;
+import QuanLyKS_DTO.DichVu_DTO;
 import QuanLyKS_DAL.DichVu_DAL;
 public class DichVu_BUS {
 	private static DichVu_DAL DichVuDAL;
@@ -10,5 +11,7 @@ public class DichVu_BUS {
 	public ResultSet selectAll() {
 		return DichVuDAL.getListDV();
 	}
-	
+	public static boolean Insert(DichVu_DTO dichvu) {
+		return DichVu_DAL.Insert(dichvu);
+	}
 }
