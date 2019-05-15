@@ -14,4 +14,11 @@ public class DichVu_BUS {
 	public static boolean Insert(DichVu_DTO dichvu) {
 		return DichVu_DAL.Insert(dichvu);
 	}
+	public static boolean Update(DichVu_DTO dichvu) {
+		return DichVu_DAL.Update(dichvu);
+	}
+	public static boolean Delete(DichVu_DTO dichvu) {
+		return DichVu_DAL.Delete(dichvu);
+	}
 }
+ 

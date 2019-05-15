@@ -51,19 +51,21 @@ public class QLDichVu extends JInternalFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JTable table_2;
-	private JTextField txtTenDV;
+	private JTextField txtTenDichVu;
 	private JTextField txtCTDV;
 	public static DichVu_DTO []arrDV;
 	private static int lengthArr = 0;
 	static DichVu_BUS dvBus = new DichVu_BUS();	
 	public static ResultSet DV = dvBus.selectAll();
-	
+	private DichVu_DTO dichvu_DTO;
 	
 	
 	
 
 	
 	private JTable table;
+	private JTextField txtMaDichVu;
+	private JTextField txtGiaDichVu;
 	
 	/**
 	 * Launch the application.
@@ -85,7 +87,7 @@ public class QLDichVu extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public QLDichVu() {
-		setBounds(100, 100, 584, 300);
+		setBounds(100, 100, 1009, 512);
 		getContentPane().setLayout(null);
 		
 		
@@ -102,7 +104,7 @@ public class QLDichVu extends JInternalFrame {
 			
 			}
 		});
-		scrListDV.setBounds(276, 40, 270, 163);
+		scrListDV.setBounds(352, 40, 613, 163);
 		getContentPane().add(scrListDV);
 		
 		table_2 = new JTable();
@@ -116,7 +118,6 @@ public class QLDichVu extends JInternalFrame {
 				ResultSet subList = dvBus.selectAll();
 				DV = dvBus.selectAll();
 
-				
 				if(listDV != null) {
 					table_2.setModel(DbUtils.resultSetToTableModel(listDV));
 				}else {
@@ -145,38 +146,55 @@ public class QLDichVu extends JInternalFrame {
 					}
 			}
 		});
-		btnLoadData.setBounds(341, 214, 109, 30);
+		btnLoadData.setBounds(586, 230, 109, 30);
 		getContentPane().add(btnLoadData);
 		
 		JLabel lblMadichvu = new JLabel("M\u00E3 d\u1ECBch v\u1EE5");
-		lblMadichvu.setBounds(27, 59, 59, 14);
+		lblMadichvu.setBounds(27, 59, 109, 29);
 		getContentPane().add(lblMadichvu);
 		
 		JLabel lblTnDchVu = new JLabel("T\u00EAn d\u1ECBch v\u1EE5");
-		lblTnDchVu.setBounds(27, 101, 59, 14);
+		lblTnDchVu.setBounds(27, 101, 109, 14);
 		getContentPane().add(lblTnDchVu);
 		
-		txtTenDV = new JTextField();
-		txtTenDV.setBounds(101, 98, 86, 20);
-		getContentPane().add(txtTenDV);
-		txtTenDV.setColumns(10);
+		txtTenDichVu = new JTextField();
+		txtTenDichVu.setBounds(152, 98, 169, 20);
+		getContentPane().add(txtTenDichVu);
+		txtTenDichVu.setColumns(10);
 		
 		txtCTDV = new JTextField();
-		txtCTDV.setBounds(101, 136, 86, 20);
+		txtCTDV.setBounds(152, 136, 169, 20);
 		getContentPane().add(txtCTDV);
 		txtCTDV.setColumns(10);
 		
 		JLabel lblMCtDch = new JLabel("M\u00E3 CT d\u1ECBch v\u1EE5");
-		lblMCtDch.setBounds(27, 139, 67, 14);
+		lblMCtDch.setBounds(27, 139, 109, 14);
 		getContentPane().add(lblMCtDch);
 		
 		JButton btnUpdate = new JButton("Update");
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
+				dichvu_DTO = new DichVu_DTO( ); 
+
+				dichvu_DTO.setTenDichVu( txtTenDichVu.getText() );
+				dichvu_DTO.setGiaDichVu( Integer.parseInt(txtGiaDichVu.getText()));
+				dichvu_DTO.setMaDichVu( Integer.parseInt(txtMaDichVu.getText()));
+//				dichvu_DTO.setMaCTDichVu( cbmCTDichVu.getSelectedIndex() );
+				
+				//boolean isValidPass = Arrays.equals(textPassword.getPassword(),textPasswordRetype.getPassword());
+
+				// int a = Integer.valueOf( txtMaDichVu.getText());
+						
+					 if(  DichVu_BUS.Update(dichvu_DTO) == true)
+						 JOptionPane.showMessageDialog(null, "Update Dich Vu Success", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);
+					 else
+						 JOptionPane.showMessageDialog(null, "Update Dich Vu Fail", "Fail: " + "Success Mesage", JOptionPane.CLOSED_OPTION);
+
+				
 			}
 		});
-		btnUpdate.setBounds(81, 203, 89, 23);
+		btnUpdate.setBounds(27, 226, 134, 38);
 		getContentPane().add(btnUpdate);
 		
 		JButton btnSelect = new JButton("Select");
@@ -185,7 +203,7 @@ public class QLDichVu extends JInternalFrame {
 				
 			}
 		});
-		btnSelect.setBounds(198, 218, 89, 23);
+		btnSelect.setBounds(794, 382, 89, 23);
 		getContentPane().add(btnSelect);
 		
 		
@@ -195,7 +213,7 @@ public class QLDichVu extends JInternalFrame {
 				for(int i = 0; i < lengthArr; i++) {
 					try {
 						if( DV.getString("MaDichVu") == valueSelect ) {
-							txtTenDV.setText( DV.getString("TenDichVu") );
+							txtTenDichVu.setText( DV.getString("TenDichVu") );
 							txtCTDV.setText(DV.getString("TenCTDichVu"));
 						}
 					} catch (SQLException e) {
@@ -205,8 +223,45 @@ public class QLDichVu extends JInternalFrame {
 				}
 			}
 		});
-		cbxMaDV.setBounds(106, 56, 81, 20);
+		cbxMaDV.setBounds(576, 352, 169, 20);
 		getContentPane().add(cbxMaDV);
+		
+		txtMaDichVu = new JTextField();
+		txtMaDichVu.setColumns(10);
+		txtMaDichVu.setBounds(152, 63, 169, 20);
+		getContentPane().add(txtMaDichVu);
+		
+		txtGiaDichVu = new JTextField();
+		txtGiaDichVu.setColumns(10);
+		txtGiaDichVu.setBounds(152, 169, 169, 20);
+		getContentPane().add(txtGiaDichVu);
+		
+		JLabel lblGiaDichVu = new JLabel("Gia Dich Vu");
+		lblGiaDichVu.setBounds(27, 171, 109, 14);
+		getContentPane().add(lblGiaDichVu);
+		
+		JButton btndelete = new JButton("Delete");
+		btndelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				dichvu_DTO = new DichVu_DTO( ); 
+				//dichvu_DTO.setTenDichVu( txtTenDichVu.getText() );
+				//dichvu_DTO.setGiaDichVu( Integer.parseInt(txtGiaDichVu.getText()));
+				dichvu_DTO.setMaDichVu( Integer.parseInt(txtMaDichVu.getText()));
+//				dichvu_DTO.setMaCTDichVu( cbmCTDichVu.getSelectedIndex() );
+				
+				//boolean isValidPass = Arrays.equals(textPassword.getPassword(),textPasswordRetype.getPassword());
+
+				// int a = Integer.valueOf( txtMaDichVu.getText());
+						
+					 if(  DichVu_BUS.Delete(dichvu_DTO) == true)
+						 JOptionPane.showMessageDialog(null, "Update Dich Vu Success", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);
+					 else
+						 JOptionPane.showMessageDialog(null, "Update Dich Vu Fail", "Fail: " + "Success Mesage", JOptionPane.CLOSED_OPTION);
+			}
+		});
+		btndelete.setBounds(187, 226, 134, 38);
+		getContentPane().add(btndelete);
 //		
 
 	}

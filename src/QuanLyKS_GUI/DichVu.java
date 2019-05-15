@@ -1,7 +1,7 @@
 package QuanLyKS_GUI;
 
 import java.awt.EventQueue;
-
+import java.sql.ResultSet;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
@@ -18,8 +18,8 @@ import javax.swing.JPasswordField;
 import java.util.Arrays;
 import com.ibm.icu.text.SimpleDateFormat;
 import com.toedter.calendar.JCalendar;
-
-
+import QuanLyKS_DAL.CTDichVu_DAL;
+import java.sql.SQLException;
 
 
 public class DichVu extends JInternalFrame {
@@ -49,7 +49,11 @@ public class DichVu extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public DichVu() {
-		setBounds(100, 100, 450, 300);
+
+		CTDichVu_DAL CTDichVu_DAL = new CTDichVu_DAL();
+        ResultSet rsListCTDichVu = CTDichVu_DAL.getListCTDichVu();
+
+		setBounds(100, 100, 776, 481);
 		getContentPane().setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("th\u00EAm dich vu");
@@ -62,12 +66,12 @@ public class DichVu extends JInternalFrame {
 		lblNewLabel_1.setBounds(10, 77, 103, 14);
 		getContentPane().add(lblNewLabel_1);
 
-		JLabel lblNewLabel_2 = new JLabel("TÃŠN Dá»ŠCH Vá»¤");
+		JLabel lblNewLabel_2 = new JLabel("Ten Dich Vu");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNewLabel_2.setBounds(10, 113, 103, 14);
 		getContentPane().add(lblNewLabel_2);
 
-		JLabel lblNewLabel_3 = new JLabel("GIÃ� Dá»ŠCH Vá»¤");
+		JLabel lblNewLabel_3 = new JLabel("Gia Dich Vu");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNewLabel_3.setBounds(10, 151, 103, 14);
 		getContentPane().add(lblNewLabel_3);
@@ -87,6 +91,10 @@ public class DichVu extends JInternalFrame {
 		getContentPane().add(txtGiaDichVu);
 		txtGiaDichVu.setColumns(10);
 
+		JComboBox cbmCTDichVu = new JComboBox();
+		cbmCTDichVu.setBounds(430, 73, 124, 22);
+		getContentPane().add(cbmCTDichVu);
+		
 		JButton btnThemDichVu = new JButton("ThÃªm Dich Vá»¥");
 		btnThemDichVu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -94,6 +102,8 @@ public class DichVu extends JInternalFrame {
 
 				dichvu_DTO.setTenDichVu( txtTenDichVu.getText() );
 				dichvu_DTO.setGiaDichVu( Integer.parseInt(txtGiaDichVu.getText()));
+//				dichvu_DTO.setMaCTDichVu( cbmCTDichVu.getSelectedIndex() );
+				
 				//boolean isValidPass = Arrays.equals(textPassword.getPassword(),textPasswordRetype.getPassword());
 
 
@@ -108,6 +118,13 @@ public class DichVu extends JInternalFrame {
 		});
 		btnThemDichVu.setBounds(121, 198, 140, 23);
 		getContentPane().add(btnThemDichVu);
+		
+		
+		
+		JLabel label = new JLabel("Gia Dich Vu");
+		label.setFont(new Font("Tahoma", Font.BOLD, 13));
+		label.setBounds(285, 77, 103, 14);
+		getContentPane().add(label);
 
 
 
@@ -119,6 +136,17 @@ public class DichVu extends JInternalFrame {
 
 		}
 		});
+
+
+		try {
+        	while(rsListCTDichVu.next() ) {
+        		cbmCTDichVu.addItem(rsListCTDichVu.getString("TenCTDichVu"));
+        		cbmCTDichVu.getSelectedItem();
+		   }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 }
