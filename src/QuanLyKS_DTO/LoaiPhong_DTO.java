@@ -17,6 +17,12 @@ public class LoaiPhong_DTO {
 		this.iGiaPhong = iGiaPhong;
     }
     
+	public LoaiPhong_DTO( int iMaLoaiPhong, String strTenLoaiPhong) {
+		this.iMaLoaiPhong = iMaLoaiPhong;
+		this.strTenLoaiPhong = strTenLoaiPhong;
+    }
+    
+	
 	public int getMaLoaiPhong() {
 		return iMaLoaiPhong;
 	}

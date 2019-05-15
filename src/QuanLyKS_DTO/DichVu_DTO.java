@@ -14,6 +14,12 @@ public class DichVu_DTO {
 		this.iGiaDichVu = iGiaDichVu;
 	}
 	
+	public DichVu_DTO(int iMaDichVu, String TenDichVu) {
+		this.iMaDichVu = iMaDichVu;
+		this.strTenDichVu = TenDichVu;
+	}
+	
+	
 	public DichVu_DTO() {
 		this.iMaDichVu  = 1;
 		this.iMaCTDichVu = 1;

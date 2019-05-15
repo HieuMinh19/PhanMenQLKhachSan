@@ -36,4 +36,9 @@ public class CTDatPhong_DAL {
 			 return false;
 		}
 	}
+	public static int isValidRoom(CTDatPhong_DTO ctdpDTO) {
+		
+		
+		return 0;
+	}
 }
