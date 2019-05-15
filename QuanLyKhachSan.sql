@@ -91,8 +91,7 @@ CREATE table LOAIPHONG
 	GiaPhong int,
 )
 GO
-/*create table Phong*/
-drop table PHONG
+/*create table Phong*/s
 create table PHONG
 (
 	MaPhong int primary key,
