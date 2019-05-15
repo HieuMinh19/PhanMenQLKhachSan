@@ -56,13 +56,7 @@ public class QLDichVu extends JInternalFrame {
 	public static DichVu_DTO []arrDV;
 	private static int lengthArr = 0;
 	static DichVu_BUS dvBus = new DichVu_BUS();	
-	public static ResultSet DV = dvBus.selectAll();
-	
-	
-	
-	
-
-	
+	public static ResultSet DV = dvBus.selectAll();	
 	private JTable table;
 	
 	/**
@@ -87,12 +81,7 @@ public class QLDichVu extends JInternalFrame {
 	public QLDichVu() {
 		setBounds(100, 100, 584, 300);
 		getContentPane().setLayout(null);
-		
-		
-		
-		
-		
-		
+
 		JScrollPane scrListDV = new JScrollPane();
 		JComboBox<Object> cbxMaDV = new javax.swing.JComboBox<>();
 		

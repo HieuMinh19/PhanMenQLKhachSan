@@ -64,5 +64,10 @@ public class NhanVien_DTO {
 	public void setMaChucVu(int iMaChucVu) {
 		this.iMaChucVu = iMaChucVu;
 	}
+	
+	@Override
+	public String toString() {
+		return this.iMaNhanVien + " - " + this.strTenNhanVien;
+	}
 
 }
