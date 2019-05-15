@@ -91,19 +91,12 @@ CREATE table LOAIPHONG
 	GiaPhong int,
 )
 GO
-/*create table Trang thai*/
-create table TRANGTHAI
-(
-	MaTrangThai int  identity(1,1) primary key,
-	TenTrangThai varchar(20),
-)
-go
 /*create table Phong*/
+drop table PHONG
 create table PHONG
 (
-	MaPhong int identity(1,1) primary key,
-	MaLoaiPhong int,
-	MaTrangThai int,	
+	MaPhong int primary key,
+	MaLoaiPhong int,	
 )
 go
 /*create table Chi Tiet Dat Phong*/
