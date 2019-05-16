@@ -41,12 +41,12 @@ public class DichVu_DAL {
 			ptmt.setString(1, TenDichVu);
 			ptmt.setInt(2, GiaDichVu);
 			if( ptmt.executeUpdate() != 0) {
-				System.err.println("insert thanh cong account");
+				System.err.println("insert Service success");
 				return true;
 			}
 				
 			else {
-				System.err.println("khoi tao account that bai");
+				System.err.println("Fail to create Service");
 				return false;
 			}
 		} catch (SQLException e) {

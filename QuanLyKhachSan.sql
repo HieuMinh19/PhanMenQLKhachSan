@@ -62,6 +62,7 @@ create table CTDICHVU
 (
 	MaCTDichVu int identity(1,1) primary key,
 	TenCTDichVu varchar(50),
+	MaDichVu int,
 	SoLuong int,
 )
 go
@@ -70,7 +71,6 @@ create table DICHVU
 (
 	MaDichVu int identity(1,1) primary key,
 	TenDichVu varchar(50),
-	MaCTDichVu int,
 	GiaDichVu int,
 )
 go
@@ -119,8 +119,8 @@ INSERT INTO CTDANHGIA( NoiDung, VoteSao,NgayDanhGia) VALUES ('Dọn Vệ Sinh', 
 INSERT INTO CTDICHVU( TenCTDichVu, GiaDV, SoLuong) VALUES ( 'ăn sáng', 20000, 1);
 INSERT INTO CTDICHVU( TenCTDichVu, GiaDV, SoLuong) VALUES ( 'ăn trưa', 100000, 1);
 /*insert table DICHVU*/
-INSERT INTO DICHVU( TenDichVu,MaCTDichVu) VALUES ( 'ăn sáng', 1);
-INSERT INTO DICHVU( TenDichVu,MaCTDichVu) VALUES ( 'ăn trưa', 2);
+INSERT INTO DICHVU( TenDichVu,GiaDichVu) VALUES ( 'ăn sáng', 30000);
+INSERT INTO DICHVU( TenDichVu,GiaDichVu) VALUES ( 'ăn toi', 100000);
 
 /*insert table LOAIPHONG*/
 INSERT INTO LOAIPHONG( TenLoaiPhong, GiaPhong) VALUES ( 'VIP', 250000);

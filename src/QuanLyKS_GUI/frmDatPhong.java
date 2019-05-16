@@ -142,11 +142,6 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
         			if(nameLP.equals( dvCompare.getTenLoaiPhong() ) )
         				idLP = dvCompare.getMaLoaiPhong();
         		}
-        		
-        		
-//        		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//         		NgayNhan = sdf.format( dtNgayNhan.getDate() );
-//         		NgayTra = sdf.format( dtNgayTra.getDate() );
          		//load list Phong
                  ResultSet rslistPhong = Phong_DAL.selectCondition(idLP, NgayNhan, NgayTra);
                   try {    

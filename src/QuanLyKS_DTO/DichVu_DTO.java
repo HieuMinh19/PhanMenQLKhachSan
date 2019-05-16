@@ -2,14 +2,12 @@ package QuanLyKS_DTO;
 
 public class DichVu_DTO {
 	private int iMaDichVu;
-	private int iMaCTDichVu;
 	private String strTenDichVu;
 	private int iGiaDichVu;
 	
 	
-	public DichVu_DTO(int iMaDichVu, int iMaCTDichVu, String strTenDichVu, int iGiaDichVu) {
+	public DichVu_DTO(int iMaDichVu, String strTenDichVu, int iGiaDichVu) {
 		this.iMaDichVu = iMaDichVu;
-		this.iMaCTDichVu = iMaCTDichVu;
 		this.strTenDichVu = strTenDichVu;
 		this.iGiaDichVu = iGiaDichVu;
 	}
@@ -23,12 +21,11 @@ public class DichVu_DTO {
 	public DichVu_DTO(  String strTenDichVu, int iGiaDichVu, int iMaDichVu) {
 		this.strTenDichVu = strTenDichVu;
 		this.iGiaDichVu = iGiaDichVu;
-		this.iMaCTDichVu = iMaDichVu;
+		this.iMaDichVu = iMaDichVu;
 		
 	}
 	public DichVu_DTO() {
 		this.iMaDichVu  = 1;
-		this.iMaCTDichVu = 1;
 		this.strTenDichVu = "";
 		this.iGiaDichVu  = 1;
 	}
@@ -39,12 +36,6 @@ public class DichVu_DTO {
 	public void setMaDichVu(int iMaDichVu) {
 		this.iMaDichVu = iMaDichVu;
 	} 
-	public int getMaCTDichVu() {
-		return iMaCTDichVu;
-	}
-	public void setMaCTDichVu(int iMaCTDichVu) {
-		this.iMaCTDichVu = iMaCTDichVu;
-	}
 	public String getTenDichVu() {
 		return strTenDichVu;
 	}
