@@ -12,10 +12,11 @@ public class CTDatPhong_DTO {
 	
 	}
 
-	public CTDatPhong_DTO( String strTenKH, String strCMND, int iMaDichVu, String NgayNhan, String NgayTra ) {
+	public CTDatPhong_DTO( String strTenKH, String strCMND, int iMaDichVu, int iMaPhong, String NgayNhan, String NgayTra ) {
 		this.strTenKH = strTenKH;
 		this.strCMND = strCMND;
         this.iMaDichVu = iMaDichVu;
+        this.iMaPhong = iMaPhong;
         this.strNgayNhan = NgayNhan;
         this.strNgayTra = NgayTra;
 	}

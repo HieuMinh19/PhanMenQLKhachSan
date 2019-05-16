@@ -18,6 +18,10 @@ import javax.swing.JPasswordField;
 import java.util.Arrays;
 import com.ibm.icu.text.SimpleDateFormat;
 import com.toedter.calendar.JCalendar;
+import QuanLyKS_DAL.DichVu_DAL;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
 
@@ -49,7 +53,10 @@ public class DichVu extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public DichVu() {
-		setBounds(100, 100, 450, 300);
+		DichVu_DAL CTDichVu_DAL = new DichVu_DAL();
+        ResultSet rsListCTDichVu = CTDichVu_DAL.getListDV();
+
+		setBounds(100, 100, 776, 481);
 		getContentPane().setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("th\u00EAm dich vu");
@@ -84,6 +91,9 @@ public class DichVu extends JInternalFrame {
 
 		txtGiaDichVu = new JTextField();
 		txtGiaDichVu.setBounds(108, 149, 124, 20);
+		JComboBox<String> cbmCTDichVu = new JComboBox();
+		cbmCTDichVu.setBounds(430, 73, 124, 22);
+		getContentPane().add(cbmCTDichVu);
 		getContentPane().add(txtGiaDichVu);
 		txtGiaDichVu.setColumns(10);
 
@@ -108,9 +118,10 @@ public class DichVu extends JInternalFrame {
 		});
 		btnThemDichVu.setBounds(121, 198, 140, 23);
 		getContentPane().add(btnThemDichVu);
-
-
-
+		JLabel label = new JLabel("Gia Dich Vu");
+		label.setFont(new Font("Tahoma", Font.BOLD, 13));
+		label.setBounds(285, 77, 103, 14);
+		getContentPane().add(label);
 
 		JButton btnNewButton = new JButton("THÃŠM");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -119,6 +130,16 @@ public class DichVu extends JInternalFrame {
 
 		}
 		});
+
+		try {
+        	while(rsListCTDichVu.next() ) {
+        		cbmCTDichVu.addItem(rsListCTDichVu.getString("TenCTDichVu"));
+        		cbmCTDichVu.getSelectedItem();
+		   }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 }
