@@ -92,11 +92,8 @@ public class Register extends JInternalFrame {
 					 
 					 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 					 String date = sdf.format( dtNgayLap.getDate() );
-					 
 					 accountDTO.setNgayLap(date);
-					 
-					 
-					 
+					 					 
 					 if(  Account_BUS.Insert(accountDTO) == true)
 						 JOptionPane.showMessageDialog(null, "Insert account Success", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);
 					 else

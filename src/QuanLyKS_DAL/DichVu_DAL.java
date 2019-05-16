@@ -36,19 +36,10 @@ public class DichVu_DAL {
 		Connection conn = mycon.getConnection();
 		String TenDichVu = dichvu.getTenDichVu();
 		Integer GiaDichVu = dichvu.getGiaDichVu();
-		// String MaDichVu = dichvu.getUsername();
-		// char[] pass = dichvu.getPassword(); 
-		// String dtNgayLap = dichvu.getNgayLap();
-		//ep kieu tu string sang char
-		// String strPass = new String(pass);
-		// int role = account.getRole();
 		try {
 			ptmt = conn.prepareStatement(query);
 			ptmt.setString(1, TenDichVu);
 			ptmt.setInt(2, GiaDichVu);
-			// ptmt.setInt(3, role);
-			
-			// ptmt.setString(4, dtNgayLap);
 			if( ptmt.executeUpdate() != 0) {
 				System.err.println("insert thanh cong account");
 				return true;
@@ -75,20 +66,11 @@ public class DichVu_DAL {
 		String TenDichVu = dichvu.getTenDichVu();
 		Integer GiaDichVu = dichvu.getGiaDichVu();
 		Integer MaDichVu = dichvu.getMaDichVu();
-		//Integer MaDichVu = dichvu.getMaDichVu();
-		// String MaDichVu = dichvu.getUsername();
-		// char[] pass = dichvu.getPassword(); 
-		// String dtNgayLap = dichvu.getNgayLap();
-		//ep kieu tu string sang char
-		// String strPass = new String(pass);
-		// int role = account.getRole();
 		try {
 			ptmt = conn.prepareStatement(query);
 			ptmt.setString(1, TenDichVu);
 			ptmt.setInt(2, GiaDichVu);
 			ptmt.setInt(3, MaDichVu);
-			// ptmt.setInt(3, role);
-			// ptmt.setString(4, dtNgayLap);
 			if( ptmt.executeUpdate() != 0) {
 				System.err.println("update thanh cong dich vu");
 				return true;
@@ -111,23 +93,10 @@ public class DichVu_DAL {
 		String query = ("DELETE FROM DICHVU where MaDichVu = ? ");
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
 		Connection conn = mycon.getConnection();
-//		String TenDichVu = dichvu.getTenDichVu();
-//		Integer GiaDichVu = dichvu.getGiaDichVu();
 		Integer MaDichVu = dichvu.getMaDichVu();
-		//Integer MaDichVu = dichvu.getMaDichVu();
-		// String MaDichVu = dichvu.getUsername();
-		// char[] pass = dichvu.getPassword(); 
-		// String dtNgayLap = dichvu.getNgayLap();
-		//ep kieu tu string sang char
-		// String strPass = new String(pass);
-		// int role = account.getRole();
 		try {
 			ptmt = conn.prepareStatement(query);
-//			ptmt.setString(1, TenDichVu);
-//			ptmt.setInt(2, GiaDichVu);
 			ptmt.setInt(1, MaDichVu);
-			// ptmt.setInt(3, role);
-			// ptmt.setString(4, dtNgayLap);
 			if( ptmt.executeUpdate() != 0) {
 				System.err.println("delete  thanh cong dich vu");
 				return true;

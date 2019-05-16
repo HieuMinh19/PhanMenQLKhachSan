@@ -30,14 +30,19 @@ import QuanLyKS_DTO.CTDatPhong_DTO;
 import QuanLyKS_DTO.DichVu_DTO;
 import QuanLyKS_DTO.LoaiPhong_DTO;
 import QuanLyKS_BUS.CTDatPhong_BUS;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.InputMethodListener;
+import java.awt.event.InputMethodEvent;
 
 /**
  *
  * @author MyPC
  */
 public class frmDatPhong extends javax.swing.JInternalFrame {
-
-    /**
+	/**
      * Creates new form DatPhong
      */
     public frmDatPhong() {
@@ -57,6 +62,8 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
     //luu giu id dich vu duoc chon
     private static int idDV  = 0;		//save id DichVu selected
     private static int idLP  = 0;		//save id LoaiPhong selected
+    private String NgayNhan = null;
+    private String NgayTra = null;
     private void initComponents() {
          	
     	//prepare list
@@ -64,6 +71,7 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
     	ArrayList<LoaiPhong_DTO> listLP_DTO =  new ArrayList<LoaiPhong_DTO>();
     	
     	DichVu_DAL dvDAL = new DichVu_DAL();
+    	Phong_DAL phongDAL = new Phong_DAL();
         ResultSet rsListDV = dvDAL.getListDV();
         LoaiPhong_DAL lpDAL = new LoaiPhong_DAL();
         ResultSet rsLP = lpDAL.getListLoaiPhong();
@@ -71,6 +79,59 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
         txtTenKhachHang = new javax.swing.JTextField();
         TenKhachHang = new javax.swing.JLabel();
         cbxLoaiPhong = new javax.swing.JComboBox<>();
+        JCalendar dtNgayTra = new JCalendar();
+        JCalendar dtNgayNhan = new JCalendar();
+        JComboBox<String> cbxMaPhong = new JComboBox<String>();
+        cbxMaPhong.setInheritsPopupMenu(true);
+        cbxMaPhong.setIgnoreRepaint(true);
+        dtNgayNhan.addInputMethodListener(new InputMethodListener() {
+        	public void caretPositionChanged(InputMethodEvent arg0) {
+        	}
+        	public void inputMethodTextChanged(InputMethodEvent arg0) {
+        		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+         		NgayNhan = sdf.format( dtNgayNhan.getDate() );
+         		NgayTra = sdf.format( dtNgayTra.getDate() );
+         		//load list Phong
+                ResultSet rslistPhong = Phong_DAL.selectCondition(idLP, NgayNhan, NgayTra);
+                 try {    
+               	  cbxMaPhong.removeAllItems();
+                 	while(rslistPhong.next() ) {
+                 		cbxMaPhong.addItem(rslistPhong.getString("MaPhong"));
+                 		cbxMaPhong.getSelectedItem();
+         		   }
+         		} catch (SQLException e) {
+         			// TODO Auto-generated catch block
+         			e.printStackTrace();
+         		}
+        	}
+        });
+        dtNgayNhan.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        	}
+        });
+      
+        dtNgayNhan.addPropertyChangeListener(new PropertyChangeListener() {
+        	public void propertyChange(PropertyChangeEvent arg0) {
+        		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+         		NgayNhan = sdf.format( dtNgayNhan.getDate() );
+         		NgayTra = sdf.format( dtNgayTra.getDate() );
+         		//load list Phong
+                ResultSet rslistPhong = Phong_DAL.selectCondition(idLP, NgayNhan, NgayTra);
+                 try {    
+               	  cbxMaPhong.removeAllItems();
+                 	while(rslistPhong.next() ) {
+                 		cbxMaPhong.addItem(rslistPhong.getString("MaPhong"));
+                 		cbxMaPhong.getSelectedItem();
+         		   }
+         		} catch (SQLException e) {
+         			// TODO Auto-generated catch block
+         			e.printStackTrace();
+         		}
+        	}
+        });
+      
+        
         cbxLoaiPhong.addItemListener(new ItemListener() {
         	public void itemStateChanged(ItemEvent arg0) {
         		//get the value selected of cbx and using loop to scan Arraylist LoaiPhong
@@ -81,6 +142,23 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
         			if(nameLP.equals( dvCompare.getTenLoaiPhong() ) )
         				idLP = dvCompare.getMaLoaiPhong();
         		}
+        		
+        		
+//        		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//         		NgayNhan = sdf.format( dtNgayNhan.getDate() );
+//         		NgayTra = sdf.format( dtNgayTra.getDate() );
+         		//load list Phong
+                 ResultSet rslistPhong = Phong_DAL.selectCondition(idLP, NgayNhan, NgayTra);
+                  try {    
+                	  cbxMaPhong.removeAllItems();
+                  	while(rslistPhong.next() ) {
+                  		cbxMaPhong.addItem(rslistPhong.getString("MaPhong"));
+                  		cbxMaPhong.getSelectedItem();
+          		   }
+          		} catch (SQLException e) {
+          			// TODO Auto-generated catch block
+          			e.printStackTrace();
+          		}
         	}
         });
         cbxLoaiPhong.setIgnoreRepaint(true);
@@ -90,16 +168,16 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
         CMND = new javax.swing.JLabel();
         txtCMND = new javax.swing.JTextField();
         btnDongY = new javax.swing.JButton();
-        JCalendar dtNgayTra = new JCalendar();
-        JCalendar dtNgayNhan = new JCalendar();
         btnDongY.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent arg0) {
         		
         		CTDatPhong_BUS ctdpBUS = new CTDatPhong_BUS();        		
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-				String NgayNhan = sdf.format( dtNgayNhan.getDate() );
-				String NgayTra = sdf.format( dtNgayTra.getDate() );
-        		CTDatPhong_DTO ctdpDTO = new CTDatPhong_DTO(txtTenKhachHang.getText(), txtCMND.getText(), idDV, NgayNhan, NgayTra);
+				NgayNhan = sdf.format( dtNgayNhan.getDate() );
+				NgayTra = sdf.format( dtNgayTra.getDate() );
+				String strMaPhong = (cbxMaPhong.getSelectedItem()).toString();
+				int iMaPhong = Integer.parseInt(strMaPhong);
+        		CTDatPhong_DTO ctdpDTO = new CTDatPhong_DTO(txtTenKhachHang.getText(), txtCMND.getText(), idDV, iMaPhong,NgayNhan, NgayTra);
         		
         		if(CTDatPhong_BUS.Insert(ctdpDTO) == true) {
         			JOptionPane.showMessageDialog(null, "Insert booking Success", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);
@@ -110,16 +188,7 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
         	}
         });
         btnThoat = new javax.swing.JButton();
-        btnThoat.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent arg0) {
-        		CTDatPhong_BUS ctdpBUS = new CTDatPhong_BUS();        		
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-				String NgayNhan = sdf.format( dtNgayNhan.getDate() );
-				String NgayTra = sdf.format( dtNgayTra.getDate() );
-				int a = 1;
-				Phong_DAL.selectCondition(a, NgayNhan, NgayTra);
-        	}
-        });
+       
         jLabel9 = new javax.swing.JLabel();
         GiaPhong = new javax.swing.JLabel();
         cbxDichVu = new javax.swing.JComboBox<>();
@@ -153,7 +222,7 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
         });
 
         TenKhachHang.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        TenKhachHang.setText("TÃŠN KHÃ�CH HÃ€NG");
+        TenKhachHang.setText("T\u00CAN KH\u00C1CH H\u00C0NG");
         
        
        //Load list LoaiPhong
@@ -179,7 +248,7 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
         NgayDatPhong.setText("NG\u00C0Y NH\u1EACN - TR\u1EA2");
 
         LoaiPhong.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        LoaiPhong.setText("LOáº I PHÃ’NG");
+        LoaiPhong.setText("LO\u1EA0I PH\u00D2NG");
 
         CMND.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         CMND.setText("CMND");
@@ -191,16 +260,16 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
         });
 
         btnDongY.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        btnDongY.setText("Ä�á»“ng Ã½");
+        btnDongY.setText("\u0110\u1ED3ng \u00FD");
 
         btnThoat.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        btnThoat.setText("ThoÃ¡t");
+        btnThoat.setText("Tho\u00E1t");
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
-        jLabel9.setText("Ã„â€˜Ã¡ÂºÂ·t phÃƒÂ²ng");
+        jLabel9.setText("\u0110\u1EB6T PH\u00D2NG");
 
         GiaPhong.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        GiaPhong.setText("M\u00E3 ph\u00F2ng");
+        GiaPhong.setText("M\u00C3 PH\u00D2NG");
 
         
         //load list DV
@@ -216,14 +285,33 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+        
+        
+      
+        
         DichVu.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        DichVu.setText("Dá»ŠCH VU");
+        DichVu.setText("D\u1ECACH V\u1EE4");
         
-        JComboBox<String> comboBox = new JComboBox<String>();
-        comboBox.setInheritsPopupMenu(true);
-        comboBox.setIgnoreRepaint(true);
-        
-        
+       
+         btnThoat.addActionListener(new ActionListener() {
+         	public void actionPerformed(ActionEvent arg0) {  
+         		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+         		NgayNhan = sdf.format( dtNgayNhan.getDate() );
+         		NgayTra = sdf.format( dtNgayTra.getDate() );
+         		//load list Phong
+                 ResultSet rslistPhong = Phong_DAL.selectCondition(idLP, NgayNhan, NgayTra);
+                  try {    
+                	  cbxMaPhong.removeAllItems();
+                  	while(rslistPhong.next() ) {
+                  		cbxMaPhong.addItem(rslistPhong.getString("MaPhong"));
+                  		cbxMaPhong.getSelectedItem();
+          		   }
+          		} catch (SQLException e) {
+          			// TODO Auto-generated catch block
+          			e.printStackTrace();
+          		}
+         	}
+         });
         
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         layout.setHorizontalGroup(
@@ -259,7 +347,7 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
         			.addGroup(layout.createParallelGroup(Alignment.TRAILING)
         				.addGroup(layout.createSequentialGroup()
         					.addContainerGap()
-        					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 720, GroupLayout.PREFERRED_SIZE))
+        					.addComponent(cbxMaPhong, GroupLayout.PREFERRED_SIZE, 720, GroupLayout.PREFERRED_SIZE))
         				.addGroup(layout.createSequentialGroup()
         					.addGap(189)
         					.addGroup(layout.createParallelGroup(Alignment.TRAILING)
@@ -306,7 +394,7 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
         				.addComponent(LoaiPhong))
         			.addGap(18)
         			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(cbxMaPhong, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         				.addComponent(GiaPhong))
         			.addGap(48)
         			.addGroup(layout.createParallelGroup(Alignment.BASELINE)

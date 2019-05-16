@@ -38,11 +38,8 @@ public class frmMain extends JFrame {
 	private static final int FRM_DATPHONG = 4;
 	static final int FRM_DichVu = 5;
 	private static final int FRM_TIMKIEM = 6; 
-
 	private static final long serialVersionUID = 1L;
 	private static JPanel contentPane;
-	
-
 	/**
 	 * Launch the application.
 	 */
@@ -122,9 +119,7 @@ public class frmMain extends JFrame {
 				break;
 		}
 	}
-	
-	
-	
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

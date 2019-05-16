@@ -7,7 +7,6 @@ use QUANLYKHACHSAN
 GO
 set dateformat ymd
 go
-drop table ACCOUNT
 create table ACCOUNT
 (
 	ID int identity(1,1) primary key,
@@ -126,4 +125,7 @@ INSERT INTO DICHVU( TenDichVu,MaCTDichVu) VALUES ( 'ăn trưa', 2);
 /*insert table LOAIPHONG*/
 INSERT INTO LOAIPHONG( TenLoaiPhong, GiaPhong) VALUES ( 'VIP', 250000);
 INSERT INTO LOAIPHONG( TenLoaiPhong, GiaPhong) VALUES ( 'Thuong', 150000);
+
+SELECT DISTINCT p.MaPhong from PHONG as p, CTDATPHONG as ctdp where (not EXISTS
+(select MaPhong from CTDATPHONG as ctdp where p.MaPhong  = ctdp.MaPhong and NgayNhan between '2019-05-13' and '2019-05-15')) and (p.MaLoaiPhong = 1)
 
