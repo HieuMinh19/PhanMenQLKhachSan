@@ -162,8 +162,6 @@ public class QLDichVu extends JInternalFrame {
 
 				dichvu_DTO.setTenDichVu( txtTenDichVu.getText() );
 				dichvu_DTO.setGiaDichVu( Integer.parseInt(txtGiaDichVu.getText()));
-				dichvu_DTO.setMaDichVu( Integer.parseInt(txtMaDichVu.getText()));
-
 					 if(  DichVu_BUS.Update(dichvu_DTO) == true)
 						 JOptionPane.showMessageDialog(null, "Update Dich Vu Success", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);
 					 else
