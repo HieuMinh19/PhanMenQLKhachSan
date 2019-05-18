@@ -4,7 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import QuanLyKS_DTO.DichVu_DTO;
-import net.proteanit.sql.DbUtils;
 public class DichVu_DAL {
 	DichVu_DTO DichVu = new DichVu_DTO();
 	

@@ -64,6 +64,7 @@ create table CTDICHVU
 	TenCTDichVu varchar(50),
 	MaDichVu int,
 	SoLuong int,
+	MaDatPhong int,
 )
 go
 /*create Dich Vu*/
@@ -103,7 +104,6 @@ create table CTDATPHONG
 	MaDatPhong int identity(1,1) primary key,
 	TenKH varchar(100),
 	CMND varchar(20),
-	MaDichVu int,
 	MaPhong int, 
 	NgayNhan varchar(25),
 	NgayTra varchar(25),
