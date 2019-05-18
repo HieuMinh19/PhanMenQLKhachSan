@@ -13,26 +13,6 @@ import QuanLyKS_DTO.NhanVien_DTO;
 import javax.swing.JInternalFrame;
 
 public class NhanVien_DAL extends JInternalFrame {
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					NhanVien_DAL frame = new NhanVien_DAL();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public NhanVien_DAL() {
 		setBounds(100, 100, 450, 300);
 	}
@@ -62,5 +42,5 @@ public class NhanVien_DAL extends JInternalFrame {
 		}
 		return null;	
 	}
-	
+
 }
