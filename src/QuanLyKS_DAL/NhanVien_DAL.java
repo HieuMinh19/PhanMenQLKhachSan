@@ -33,6 +33,9 @@ public class NhanVien_DAL extends JInternalFrame {
 				NhanVien_DTO nv = new NhanVien_DTO();
 				nv.setMaNhanVien(rs.getInt("MaNhanVien"));
 				nv.setTenNhanVien(rs.getString("TenNhanVien"));
+				nv.setNgaySinh(rs.getString("NgaySinh"));
+				nv.setCMND(rs.getInt("CMND"));
+				nv.setNgayVaoLam(rs.getString("NgayVaoLam"));
 				dsnv.add(nv);
 			}
 			return dsnv;

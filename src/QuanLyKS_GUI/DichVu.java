@@ -53,7 +53,7 @@ public class DichVu extends JInternalFrame {
 	 */
 	public DichVu() {
 		DichVu_DAL CTDichVu_DAL = new DichVu_DAL();
-        ResultSet rsListCTDichVu = CTDichVu_DAL.getListDV();
+//        ResultSet   = CTDichVu_DAL.getListDV();
 
 		setBounds(100, 100, 776, 481);
 		getContentPane().setLayout(null);
