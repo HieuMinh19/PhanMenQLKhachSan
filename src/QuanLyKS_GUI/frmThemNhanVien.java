@@ -7,6 +7,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+
+import com.ibm.icu.text.SimpleDateFormat;
 import com.toedter.calendar.JCalendar;
 import java.awt.Button;
 import java.awt.event.ActionListener;
@@ -89,7 +91,10 @@ public class frmThemNhanVien extends JInternalFrame {
 		Button button = new Button("Th\u00EAm nh\u00E2n vi\u00EAn");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+         		String NgayVaoLam = sdf.format( dtNgayVaoLam.getDate() );
+         		String NgaySinh = sdf.format( dtNgaySinh.getDate() );
+         		
 				
 			}
 		});
