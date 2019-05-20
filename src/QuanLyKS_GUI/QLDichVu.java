@@ -59,8 +59,7 @@ public class QLDichVu extends JInternalFrame {
 	
 	ArrayList<DichVu_DTO> listDV_DTO =  new ArrayList<DichVu_DTO>();
 	static DichVu_BUS dvBus = new DichVu_BUS();	
-	public static ResultSet DV = dvBus.selectAll();	
-	private JTable table;
+	public static ResultSet DV = dvBus.selectAll();
 	private DichVu_DTO dichvu_DTO;
 	private JTextField txtGiaDichVu;
 	

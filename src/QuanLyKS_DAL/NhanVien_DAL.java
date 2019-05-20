@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import QuanLyKS_DTO.Account_DTO;
 import QuanLyKS_DTO.NhanVien_DTO;
 
 import javax.swing.JInternalFrame;
@@ -45,5 +46,35 @@ public class NhanVien_DAL extends JInternalFrame {
 		}
 		return null;	
 	}
-
+	public static boolean Insert(NhanVien_DTO nv)  {
+		PreparedStatement ptmt = null; 
+		String query = "INSERT INTO NHANVIEN(TenNhanVien, NgaySinh, CMND, NgayVaoLam, MaChucVu) VALUES (?, ?, ?, ?, ?)";
+		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
+		Connection conn = mycon.getConnection();
+		
+		try {
+			ptmt = conn.prepareStatement(query);
+			ptmt.setString(1, nv.getTenNhanVien());
+			ptmt.setString(2, nv.getNgaySinh());
+			ptmt.setInt(3, nv.getCMND());
+			ptmt.setString(4, nv.getNgayVaoLam());
+			ptmt.setInt(5, nv.getMaChucVu());
+			
+			if( ptmt.executeUpdate() != 0) {
+				System.err.println("insert thanh cong nhan vien");
+				return true;
+			}
+				
+			else {
+				System.err.println("khoi tao nhan vien that bai");
+				return false;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false;
+	} 
 }
