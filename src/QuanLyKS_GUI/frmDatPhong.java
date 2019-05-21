@@ -58,8 +58,6 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
     //luu giu id dich vu duoc chon
     private static int idDV  = 0;		//save id DichVu selected
     private static int idLP  = 0;		//save id LoaiPhong selected
-    private String NgayNhan = null;
-    private String NgayTra = null;
     private void initComponents() {
          	
     	//prepare list
@@ -80,8 +78,8 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
         	}
         	public void inputMethodTextChanged(InputMethodEvent arg0) {
         		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-         		NgayNhan = sdf.format( dtNgayNhan.getDate() );
-         		NgayTra = sdf.format( dtNgayTra.getDate() );
+         		String NgayNhan = sdf.format( dtNgayNhan.getDate() );
+         	 	String NgayTra = sdf.format( dtNgayTra.getDate() );
          		//load list Phong
                 ResultSet rslistPhong = Phong_DAL.selectCondition(idLP, NgayNhan, NgayTra);
                  try {    
@@ -105,8 +103,8 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
         dtNgayNhan.addPropertyChangeListener(new PropertyChangeListener() {
         	public void propertyChange(PropertyChangeEvent arg0) {
         		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-         		NgayNhan = sdf.format( dtNgayNhan.getDate() );
-         		NgayTra = sdf.format( dtNgayTra.getDate() );
+         		String NgayNhan = sdf.format( dtNgayNhan.getDate() );
+         	 	String NgayTra = sdf.format( dtNgayTra.getDate() );
          		//load list Phong
                 ResultSet rslistPhong = Phong_DAL.selectCondition(idLP, NgayNhan, NgayTra);
                  try {    
@@ -133,6 +131,11 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
         			if(nameLP.equals( dvCompare.getTenLoaiPhong() ) )
         				idLP = dvCompare.getMaLoaiPhong();
         		}
+        		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+         		String NgayNhan = sdf.format( dtNgayNhan.getDate() );
+         		String NgayTra = sdf.format( dtNgayTra.getDate() );
+         		System.out.println(NgayNhan);
+         		System.out.println(NgayTra);
          		//load list Phong
                  ResultSet rslistPhong = Phong_DAL.selectCondition(idLP, NgayNhan, NgayTra);
                   try {    
@@ -158,8 +161,8 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
         	public void actionPerformed(ActionEvent arg0) {
         		       		
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-				NgayNhan = sdf.format( dtNgayNhan.getDate() );
-				NgayTra = sdf.format( dtNgayTra.getDate() );
+				String NgayNhan = sdf.format( dtNgayNhan.getDate() );
+				String NgayTra = sdf.format( dtNgayTra.getDate() );
 				String strMaPhong = (cbxMaPhong.getSelectedItem()).toString();
 				int iMaPhong = Integer.parseInt(strMaPhong);
         		CTDatPhong_DTO ctdpDTO = new CTDatPhong_DTO(txtTenKhachHang.getText(), txtCMND.getText(), idDV, iMaPhong,NgayNhan, NgayTra);
@@ -238,8 +241,8 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
          btnThoat.addActionListener(new ActionListener() {
          	public void actionPerformed(ActionEvent arg0) {  
          		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-         		NgayNhan = sdf.format( dtNgayNhan.getDate() );
-         		NgayTra = sdf.format( dtNgayTra.getDate() );
+         		String NgayNhan = sdf.format( dtNgayNhan.getDate() );
+         		String NgayTra = sdf.format( dtNgayTra.getDate() );
          		//load list Phong
                  ResultSet rslistPhong = Phong_DAL.selectCondition(idLP, NgayNhan, NgayTra);
                   try {    

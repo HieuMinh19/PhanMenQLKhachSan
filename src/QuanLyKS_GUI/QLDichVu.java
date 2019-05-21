@@ -1,49 +1,25 @@
 package QuanLyKS_GUI;
-
-import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import javax.swing.JInternalFrame;
 import javax.swing.JTable;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JRootPane;
-import javax.swing.table.DefaultTableModel;
-
-import com.ibm.icu.impl.UResource.Array;
-
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
-import QuanLyKS_DAL.MyConnection;
 import QuanLyKS_DTO.DichVu_DTO;
-import QuanLyKS_DTO.LoaiPhong_DTO;
 import net.proteanit.sql.DbUtils;
 
 import QuanLyKS_BUS.DichVu_BUS;
 import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.List;
-import java.awt.Scrollbar;
-import java.awt.ScrollPane;
-import java.awt.event.InputMethodListener;
-import java.awt.event.InputMethodEvent;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.VetoableChangeListener;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.HierarchyListener;
-import java.awt.event.HierarchyEvent;
 import javax.swing.JComboBox;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
@@ -195,8 +171,7 @@ public class QLDichVu extends JInternalFrame {
 		JButton btndelete = new JButton("Delete");
 		btndelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				dichvu_DTO = new DichVu_DTO( ); 
-				dichvu_DTO.setMaDichVu( Integer.parseInt(txtMaDichVu.getText()));			
+				dichvu_DTO = new DichVu_DTO( ); 		
 					 if(  DichVu_BUS.Delete(dichvu_DTO) == true)
 						 JOptionPane.showMessageDialog(null, "Update Dich Vu Success", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);
 					 else

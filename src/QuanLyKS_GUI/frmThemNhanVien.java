@@ -68,7 +68,7 @@ public class frmThemNhanVien extends JInternalFrame {
 		lblChcV.setBounds(23, 161, 63, 22);
 		getContentPane().add(lblChcV);
 		
-		JComboBox cbxChucVu = new JComboBox();
+		JComboBox<String> cbxChucVu = new JComboBox<String>();
 		cbxChucVu.setBounds(108, 162, 159, 20);
 		getContentPane().add(cbxChucVu);
 		
@@ -93,9 +93,7 @@ public class frmThemNhanVien extends JInternalFrame {
 			public void actionPerformed(ActionEvent e) {
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
          		String NgayVaoLam = sdf.format( dtNgayVaoLam.getDate() );
-         		String NgaySinh = sdf.format( dtNgaySinh.getDate() );
-         		
-				
+         		String NgaySinh = sdf.format( dtNgaySinh.getDate() );	
 			}
 		});
 		button.setBounds(315, 361, 93, 22);
