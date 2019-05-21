@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -12,15 +14,35 @@ import com.ibm.icu.text.SimpleDateFormat;
 import com.toedter.calendar.JCalendar;
 import java.awt.Button;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+
+import QuanLyKS_DTO.CTDatPhong_DTO;
+import QuanLyKS_DTO.ChucVu_DTO;
+import QuanLyKS_DTO.LoaiPhong_DTO;
+import QuanLyKS_DTO.NhanVien_DTO;
+import QuanLyKS_DAL.ChucVu_DAL;
+import QuanLyKS_BUS.CTDatPhong_BUS;
+import QuanLyKS_BUS.NhanVien_BUS;
+
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class frmThemNhanVien extends JInternalFrame {
 	private JTextField txtTenNhanVien;
-	private JTextField textCMND;
+	private JTextField txtCMND;
 
 	/**
 	 * Launch the application.
 	 */
+	
+	//prepare list
+	ArrayList<ChucVu_DTO> listCV_DTO =  new ArrayList<ChucVu_DTO>();
+	private static int idCV = 0;
+	ChucVu_DAL cvDAL = new ChucVu_DAL();
+	ResultSet rslistChucVu = cvDAL.getListChucVu();
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -59,16 +81,28 @@ public class frmThemNhanVien extends JInternalFrame {
 		getContentPane().add(txtTenNhanVien);
 		txtTenNhanVien.setColumns(10);
 		
-		textCMND = new JTextField();
-		textCMND.setBounds(108, 115, 159, 20);
-		getContentPane().add(textCMND);
-		textCMND.setColumns(10);
+		txtCMND = new JTextField();
+		txtCMND.setBounds(108, 115, 159, 20);
+		getContentPane().add(txtCMND);
+		txtCMND.setColumns(10);
 		
 		JLabel lblChcV = new JLabel("Ch\u1EE9c v\u1EE5");
 		lblChcV.setBounds(23, 161, 63, 22);
 		getContentPane().add(lblChcV);
 		
 		JComboBox<String> cbxChucVu = new JComboBox<String>();
+		cbxChucVu.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent arg0) {
+				//get the value selected of cbx and using loop to scan Arraylist LoaiPhong
+        		//after find the LoaiPhong selected, using function getMaLoaiPhong to get ID
+        		String nameLP = (String) cbxChucVu.getSelectedItem();
+        		for(int i = 0; i < listCV_DTO.size(); i++) {
+        			ChucVu_DTO cvCompare = listCV_DTO.get(i);
+        			if(nameLP.equals( cvCompare.getTenChucVu() ) )
+        				idCV = cvCompare.getMaChucVu();
+        		}
+			}
+		});
 		cbxChucVu.setBounds(108, 162, 159, 20);
 		getContentPane().add(cbxChucVu);
 		
@@ -88,12 +122,34 @@ public class frmThemNhanVien extends JInternalFrame {
 		label.setBounds(315, 114, 63, 22);
 		getContentPane().add(label);
 		
+        try {    
+        	while(rslistChucVu.next() ) {
+        		ChucVu_DTO cvDTO = new ChucVu_DTO(rslistChucVu.getInt("MaChucVu"), rslistChucVu.getString("TenChucVu"));
+        		listCV_DTO.add(cvDTO);
+        		cbxChucVu.addItem(rslistChucVu.getString("TenChucVu"));
+        		cbxChucVu.getSelectedItem();
+		   }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 		Button button = new Button("Th\u00EAm nh\u00E2n vi\u00EAn");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
          		String NgayVaoLam = sdf.format( dtNgayVaoLam.getDate() );
          		String NgaySinh = sdf.format( dtNgaySinh.getDate() );	
+         		String CMND = txtCMND.getText();
+         		int iCMND = Integer.parseInt(CMND);
+         		NhanVien_DTO nvDTO = new NhanVien_DTO(txtTenNhanVien.getText(), NgaySinh, iCMND, NgayVaoLam, idCV);
+        		
+        		if(NhanVien_BUS.Insert(nvDTO) == true) {
+        			JOptionPane.showMessageDialog(null, "Insert Employee Success", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);
+        		}else {
+        			JOptionPane.showMessageDialog(null, "Insert Employee Fail", "Fail: " + "Success Mesage", JOptionPane.CLOSED_OPTION);
+        		}
 			}
 		});
 		button.setBounds(315, 361, 93, 22);

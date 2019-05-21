@@ -7,9 +7,8 @@ public class ChucVu_DTO {
 	public ChucVu_DTO() {
 	}
 	public ChucVu_DTO(int iMaChucVu,String strTenChucVu) {
-		this.iMaChucVu = iMaChucVu;
 		this.strTenChucVu = strTenChucVu;
-	
+		this.iMaChucVu = iMaChucVu;
 	}
 
 	public int getMaChucVu() {
