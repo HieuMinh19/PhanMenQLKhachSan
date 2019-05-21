@@ -9,7 +9,7 @@ public class Phong_DAL {
 		PreparedStatement ptmt = null; 
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
 		Connection conn = mycon.getConnection();
-		String query = "SELECT DISTINCT p.MaPhong from PHONG as p, CTDATPHONG as ctdp where (not EXISTS ";
+		String query = "SELECT DISTINCT p.MaPhong from PHONG as p where (not EXISTS ";
 		query += "(select MaPhong from CTDATPHONG as ctdp where p.MaPhong  = ctdp.MaPhong "
 				+ "and NgayNhan between ? and ?)) and (p.MaLoaiPhong = ?)";
 		try {
