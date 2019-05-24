@@ -1,15 +1,15 @@
 package QuanLyKS_DTO;
 
-public class CTDanhGia_DTO {
+public class DanhGia_DTO {
     private int iID;
     private String strNoiDung;
     private String strNgayDanhGia;
 
-    public CTDanhGia_DTO() {
+    public DanhGia_DTO() {
 	
     }
 
-    public CTDanhGia_DTO(int iID,String strNoiDung,String strNgayDanhGia) {
+    public DanhGia_DTO(int iID,String strNoiDung,String strNgayDanhGia) {
 		this.iID  = iID;
 		this.strNoiDung = strNoiDung;
 		this.strNgayDanhGia = strNgayDanhGia;
@@ -38,5 +38,3 @@ public class CTDanhGia_DTO {
         this.strNgayDanhGia = strNgayDanhGia;
     }
 }
-
- 
