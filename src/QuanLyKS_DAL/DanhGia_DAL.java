@@ -31,7 +31,5 @@ public class DanhGia_DAL{
 		System.err.println("kết nối thất bại !");
 		return false;
 	}
-
-
 	}
 }
