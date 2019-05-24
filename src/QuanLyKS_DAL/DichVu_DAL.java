@@ -24,7 +24,7 @@ public class DichVu_DAL {
 			return rs;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e.printStackTrace();	
 		}
 		return null;	
 	}
