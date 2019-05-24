@@ -7,7 +7,6 @@ use QUANLYKHACHSAN
 GO
 set dateformat ymd
 go
-drop table ACCOUNT
 create table ACCOUNT
 (
 	ID int identity(1,1) primary key,
@@ -63,7 +62,9 @@ create table CTDICHVU
 (
 	MaCTDichVu int identity(1,1) primary key,
 	TenCTDichVu varchar(50),
+	MaDichVu int,
 	SoLuong int,
+	MaDatPhong int,
 )
 go
 /*create Dich Vu*/
@@ -71,7 +72,6 @@ create table DICHVU
 (
 	MaDichVu int identity(1,1) primary key,
 	TenDichVu varchar(50),
-	MaCTDichVu int,
 	GiaDichVu int,
 )
 go
@@ -91,19 +91,11 @@ CREATE table LOAIPHONG
 	GiaPhong int,
 )
 GO
-/*create table Trang thai*/
-create table TRANGTHAI
-(
-	MaTrangThai int  identity(1,1) primary key,
-	TenTrangThai varchar(20),
-)
-go
-/*create table Phong*/
+/*create table Phong*/s
 create table PHONG
 (
-	MaPhong int identity(1,1) primary key,
-	MaLoaiPhong int,
-	MaTrangThai int,	
+	MaPhong int primary key,
+	MaLoaiPhong int,	
 )
 go
 /*create table Chi Tiet Dat Phong*/
@@ -112,7 +104,6 @@ create table CTDATPHONG
 	MaDatPhong int identity(1,1) primary key,
 	TenKH varchar(100),
 	CMND varchar(20),
-	MaDichVu int,
 	MaPhong int, 
 	NgayNhan varchar(25),
 	NgayTra varchar(25),
@@ -128,10 +119,13 @@ INSERT INTO CTDANHGIA( NoiDung, VoteSao,NgayDanhGia) VALUES ('Dọn Vệ Sinh', 
 INSERT INTO CTDICHVU( TenCTDichVu, GiaDV, SoLuong) VALUES ( 'ăn sáng', 20000, 1);
 INSERT INTO CTDICHVU( TenCTDichVu, GiaDV, SoLuong) VALUES ( 'ăn trưa', 100000, 1);
 /*insert table DICHVU*/
-INSERT INTO DICHVU( TenDichVu,MaCTDichVu) VALUES ( 'ăn sáng', 1);
-INSERT INTO DICHVU( TenDichVu,MaCTDichVu) VALUES ( 'ăn trưa', 2);
+INSERT INTO DICHVU( TenDichVu,GiaDichVu) VALUES ( 'ăn sáng', 30000);
+INSERT INTO DICHVU( TenDichVu,GiaDichVu) VALUES ( 'ăn toi', 100000);
 
 /*insert table LOAIPHONG*/
 INSERT INTO LOAIPHONG( TenLoaiPhong, GiaPhong) VALUES ( 'VIP', 250000);
 INSERT INTO LOAIPHONG( TenLoaiPhong, GiaPhong) VALUES ( 'Thuong', 150000);
+
+SELECT DISTINCT p.MaPhong from PHONG as p, CTDATPHONG as ctdp where (not EXISTS
+(select MaPhong from CTDATPHONG as ctdp where p.MaPhong  = ctdp.MaPhong and NgayNhan between '2019-05-13' and '2019-05-15')) and (p.MaLoaiPhong = 1)
 

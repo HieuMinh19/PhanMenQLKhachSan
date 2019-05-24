@@ -37,6 +37,5 @@ public class DanhGia_DTO {
     public void setNgayDanhGia(String strNgayDanhGia) {
         this.strNgayDanhGia = strNgayDanhGia;
     }
-}
 
- 
+}

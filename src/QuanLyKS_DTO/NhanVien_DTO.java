@@ -12,10 +12,7 @@ public class NhanVien_DTO {
 	public NhanVien_DTO() {
 		// TODO Auto-generated constructor stub
 	}
-	public NhanVien_DTO(int iMaNhanVien, String strTenNhanVien, String strNgaySinh, int iCMND,String strNgayVaoLam,int iMaChucVu) {
-
-
-		this.iMaNhanVien = iMaNhanVien;
+	public NhanVien_DTO(String strTenNhanVien, String strNgaySinh, int iCMND,String strNgayVaoLam,int iMaChucVu) {
 		this.strTenNhanVien = strTenNhanVien;
 		this.strNgaySinh = strNgaySinh;
 		this.iCMND = iCMND;

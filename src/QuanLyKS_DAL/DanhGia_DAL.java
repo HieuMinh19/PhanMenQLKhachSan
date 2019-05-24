@@ -25,13 +25,11 @@ public class DanhGia_DAL{
 			System.err.println("thêm đánh giá thất bại ");
 			return false;
 		}
-		
+
 	} catch(SQLException e){
 		e.printStackTrace();
 		System.err.println("kết nối thất bại !");
 		return false;
 	}
-	
-	
 	}
 }
