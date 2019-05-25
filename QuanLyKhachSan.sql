@@ -61,7 +61,8 @@ go
 create table CTDICHVU
 (
 	MaCTDichVu int identity(1,1) primary key,
-	NgayDatPhong varchar(50),
+	TuNgay varchar(50),
+	DenNgay varchar(50),
 	MaDichVu int,
 	SoLuong int,
 	MaDatPhong int,

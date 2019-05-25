@@ -8,7 +8,7 @@ import QuanLyKS_GUI.Login;
 import QuanLyKS_GUI.Register;
 import QuanLyKS_GUI.frmTimKiemNV;
 
-import QuanLyKS_GUI.Danhgia;
+import QuanLyKS_GUI.DanhGia;
 import QuanLyKS_GUI.frmThemNhanVien;
 import javax.swing.JDesktopPane;
 import javax.swing.JMenuBar;
@@ -34,7 +34,7 @@ public class frmMain extends JFrame {
 	static frmDatPhong frmDatPhong = new frmDatPhong();
 	static DichVu frmDichVu = new DichVu();
 	static frmThemNhanVien frmThemNhanVien = new frmThemNhanVien();
-	static Danhgia frmDanhGia = new Danhgia();
+	static DanhGia frmDanhGia = new DanhGia();
 	static DatDichVu frmDatDichVu = new DatDichVu();
 
 	//deifne static varriable cho frame
