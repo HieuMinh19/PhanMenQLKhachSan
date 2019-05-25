@@ -61,7 +61,7 @@ go
 create table CTDICHVU
 (
 	MaCTDichVu int identity(1,1) primary key,
-	TenCTDichVu varchar(50),
+	NgayDatPhong varchar(50),
 	MaDichVu int,
 	SoLuong int,
 	MaDatPhong int,
@@ -80,7 +80,8 @@ create table CTHOADON
 (
 	MaCTHoaDon int identity(1,1) primary key,
 	MaHoaDon int,
-	MaDichVu int,
+	MaCTDichVu int,
+	MaCTDatPhong int,
 )
 go
 /*create table Loai Phong*/
@@ -91,7 +92,7 @@ CREATE table LOAIPHONG
 	GiaPhong int,
 )
 GO
-/*create table Phong*/s
+/*create table Phong*/
 create table PHONG
 (
 	MaPhong int primary key,
