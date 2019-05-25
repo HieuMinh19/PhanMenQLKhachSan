@@ -28,4 +28,22 @@ public class Phong_DAL {
 		return null;
 	}
 
+	public static ResultSet selectAll() {
+		PreparedStatement ptmt = null; 
+		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
+		Connection conn = mycon.getConnection();
+		String query = "SELECT MaPhong from PHONG";
+		
+		try {
+			ptmt = conn.prepareStatement(query);
+			ResultSet rs = ptmt.executeQuery();
+			
+			return rs;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.err.println(" ket noi that bai");
+		}
+		return null;
+	}
 }
