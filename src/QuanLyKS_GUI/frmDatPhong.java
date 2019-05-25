@@ -134,8 +134,6 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
         		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
          		String NgayNhan = sdf.format( dtNgayNhan.getDate() );
          		String NgayTra = sdf.format( dtNgayTra.getDate() );
-         		System.out.println(NgayNhan);
-         		System.out.println(NgayTra);
          		//load list Phong
                  ResultSet rslistPhong = Phong_DAL.selectCondition(idLP, NgayNhan, NgayTra);
                   try {    
@@ -172,7 +170,6 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
         		}else {
         			JOptionPane.showMessageDialog(null, "Insert booking Fail", "Fail: " + "Success Mesage", JOptionPane.CLOSED_OPTION);
         		}
-        		
         	}
         });
         btnThoat = new javax.swing.JButton();
