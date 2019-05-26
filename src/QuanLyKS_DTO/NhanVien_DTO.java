@@ -1,22 +1,24 @@
 package QuanLyKS_DTO;
 
+import java.sql.Date;
+
 public class NhanVien_DTO {
 
 	private int iMaNhanVien;
 	private String strTenNhanVien;
 	private String strNgaySinh;
 	private int iCMND;
-	private String strNgayVaoLam;
+	private Date dateNgayVaoLam;
 	private int iMaChucVu;
 
 	public NhanVien_DTO() {
 		// TODO Auto-generated constructor stub
 	}
-	public NhanVien_DTO(String strTenNhanVien, String strNgaySinh, int iCMND,String strNgayVaoLam,int iMaChucVu) {
+	public NhanVien_DTO(String strTenNhanVien, String strNgaySinh, int iCMND,Date ngayVaoLam,int iMaChucVu) {
 		this.strTenNhanVien = strTenNhanVien;
 		this.strNgaySinh = strNgaySinh;
 		this.iCMND = iCMND;
-		this.strNgayVaoLam = strNgayVaoLam;
+		this.dateNgayVaoLam = ngayVaoLam;
 		this.iMaChucVu = iMaChucVu;
 	}
 
@@ -48,11 +50,11 @@ public class NhanVien_DTO {
 		this.iCMND = iCMND;
 	}
 
-	public String getNgayVaoLam() {
-		return strNgayVaoLam;
+	public Date getNgayVaoLam() {
+		return dateNgayVaoLam;
 	}
-	public void setNgayVaoLam(String strNgayVaoLam) {
-		this.strNgayVaoLam = strNgayVaoLam;
+	public void setNgayVaoLam(Date dateNgayVaoLam) {
+		this.dateNgayVaoLam = dateNgayVaoLam;
 	}
 
 	public int getMaChucVu() {

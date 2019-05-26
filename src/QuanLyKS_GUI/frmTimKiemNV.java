@@ -13,6 +13,7 @@ import java.awt.Label;
 import java.awt.TextField;
 import java.awt.Button;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Vector;
 import java.awt.event.ActionEvent;
@@ -20,6 +21,7 @@ import QuanLyKS_BUS.NhanVien_BUS;
 import QuanLyKS_DTO.NhanVien_DTO;
 import java.awt.ScrollPane;
 import javax.swing.JButton;
+import com.toedter.calendar.JCalendar;
 
 public class frmTimKiemNV extends JInternalFrame {
 	
@@ -45,7 +47,7 @@ public class frmTimKiemNV extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public frmTimKiemNV() {
-		setBounds(100, 100, 729, 314);
+		setBounds(100, 100, 781, 480);
 		getContentPane().setLayout(null);
 		bus=new NhanVien_BUS();
 		
@@ -58,9 +60,13 @@ public class frmTimKiemNV extends JInternalFrame {
 		getContentPane().add(txtNhap);
 		
 		JScrollPane scrListThongTin = new JScrollPane();
-		scrListThongTin.setBounds(37, 113, 605, 123);
+		scrListThongTin.setBounds(37, 308, 605, 123);
 		getContentPane().add(scrListThongTin);
-		
+
+		JCalendar calendar = new JCalendar();
+		calendar.setBounds(167, 117, 198, 153);
+		getContentPane().add(calendar);
+
 		
 		//------------------------------add table-------------------------------
 		DefaultTableModel m = new DefaultTableModel(
@@ -80,7 +86,7 @@ public class frmTimKiemNV extends JInternalFrame {
 				        m.removeRow(i);
 				    }
 				}
-				ArrayList<NhanVien_DTO> dsnv = bus.SearchNV(txtNhap.getText());
+				ArrayList<NhanVien_DTO> dsnv = bus.SearchNV(txtNhap.getText(), new Date(calendar.getDate().getTime()));
 				dsnv.forEach(nv -> m.addRow(new Object[]{nv.getMaNhanVien(), nv.getTenNhanVien(),nv.getNgaySinh(), nv.getCMND(),nv.getNgayVaoLam()}));
 			}
 		}); 
@@ -88,6 +94,6 @@ public class frmTimKiemNV extends JInternalFrame {
 		
 		btnTimKiem.setBounds(440, 63, 79, 24);
 		getContentPane().add(btnTimKiem);
-
+		
 	}
 }

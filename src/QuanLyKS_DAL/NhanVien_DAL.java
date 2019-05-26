@@ -3,6 +3,7 @@ package QuanLyKS_DAL;
 import java.awt.EventQueue;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,13 +20,13 @@ public class NhanVien_DAL extends JInternalFrame {
 	}
 	
 	//connect table NHANVIEN
-	public ArrayList<NhanVien_DTO> SearchNV (String tukhoa){
+	public ArrayList<NhanVien_DTO> SearchNV (String tukhoa, java.sql.Date ngayvaolam){
 		//get connection
 		PreparedStatement ptmt = null; 
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
 		Connection conn = mycon.getConnection();
 		
-		String query = "SELECT * FROM NHANVIEN where TenNhanVien like '%" + tukhoa + "%'";
+		String query = "SELECT * FROM NHANVIEN where TenNhanVien like '%" + tukhoa + "%' and datediff(DAY, NgayVaoLam, '" + ngayvaolam.toString() + "') >= 0";
 		try {
 			ptmt = conn.prepareStatement(query);
 			ResultSet rs = ptmt.executeQuery();
@@ -36,7 +37,7 @@ public class NhanVien_DAL extends JInternalFrame {
 				nv.setTenNhanVien(rs.getString("TenNhanVien"));
 				nv.setNgaySinh(rs.getString("NgaySinh"));
 				nv.setCMND(rs.getInt("CMND"));
-				nv.setNgayVaoLam(rs.getString("NgayVaoLam"));
+				nv.setNgayVaoLam(rs.getDate("NgayVaoLam"));
 				dsnv.add(nv);
 			}
 			return dsnv;
@@ -57,7 +58,7 @@ public class NhanVien_DAL extends JInternalFrame {
 			ptmt.setString(1, nv.getTenNhanVien());
 			ptmt.setString(2, nv.getNgaySinh());
 			ptmt.setInt(3, nv.getCMND());
-			ptmt.setString(4, nv.getNgayVaoLam());
+			ptmt.setDate(4, nv.getNgayVaoLam());
 			ptmt.setInt(5, nv.getMaChucVu());
 			
 			if( ptmt.executeUpdate() != 0) {

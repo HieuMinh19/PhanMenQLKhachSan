@@ -14,6 +14,7 @@ import com.ibm.icu.text.SimpleDateFormat;
 import com.toedter.calendar.JCalendar;
 import java.awt.Button;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -139,11 +140,11 @@ public class frmThemNhanVien extends JInternalFrame {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-         		String NgayVaoLam = sdf.format( dtNgayVaoLam.getDate() );
+//         		String NgayVaoLam = sdf.format( dtNgayVaoLam.getDate() );
          		String NgaySinh = sdf.format( dtNgaySinh.getDate() );	
          		String CMND = txtCMND.getText();
          		int iCMND = Integer.parseInt(CMND);
-         		NhanVien_DTO nvDTO = new NhanVien_DTO(txtTenNhanVien.getText(), NgaySinh, iCMND, NgayVaoLam, idCV);
+         		NhanVien_DTO nvDTO = new NhanVien_DTO(txtTenNhanVien.getText(), NgaySinh, iCMND, new Date(dtNgayVaoLam.getDate().getTime()), idCV);
         		
         		if(NhanVien_BUS.Insert(nvDTO) == true) {
         			JOptionPane.showMessageDialog(null, "Insert Employee Success", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);
