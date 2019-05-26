@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="GroupBy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="02d8470b-0dc6-49db-b192-9e0fb92fa166">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="QLKS-2505"/>
+	<queryString language="SQL">
+		<![CDATA[select lp.MaLoaiPhong, TenLoaiPhong, p.MaPhong, 
+			TenKH, CMND, NgayNhan, NgayTra, ThanhTien
+from PHONG as p, LOAIPHONG as lp, CTDATPHONG as ctdp 
+where p.MaPhong = ctdp.MaPhong and 
+			p.MaLoaiPhong = lp.MaLoaiPhong]]>
+	</queryString>
+	<field name="MaLoaiPhong" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="MaLoaiPhong"/>
+	</field>
+	<field name="TenLoaiPhong" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TenLoaiPhong"/>
+	</field>
+	<field name="MaPhong" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="MaPhong"/>
+	</field>
+	<field name="TenKH" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TenKH"/>
+	</field>
+	<field name="CMND" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CMND"/>
+	</field>
+	<field name="NgayNhan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NgayNhan"/>
+	</field>
+	<field name="NgayTra" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NgayTra"/>
+	</field>
+	<field name="ThanhTien" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="ThanhTien"/>
+	</field>
+	<group name="MaLoaiPhong">
+		<groupExpression><![CDATA[$F{MaLoaiPhong}]]></groupExpression>
+	</group>
+	<group name="TenLoaiPhong">
+		<groupExpression><![CDATA[$F{TenLoaiPhong}]]></groupExpression>
+	</group>
+	<group name="MaPhong">
+		<groupExpression><![CDATA[$F{MaPhong}]]></groupExpression>
+	</group>
+	<group name="TenKH">
+		<groupExpression><![CDATA[$F{TenKH}]]></groupExpression>
+	</group>
+	<group name="CMND">
+		<groupExpression><![CDATA[$F{CMND}]]></groupExpression>
+	</group>
+	<group name="NgayNhan">
+		<groupExpression><![CDATA[$F{NgayNhan}]]></groupExpression>
+	</group>
+	<group name="NgayTra">
+		<groupExpression><![CDATA[$F{NgayTra}]]></groupExpression>
+	</group>
+	<group name="ThanhTien">
+		<groupExpression><![CDATA[$F{ThanhTien}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
