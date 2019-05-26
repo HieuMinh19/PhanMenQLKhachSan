@@ -109,6 +109,7 @@ create table CTDATPHONG
 	MaPhong int, 
 	NgayNhan varchar(25),
 	NgayTra varchar(25),
+	ThanhTien int,
 )
 /*insert table Account*/
 INSERT INTO ACCOUNT( Username, Password,Role) VALUES ('admin1', '123456', 1)

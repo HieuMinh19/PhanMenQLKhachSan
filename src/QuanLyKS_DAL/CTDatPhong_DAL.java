@@ -6,7 +6,7 @@ import java.sql.SQLException;
 public class CTDatPhong_DAL {
 	public static boolean Insert(CTDatPhong_DTO ctDP){
 		PreparedStatement ptmt = null; 
-		String query = "INSERT INTO CTDATPHONG(TenKH, CMND, MaPhong, NgayNhan, NgayTra) VALUES (?, ?, ?, ?, ?)";
+		String query = "INSERT INTO CTDATPHONG(TenKH, CMND, MaPhong, NgayNhan, NgayTra, ThanhTien) VALUES (?, ?, ?, ?, ?, ?)";
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
 		Connection conn = mycon.getConnection();
 		try {
@@ -16,6 +16,9 @@ public class CTDatPhong_DAL {
 			ptmt.setInt(3, ctDP.getMaPhong());
 			ptmt.setString(4, ctDP.getNgayNhan());
 			ptmt.setString(5, ctDP.getNgayTra());
+			ptmt.setInt(6, ctDP.getThanhTien());	
+			int ThanhTien = ctDP.getThanhTien();
+			System.out.print(ThanhTien);
 			if( ptmt.executeUpdate() != 0) {
 				System.err.println("insert thanh cong booking");
 				return true;
@@ -34,4 +37,7 @@ public class CTDatPhong_DAL {
 		}
 	}
 
+	
+	
+	
 }

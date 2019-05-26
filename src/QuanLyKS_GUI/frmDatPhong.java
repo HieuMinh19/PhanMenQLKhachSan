@@ -162,6 +162,7 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 				String NgayNhan = sdf.format( dtNgayNhan.getDate() );
 				String NgayTra = sdf.format( dtNgayTra.getDate() );
+				
 				String strMaPhong = (cbxMaPhong.getSelectedItem()).toString();
 				int iMaPhong = Integer.parseInt(strMaPhong);
         		CTDatPhong_DTO ctdpDTO = new CTDatPhong_DTO(txtTenKhachHang.getText(), txtCMND.getText(), idDV, iMaPhong,NgayNhan, NgayTra);

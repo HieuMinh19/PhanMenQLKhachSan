@@ -8,11 +8,22 @@ public class CTDatPhong_DTO {
     private int iMaPhong;
 	private String strNgayNhan;
 	private String strNgayTra;
+	private int iThanhTien;
 	public CTDatPhong_DTO() {
 	
 	}
 
-	public CTDatPhong_DTO( String strTenKH, String strCMND, int iMaDichVu, int iMaPhong, String NgayNhan, String NgayTra ) {
+	public CTDatPhong_DTO( String strTenKH, String strCMND, int iMaDichVu, int iMaPhong, String NgayNhan, String NgayTra, int iThanhTien ) {
+		this.strTenKH = strTenKH;
+		this.strCMND = strCMND;
+        this.iMaDichVu = iMaDichVu;
+        this.iMaPhong = iMaPhong;
+        this.strNgayNhan = NgayNhan;
+        this.strNgayTra = NgayTra;
+        this.iThanhTien = iThanhTien;
+	}
+	
+	public CTDatPhong_DTO( String strTenKH, String strCMND, int iMaDichVu, int iMaPhong, String NgayNhan, String NgayTra) {
 		this.strTenKH = strTenKH;
 		this.strCMND = strCMND;
         this.iMaDichVu = iMaDichVu;
@@ -20,7 +31,6 @@ public class CTDatPhong_DTO {
         this.strNgayNhan = NgayNhan;
         this.strNgayTra = NgayTra;
 	}
-	
 	
 	public int getMaDatPhong() {
 		return iMaDatPhong;
@@ -71,6 +81,14 @@ public class CTDatPhong_DTO {
 
 	public void setNgayTra(String strNgayTra) {
 		this.strNgayTra = strNgayTra;
+	}
+
+	public int getThanhTien() {
+		return iThanhTien;
+	}
+
+	public void setThanhTien(int iThanhTien) {
+		this.iThanhTien = iThanhTien;
 	}
 
 }
