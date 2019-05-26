@@ -84,8 +84,7 @@ public class frmMain extends JFrame {
 				contentPane.add(frmRegister);
 				frmRegister.setVisible(true);
 				break;
-				
-				
+			
 			case 3:
 				//close another frame
 				frmLogin.setVisible(false);

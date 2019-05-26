@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReportList" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d9f70129-04c5-467e-a301-76f8c23df1df">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<parameter name="Parameter1" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT "CTDATPHONG"."MaDatPhong",
+	"CTDATPHONG"."TenKH",
+	"CTDATPHONG"."CMND",
+	"CTDATPHONG"."MaPhong",
+	"CTDATPHONG"."NgayNhan",
+	"CTDATPHONG"."NgayTra",
+	"LOAIPHONG"."MaLoaiPhong",
+	"LOAIPHONG"."TenLoaiPhong",
+	"LOAIPHONG"."GiaPhong"
+	
+FROM "CTDATPHONG",
+	"PHONG",
+	"LOAIPHONG"
+WHERE 
+	 "CTDATPHONG"."MaPhong" = "PHONG"."MaPhong" 
+	 AND "PHONG"."MaLoaiPhong" = "LOAIPHONG"."MaLoaiPhong"]]>
+	</queryString>
+	<field name="MaDatPhong" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="MaDatPhong"/>
+	</field>
+	<field name="TenKH" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TenKH"/>
+	</field>
+	<field name="CMND" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CMND"/>
+	</field>
+	<field name="MaPhong" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="MaPhong"/>
+	</field>
+	<field name="NgayNhan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NgayNhan"/>
+	</field>
+	<field name="NgayTra" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NgayTra"/>
+	</field>
+	<field name="MaLoaiPhong" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="MaLoaiPhong"/>
+	</field>
+	<field name="TenLoaiPhong" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TenLoaiPhong"/>
+	</field>
+	<field name="GiaPhong" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="GiaPhong"/>
+	</field>
+	<variable name="GiaPhong1" class="java.lang.Integer" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$F{GiaPhong}]]></variableExpression>
+	</variable>
+	<group name="MaDatPhong">
+		<groupExpression><![CDATA[$F{MaDatPhong}]]></groupExpression>
+	</group>
+	<group name="TenKH">
+		<groupExpression><![CDATA[$F{TenKH}]]></groupExpression>
+	</group>
+	<group name="CMND">
+		<groupExpression><![CDATA[$F{CMND}]]></groupExpression>
+	</group>
+	<group name="MaPhong">
+		<groupExpression><![CDATA[$F{MaPhong}]]></groupExpression>
+	</group>
+	<group name="NgayNhan">
+		<groupExpression><![CDATA[$F{NgayNhan}]]></groupExpression>
+	</group>
+	<group name="NgayTra">
+		<groupExpression><![CDATA[$F{NgayTra}]]></groupExpression>
+	</group>
+	<group name="MaLoaiPhong">
+		<groupExpression><![CDATA[$F{MaLoaiPhong}]]></groupExpression>
+	</group>
+	<group name="TenLoaiPhong">
+		<groupExpression><![CDATA[$F{TenLoaiPhong}]]></groupExpression>
+	</group>
+	<group name="GiaPhong">
+		<groupExpression><![CDATA[$F{GiaPhong}]]></groupExpression>
+	</group>
+	<group name="DatPhong">
+		<groupExpression><![CDATA[$F{MaDatPhong}]]></groupExpression>
+	</group>
+	<group name="SumGiaPhong"/>
+	<group name="Group1"/>
+	<group name="Footer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="84" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="799" height="84" uuid="e5c8af7b-75b4-41a2-84dd-ab66d3e01619"/>
+				<textElement textAlignment="Center">
+					<font size="50"/>
+				</textElement>
+				<text><![CDATA[List Dat Phong Rreport]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="93" splitType="Stretch">
+			<rectangle>
+				<reportElement x="10" y="52" width="800" height="41" forecolor="#260808" backcolor="#5E99E6" uuid="ecebb2db-b122-48a3-8195-af37793ff4c8"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="110" y="52" width="100" height="41" uuid="2ec20e71-15a4-4d75-8c64-864681ffb19e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Ma Dat Phong]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="52" width="100" height="41" uuid="38614b15-8724-4ef5-8a0a-fa00cfd2e2eb">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Ten Khach Hang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="52" width="100" height="41" uuid="8e91d4a8-3205-42db-9256-69c0fb6627d9">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[CMND]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="52" width="100" height="41" uuid="00038c0f-dec8-4f05-a06b-1bf063191d94">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Ma Phong]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="52" width="100" height="41" uuid="72a7a48d-6f1d-47f2-9985-ccf030553b6c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Ngay Nhan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="510" y="52" width="100" height="41" uuid="9fdd4c0a-373c-4782-abf8-df3d3ddef551">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Ngay Tra]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="610" y="52" width="100" height="41" uuid="91d919d4-7143-44cd-80c7-82ede39ff8b8">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Ten Loai Phong]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="710" y="52" width="100" height="41" uuid="8c8cc94e-daa6-4563-8689-6856153a7b08">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Gia Phong]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="44" splitType="Stretch">
+			<rectangle>
+				<reportElement x="10" y="0" width="800" height="41" uuid="b639cd6c-304a-485d-9762-291e1dff0aa1">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</rectangle>
+			<textField>
+				<reportElement x="110" y="0" width="100" height="41" uuid="8cd4198c-1528-4a23-a87d-4404054d6901"/>
+				<textFieldExpression><![CDATA[$F{MaDatPhong}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="0" width="100" height="41" uuid="d658d4b9-9d8f-4f2f-8808-db972e1f3035">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7942673d-b676-4164-b4f1-ddc83499ca52"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{TenKH}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="710" y="0" width="100" height="41" uuid="cd846dbb-e278-459f-a0c5-9087a40dd57a"/>
+				<textFieldExpression><![CDATA[$F{GiaPhong}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="610" y="0" width="100" height="41" uuid="f45f1f16-856b-4e69-8ef0-274779c3877e"/>
+				<textFieldExpression><![CDATA[$F{TenLoaiPhong}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="210" y="0" width="100" height="41" uuid="4f8fa306-4ae1-4770-ba41-ee2a687c8ee3"/>
+				<textFieldExpression><![CDATA[$F{CMND}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="310" y="0" width="100" height="41" uuid="c10e9857-b149-48b2-a63d-8a4453b32df2"/>
+				<textFieldExpression><![CDATA[$F{MaPhong}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="410" y="0" width="100" height="41" uuid="0ae7bd29-54eb-40fc-bee6-6b3a16a1b37e"/>
+				<textFieldExpression><![CDATA[$F{NgayNhan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="510" y="0" width="100" height="41" uuid="da40edee-b1b8-45a8-851e-dc9593072e53"/>
+				<textFieldExpression><![CDATA[$F{NgayTra}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
