@@ -132,3 +132,6 @@ INSERT INTO LOAIPHONG( TenLoaiPhong, GiaPhong) VALUES ( 'Thuong', 150000);
 SELECT DISTINCT p.MaPhong from PHONG as p, CTDATPHONG as ctdp where (not EXISTS
 (select MaPhong from CTDATPHONG as ctdp where p.MaPhong  = ctdp.MaPhong and NgayNhan between '2019-05-13' and '2019-05-15')) and (p.MaLoaiPhong = 1)
 
+select lp.MaLoaiPhong, TenLoaiPhong, p.MaPhong, TenKH, CMND, NgayNhan, NgayTra
+from PHONG as p, LOAIPHONG as lp, CTDATPHONG as ctdp 
+where p.MaPhong = ctdp.MaPhong and p.MaLoaiPhong = lp.MaLoaiPhong
