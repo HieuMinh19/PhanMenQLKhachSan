@@ -53,12 +53,12 @@ public class DanhGia extends JInternalFrame {
 		setBounds(100, 100, 550, 461);
 		getContentPane().setLayout(null);
 
-		JLabel DanhGia = new JLabel("ĐÁNH GIÁ");
+		JLabel DanhGia = new JLabel("Ä�Ã�NH GIÃ�");
 		DanhGia.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 34));
 		DanhGia.setBounds(174, 11, 188, 37);
 		getContentPane().add(DanhGia);
 
-		JLabel NhanXet = new JLabel("NHẬN XÉT DỊCH VỤ");
+		JLabel NhanXet = new JLabel("NHáº¬N XÃ‰T Dá»ŠCH Vá»¤");
 		NhanXet.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 13));
 		NhanXet.setBounds(68, 95, 124, 14);
 		getContentPane().add(NhanXet);
@@ -69,9 +69,9 @@ public class DanhGia extends JInternalFrame {
 
 		JTextArea txtNoiDungDanhGia = new JTextArea();
 		scrollPane.setViewportView(txtNoiDungDanhGia);
-		txtNoiDungDanhGia.setText("ý kiến");
+		txtNoiDungDanhGia.setText("Ã½ kiáº¿n");
 
-		JLabel MaPhong = new JLabel("MÃ PHÒNG");
+		JLabel MaPhong = new JLabel("MÃƒ PHÃ’NG");
 		MaPhong.setFont(new Font("Tahoma", Font.BOLD, 13));
 		MaPhong.setBounds(68, 59, 124, 14);
 		getContentPane().add(MaPhong);
@@ -86,7 +86,7 @@ public class DanhGia extends JInternalFrame {
 		ngayDanhGia.setBounds(202, 205, 198, 153);
 		getContentPane().add(ngayDanhGia);
 
-		JButton btnGuiDanhGia = new JButton("GỬI ĐÁNH GIÁ");
+		JButton btnGuiDanhGia = new JButton("Gá»¬I Ä�Ã�NH GIÃ�");
 		btnGuiDanhGia.setFont(new Font("Tahoma", Font.BOLD, 13));
 
 		btnGuiDanhGia.addActionListener(new ActionListener() {
@@ -103,9 +103,9 @@ public class DanhGia extends JInternalFrame {
 
 
 					 if(  DanhGia_BUS.Insert(danhgiaDTO) == true)
-						 JOptionPane.showMessageDialog(null, "thêm đánh giá thành công", "thông báo", JOptionPane.INFORMATION_MESSAGE);
+						 JOptionPane.showMessageDialog(null, "thÃªm Ä‘Ã¡nh giÃ¡ thÃ nh cÃ´ng", "thÃ´ng bÃ¡o", JOptionPane.INFORMATION_MESSAGE);
 					 else
-						 JOptionPane.showMessageDialog(null, "thêm đánh giá thất bại", "thông báo", JOptionPane.CLOSED_OPTION);
+						 JOptionPane.showMessageDialog(null, "thÃªm Ä‘Ã¡nh giÃ¡ tháº¥t báº¡i", "thÃ´ng bÃ¡o", JOptionPane.CLOSED_OPTION);
 
 
 
@@ -116,12 +116,12 @@ public class DanhGia extends JInternalFrame {
 		btnGuiDanhGia.setBounds(120, 379, 129, 23);
 		getContentPane().add(btnGuiDanhGia);
 
-		JButton btnThoat = new JButton("THOÁT");
+		JButton btnThoat = new JButton("THOÃ�T");
 		btnThoat.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnThoat.setBounds(326, 379, 89, 23);
 		getContentPane().add(btnThoat);
 
-		JLabel NgayDanhGia = new JLabel("NGÀY ĐÁNH GIÁ");
+		JLabel NgayDanhGia = new JLabel("NGÃ€Y Ä�Ã�NH GIÃ�");
 		NgayDanhGia.setFont(new Font("Tahoma", Font.BOLD, 13));
 		NgayDanhGia.setBounds(68, 214, 124, 14);
 		getContentPane().add(NgayDanhGia);

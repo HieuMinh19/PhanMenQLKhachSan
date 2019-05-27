@@ -1,5 +1,6 @@
 package QuanLyKS_BUS;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import QuanLyKS_DTO.NhanVien_DTO;
 
@@ -18,8 +19,8 @@ public class NhanVien_BUS extends JInternalFrame {
 		dal = new NhanVien_DAL();
 	}
 	
-	public ArrayList<NhanVien_DTO> SearchNV (String tukhoa){
-		return dal.SearchNV(tukhoa);
+	public ArrayList<NhanVien_DTO> SearchNV (String tukhoa, Date ngayvaolam){
+		return dal.SearchNV(tukhoa, ngayvaolam);
 		
 	}
 	
