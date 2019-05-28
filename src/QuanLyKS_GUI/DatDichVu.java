@@ -14,7 +14,6 @@ import QuanLyKS_DAL.Phong_DAL;
 import QuanLyKS_DAL.DichVu_DAL;
 import QuanLyKS_DTO.CTDichVu_DTO;
 import QuanLyKS_DTO.DichVu_DTO;
-import QuanLyKS_DTO.LoaiPhong_DTO;
 
 import java.awt.Font;
 import java.awt.TextField;
@@ -52,7 +51,7 @@ public class DatDichVu extends JInternalFrame {
 	//prepare list
 	ArrayList<DichVu_DTO> listDV_DTO =  new ArrayList<DichVu_DTO>();
 	DichVu_DAL dvDAL = new DichVu_DAL();
-	ResultSet rsDichVu = dvDAL.getListDV();
+	ResultSet rsDichVu = DichVu_DAL.getListDV();
 	private static int idDV = 0;
 	
 	Phong_DAL phongDAL = new Phong_DAL();
@@ -145,7 +144,7 @@ public class DatDichVu extends JInternalFrame {
 				int iMaPhong = Integer.parseInt(strMaPhong);
 				
 				int SoLuong = Integer.parseInt(txtSoLuong.getText());
-				System.out.println(SoLuong);
+					System.out.println(SoLuong);
         		CTDichVu_DTO ctdvDTO = new CTDichVu_DTO(SoLuong, TuNgay, DenNgay, idDV, iMaPhong);
         		
         		if(CTDichVu_BUS.Insert(ctdvDTO) == true) {
