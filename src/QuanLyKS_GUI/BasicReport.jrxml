@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReportList" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d9f70129-04c5-467e-a301-76f8c23df1df">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="BasicReport" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="570611af-e9f9-48df-8033-974f84785ce5">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
-	<parameter name="Parameter1" class="java.lang.String"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="QLKS-2505"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT "CTDATPHONG"."MaDatPhong",
 	"CTDATPHONG"."TenKH",
@@ -13,7 +12,7 @@
 	"CTDATPHONG"."NgayTra",
 	"LOAIPHONG"."MaLoaiPhong",
 	"LOAIPHONG"."TenLoaiPhong",
-	
+	"CTDATPHONG"."ThanhTien"
 	
 FROM "CTDATPHONG",
 	"PHONG",
@@ -46,6 +45,12 @@ WHERE
 	<field name="TenLoaiPhong" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="TenLoaiPhong"/>
 	</field>
+	<field name="ThanhTien" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="ThanhTien"/>
+	</field>
+	<variable name="ThanhTien1" class="java.lang.Integer" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{ThanhTien}]]></variableExpression>
+	</variable>
 	<group name="MaDatPhong">
 		<groupExpression><![CDATA[$F{MaDatPhong}]]></groupExpression>
 	</group>
@@ -70,13 +75,13 @@ WHERE
 	<group name="TenLoaiPhong">
 		<groupExpression><![CDATA[$F{TenLoaiPhong}]]></groupExpression>
 	</group>
-	<group name="GiaPhong">
-		<groupExpression><![CDATA[$F{GiaPhong}]]></groupExpression>
+	<group name="ThanhTien">
+		<groupExpression><![CDATA[$F{ThanhTien}]]></groupExpression>
 	</group>
 	<group name="DatPhong">
 		<groupExpression><![CDATA[$F{MaDatPhong}]]></groupExpression>
 	</group>
-	<group name="SumGiaPhong"/>
+	<group name="SumThanhTien"/>
 	<group name="Group1"/>
 	<group name="Footer"/>
 	<background>
@@ -104,9 +109,9 @@ WHERE
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font size="20"/>
+					<font size="13"/>
 				</textElement>
-				<text><![CDATA[Ma Dat Phong]]></text>
+				<text><![CDATA[Mã đặt phòng]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="10" y="52" width="100" height="41" uuid="38614b15-8724-4ef5-8a0a-fa00cfd2e2eb">
@@ -115,16 +120,16 @@ WHERE
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font size="20"/>
+					<font size="13"/>
 				</textElement>
-				<text><![CDATA[Ten Khach Hang]]></text>
+				<text><![CDATA[Tên KH]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="210" y="52" width="100" height="41" uuid="8e91d4a8-3205-42db-9256-69c0fb6627d9">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font size="20"/>
+					<font size="13"/>
 				</textElement>
 				<text><![CDATA[CMND]]></text>
 			</staticText>
@@ -133,50 +138,50 @@ WHERE
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font size="20"/>
+					<font size="13"/>
 				</textElement>
-				<text><![CDATA[Ma Phong]]></text>
+				<text><![CDATA[Mã phòng]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="410" y="52" width="100" height="41" uuid="72a7a48d-6f1d-47f2-9985-ccf030553b6c">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font size="20"/>
+					<font size="13"/>
 				</textElement>
-				<text><![CDATA[Ngay Nhan]]></text>
+				<text><![CDATA[Ngày nhận]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="510" y="52" width="100" height="41" uuid="9fdd4c0a-373c-4782-abf8-df3d3ddef551">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font size="20"/>
+					<font size="13"/>
 				</textElement>
-				<text><![CDATA[Ngay Tra]]></text>
+				<text><![CDATA[Ngày trả]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="610" y="52" width="100" height="41" uuid="91d919d4-7143-44cd-80c7-82ede39ff8b8">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font size="20"/>
+					<font size="13"/>
 				</textElement>
-				<text><![CDATA[Ten Loai Phong]]></text>
+				<text><![CDATA[Tên loại phòng]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="710" y="52" width="100" height="41" uuid="8c8cc94e-daa6-4563-8689-6856153a7b08">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font size="20"/>
+					<font size="13"/>
 				</textElement>
-				<text><![CDATA[Gia Phong]]></text>
+				<text><![CDATA[Thành tiền]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="44" splitType="Stretch">
+		<band height="42" splitType="Stretch">
 			<rectangle>
 				<reportElement x="10" y="0" width="800" height="41" uuid="b639cd6c-304a-485d-9762-291e1dff0aa1">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -212,6 +217,20 @@ WHERE
 				<reportElement x="510" y="0" width="100" height="41" uuid="da40edee-b1b8-45a8-851e-dc9593072e53"/>
 				<textFieldExpression><![CDATA[$F{NgayTra}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="710" y="0" width="100" height="30" uuid="aa97c282-720a-43c2-a5ad-feff6f695340">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ced5dde8-d47d-44d5-b015-8e6eaad378a8"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{ThanhTien}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<textField>
+				<reportElement x="710" y="11" width="100" height="20" forecolor="#FF0000" backcolor="#2652AB" uuid="f5a7c4e3-bd78-46fc-9359-208d7a8c5a69"/>
+				<textFieldExpression><![CDATA[$V{ThanhTien1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
 </jasperReport>
