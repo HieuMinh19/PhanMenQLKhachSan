@@ -32,6 +32,27 @@ where p.MaPhong = ctdp.MaPhong and p.MaLoaiPhong = lp.MaLoaiPhong]]>
 	<field name="ThanhTien" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.label" value="ThanhTien"/>
 	</field>
+	<variable name="ThanhTien1" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{ThanhTien}]]></variableExpression>
+	</variable>
+	<group name="LoaiPhongGroup">
+		<groupExpression><![CDATA[$F{TenLoaiPhong}]]></groupExpression>
+		<groupHeader>
+			<band height="91">
+				<rectangle>
+					<reportElement x="0" y="0" width="780" height="60" backcolor="#1A7682" uuid="d4900391-1a9b-453c-8bfc-90d022dcb124"/>
+				</rectangle>
+				<textField>
+					<reportElement x="0" y="0" width="80" height="30" uuid="3b2b1778-92d8-41a4-97c9-451ec2de8324"/>
+					<textFieldExpression><![CDATA[$F{MaLoaiPhong}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="80" y="0" width="100" height="30" uuid="afb0b5b8-4d88-49ad-bcbb-248520cc90ba"/>
+					<textFieldExpression><![CDATA[$F{TenLoaiPhong}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -39,12 +60,113 @@ where p.MaPhong = ctdp.MaPhong and p.MaLoaiPhong = lp.MaLoaiPhong]]>
 		<band height="79" splitType="Stretch"/>
 	</title>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band height="50" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="780" height="50" backcolor="#D6AAA9" uuid="262efe6e-919d-4014-a486-8938bb6555ad"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="180" y="0" width="100" height="30" uuid="b38f91f5-d571-4035-b32f-d25d0e4ee57c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="07799b7e-f878-4ca3-b931-59e64a7ba748"/>
+				</reportElement>
+				<text><![CDATA[Mã phòng]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="0" width="100" height="30" uuid="d0d355fe-96a3-4af2-85d9-8be51c34707a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="115da0e7-7be5-4708-9ba0-ace1e5e48ac7"/>
+				</reportElement>
+				<text><![CDATA[Tên KH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="0" width="100" height="30" uuid="5d566568-1b53-4e32-815d-36ab267297cb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a228ba14-aa2e-4910-8d39-ec4f395a1356"/>
+				</reportElement>
+				<text><![CDATA[CMND]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="0" width="100" height="30" uuid="e79876e2-18fc-4bf1-83ac-36ecfe202cf3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="048b8cfa-1ef4-47cb-94fd-dfe60fa774fe"/>
+				</reportElement>
+				<text><![CDATA[Ngày nhận]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="580" y="0" width="100" height="30" uuid="ee1e0a94-6794-43ac-88cc-61278daa12f0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a367e874-44ac-4c61-ba63-f33a56dd5995"/>
+				</reportElement>
+				<text><![CDATA[Ngày Trả]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="680" y="0" width="100" height="30" uuid="6938fc3f-63fd-4b22-82fd-eb1478476316">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1f199905-f326-462b-bdde-a30a40a64549"/>
+				</reportElement>
+				<text><![CDATA[Thành tiền]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="80" height="30" uuid="ce5ee48f-1e7b-41e8-8677-0b2117a45115">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="07799b7e-f878-4ca3-b931-59e64a7ba748"/>
+				</reportElement>
+				<text><![CDATA[Mã loại phòng]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="0" width="100" height="30" uuid="2f5c5f45-b50a-491a-896f-03948ced73e3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="07799b7e-f878-4ca3-b931-59e64a7ba748"/>
+				</reportElement>
+				<text><![CDATA[Tên loại phòng]]></text>
+			</staticText>
+		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="53" splitType="Stretch">
+			<textField>
+				<reportElement x="180" y="-1" width="100" height="30" uuid="5c53a20a-86ea-4ab1-98ee-27bf3b32b4bf">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="07799b7e-f878-4ca3-b931-59e64a7ba748"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{MaPhong}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="0" width="100" height="30" uuid="40b7816e-a700-4fc3-b1f9-14bd16d9ff85">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="115da0e7-7be5-4708-9ba0-ace1e5e48ac7"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{TenKH}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="0" width="100" height="30" uuid="edc1209d-a2d8-44fa-b586-325f76d00e21">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a228ba14-aa2e-4910-8d39-ec4f395a1356"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CMND}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="0" width="100" height="30" uuid="004a0066-39fe-43b1-93d0-aaa646310c29">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="048b8cfa-1ef4-47cb-94fd-dfe60fa774fe"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{NgayNhan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="680" y="0" width="100" height="30" uuid="673a8b4e-d312-4ec6-ac8a-b7764958d6f4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1f199905-f326-462b-bdde-a30a40a64549"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{ThanhTien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="580" y="-1" width="100" height="30" uuid="21fac548-e34d-4a8b-9c6b-0bbe096effd6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a367e874-44ac-4c61-ba63-f33a56dd5995"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{NgayTra}]]></textFieldExpression>
+			</textField>
+		</band>
 	</detail>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band height="52" splitType="Stretch">
+			<textField>
+				<reportElement x="680" y="0" width="100" height="30" forecolor="#F52320" uuid="329f4d4e-1ec7-4e78-8028-5624ed06f454"/>
+				<textFieldExpression><![CDATA[$V{ThanhTien1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="580" y="0" width="100" height="30" forecolor="#0A0A0A" backcolor="#FFFFFF" uuid="6130178d-3859-42a9-b913-b9dfe5e79afe">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1f199905-f326-462b-bdde-a30a40a64549"/>
+				</reportElement>
+				<textElement markup="rtf"/>
+				<text><![CDATA[Tổng thành tiền:]]></text>
+			</staticText>
+		</band>
 	</summary>
 </jasperReport>
