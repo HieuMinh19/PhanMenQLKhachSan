@@ -134,4 +134,4 @@ SELECT DISTINCT p.MaPhong from PHONG as p, CTDATPHONG as ctdp where (not EXISTS
 
 select lp.MaLoaiPhong, TenLoaiPhong, p.MaPhong, TenKH, CMND, NgayNhan, NgayTra, ThanhTien
 from PHONG as p, LOAIPHONG as lp, CTDATPHONG as ctdp 
-where p.MaPhong = ctdp.MaPhong and p.MaLoaiPhong = lp.MaLoaiPhong
+where p.MaPhong = ctdp.MaPhong and p.MaLoaiPhong = lp.MaLoaiPhong and '2018-05-04'< ctdp.NgayNhan
