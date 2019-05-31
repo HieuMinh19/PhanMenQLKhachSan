@@ -59,7 +59,7 @@ public class QLDichVu extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public QLDichVu() {
-		setBounds(100, 100, 1009, 512);
+		setBounds(100, 100, 605, 315);
 		getContentPane().setLayout(null);
 
 		JScrollPane scrListDV = new JScrollPane();
@@ -144,17 +144,8 @@ public class QLDichVu extends JInternalFrame {
 
 			}
 		});
-		btnUpdate.setBounds(81, 203, 89, 23);
+		btnUpdate.setBounds(27, 190, 89, 23);
 		getContentPane().add(btnUpdate);
-		
-		JButton btnSelect = new JButton("Select");
-		btnSelect.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		btnSelect.setBounds(198, 218, 89, 23);
-		getContentPane().add(btnSelect);
 		
 		cbxMaDV.setBounds(96, 56, 142, 20);
 		getContentPane().add(cbxMaDV);
@@ -178,7 +169,7 @@ public class QLDichVu extends JInternalFrame {
 						 JOptionPane.showMessageDialog(null, "Update Dich Vu Fail", "Fail: " + "Success Mesage", JOptionPane.CLOSED_OPTION);
 			}
 		});
-		btndelete.setBounds(184, 254, 134, 38);
+		btndelete.setBounds(126, 190, 109, 23);
 		getContentPane().add(btndelete);
 	}
 }

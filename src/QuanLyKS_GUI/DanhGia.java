@@ -53,12 +53,12 @@ public class DanhGia extends JInternalFrame {
 		setBounds(100, 100, 550, 461);
 		getContentPane().setLayout(null);
 
-		JLabel DanhGia = new JLabel("Ä�Ã�NH GIÃ�");
+		JLabel DanhGia = new JLabel("ĐÁNH GIÁ");
 		DanhGia.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 34));
 		DanhGia.setBounds(174, 11, 188, 37);
 		getContentPane().add(DanhGia);
 
-		JLabel NhanXet = new JLabel("NHáº¬N XÃ‰T Dá»ŠCH Vá»¤");
+		JLabel NhanXet = new JLabel("NHẬN XÉT");
 		NhanXet.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 13));
 		NhanXet.setBounds(68, 95, 124, 14);
 		getContentPane().add(NhanXet);
@@ -71,7 +71,7 @@ public class DanhGia extends JInternalFrame {
 		scrollPane.setViewportView(txtNoiDungDanhGia);
 		txtNoiDungDanhGia.setText("Ã½ kiáº¿n");
 
-		JLabel MaPhong = new JLabel("MÃƒ PHÃ’NG");
+		JLabel MaPhong = new JLabel("MÃ PHÒNG");
 		MaPhong.setFont(new Font("Tahoma", Font.BOLD, 13));
 		MaPhong.setBounds(68, 59, 124, 14);
 		getContentPane().add(MaPhong);
@@ -86,7 +86,7 @@ public class DanhGia extends JInternalFrame {
 		ngayDanhGia.setBounds(202, 205, 198, 153);
 		getContentPane().add(ngayDanhGia);
 
-		JButton btnGuiDanhGia = new JButton("Gá»¬I Ä�Ã�NH GIÃ�");
+		JButton btnGuiDanhGia = new JButton("GHI NHẬN");
 		btnGuiDanhGia.setFont(new Font("Tahoma", Font.BOLD, 13));
 
 		btnGuiDanhGia.addActionListener(new ActionListener() {
@@ -116,14 +116,14 @@ public class DanhGia extends JInternalFrame {
 		btnGuiDanhGia.setBounds(120, 379, 129, 23);
 		getContentPane().add(btnGuiDanhGia);
 
-		JButton btnThoat = new JButton("THOÃ�T");
+		JButton btnThoat = new JButton("THOÁT");
 		btnThoat.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnThoat.setBounds(326, 379, 89, 23);
 		getContentPane().add(btnThoat);
 
-		JLabel NgayDanhGia = new JLabel("NGÃ€Y Ä�Ã�NH GIÃ�");
+		JLabel NgayDanhGia = new JLabel("NGÀY ĐÁNH GIÁ");
 		NgayDanhGia.setFont(new Font("Tahoma", Font.BOLD, 13));
-		NgayDanhGia.setBounds(68, 214, 124, 14);
+		NgayDanhGia.setBounds(68, 274, 124, 14);
 		getContentPane().add(NgayDanhGia);
 
 	}

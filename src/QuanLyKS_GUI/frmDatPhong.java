@@ -71,7 +71,7 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
         cbxLoaiPhong = new javax.swing.JComboBox<>();
         JCalendar dtNgayTra = new JCalendar();
         JCalendar dtNgayNhan = new JCalendar();
-        JComboBox<String> cbxMaPhong = new JComboBox<String>();
+        cbxMaPhong = new JComboBox<String>();
         cbxMaPhong.setInheritsPopupMenu(true);
         cbxMaPhong.setIgnoreRepaint(true);
         dtNgayNhan.addInputMethodListener(new InputMethodListener() {
@@ -261,7 +261,7 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
         	layout.createParallelGroup(Alignment.TRAILING)
         		.addGroup(layout.createSequentialGroup()
-        			.addGap(0, 506, Short.MAX_VALUE)
+        			.addGap(0, 304, Short.MAX_VALUE)
         			.addComponent(jLabel9)
         			.addGap(221))
         		.addGroup(layout.createSequentialGroup()
@@ -286,15 +286,15 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
         						.addComponent(cbxLoaiPhong, GroupLayout.PREFERRED_SIZE, 486, GroupLayout.PREFERRED_SIZE))))
         			.addContainerGap())
         		.addGroup(layout.createSequentialGroup()
-        			.addContainerGap()
-        			.addComponent(cbxMaPhong, GroupLayout.PREFERRED_SIZE, 720, GroupLayout.PREFERRED_SIZE)
-        			.addGap(27))
-        		.addGroup(layout.createSequentialGroup()
         			.addGap(284)
         			.addComponent(btnDongY)
         			.addGap(123)
         			.addComponent(btnThoat)
-        			.addContainerGap(397, Short.MAX_VALUE))
+        			.addContainerGap(195, Short.MAX_VALUE))
+        		.addGroup(layout.createSequentialGroup()
+        			.addContainerGap(229, Short.MAX_VALUE)
+        			.addComponent(cbxMaPhong, GroupLayout.PREFERRED_SIZE, 495, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap())
         );
         layout.setVerticalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
@@ -362,4 +362,5 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField txtCMND;
     private javax.swing.JTextField txtTenKhachHang;
+    private JComboBox<String> cbxMaPhong;
 }
