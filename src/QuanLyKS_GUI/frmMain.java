@@ -17,8 +17,12 @@ import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
+
+import com.sun.xml.internal.ws.api.server.Adapter.Toolkit;
 
 import java.awt.SystemColor;
 
@@ -36,6 +40,10 @@ public class frmMain extends JFrame {
 	static frmThemNhanVien frmThemNhanVien = new frmThemNhanVien();
 	static DanhGia frmDanhGia = new DanhGia();
 	static DatDichVu frmDatDichVu = new DatDichVu();
+	
+	static frmMain frame = new frmMain();
+	
+	
 
 	//deifne static varriable cho frame
 	private static final int FRM_LOGIN = 1;
@@ -195,7 +203,8 @@ public class frmMain extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frmMain frame = new frmMain();
+					frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+					frame.setUndecorated(true);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -239,10 +248,16 @@ public class frmMain extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				controlFrame(FRM_REGISTER);
 				
+				
 			}
 		});
 		mnNewMenu.add(mntmRegister);
 		JMenuItem mntmit = new JMenuItem("Eixt");
+		mntmit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frame.setVisible(false);
+			}
+		});
 		mnNewMenu.add(mntmit);
 		
 		JMenuItem mntmdanhgia1 = new JMenuItem("FeedBack");
@@ -256,7 +271,7 @@ public class frmMain extends JFrame {
 		mnNewMenu.add(mntmdanhgia1);
 		
 		JMenu mnDichVu = new JMenu("D\u1ECBch v\u1EE5");
-		JMenuItem mntmThemDichVu = new JMenuItem("th�m dich vu");
+		JMenuItem mntmThemDichVu = new JMenuItem("Th\u00EAm d\u1ECBch v\u1EE5");
 		mntmThemDichVu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controlFrame(FRM_DichVu);
