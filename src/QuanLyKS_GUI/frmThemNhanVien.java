@@ -144,7 +144,7 @@ public class frmThemNhanVien extends JInternalFrame {
          		String NgaySinh = sdf.format( dtNgaySinh.getDate() );	
          		String CMND = txtCMND.getText();
          		int iCMND = Integer.parseInt(CMND);
-         		NhanVien_DTO nvDTO = new NhanVien_DTO(txtTenNhanVien.getText(), NgaySinh, iCMND, new Date(dtNgayVaoLam.getDate().getTime()), idCV);
+         		NhanVien_DTO nvDTO = new NhanVien_DTO(txtTenNhanVien.getText(), new Date(dtNgaySinh.getDate().getTime()), iCMND, new Date(dtNgayVaoLam.getDate().getTime()), idCV);
         		
         		if(NhanVien_BUS.Insert(nvDTO) == true) {
         			JOptionPane.showMessageDialog(null, "Insert Employee Success", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);

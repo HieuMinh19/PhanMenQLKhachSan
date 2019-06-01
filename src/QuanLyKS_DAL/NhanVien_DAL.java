@@ -35,7 +35,7 @@ public class NhanVien_DAL extends JInternalFrame {
 				NhanVien_DTO nv = new NhanVien_DTO();
 				nv.setMaNhanVien(rs.getInt("MaNhanVien"));
 				nv.setTenNhanVien(rs.getString("TenNhanVien"));
-				nv.setNgaySinh(rs.getString("NgaySinh"));
+				nv.setNgaySinh(rs.getDate("NgaySinh"));
 				nv.setCMND(rs.getInt("CMND"));
 				nv.setNgayVaoLam(rs.getDate("NgayVaoLam"));
 				dsnv.add(nv);
@@ -56,7 +56,7 @@ public class NhanVien_DAL extends JInternalFrame {
 		try {
 			ptmt = conn.prepareStatement(query);
 			ptmt.setString(1, nv.getTenNhanVien());
-			ptmt.setString(2, nv.getNgaySinh());
+			ptmt.setDate(2, nv.getNgaySinh());
 			ptmt.setInt(3, nv.getCMND());
 			ptmt.setDate(4, nv.getNgayVaoLam());
 			ptmt.setInt(5, nv.getMaChucVu());
@@ -81,25 +81,54 @@ public class NhanVien_DAL extends JInternalFrame {
 	
 	public static boolean Update(NhanVien_DTO nv)  {
 		PreparedStatement ptmt = null; 
-		String query = "INSERT INTO NHANVIEN(TenNhanVien, NgaySinh, CMND, NgayVaoLam, MaChucVu) VALUES (?, ?, ?, ?, ?)";
+		String query = "UPDATE NHANVIEN SET TenNhanVien = ?, NgaySinh = ?, CMND = ?, NgayVaoLam = ?, MaChucVu = ? WHERE MaNhanVien = ?";
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
 		Connection conn = mycon.getConnection();
 		
 		try {
 			ptmt = conn.prepareStatement(query);
 			ptmt.setString(1, nv.getTenNhanVien());
-			ptmt.setString(2, nv.getNgaySinh());
+			ptmt.setDate(2, nv.getNgaySinh());
 			ptmt.setInt(3, nv.getCMND());
 			ptmt.setDate(4, nv.getNgayVaoLam());
 			ptmt.setInt(5, nv.getMaChucVu());
+			ptmt.setInt(6, nv.getMaNhanVien());
 			
 			if( ptmt.executeUpdate() != 0) {
-				System.err.println("insert thanh cong nhan vien");
+				System.err.println("update thanh cong nhan vien");
 				return true;
 			}
 				
 			else {
 				System.err.println("khoi tao nhan vien that bai");
+				return false;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false;
+	} 
+	
+	public static boolean Delete(int maNV)  {
+		PreparedStatement ptmt = null; 
+		String query = "DELETE FROM NHANVIEN WHERE MaNhanVien = ?";
+		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
+		Connection conn = mycon.getConnection();
+		
+		try {
+			ptmt = conn.prepareStatement(query);
+			ptmt.setInt(1, maNV);
+			
+			if( ptmt.executeUpdate() != 0) {
+				System.err.println("delete thanh cong nhan vien");
+				return true;
+			}
+				
+			else {
+				System.err.println("xoa nhan vien that bai");
 				return false;
 			}
 			
@@ -127,7 +156,7 @@ public class NhanVien_DAL extends JInternalFrame {
 				NhanVien_DTO nv = new NhanVien_DTO();
 				nv.setMaNhanVien(rs.getInt("MaNhanVien"));
 				nv.setTenNhanVien(rs.getString("TenNhanVien"));
-				nv.setNgaySinh(rs.getString("NgaySinh"));
+				nv.setNgaySinh(rs.getDate("NgaySinh"));
 				nv.setCMND(rs.getInt("CMND"));
 				nv.setNgayVaoLam(rs.getDate("NgayVaoLam"));
 				dsnv.add(nv);
