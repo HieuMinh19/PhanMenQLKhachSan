@@ -27,4 +27,9 @@ public class NhanVien_BUS extends JInternalFrame {
 	public static boolean Insert(NhanVien_DTO nhanvien) {
 		return NhanVien_DAL.Insert(nhanvien);
 	}
+	
+	public ArrayList<NhanVien_DTO> LoadListNV (){
+		return dal.LoadListNV();
+		
+	}
 }

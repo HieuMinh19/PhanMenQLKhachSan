@@ -1,8 +1,10 @@
 package QuanLyKS_BUS;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import QuanLyKS_DAL.LoaiPhong_DAL;
+import QuanLyKS_DTO.LoaiPhong_DTO;
 
 public class LoaiPhong_BUS {
 	private static LoaiPhong_DAL LoaiPhongDAL;
@@ -10,7 +12,7 @@ public class LoaiPhong_BUS {
 		LoaiPhongDAL = new LoaiPhong_DAL();
 	}
 	
-	public ResultSet selectAll() {
-		return LoaiPhongDAL.getListLoaiPhong();
+	public ArrayList<LoaiPhong_DTO> selectAll() {
+		return LoaiPhongDAL.selectAll();
 	}
 }

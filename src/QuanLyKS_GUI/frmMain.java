@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import QuanLyKS_GUI.Login;
 import QuanLyKS_GUI.Register;
 import QuanLyKS_GUI.frmTimKiemNV;
+import QuanLyKS_GUI.frmCapNhatNhanVien;
 
 import QuanLyKS_GUI.DanhGia;
 import QuanLyKS_GUI.frmThemNhanVien;
@@ -31,11 +32,13 @@ public class frmMain extends JFrame {
 	static Login frmLogin = new Login();
 	static Register frmRegister = new Register();
 	static frmTimKiemNV frmTimKiemNV = new frmTimKiemNV();
-	static frmDatPhong frmDatPhong = new frmDatPhong();
+//	static frmDatPhong frmDatPhong = new frmDatPhong();
 	static DichVu frmDichVu = new DichVu();
 	static frmThemNhanVien frmThemNhanVien = new frmThemNhanVien();
 	static DanhGia frmDanhGia = new DanhGia();
 	static DatDichVu frmDatDichVu = new DatDichVu();
+	static frmCapNhatNhanVien frmCapNhatNhanVien = new frmCapNhatNhanVien();
+	static frmDanhSachPhong frmDanhSachPhong = new frmDanhSachPhong();
 
 	//deifne static varriable cho frame
 	private static final int FRM_LOGIN = 1;
@@ -48,6 +51,8 @@ public class frmMain extends JFrame {
 	private static final int FRM_THEMNHANVIEN = 7; 
 	private static final int FRM_DANHGIA = 8;
 	private static final int FRM_DATDICHVU = 9;
+	private static final int FRM_CAPNHATNHANVIEN = 10;
+	private static final int FRM_DANHSACHPHONG = 11;
 	private static final long serialVersionUID = 1L;
 	private static JPanel contentPane;
 	/**
@@ -59,12 +64,14 @@ public class frmMain extends JFrame {
 				//close another frame
 				frmRegister.setVisible(false);
 				frmQLDV.setVisible(false);
-				frmDatPhong.setVisible(false);
+//				frmDatPhong.setVisible(false);
 				frmDichVu.setVisible(false);
 				frmThemNhanVien.setVisible(false);
 				frmTimKiemNV.setVisible(false);
 				frmDanhGia.setVisible(false);
 				frmDatDichVu.setVisible(false);
+				frmCapNhatNhanVien.setVisible(false);
+				frmDanhSachPhong.setVisible(false);
 				//set current frame
 				contentPane.add(frmLogin);
 				frmLogin.setVisible(true);
@@ -74,12 +81,14 @@ public class frmMain extends JFrame {
 				//close another frame
 				frmLogin.setVisible(false);
 				frmQLDV.setVisible(false);
-				frmDatPhong.setVisible(false);
+//				frmDatPhong.setVisible(false);
 				frmDichVu.setVisible(false);
 				frmThemNhanVien.setVisible(false);
 				frmTimKiemNV.setVisible(false);
 				frmDanhGia.setVisible(false);
 				frmDatDichVu.setVisible(false);
+				frmCapNhatNhanVien.setVisible(false);
+				frmDanhSachPhong.setVisible(false);
 				//set current frame
 				contentPane.add(frmRegister);
 				frmRegister.setVisible(true);
@@ -89,12 +98,14 @@ public class frmMain extends JFrame {
 				//close another frame
 				frmLogin.setVisible(false);
 				frmRegister.setVisible(false);
-				frmDatPhong.setVisible(false);
+//				frmDatPhong.setVisible(false);
 				frmDichVu.setVisible(false);
 				frmTimKiemNV.setVisible(false);
 				frmDatDichVu.setVisible(false);
 				frmThemNhanVien.setVisible(false);
 				frmDanhGia.setVisible(false);
+				frmCapNhatNhanVien.setVisible(false);
+				frmDanhSachPhong.setVisible(false);
 				//set current frame
 				contentPane.add(frmQLDV);
 				frmQLDV.setVisible(true);
@@ -110,20 +121,24 @@ public class frmMain extends JFrame {
 				frmTimKiemNV.setVisible(false);
 				frmDanhGia.setVisible(false);
 				frmDatDichVu.setVisible(false);
+				frmCapNhatNhanVien.setVisible(false);
+				frmDanhSachPhong.setVisible(false);
 				//set current frame
-				contentPane.add(frmDatPhong);
-				frmDatPhong.setVisible(true);
+//				contentPane.add(frmDatPhong);
+//				frmDatPhong.setVisible(true);
 				break;
 			case 5:
 				//close another frame
 				frmLogin.setVisible(false);
 				frmRegister.setVisible(false);
 				frmQLDV.setVisible(false);
-				frmDatPhong.setVisible(false);
+//				frmDatPhong.setVisible(false);
 				frmTimKiemNV.setVisible(false);
 				frmThemNhanVien.setVisible(false);
 				frmDanhGia.setVisible(false);
 				frmDatDichVu.setVisible(false);
+				frmCapNhatNhanVien.setVisible(false);
+				frmDanhSachPhong.setVisible(false);
 				//set current frame
 				contentPane.add(frmDichVu);
 				frmDichVu.setVisible(true);
@@ -134,11 +149,13 @@ public class frmMain extends JFrame {
 				frmLogin.setVisible(false);
 				frmRegister.setVisible(false);
 				frmQLDV.setVisible(false);
-				frmDatPhong.setVisible(false);
+//				frmDatPhong.setVisible(false);
 				frmDichVu.setVisible(false);
 				frmThemNhanVien.setVisible(false);
 				frmDatDichVu.setVisible(false);
 				frmDanhGia.setVisible(false);
+				frmCapNhatNhanVien.setVisible(false);
+				frmDanhSachPhong.setVisible(false);
 				//set current frame
 				contentPane.add(frmTimKiemNV);
 				frmTimKiemNV.setVisible(true);
@@ -148,11 +165,13 @@ public class frmMain extends JFrame {
 				frmLogin.setVisible(false);
 				frmRegister.setVisible(false);
 				frmQLDV.setVisible(false);
-				frmDatPhong.setVisible(false);
+//				frmDatPhong.setVisible(false);
 				frmDichVu.setVisible(false);
 				frmTimKiemNV.setVisible(false);
 				frmThemNhanVien.setVisible(false);
 				frmDatDichVu.setVisible(false);
+				frmCapNhatNhanVien.setVisible(false);
+				frmDanhSachPhong.setVisible(false);
 				//set current frame
 				contentPane.add(frmThemNhanVien);
 				frmThemNhanVien.setVisible(true);
@@ -163,11 +182,13 @@ public class frmMain extends JFrame {
 				frmLogin.setVisible(false);
 				frmRegister.setVisible(false);
 				frmQLDV.setVisible(false);
-				frmDatPhong.setVisible(false);
+//				frmDatPhong.setVisible(false);
 				frmDichVu.setVisible(false);
 				frmTimKiemNV.setVisible(false);
 				frmThemNhanVien.setVisible(false);
 				frmDatDichVu.setVisible(false);
+				frmCapNhatNhanVien.setVisible(false);
+				frmDanhSachPhong.setVisible(false);
 				//set current frame
 				contentPane.add(frmDanhGia);
 				frmDanhGia.setVisible(true);
@@ -179,14 +200,50 @@ public class frmMain extends JFrame {
 				frmLogin.setVisible(false);
 				frmRegister.setVisible(false);
 				frmQLDV.setVisible(false);
-				frmDatPhong.setVisible(false);
+//				frmDatPhong.setVisible(false);
 				frmDichVu.setVisible(false);
 				frmTimKiemNV.setVisible(false);
 				frmThemNhanVien.setVisible(false);
 				frmDanhGia.setVisible(false);
+				frmCapNhatNhanVien.setVisible(false);
+				frmDanhSachPhong.setVisible(false);
 				//set current frame
 				contentPane.add(frmDatDichVu);
 				frmDatDichVu.setVisible(true);
+				break;
+				
+			case 10:
+				//close another frame
+				frmLogin.setVisible(false);
+				frmRegister.setVisible(false);
+				frmQLDV.setVisible(false);
+//				frmDatPhong.setVisible(false);
+				frmDichVu.setVisible(false);
+				frmTimKiemNV.setVisible(false);
+				frmThemNhanVien.setVisible(false);
+				frmDanhGia.setVisible(false);
+				frmDatDichVu.setVisible(false);
+				frmDanhSachPhong.setVisible(false);
+				//set current frame
+				contentPane.add(frmCapNhatNhanVien);
+				frmCapNhatNhanVien.setVisible(true);
+				break;
+				
+			case 11:
+				//close another frame
+				frmLogin.setVisible(false);
+				frmRegister.setVisible(false);
+				frmQLDV.setVisible(false);
+//				frmDatPhong.setVisible(false);
+				frmDichVu.setVisible(false);
+				frmTimKiemNV.setVisible(false);
+				frmThemNhanVien.setVisible(false);
+				frmDanhGia.setVisible(false);
+				frmDatDichVu.setVisible(false);
+				frmCapNhatNhanVien.setVisible(false);
+				//set current frame
+				contentPane.add(frmDanhSachPhong);
+				frmDanhSachPhong.setVisible(true);
 				break;
 		}
 	}
@@ -282,12 +339,28 @@ public class frmMain extends JFrame {
 		});
 		mnDichVu.add(mntmQuanLyDich);
 		
-		JMenu mnPhng = new JMenu("Ph\u00F2ng");
+//		-------------------------------------
+		JMenu mnPhng = new JMenu("Phong");
 		menuBar.add(mnPhng);
 		
-		JMenuItem mntmtPhng = new JMenuItem("\u0110\u1EB7t ph\u00F2ng");
-		mnPhng.add(mntmtPhng);
+//		JMenuItem mntmtPhng = new JMenuItem("Dat phong");
+//		mntmtPhng.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent arg0) {
+//				controlFrame(FRM_DATPHONG);
+//			}
+//		});
 		
+		JMenuItem mntmDanhSachPhong = new JMenuItem("Danh sach phong");
+		mntmDanhSachPhong.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controlFrame(FRM_DANHSACHPHONG);
+			}
+		});
+		
+//		mnPhng.add(mntmtPhng);
+		
+		mnPhng.add(mntmDanhSachPhong);
+//		-------------------------------------
 		JMenu mnNhnVin = new JMenu("Nh\u00E2n vi\u00EAn");
 		menuBar.add(mnNhnVin);
 		
@@ -304,13 +377,19 @@ public class frmMain extends JFrame {
 				controlFrame(FRM_THEMNHANVIEN);
 			}
 		});
-		mnNhnVin.add(mntmThmNhnVin);
-		mnNhnVin.add(mntmTmKim);
-		mntmtPhng.addActionListener(new ActionListener() {
+		
+		JMenuItem mntmCpNhtNhn = new JMenuItem("C\u1EADp nh\u1EADt nh\u00E2n vi\u00EAn");
+		mntmCpNhtNhn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				controlFrame(FRM_DATPHONG);
+				controlFrame(FRM_CAPNHATNHANVIEN);
 			}
 		});
+		
+		mnNhnVin.add(mntmTmKim);
+		mnNhnVin.add(mntmThmNhnVin);
+		mnNhnVin.add(mntmCpNhtNhn);
+		
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
 		contentPane.setLayout(new BorderLayout(0, 0));
