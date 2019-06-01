@@ -66,6 +66,7 @@ create table CTDICHVU
 	MaDichVu int,
 	SoLuong int,
 	MaDatPhong int,
+	ThanhTien int,
 )
 go
 /*create Dich Vu*/
@@ -126,8 +127,17 @@ INSERT INTO DICHVU( TenDichVu,GiaDichVu) VALUES ( 'ăn sáng', 30000);
 INSERT INTO DICHVU( TenDichVu,GiaDichVu) VALUES ( 'ăn toi', 100000);
 
 /*insert table LOAIPHONG*/
+go
 INSERT INTO LOAIPHONG( TenLoaiPhong, GiaPhong) VALUES ( 'VIP', 250000);
+go
 INSERT INTO LOAIPHONG( TenLoaiPhong, GiaPhong) VALUES ( 'Thuong', 150000);
+
+go
+INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (101, 1);
+INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (201, 1);
+INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (302, 2);
+INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (202, 2);
+
 
 SELECT DISTINCT p.MaPhong from PHONG as p, CTDATPHONG as ctdp where (not EXISTS
 (select MaPhong from CTDATPHONG as ctdp where p.MaPhong  = ctdp.MaPhong and NgayNhan between '2019-05-13' and '2019-05-15')) and (p.MaLoaiPhong = 1)
