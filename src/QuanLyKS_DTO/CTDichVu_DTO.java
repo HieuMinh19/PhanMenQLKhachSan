@@ -2,16 +2,12 @@ package QuanLyKS_DTO;
 
 public class CTDichVu_DTO {
 	private int iMaCTDichVu;
-	private String dtTuNgay;
-	private String dtDenNgay;
 	private int iMaDichVu;
 	private int iSoLuong;
 	private int iMaDatPhong;
 	
-	public CTDichVu_DTO( int iSoLuong, String dtTuNgay, String dtDenNgay, int iMaDichVu, int iMaDatPhong) {
+	public CTDichVu_DTO( int iSoLuong, int iMaDichVu, int iMaDatPhong) {
 		this.iSoLuong = iSoLuong;
-		this.dtTuNgay = dtTuNgay;
-		this.dtDenNgay = dtDenNgay;
 		this.iMaDichVu = iMaDichVu;
 		this.iMaDatPhong = iMaDatPhong;
 	}
@@ -35,22 +31,6 @@ public class CTDichVu_DTO {
 
 	public void setSoLuong(int iSoLuong) {
 		this.iSoLuong = iSoLuong;
-	}
-
-	public String getTuNgay() {
-		return dtTuNgay;
-	}
-
-	public void setTuNgay(String dtTuNgay) {
-		this.dtTuNgay = dtTuNgay;
-	}
-
-	public String getDenNgay() {
-		return dtDenNgay;
-	}
-
-	public void setDenNgay(String dtDenNgay) {
-		this.dtDenNgay = dtDenNgay;
 	}
 
 	public int getMaDichVu() {

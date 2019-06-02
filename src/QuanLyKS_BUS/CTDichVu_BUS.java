@@ -8,7 +8,12 @@ public class CTDichVu_BUS {
 	public CTDichVu_BUS(){
 		ChucVuDAL = new CTDichVu_DAL();
 	}
-	public static boolean Insert(CTDichVu_DTO ctdv) {
-		return CTDichVu_DAL.Insert(ctdv);
+
+	
+	
+	
+	public static int Insert(CTDichVu_DTO ctdv) {
+		//return CTDichVu_DAL.Insert(ctdv);
+		return 1;
 	}
 }
