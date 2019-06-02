@@ -26,9 +26,6 @@ public class LoaiPhong_DTO {
 	public int getMaLoaiPhong() {
 		return iMaLoaiPhong;
 	}
-	public void setMaLoaiPhong(int iMaLoaiPhong) {
-		this.iMaLoaiPhong = iMaLoaiPhong;
-    }
     
 	public String getTenLoaiPhong() {
 		return strTenLoaiPhong;

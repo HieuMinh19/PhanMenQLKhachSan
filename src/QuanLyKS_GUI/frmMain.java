@@ -40,6 +40,7 @@ public class frmMain extends JFrame {
 	static frmThemNhanVien frmThemNhanVien = new frmThemNhanVien();
 	static DanhGia frmDanhGia = new DanhGia();
 	static DatDichVu frmDatDichVu = new DatDichVu();
+	static ThemLoaiPhong frmThemLoaiPhong = new ThemLoaiPhong();
 	
 	static frmMain frame = new frmMain();
 	
@@ -56,6 +57,7 @@ public class frmMain extends JFrame {
 	private static final int FRM_THEMNHANVIEN = 7; 
 	private static final int FRM_DANHGIA = 8;
 	private static final int FRM_DATDICHVU = 9;
+	private static final int FRM_THEMLOAIPHONG = 10;
 	private static final long serialVersionUID = 1L;
 	private static JPanel contentPane;
 	/**
@@ -73,6 +75,7 @@ public class frmMain extends JFrame {
 				frmTimKiemNV.setVisible(false);
 				frmDanhGia.setVisible(false);
 				frmDatDichVu.setVisible(false);
+				frmThemLoaiPhong.setVisible(false);
 				//set current frame
 				contentPane.add(frmLogin);
 				frmLogin.setVisible(true);
@@ -88,6 +91,7 @@ public class frmMain extends JFrame {
 				frmTimKiemNV.setVisible(false);
 				frmDanhGia.setVisible(false);
 				frmDatDichVu.setVisible(false);
+				frmThemLoaiPhong.setVisible(false);
 				//set current frame
 				contentPane.add(frmRegister);
 				frmRegister.setVisible(true);
@@ -103,6 +107,7 @@ public class frmMain extends JFrame {
 				frmDatDichVu.setVisible(false);
 				frmThemNhanVien.setVisible(false);
 				frmDanhGia.setVisible(false);
+				frmThemLoaiPhong.setVisible(false);
 				//set current frame
 				contentPane.add(frmQLDV);
 				frmQLDV.setVisible(true);
@@ -118,6 +123,7 @@ public class frmMain extends JFrame {
 				frmTimKiemNV.setVisible(false);
 				frmDanhGia.setVisible(false);
 				frmDatDichVu.setVisible(false);
+				frmThemLoaiPhong.setVisible(false);
 				//set current frame
 				contentPane.add(frmDatPhong);
 				frmDatPhong.setVisible(true);
@@ -132,6 +138,7 @@ public class frmMain extends JFrame {
 				frmThemNhanVien.setVisible(false);
 				frmDanhGia.setVisible(false);
 				frmDatDichVu.setVisible(false);
+				frmThemLoaiPhong.setVisible(false);
 				//set current frame
 				contentPane.add(frmDichVu);
 				frmDichVu.setVisible(true);
@@ -147,6 +154,7 @@ public class frmMain extends JFrame {
 				frmThemNhanVien.setVisible(false);
 				frmDatDichVu.setVisible(false);
 				frmDanhGia.setVisible(false);
+				frmThemLoaiPhong.setVisible(false);
 				//set current frame
 				contentPane.add(frmTimKiemNV);
 				frmTimKiemNV.setVisible(true);
@@ -161,6 +169,7 @@ public class frmMain extends JFrame {
 				frmTimKiemNV.setVisible(false);
 				frmThemNhanVien.setVisible(false);
 				frmDatDichVu.setVisible(false);
+				frmThemLoaiPhong.setVisible(false);
 				//set current frame
 				contentPane.add(frmThemNhanVien);
 				frmThemNhanVien.setVisible(true);
@@ -176,6 +185,7 @@ public class frmMain extends JFrame {
 				frmTimKiemNV.setVisible(false);
 				frmThemNhanVien.setVisible(false);
 				frmDatDichVu.setVisible(false);
+				frmThemLoaiPhong.setVisible(false);
 				//set current frame
 				contentPane.add(frmDanhGia);
 				frmDanhGia.setVisible(true);
@@ -192,9 +202,25 @@ public class frmMain extends JFrame {
 				frmTimKiemNV.setVisible(false);
 				frmThemNhanVien.setVisible(false);
 				frmDanhGia.setVisible(false);
+				frmThemLoaiPhong.setVisible(false);
 				//set current frame
 				contentPane.add(frmDatDichVu);
 				frmDatDichVu.setVisible(true);
+				break;
+			case 10:
+				//close another frame
+				frmLogin.setVisible(false);
+				frmRegister.setVisible(false);
+				frmQLDV.setVisible(false);
+				frmDatPhong.setVisible(false);
+				frmDichVu.setVisible(false);
+				frmTimKiemNV.setVisible(false);
+				frmThemNhanVien.setVisible(false);
+				frmDanhGia.setVisible(false);
+				frmDatDichVu.setVisible(false);
+				//set current frame
+				contentPane.add(frmThemLoaiPhong);
+				frmThemLoaiPhong.setVisible(true);
 				break;
 		}
 	}
@@ -302,6 +328,14 @@ public class frmMain extends JFrame {
 		
 		JMenuItem mntmtPhng = new JMenuItem("\u0110\u1EB7t ph\u00F2ng");
 		mnPhng.add(mntmtPhng);
+		
+		JMenuItem mntmThemLoaiPhong = new JMenuItem("Thêm Loại Phòng");
+		mnPhng.add(mntmThemLoaiPhong);
+		mntmThemLoaiPhong.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0){
+				controlFrame(FRM_THEMLOAIPHONG);
+			}
+		});
 		
 		JMenu mnNhnVin = new JMenu("Nh\u00E2n vi\u00EAn");
 		menuBar.add(mnNhnVin);
