@@ -1,5 +1,7 @@
 package QuanLyKS_BUS;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+
 import QuanLyKS_DTO.DichVu_DTO;
 import QuanLyKS_DAL.DichVu_DAL;
 public class DichVu_BUS {
@@ -20,6 +22,11 @@ public class DichVu_BUS {
 	}
 	public static boolean Delete(DichVu_DTO dichvu) {
 		return DichVu_DAL.Delete(dichvu);
+	}
+	
+	
+	public ArrayList<DichVu_DTO> getListDV(){
+		return DichVu_DAL.getallDV();
 	}
 	
 	

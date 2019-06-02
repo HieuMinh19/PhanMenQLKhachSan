@@ -3,6 +3,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 import QuanLyKS_DTO.DichVu_DTO;
 public class DichVu_DAL {
 	DichVu_DTO DichVu = new DichVu_DTO();
@@ -27,6 +29,35 @@ public class DichVu_DAL {
 		}
 		return null;	
 	}
+	
+	public static ArrayList<DichVu_DTO> getallDV(){
+		 ArrayList<DichVu_DTO> dvList = new ArrayList<>();
+			//get connection
+			PreparedStatement ptmt = null; 
+			MyConnection mycon = new QuanLyKS_DAL.MyConnection();
+			Connection conn = mycon.getConnection();
+
+			String query = "SELECT * FROM DICHVU";
+			try {
+				ptmt = conn.prepareStatement(query);
+				ResultSet rs = ptmt.executeQuery();
+				DichVu_DTO dv;
+				while(rs.next()) {
+					dv = new DichVu_DTO(rs.getString("TenDichVu"), rs.getInt("GiaDichVu"), rs.getInt("MaDichVu"));
+					dvList.add(dv);
+				}
+				//return rs;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();	
+			}
+			return dvList;
+	}
+	
+	
+	
+	
+	
 	
 	public static boolean Insert(DichVu_DTO dichvu){
 		PreparedStatement ptmt = null; 

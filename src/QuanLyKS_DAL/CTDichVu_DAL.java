@@ -8,16 +8,14 @@ import QuanLyKS_DTO.CTDichVu_DTO;;
 public class CTDichVu_DAL {
 	public static boolean Insert(CTDichVu_DTO ctdvDTO)  {
 		PreparedStatement ptmt = null; 
-		String query = "INSERT INTO CTDICHVU(TuNgay, DenNgay, MaDichVu, SoLuong, MaDatPhong) VALUES (?, ?, ?, ?, ?)";
+		String query = "INSERT INTO CTDICHVU(MaDichVu, SoLuong, MaDatPhong) VALUES ( ?, ?, ?)";
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
 		Connection conn = mycon.getConnection();
 		try {
 			ptmt = conn.prepareStatement(query);
-			ptmt.setString(1, ctdvDTO.getTuNgay());
-			ptmt.setString(2, ctdvDTO.getDenNgay());
-			ptmt.setInt(3, ctdvDTO.getMaDichVu());
-			ptmt.setInt(4, ctdvDTO.getSoLuong());
-			ptmt.setInt(5, ctdvDTO.getMaDatPhong());
+			ptmt.setInt(1, ctdvDTO.getMaDichVu());
+			ptmt.setInt(2, ctdvDTO.getSoLuong());
+			ptmt.setInt(3, ctdvDTO.getMaDatPhong());
 			if( ptmt.executeUpdate() != 0) {
 				System.err.println("booking Service success");
 				return true;

@@ -138,20 +138,18 @@ public class DatDichVu extends JInternalFrame {
 		btnDatDichVu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-				String TuNgay = sdf.format( dtTuNgay.getDate() );
-				String DenNgay = sdf.format( dtDenNgay.getDate() );
 				String strMaPhong = (cbxMaPhong.getSelectedItem()).toString();
 				int iMaPhong = Integer.parseInt(strMaPhong);
 				
 				int SoLuong = Integer.parseInt(txtSoLuong.getText());
 					System.out.println(SoLuong);
-        		CTDichVu_DTO ctdvDTO = new CTDichVu_DTO(SoLuong, TuNgay, DenNgay, idDV, iMaPhong);
+        		CTDichVu_DTO ctdvDTO = new CTDichVu_DTO(SoLuong, idDV, iMaPhong);
         		
-        		if(CTDichVu_BUS.Insert(ctdvDTO) == true) {
-        			JOptionPane.showMessageDialog(null, "Insert booking Success", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);
-        		}else {
-        			JOptionPane.showMessageDialog(null, "Insert booking Fail", "Fail: " + "Success Mesage", JOptionPane.CLOSED_OPTION);
-        		}
+//        		if(CTDichVu_BUS.Insert(ctdvDTO) == true) {
+//        			JOptionPane.showMessageDialog(null, "Insert booking Success", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);
+//        		}else {
+//        			JOptionPane.showMessageDialog(null, "Insert booking Fail", "Fail: " + "Success Mesage", JOptionPane.CLOSED_OPTION);
+//        		}
 			}
 		});
 		btnDatDichVu.setFont(new Font("Arial", Font.PLAIN, 12));

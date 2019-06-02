@@ -1,21 +1,25 @@
 package QuanLyKS_BUS;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.Date;
-
 import com.ibm.icu.text.SimpleDateFormat;
 import com.ibm.icu.util.Calendar;
 
+import QuanLyKS_DAL.LoaiPhong_DAL;
 import QuanLyKS_DAL.CTDatPhong_DAL;
 import QuanLyKS_DTO.CTDatPhong_DTO;
 import QuanLyKS_DAL.Phong_DAL;
 public class CTDatPhong_BUS {
 	private static CTDatPhong_DAL ctdpDAL;
+	
 	public static boolean Insert(CTDatPhong_DTO ctdp) {
 		int iThanhTien = tinhThanhTien(ctdp.getNgayNhan(), ctdp.getNgayTra(), ctdp.getMaPhong());
 		ctdp.setThanhTien(iThanhTien);
 		return CTDatPhong_DAL.Insert(ctdp);
+	}
+	
+	public static int getMaPhong(String TenPhong) {
+		
+		return 0;
 	}
 	
 	private static int tinhThanhTien(String strDateFrom, String strDateTo, int iMaPhong) {
