@@ -21,8 +21,10 @@ public class LoaiPhong_DTO {
 		this.iMaLoaiPhong = iMaLoaiPhong;
 		this.strTenLoaiPhong = strTenLoaiPhong;
     }
-    
 	
+	public void setMaLoaiPhong(int iMaLoaiPhong) {
+		this.iMaLoaiPhong = iMaLoaiPhong;
+    }	
 	public int getMaLoaiPhong() {
 		return iMaLoaiPhong;
 	}

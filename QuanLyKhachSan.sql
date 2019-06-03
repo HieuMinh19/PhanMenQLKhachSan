@@ -1,6 +1,4 @@
 ﻿GO
-drop database QUANLYKHACHSAN
-GO
 create Database QUANLYKHACHSAN
 GO
 use QUANLYKHACHSAN
