@@ -10,7 +10,8 @@ public class NhanVien_DTO {
 	private int iCMND;
 	private Date dateNgayVaoLam;
 	private int iMaChucVu;
-
+	private ChucVu_DTO chucvu;
+	
 	public NhanVien_DTO() {
 		// TODO Auto-generated constructor stub
 	}
@@ -28,6 +29,15 @@ public class NhanVien_DTO {
 		this.iCMND = iCMND;
 		this.dateNgayVaoLam = ngayVaoLam;
 		this.iMaChucVu = iMaChucVu;
+		this.iMaNhanVien = iMaNhanVien;
+	}
+	
+	public NhanVien_DTO(int iMaNhanVien, String strTenNhanVien, Date NgaySinh, int iCMND,Date ngayVaoLam,ChucVu_DTO chucvu) {
+		this.strTenNhanVien = strTenNhanVien;
+		this.dateNgaySinh = NgaySinh;
+		this.iCMND = iCMND;
+		this.dateNgayVaoLam = ngayVaoLam;
+		this.chucvu = chucvu;
 		this.iMaNhanVien = iMaNhanVien;
 	}
 
@@ -72,6 +82,13 @@ public class NhanVien_DTO {
 	}
 	public void setMaChucVu(int iMaChucVu) {
 		this.iMaChucVu = iMaChucVu;
+	}
+	
+	public ChucVu_DTO getChucVu() {
+		return chucvu;
+	}
+	public void setChucVu(ChucVu_DTO chucvu) {
+		this.chucvu = chucvu;
 	}
 	
 	@Override

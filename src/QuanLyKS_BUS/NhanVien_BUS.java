@@ -21,7 +21,6 @@ public class NhanVien_BUS extends JInternalFrame {
 	
 	public ArrayList<NhanVien_DTO> SearchNV (String tukhoa, Date ngayvaolam){
 		return dal.SearchNV(tukhoa, ngayvaolam);
-		
 	}
 	
 	public ArrayList<NhanVien_DTO> LoadListNV (){
