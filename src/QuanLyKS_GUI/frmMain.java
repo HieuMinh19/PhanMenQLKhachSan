@@ -355,6 +355,17 @@ public class frmMain extends JFrame {
 		});
 		mnNhnVin.add(mntmThmNhnVin);
 		mnNhnVin.add(mntmTmKim);
+		
+		JMenu mnLoiPhng = new JMenu("Lo\u1EA1i ph\u00F2ng");
+		menuBar.add(mnLoiPhng);
+		
+		JMenuItem mntmThmLoiPhng = new JMenuItem("Th\u00EAm lo\u1EA1i ph\u00F2ng");
+		mntmThmLoiPhng.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controlFrame(FRM_THEMLOAIPHONG);
+			}
+		});
+		mnLoiPhng.add(mntmThmLoiPhng);
 		mntmtPhng.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controlFrame(FRM_DATPHONG);
