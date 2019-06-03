@@ -39,7 +39,9 @@ public class frmCapNhatNhanVien extends JInternalFrame {
 	private JTable table;
 	private NhanVien_BUS bus;
 	private ChucVu_BUS cv_bus;
+	private int selectedRow;
 	private int selectedMaNhanVien;
+	private int selectedChucVuIndex;
 	private ArrayList<NhanVien_DTO> dsnv;
 	private ArrayList<ChucVu_DTO> dscv;
 
@@ -79,7 +81,7 @@ public class frmCapNhatNhanVien extends JInternalFrame {
 		txtCMND.setBounds(214, 277, 320, 20);
 		getContentPane().add(txtCMND);
 		
-		JComboBox<String> cbChucVu = new JComboBox<String>();
+		JComboBox<ChucVu_DTO> cbChucVu = new JComboBox<ChucVu_DTO>();
 		cbChucVu.setBounds(214, 326, 320, 20);
 		getContentPane().add(cbChucVu);
 		
@@ -138,19 +140,20 @@ public class frmCapNhatNhanVien extends JInternalFrame {
 	    cellSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	    cellSelectionModel.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
-				
-			    int[] selectedRow = table.getSelectedRows();
+				selectedRow = table.getSelectedRow() < 0 ? 0 : table.getSelectedRow();
+			    int[] selectedRowColums = table.getSelectedRows();
 			
-			    for (int i = 0; i < selectedRow.length; i++) {
+			    for (int i = 0; i < selectedRowColums.length; i++) {
 //			    	System.out.println(selectedColumns.length);
-			    	selectedMaNhanVien = (int) table.getValueAt(selectedRow[i], 0);
-			        txtTenNhanVien.setText((String) table.getValueAt(selectedRow[i], 1));
-			        txtCMND.setText(table.getValueAt(selectedRow[i], 3).toString());
-			        date_NgayVaoLam.setDate((Date) table.getValueAt(selectedRow[i], 4));
-			        date_NgaySinh.setDate((Date) table.getValueAt(selectedRow[i], 2));   
+			    	selectedMaNhanVien = (int) table.getValueAt(selectedRowColums[i], 0);
+			        txtTenNhanVien.setText((String) table.getValueAt(selectedRowColums[i], 1));
+			        txtCMND.setText(table.getValueAt(selectedRowColums[i], 3).toString());
+			        date_NgayVaoLam.setDate((Date) table.getValueAt(selectedRowColums[i], 4));
+			        date_NgaySinh.setDate((Date) table.getValueAt(selectedRowColums[i], 2));   
 //			        (string) table.getValueAt(selectedRow[i], 5);
-			        cbChucVu.setSelectedItem(table.getValueAt(selectedRow[i], 5));
 			    }
+			    selectedChucVuIndex = dscv.indexOf(dsnv.get(selectedRow).getChucVu());
+		        cbChucVu.setSelectedIndex(selectedChucVuIndex);//(table.getValueAt(selectedRowColums[i], 5));
 			  }
 
         });
@@ -158,7 +161,7 @@ public class frmCapNhatNhanVien extends JInternalFrame {
 		srcListNhanVien.setViewportView(table);
 
 		dscv = cv_bus.selectAll();
-		dscv.forEach(cv -> cbChucVu.addItem(cv.getTenChucVu()));
+		dscv.forEach(cv -> cbChucVu.addItem(cv));
 		
 //		------------------------------------------------
 		
@@ -180,7 +183,7 @@ public class frmCapNhatNhanVien extends JInternalFrame {
 		
 		btnCapNhat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				boolean result = NhanVien_BUS.Update(new NhanVien_DTO(selectedMaNhanVien, txtTenNhanVien.getText(), new Date(date_NgaySinh.getDate().getTime()), Integer.parseInt(txtCMND.getText()), new Date(date_NgayVaoLam.getDate().getTime()), 0));
+				boolean result = NhanVien_BUS.Update(new NhanVien_DTO(selectedMaNhanVien, txtTenNhanVien.getText(), new Date(date_NgaySinh.getDate().getTime()), Integer.parseInt(txtCMND.getText()), new Date(date_NgayVaoLam.getDate().getTime()), ((ChucVu_DTO) cbChucVu.getSelectedItem()).getMaChucVu()));
 				if(result) {
 					if (m.getRowCount() > 0) {
 					    for (int i = m.getRowCount() - 1; i > -1; i--) {
@@ -188,7 +191,7 @@ public class frmCapNhatNhanVien extends JInternalFrame {
 					    }
 					}
 					dsnv = bus.LoadListNV();
-					dsnv.forEach(nv -> m.addRow(new Object[]{nv.getMaNhanVien(), nv.getTenNhanVien(),nv.getNgaySinh(), nv.getCMND(),nv.getNgayVaoLam()}));
+					dsnv.forEach(nv -> m.addRow(new Object[]{nv.getMaNhanVien(), nv.getTenNhanVien(),nv.getNgaySinh(), nv.getCMND(),nv.getNgayVaoLam(),nv.getChucVu().getTenChucVu()}));
 				}
 			}
 		});
@@ -207,5 +210,6 @@ public class frmCapNhatNhanVien extends JInternalFrame {
 				}
 			}
 		});
+		
 	}
 }
