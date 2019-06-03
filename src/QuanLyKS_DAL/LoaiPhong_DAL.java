@@ -5,6 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import QuanLyKS_DTO.DanhGia_DTO;
+import QuanLyKS_DTO.LoaiPhong_DTO;
+
 public class LoaiPhong_DAL {
 	public ResultSet getListLoaiPhong(){
 		//get connection
@@ -23,4 +26,29 @@ public class LoaiPhong_DAL {
 		}
 		return null;	
 	}
+	public static boolean Insert(LoaiPhong_DTO loaiphong) {
+		PreparedStatement ptmt = null; 
+		String query = "INSERT INTO LOAIPHONG(TenLoaiPhong, GiaPhong) VALUES (?, ?)";
+		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
+		Connection conn = mycon.getConnection();
+		String TenLoaiPhong = loaiphong.getTenLoaiPhong();
+		int GiaPhong = loaiphong.getGiaPhong();
+		try {
+			ptmt = conn.prepareStatement(query);
+			ptmt.setString(1, TenLoaiPhong);
+			ptmt.setInt(2, GiaPhong);
+			if(ptmt.executeUpdate() !=0 ) {
+				System.err.println("thêm loại phòng thành công! ");
+				return true;
+			}else {
+				System.err.println("thêm loại phòng thất bại ");
+				return false;
+			}
+
+		} catch(SQLException e){
+			e.printStackTrace();
+			System.err.println("kết nối thất bại !");
+			return false;
+		}
+		}
 }

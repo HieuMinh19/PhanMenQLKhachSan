@@ -85,23 +85,14 @@ public class ThemLoaiPhong extends JInternalFrame {
 		txtThemLoaiPhong.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				loaiphongDTO = new LoaiPhong_DTO(); 
-				
-
 
 				loaiphongDTO.setTenLoaiPhong(txtTenLoaiPhong.getText());
-
 				loaiphongDTO.setGiaPhong(Integer.parseInt(txtGiaPhong.getText()));
 
-
-
-					 if(  LoaiPhong_BUS.Insert(loaiphongDTO) == true)
-						 JOptionPane.showMessageDialog(null, "create new type of room to database successfully", "Notice !", JOptionPane.INFORMATION_MESSAGE);
-					 else
-						 JOptionPane.showMessageDialog(null, "failed to add new database", "Notice !", JOptionPane.CLOSED_OPTION);
-
-
-
-
+				 if(LoaiPhong_BUS.Insert(loaiphongDTO) == true)
+					 JOptionPane.showMessageDialog(null, "create new type of room to database successfully", "Notice !", JOptionPane.INFORMATION_MESSAGE);
+				 else
+					 JOptionPane.showMessageDialog(null, "failed to add new database", "Notice !", JOptionPane.CLOSED_OPTION);
 			}
 		});
 		txtThemLoaiPhong.setBounds(101, 195, 113, 23);
