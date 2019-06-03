@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import QuanLyKS_DTO.DanhGia_DTO;
 import QuanLyKS_DTO.LoaiPhong_DTO;
@@ -51,4 +52,30 @@ public class LoaiPhong_DAL {
 			return false;
 		}
 		}
+	
+	public ArrayList<LoaiPhong_DTO> selectAll(){
+		//get connection
+		PreparedStatement ptmt = null; 
+		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
+		Connection conn = mycon.getConnection();
+
+		String query = "SELECT * FROM LOAIPHONG";
+		try {
+			ptmt = conn.prepareStatement(query);
+			ResultSet rs = ptmt.executeQuery();
+			ArrayList<LoaiPhong_DTO> ds = new ArrayList<LoaiPhong_DTO>();
+			while(rs.next()) {
+				LoaiPhong_DTO lp = new LoaiPhong_DTO();
+				lp.setMaLoaiPhong(rs.getInt("MaLoaiPhong"));
+				lp.setTenLoaiPhong(rs.getString("TenLoaiPhong"));
+				lp.setGiaPhong(rs.getInt("GiaPhong"));
+				ds.add(lp);
+			}
+			return ds;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;	
+	}
 }
