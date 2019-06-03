@@ -6,7 +6,7 @@ public class NhanVien_DTO {
 
 	private int iMaNhanVien;
 	private String strTenNhanVien;
-	private String strNgaySinh;
+	private Date dateNgaySinh;
 	private int iCMND;
 	private Date dateNgayVaoLam;
 	private int iMaChucVu;
@@ -14,13 +14,23 @@ public class NhanVien_DTO {
 	public NhanVien_DTO() {
 		// TODO Auto-generated constructor stub
 	}
-	public NhanVien_DTO(String strTenNhanVien, String strNgaySinh, int iCMND,Date ngayVaoLam,int iMaChucVu) {
+	public NhanVien_DTO(String strTenNhanVien,  Date NgaySinh, int iCMND,Date ngayVaoLam,int iMaChucVu) {
 		this.strTenNhanVien = strTenNhanVien;
-		this.strNgaySinh = strNgaySinh;
+		this.dateNgaySinh = NgaySinh;
 		this.iCMND = iCMND;
 		this.dateNgayVaoLam = ngayVaoLam;
 		this.iMaChucVu = iMaChucVu;
 	}
+	
+	public NhanVien_DTO(int iMaNhanVien, String strTenNhanVien, Date NgaySinh, int iCMND,Date ngayVaoLam,int iMaChucVu) {
+		this.strTenNhanVien = strTenNhanVien;
+		this.dateNgaySinh = NgaySinh;
+		this.iCMND = iCMND;
+		this.dateNgayVaoLam = ngayVaoLam;
+		this.iMaChucVu = iMaChucVu;
+		this.iMaNhanVien = iMaNhanVien;
+	}
+
 
 	public int getMaNhanVien() {
 		return iMaNhanVien;
@@ -36,13 +46,13 @@ public class NhanVien_DTO {
 		this.strTenNhanVien = strTenNhanVien;
 	}
 
-	public String getNgaySinh() {
-		return strNgaySinh;
+	public Date getNgaySinh() {
+		return dateNgaySinh;
 	}
-	public void setNgaySinh(String strNgaySinh) {
-		this.strNgaySinh = strNgaySinh;
+	public void setNgaySinh(Date dateNgaySinh) {
+		this.dateNgaySinh = dateNgaySinh;
 	}
-
+	
 	public int getCMND() {
 		return iCMND;
 	}
