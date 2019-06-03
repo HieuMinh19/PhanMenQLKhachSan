@@ -1,5 +1,6 @@
 package QuanLyKS_GUI;
 import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -26,6 +27,10 @@ import javax.swing.border.LineBorder;
 import com.sun.xml.internal.ws.api.server.Adapter.Toolkit;
 
 import java.awt.SystemColor;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 public class frmMain extends JFrame {
 	/**
@@ -48,6 +53,7 @@ public class frmMain extends JFrame {
 	static frmMain frame = new frmMain();
 	
 	
+	private Image backgroundImage;
 
 	//deifne static varriable cho frame
 	private static final int FRM_LOGIN = 1;
@@ -303,18 +309,33 @@ public class frmMain extends JFrame {
 	 * Create the frame.
 	 */
 	public frmMain() {
-		
-		
+//		backgroundImage = new ImageIcon("~/images/main-background.png").getImage();
+//	    Dimension size = new Dimension(backgroundImage.getWidth(null), backgroundImage.getHeight(null));
+//	    this.setPreferredSize(size);
+//	    this.setMinimumSize(size);
+//	    this.setMaximumSize(size);
+//	    this.setSize(size);
+//	    this.setLayout(null);
+//	    JPanel panel = new JPanel() {
+//	    	@Override
+//	    	public void paintComponent(Graphics g) {
+//	    	    g.drawImage(backgroundImage, 0, 0, null);
+//	        }
+//	    };
+//	    this.getContentPane().add(panel);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		
 		JMenuBar menuBar = new JMenuBar();
+		menuBar.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		setJMenuBar(menuBar);
 		
 		JMenu mnNewMenu = new JMenu("File");
+		mnNewMenu.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		menuBar.add(mnNewMenu);
 		JMenuItem mntmdanhgia = new JMenuItem("FeedBack");
+		mntmdanhgia.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		mntmdanhgia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controlFrame(FRM_DANHGIA);
@@ -323,6 +344,7 @@ public class frmMain extends JFrame {
 		});
 		mnNewMenu.add(mntmdanhgia);
 		JMenuItem mntmLogout = new JMenuItem("Login");
+		mntmLogout.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		mntmLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controlFrame(FRM_LOGIN);
@@ -330,6 +352,7 @@ public class frmMain extends JFrame {
 		});
 		mnNewMenu.add(mntmLogout);		
 		JMenuItem mntmRegister = new JMenuItem("Register");
+		mntmRegister.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		mntmRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controlFrame(FRM_REGISTER);
@@ -339,6 +362,7 @@ public class frmMain extends JFrame {
 		});
 		mnNewMenu.add(mntmRegister);
 		JMenuItem mntmit = new JMenuItem("Eixt");
+		mntmit.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		mntmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.setVisible(false);
@@ -347,7 +371,9 @@ public class frmMain extends JFrame {
 		mnNewMenu.add(mntmit);
 		
 		JMenu mnDichVu = new JMenu("D\u1ECBch v\u1EE5");
+		mnDichVu.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		JMenuItem mntmThemDichVu = new JMenuItem("Th\u00EAm d\u1ECBch v\u1EE5");
+		mntmThemDichVu.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		mntmThemDichVu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controlFrame(FRM_DichVu);
@@ -355,6 +381,7 @@ public class frmMain extends JFrame {
 		});
 		
 		JMenuItem mntmtDchV = new JMenuItem("\u0110\u1EB7t d\u1ECBch v\u1EE5");
+		mntmtDchV.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		mntmtDchV.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controlFrame(FRM_DATDICHVU);
@@ -365,6 +392,7 @@ public class frmMain extends JFrame {
 		menuBar.add(mnDichVu);
 		
 		JMenuItem mntmQuanLyDich = new JMenuItem("Qu\u1EA3n l\u00FD d\u1ECBch v\u1EE5");
+		mntmQuanLyDich.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		mntmQuanLyDich.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controlFrame(FRM_QLDV);
@@ -374,11 +402,14 @@ public class frmMain extends JFrame {
 		mnDichVu.add(mntmQuanLyDich);
 		
 		JMenu mnPhng = new JMenu("Ph\u00F2ng");
+		mnPhng.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		menuBar.add(mnPhng);
 		
 		JMenuItem mntmtPhng = new JMenuItem("\u0110\u1EB7t ph\u00F2ng");
+		mntmtPhng.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		
 		JMenuItem mntmDanhSachPhong = new JMenuItem("Danh sach phong");
+		mntmDanhSachPhong.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		mntmDanhSachPhong.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controlFrame(FRM_DANHSACHPHONG);
@@ -389,9 +420,11 @@ public class frmMain extends JFrame {
 		mnPhng.add(mntmDanhSachPhong);
 		
 		JMenu mnNhnVin = new JMenu("Nh\u00E2n vi\u00EAn");
+		mnNhnVin.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		menuBar.add(mnNhnVin);
 		
 		JMenuItem mntmTmKim = new JMenuItem("T\u00ECm ki\u1EBFm");
+		mntmTmKim.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		mntmTmKim.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controlFrame(FRM_TIMKIEM);
@@ -399,6 +432,7 @@ public class frmMain extends JFrame {
 		});
 		
 		JMenuItem mntmThmNhnVin = new JMenuItem("Th\u00EAm nh\u00E2n vi\u00EAn");
+		mntmThmNhnVin.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		mntmThmNhnVin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controlFrame(FRM_THEMNHANVIEN);
@@ -406,6 +440,7 @@ public class frmMain extends JFrame {
 		});
 		
 		JMenuItem mntmCpNhtNhn = new JMenuItem("C\u1EADp nh\u1EADt nh\u00E2n vi\u00EAn");
+		mntmCpNhtNhn.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		mntmCpNhtNhn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controlFrame(FRM_CAPNHATNHANVIEN);
@@ -418,9 +453,11 @@ public class frmMain extends JFrame {
 
 		
 		JMenu mnLoiPhng = new JMenu("Lo\u1EA1i ph\u00F2ng");
+		mnLoiPhng.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		menuBar.add(mnLoiPhng);
 		
 		JMenuItem mntmThmLoiPhng = new JMenuItem("Th\u00EAm lo\u1EA1i ph\u00F2ng");
+		mntmThmLoiPhng.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		mntmThmLoiPhng.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controlFrame(FRM_THEMLOAIPHONG);
@@ -442,4 +479,6 @@ public class frmMain extends JFrame {
 		desktopPane.setBackground(SystemColor.activeCaption);
 		contentPane.add(desktopPane, BorderLayout.SOUTH);
 	}
+	
+	
 }
