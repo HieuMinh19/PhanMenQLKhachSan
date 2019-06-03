@@ -15,11 +15,11 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
-
-
 import com.toedter.calendar.JDateChooser;
 
+import QuanLyKS_BUS.ChucVu_BUS;
 import QuanLyKS_BUS.NhanVien_BUS;
+import QuanLyKS_DTO.ChucVu_DTO;
 import QuanLyKS_DTO.NhanVien_DTO;
 
 import javax.swing.SpringLayout;
@@ -38,7 +38,10 @@ public class frmCapNhatNhanVien extends JInternalFrame {
 	private JTextField txtCMND;
 	private JTable table;
 	private NhanVien_BUS bus;
+	private ChucVu_BUS cv_bus;
 	private int selectedMaNhanVien;
+	private ArrayList<NhanVien_DTO> dsnv;
+	private ArrayList<ChucVu_DTO> dscv;
 
 	/**
 	 * Launch the application.
@@ -61,6 +64,8 @@ public class frmCapNhatNhanVien extends JInternalFrame {
 	 */
 	public frmCapNhatNhanVien() {
 		bus=new NhanVien_BUS();
+		cv_bus = new ChucVu_BUS();
+		dsnv = new ArrayList<NhanVien_DTO>();
 		setBounds(100, 100, 770, 596);
 		getContentPane().setLayout(null);
 		
@@ -74,9 +79,9 @@ public class frmCapNhatNhanVien extends JInternalFrame {
 		txtCMND.setBounds(214, 277, 320, 20);
 		getContentPane().add(txtCMND);
 		
-		JComboBox<String> comboBox = new JComboBox<String>();
-		comboBox.setBounds(214, 326, 320, 20);
-		getContentPane().add(comboBox);
+		JComboBox<String> cbChucVu = new JComboBox<String>();
+		cbChucVu.setBounds(214, 326, 320, 20);
+		getContentPane().add(cbChucVu);
 		
 		JLabel label = new JLabel("T\u00EAn nh\u00E2n vi\u00EAn");
 		label.setBounds(54, 218, 122, 22);
@@ -125,7 +130,7 @@ public class frmCapNhatNhanVien extends JInternalFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"MaNhanVien", "TenNhanVien", "NgaySinh", "CMND", "NgayVaoLam"
+				"MaNhanVien", "TenNhanVien", "NgaySinh", "CMND", "NgayVaoLam", "TenChucVu"
 			}
 		);
 		table = new JTable(m);
@@ -135,7 +140,6 @@ public class frmCapNhatNhanVien extends JInternalFrame {
 			public void valueChanged(ListSelectionEvent e) {
 				
 			    int[] selectedRow = table.getSelectedRows();
-			    int[] selectedColumns = table.getSelectedColumns();
 			
 			    for (int i = 0; i < selectedRow.length; i++) {
 //			    	System.out.println(selectedColumns.length);
@@ -144,12 +148,21 @@ public class frmCapNhatNhanVien extends JInternalFrame {
 			        txtCMND.setText(table.getValueAt(selectedRow[i], 3).toString());
 			        date_NgayVaoLam.setDate((Date) table.getValueAt(selectedRow[i], 4));
 			        date_NgaySinh.setDate((Date) table.getValueAt(selectedRow[i], 2));   
+//			        (string) table.getValueAt(selectedRow[i], 5);
+			        cbChucVu.setSelectedItem(table.getValueAt(selectedRow[i], 5));
 			    }
 			  }
 
         });
 		table.setRowSelectionAllowed(true);
 		srcListNhanVien.setViewportView(table);
+
+		dscv = cv_bus.selectAll();
+		dscv.forEach(cv -> cbChucVu.addItem(cv.getTenChucVu()));
+		
+//		------------------------------------------------
+		
+//		------------------------------------------------
 		JButton btnLoadDanhSach = new JButton("Load Danh Sach Nhan Vien");
 		btnLoadDanhSach.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -158,8 +171,8 @@ public class frmCapNhatNhanVien extends JInternalFrame {
 				        m.removeRow(i);
 				    }
 				}
-				ArrayList<NhanVien_DTO> dsnv = bus.LoadListNV();
-				dsnv.forEach(nv -> m.addRow(new Object[]{nv.getMaNhanVien(), nv.getTenNhanVien(),nv.getNgaySinh(), nv.getCMND(),nv.getNgayVaoLam()}));
+				dsnv = bus.LoadListNV();
+				dsnv.forEach(nv -> m.addRow(new Object[]{nv.getMaNhanVien(), nv.getTenNhanVien(),nv.getNgaySinh(), nv.getCMND(),nv.getNgayVaoLam(),nv.getChucVu().getTenChucVu()}));
 			}
 		}); 
 		btnLoadDanhSach.setBounds(257, 163, 202, 25);
@@ -174,7 +187,7 @@ public class frmCapNhatNhanVien extends JInternalFrame {
 					        m.removeRow(i);
 					    }
 					}
-					ArrayList<NhanVien_DTO> dsnv = bus.LoadListNV();
+					dsnv = bus.LoadListNV();
 					dsnv.forEach(nv -> m.addRow(new Object[]{nv.getMaNhanVien(), nv.getTenNhanVien(),nv.getNgaySinh(), nv.getCMND(),nv.getNgayVaoLam()}));
 				}
 			}
@@ -189,7 +202,7 @@ public class frmCapNhatNhanVien extends JInternalFrame {
 					        m.removeRow(i);
 					    }
 					}
-					ArrayList<NhanVien_DTO> dsnv = bus.LoadListNV();
+					dsnv = bus.LoadListNV();
 					dsnv.forEach(nv -> m.addRow(new Object[]{nv.getMaNhanVien(), nv.getTenNhanVien(),nv.getNgaySinh(), nv.getCMND(),nv.getNgayVaoLam()}));
 				}
 			}

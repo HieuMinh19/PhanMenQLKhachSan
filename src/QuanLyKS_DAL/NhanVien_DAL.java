@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import QuanLyKS_DTO.Account_DTO;
+import QuanLyKS_DTO.ChucVu_DTO;
 import QuanLyKS_DTO.NhanVien_DTO;
 
 import javax.swing.JInternalFrame;
@@ -146,7 +147,7 @@ public class NhanVien_DAL extends JInternalFrame {
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
 		Connection conn = mycon.getConnection();
 		
-		String query = "SELECT * FROM NHANVIEN";
+		String query = "SELECT MaNhanVien,TenNhanVien,NgaySinh,CMND,NgayVaoLam,CV.MaChucVu as 'MaChucVu',TenChucVu FROM NHANVIEN NV, CHUCVU CV WHERE NV.MACHUCVU=CV.MACHUCVU ";
 		try {
 			ptmt = conn.prepareStatement(query);
 			ResultSet rs = ptmt.executeQuery();
@@ -159,6 +160,7 @@ public class NhanVien_DAL extends JInternalFrame {
 				nv.setCMND(rs.getInt("CMND"));
 				nv.setNgayVaoLam(rs.getDate("NgayVaoLam"));
 				nv.setMaChucVu(rs.getInt("MaChucVu"));
+				nv.setChucVu(new ChucVu_DTO(rs.getInt("MaChucVu"),rs.getString("TenChucVu")));
 				dsnv.add(nv);
 			}
 			return dsnv;
