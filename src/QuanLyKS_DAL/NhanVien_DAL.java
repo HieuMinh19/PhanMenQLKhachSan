@@ -158,6 +158,7 @@ public class NhanVien_DAL extends JInternalFrame {
 				nv.setNgaySinh(rs.getDate("NgaySinh"));
 				nv.setCMND(rs.getInt("CMND"));
 				nv.setNgayVaoLam(rs.getDate("NgayVaoLam"));
+				nv.setMaChucVu(rs.getInt("MaChucVu"));
 				dsnv.add(nv);
 			}
 			return dsnv;
