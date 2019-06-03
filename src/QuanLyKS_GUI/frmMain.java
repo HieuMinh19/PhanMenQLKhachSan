@@ -286,16 +286,6 @@ public class frmMain extends JFrame {
 		});
 		mnNewMenu.add(mntmit);
 		
-		JMenuItem mntmdanhgia1 = new JMenuItem("FeedBack");
-		mntmdanhgia1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controlFrame(FRM_DANHGIA);
-				
-			}
-		});
-		
-		mnNewMenu.add(mntmdanhgia1);
-		
 		JMenu mnDichVu = new JMenu("D\u1ECBch v\u1EE5");
 		JMenuItem mntmThemDichVu = new JMenuItem("Th\u00EAm d\u1ECBch v\u1EE5");
 		mntmThemDichVu.addActionListener(new ActionListener() {
@@ -328,14 +318,6 @@ public class frmMain extends JFrame {
 		
 		JMenuItem mntmtPhng = new JMenuItem("\u0110\u1EB7t ph\u00F2ng");
 		mnPhng.add(mntmtPhng);
-		
-		JMenuItem mntmThemLoaiPhong = new JMenuItem("Thêm Loại Phòng");
-		mnPhng.add(mntmThemLoaiPhong);
-		mntmThemLoaiPhong.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent arg0){
-				controlFrame(FRM_THEMLOAIPHONG);
-			}
-		});
 		
 		JMenu mnNhnVin = new JMenu("Nh\u00E2n vi\u00EAn");
 		menuBar.add(mnNhnVin);
