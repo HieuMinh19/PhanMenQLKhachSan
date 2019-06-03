@@ -82,14 +82,15 @@ public class LoaiPhong_DAL {
 	//
 	public static boolean Update(LoaiPhong_DTO loaiphong)  {
 		PreparedStatement ptmt = null; 
-		String query = "UPDATE LOAIPHONG SET TenLoaiPhong = ?, GiaPhong = ?";
+		String query = "UPDATE LOAIPHONG SET TenLoaiPhong = ?, GiaPhong = ? WHERE MaLoaiPhong = ?";
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
 		Connection conn = mycon.getConnection();
 
 		try {
 			ptmt = conn.prepareStatement(query);
 			ptmt.setString(1,loaiphong.getTenLoaiPhong());
-			ptmt.setInt(2, loaiphong.getMaLoaiPhong());
+			ptmt.setInt(2, loaiphong.getGiaPhong());
+			ptmt.setInt(3, loaiphong.getMaLoaiPhong());
 
 			if( ptmt.executeUpdate() != 0) {
 				System.err.println("update Loai Phong Thanh Cong");
@@ -137,7 +138,7 @@ public class LoaiPhong_DAL {
 		return false;
 	}
 	
-	public ArrayList<LoaiPhong_DTO> LoadListNV (){
+	public ArrayList<LoaiPhong_DTO> LoadListLP (){
 		//get connection
 		PreparedStatement ptmt = null; 
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
