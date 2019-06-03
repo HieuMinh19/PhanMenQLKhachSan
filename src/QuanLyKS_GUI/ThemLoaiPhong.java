@@ -20,7 +20,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class ThemLoaiPhong extends JInternalFrame {
-	private JTextField txtMaLoaiPhong;
 	private JTextField txtTenLoaiPhong;
 	private JTextField txtGiaPhong;
 	private LoaiPhong_DTO loaiphongDTO;
@@ -53,31 +52,21 @@ public class ThemLoaiPhong extends JInternalFrame {
 		LoaiPhong.setBounds(174, 24, 101, 14);
 		getContentPane().add(LoaiPhong);
 		
-		JLabel MaLoaiPhong = new JLabel("Mã Loại Phòng");
-		MaLoaiPhong.setBounds(59, 52, 80, 14);
-		getContentPane().add(MaLoaiPhong);
-		
 		JLabel TenLoaiPhong = new JLabel("Tên Loại Phòng");
-		TenLoaiPhong.setBounds(59, 92, 80, 14);
+		TenLoaiPhong.setBounds(59, 48, 80, 14);
 		getContentPane().add(TenLoaiPhong);
 		
 		JLabel GiaPhong = new JLabel("Giá Phòng");
-		GiaPhong.setBounds(59, 140, 80, 14);
+		GiaPhong.setBounds(59, 94, 80, 14);
 		getContentPane().add(GiaPhong);
 		
-		txtMaLoaiPhong = new JTextField();
-		txtMaLoaiPhong.setText("auto load");
-		txtMaLoaiPhong.setBounds(149, 49, 212, 20);
-		getContentPane().add(txtMaLoaiPhong);
-		txtMaLoaiPhong.setColumns(10);
-		
 		txtTenLoaiPhong = new JTextField();
-		txtTenLoaiPhong.setBounds(149, 89, 212, 20);
+		txtTenLoaiPhong.setBounds(149, 49, 212, 20);
 		getContentPane().add(txtTenLoaiPhong);
 		txtTenLoaiPhong.setColumns(10);
 		
 		txtGiaPhong = new JTextField();
-		txtGiaPhong.setBounds(149, 137, 212, 20);
+		txtGiaPhong.setBounds(149, 91, 212, 20);
 		getContentPane().add(txtGiaPhong);
 		txtGiaPhong.setColumns(10);
 		
@@ -95,12 +84,8 @@ public class ThemLoaiPhong extends JInternalFrame {
 					 JOptionPane.showMessageDialog(null, "failed to add new database", "Notice !", JOptionPane.CLOSED_OPTION);
 			}
 		});
-		txtThemLoaiPhong.setBounds(101, 195, 113, 23);
+		txtThemLoaiPhong.setBounds(162, 145, 113, 23);
 		getContentPane().add(txtThemLoaiPhong);
-		
-		JButton btnThoat = new JButton("Thoát");
-		btnThoat.setBounds(261, 195, 100, 23);
-		getContentPane().add(btnThoat);
 
 	}
 }

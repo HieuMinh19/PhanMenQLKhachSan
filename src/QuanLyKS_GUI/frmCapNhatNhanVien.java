@@ -15,7 +15,6 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
-
 import com.toedter.calendar.JDateChooser;
 
 import QuanLyKS_BUS.ChucVu_BUS;
