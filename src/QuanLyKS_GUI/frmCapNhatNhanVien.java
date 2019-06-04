@@ -117,7 +117,7 @@ public class frmCapNhatNhanVien extends JInternalFrame {
 		
 		JDateChooser date_NgaySinh = new JDateChooser();
 		date_NgaySinh.setBounds(214, 438, 320, 25);
-		getContentPane().add(date_NgaySinh);
+		getContentPane().add(date_NgaySinh); 
 		date_NgaySinh.setDateFormatString("dd/MM/yyyy");
 		
 		JDateChooser date_NgayVaoLam = new JDateChooser();

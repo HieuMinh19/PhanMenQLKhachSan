@@ -117,7 +117,7 @@ create table CTDATPHONG(
 	MaKhachHang int,
 	DateFrom Date,
 	DateTo Date,
-	LoaiPhong int,
+	MaPhong int,
 	MaNhanVien int,
 )
 /*insert table Account*/
@@ -147,9 +147,16 @@ INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (302, 2);
 INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (202, 2);
 
 
-SELECT DISTINCT p.MaPhong from PHONG as p, CTDATPHONG as ctdp where (not EXISTS
+SELECT p.MaPhong from PHONG as p, CTDATPHONG as ctdp where (not EXISTS
 (select MaPhong from CTDATPHONG as ctdp where p.MaPhong  = ctdp.MaPhong and NgayNhan between '2019-05-13' and '2019-05-15')) and (p.MaLoaiPhong = 1)
 
 select lp.MaLoaiPhong, TenLoaiPhong, p.MaPhong, TenKH, CMND, NgayNhan, NgayTra, ThanhTien
 from PHONG as p, LOAIPHONG as lp, CTDATPHONG as ctdp 
 where p.MaPhong = ctdp.MaPhong and p.MaLoaiPhong = lp.MaLoaiPhong and '2018-05-04'< ctdp.NgayNhan
+
+SELECT DISTINCT p.MaPhong from PHONG as p where (not EXISTS(select MaPhong from CTDATPHONG as ctdp where p.MaPhong  = ctdp.MaPhong
+and NgayNhan between '2019-12-13' and '2019-12-16')) and (p.MaLoaiPhong = 1)
+
+
+
+

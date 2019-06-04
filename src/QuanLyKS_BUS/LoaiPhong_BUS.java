@@ -17,7 +17,7 @@ public class LoaiPhong_BUS {
 	public static boolean Insert(LoaiPhong_DTO loaiphong){
 		return LoaiPhong_DAL.Insert(loaiphong);
 	}
-	public ArrayList<LoaiPhong_DTO> LoadListLP   (){
+	public static ArrayList<LoaiPhong_DTO> LoadListLP   (){
 		return dal.LoadListLP();
 	}
 	
