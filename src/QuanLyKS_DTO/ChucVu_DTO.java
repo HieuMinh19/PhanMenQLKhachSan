@@ -25,4 +25,9 @@ public class ChucVu_DTO {
 		this.strTenChucVu = strTenChucVu;
 	}
 
+	@Override
+	public String toString() {
+		return this.strTenChucVu;
+	}
+
 }
