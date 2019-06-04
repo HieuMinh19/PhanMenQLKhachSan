@@ -3,6 +3,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
+import QuanLyKS_DTO.Phong_DTO;
 
 public class Phong_DAL {
 	public static ResultSet selectCondition(int MaLoaiPhong, String NgayNhan, String NgayTra) {
@@ -69,5 +72,31 @@ public class Phong_DAL {
 		return iGiaPhong;
 	}
 
-
+	public ArrayList<Phong_DTO> LoadListPhong (){
+		//get connection
+		PreparedStatement ptmt = null; 
+		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
+		Connection conn = mycon.getConnection();
+		
+		String query = "SELECT * FROM PHONG";
+		try {
+			ptmt = conn.prepareStatement(query);
+			ResultSet rs = ptmt.executeQuery();
+			ArrayList<Phong_DTO> dsnv = new ArrayList<Phong_DTO>();
+			while(rs.next()) {
+				Phong_DTO phong = new Phong_DTO();
+				phong.setMaLoaiPhong(rs.getInt("MaLoaiPhong"));
+				phong.setMaPhong(rs.getInt("MaPhong"));
+				dsnv.add(phong);
+			}
+			return dsnv;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;	
+	}
+	
+	
+	
 }

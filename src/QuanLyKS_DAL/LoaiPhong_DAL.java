@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import QuanLyKS_DTO.DanhGia_DTO;
 import QuanLyKS_DTO.LoaiPhong_DTO;
 import QuanLyKS_DTO.NhanVien_DTO;
@@ -40,16 +42,16 @@ public class LoaiPhong_DAL {
 			ptmt.setString(1, TenLoaiPhong);
 			ptmt.setInt(2, GiaPhong);
 			if(ptmt.executeUpdate() !=0 ) {
-				System.err.println("thêm loại phòng thành công! ");
+				System.err.println("thÃªm loáº¡i phÃ²ng thÃ nh cÃ´ng! ");
 				return true;
 			}else {
-				System.err.println("thêm loại phòng thất bại ");
+				System.err.println("thÃªm loáº¡i phÃ²ng tháº¥t báº¡i ");
 				return false;
 			}
 
 		} catch(SQLException e){
 			e.printStackTrace();
-			System.err.println("kết nối thất bại !");
+			System.err.println("káº¿t ná»‘i tháº¥t báº¡i !");
 			return false;
 		}
 		}
@@ -93,11 +95,13 @@ public class LoaiPhong_DAL {
 			ptmt.setInt(3, loaiphong.getMaLoaiPhong());
 
 			if( ptmt.executeUpdate() != 0) {
+				JOptionPane.showMessageDialog(null, "cập nhật loại phòng thành công", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);
 				System.err.println("update Loai Phong Thanh Cong");
 				return true;
 			}
 			
 			else {
+				JOptionPane.showMessageDialog(null, "Cập nhật loại phòng thất bại", "FAIL:" + "Fail Mesage", JOptionPane.INFORMATION_MESSAGE);
 				System.err.println("update Loai Phong That Bai");
 				return false;
 			}

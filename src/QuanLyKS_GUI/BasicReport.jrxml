@@ -94,7 +94,7 @@ WHERE
 				<textElement textAlignment="Center">
 					<font size="50"/>
 				</textElement>
-				<text><![CDATA[List Dat Phong Rreport]]></text>
+				<text><![CDATA[List Dat Phong Report]]></text>
 			</staticText>
 		</band>
 	</title>

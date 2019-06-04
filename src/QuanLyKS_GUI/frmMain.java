@@ -78,246 +78,251 @@ public class frmMain extends JFrame {
 	 */
 	public static void controlFrame(int Frame) {
 		switch (Frame) {
-			case 1: 
-				//close another frame
-				frmRegister.setVisible(false);
-				frmQLDV.setVisible(false);
-				frmDatPhong.setVisible(false);
-				frmDichVu.setVisible(false);
-				frmThemNhanVien.setVisible(false);
-				frmTimKiemNV.setVisible(false);
-				frmDanhGia.setVisible(false);
-				frmDatDichVu.setVisible(false);
-				frmThemLoaiPhong.setVisible(false);
-				frmDanhSachPhong.setVisible(false);
-				frmCapNhatNhanVien.setVisible(false);
-				frmCapNhatLoaiPhong.setVisible(false);
-				//set current frame
-				contentPane.add(frmLogin);
-				frmLogin.setVisible(true);
-				break;
-				
-			case 2:
-				//close another frame
-				frmLogin.setVisible(false);
-				frmQLDV.setVisible(false);
-				frmDatPhong.setVisible(false);
-				frmDichVu.setVisible(false);
-				frmThemNhanVien.setVisible(false);
-				frmTimKiemNV.setVisible(false);
-				frmDanhGia.setVisible(false);
-				frmDatDichVu.setVisible(false);
-				frmThemLoaiPhong.setVisible(false);
-				frmDanhSachPhong.setVisible(false);
-				frmCapNhatNhanVien.setVisible(false);
-				frmCapNhatLoaiPhong.setVisible(false);
-				//set current frame
-				contentPane.add(frmRegister);
-				frmRegister.setVisible(true);
-				break;
+		case 1: 
+			//close another frame
+			frmRegister.setVisible(false);
+			frmQLDV.setVisible(false);
+			frmDatPhong.setVisible(false);
+			frmDichVu.setVisible(false);
+			frmThemNhanVien.setVisible(false);
+			frmTimKiemNV.setVisible(false);
+			frmDanhGia.setVisible(false);
+			frmDatDichVu.setVisible(false);
+			frmThemLoaiPhong.setVisible(false);
+			frmDanhSachPhong.setVisible(false);
+			frmCapNhatNhanVien.setVisible(false);
+			frmCapNhatLoaiPhong.setVisible(false);
+			//set current frame
+			contentPane.add(frmLogin);
+			frmLogin.setVisible(true);
+			break;
 			
-			case 3:
-				//close another frame
-				frmLogin.setVisible(false);
-				frmRegister.setVisible(false);
-				frmDatPhong.setVisible(false);
-				frmDichVu.setVisible(false);
-				frmTimKiemNV.setVisible(false);
-				frmDatDichVu.setVisible(false);
-				frmThemNhanVien.setVisible(false);
-				frmDanhGia.setVisible(false);
-				frmThemLoaiPhong.setVisible(false);
-				frmDanhSachPhong.setVisible(false);
-				frmCapNhatNhanVien.setVisible(false);
-				frmCapNhatLoaiPhong.setVisible(false);
-				//set current frame
-				contentPane.add(frmQLDV);
-				frmQLDV.setVisible(true);
-				break;
-				
-			case 4:
-				//close another frame
-				frmLogin.setVisible(false);
-				frmRegister.setVisible(false);
-				frmQLDV.setVisible(false);
-				frmDichVu.setVisible(false);
-				frmThemNhanVien.setVisible(false);
-				frmTimKiemNV.setVisible(false);
-				frmDanhGia.setVisible(false);
-				frmDatPhong.setVisible(false);
-				frmDatDichVu.setVisible(false);
-				frmThemLoaiPhong.setVisible(false);
-				frmCapNhatNhanVien.setVisible(false);
-				frmCapNhatLoaiPhong.setVisible(false);
-				//set current frame
-				contentPane.add(frmDatPhong);
-				frmDatPhong.setVisible(true);
-				frmDanhSachPhong.setVisible(false);
-				break;
-			case 5:
-				//close another frame
-				frmLogin.setVisible(false);
-				frmRegister.setVisible(false);
-				frmQLDV.setVisible(false);
-				frmDatPhong.setVisible(false);
-				frmTimKiemNV.setVisible(false);
-				frmThemNhanVien.setVisible(false);
-				frmDanhGia.setVisible(false);
-				frmDatDichVu.setVisible(false);
-				frmThemLoaiPhong.setVisible(false);
-				frmDanhSachPhong.setVisible(false);
-				frmCapNhatNhanVien.setVisible(false);
-				frmCapNhatLoaiPhong.setVisible(false);
-				//set current frame
-				contentPane.add(frmDichVu);
-				frmDichVu.setVisible(true);
-				break;
-				
-			case 6:
-				//close another frame
-				frmLogin.setVisible(false);
-				frmRegister.setVisible(false);
-				frmQLDV.setVisible(false);
-				frmDatPhong.setVisible(false);
-				frmDichVu.setVisible(false);
-				frmThemNhanVien.setVisible(false);
-				frmDatDichVu.setVisible(false);
-				frmDanhGia.setVisible(false);
-				frmThemLoaiPhong.setVisible(false);
-				frmDanhSachPhong.setVisible(false);
-				frmCapNhatNhanVien.setVisible(false);
-				frmCapNhatLoaiPhong.setVisible(false);
-				//set current frame
-				contentPane.add(frmTimKiemNV);
-				frmTimKiemNV.setVisible(true);
-				break;
-			case 7:
-				//close another frame
-				frmLogin.setVisible(false);
-				frmRegister.setVisible(false);
-				frmQLDV.setVisible(false);
-				frmDatPhong.setVisible(false);
-				frmDichVu.setVisible(false);
-				frmTimKiemNV.setVisible(false);
-				frmThemNhanVien.setVisible(false);
-				frmDatDichVu.setVisible(false);
-				frmThemLoaiPhong.setVisible(false);
-				frmDanhSachPhong.setVisible(false);
-				frmCapNhatNhanVien.setVisible(false);
-				
-				contentPane.add(frmThemNhanVien);
-				frmThemNhanVien.setVisible(true);
-				break;
-				
-			case 8:
-				//close another frame
-				frmLogin.setVisible(false);
-				frmRegister.setVisible(false);
-				frmQLDV.setVisible(false);
-				frmDatPhong.setVisible(false);
-				frmDichVu.setVisible(false);
-				frmTimKiemNV.setVisible(false);
-				frmThemNhanVien.setVisible(false);
-				frmDatDichVu.setVisible(false);
-				frmThemLoaiPhong.setVisible(false);
-				frmDanhSachPhong.setVisible(false);
-				frmCapNhatNhanVien.setVisible(false);
-				frmCapNhatLoaiPhong.setVisible(false);
-				//set current frame
-				contentPane.add(frmDanhGia);
-				frmDanhGia.setVisible(true);
-				break;
-				
-				
-			case 9:
-				//close another frame
-				frmLogin.setVisible(false);
-				frmRegister.setVisible(false);
-				frmQLDV.setVisible(false);
-				frmDatPhong.setVisible(false);
-				frmDichVu.setVisible(false);
-				frmTimKiemNV.setVisible(false);
-				frmThemNhanVien.setVisible(false);
-				frmDanhGia.setVisible(false);
-				frmThemLoaiPhong.setVisible(false);
-				frmDanhSachPhong.setVisible(false);
-				frmCapNhatNhanVien.setVisible(false);
-				frmCapNhatLoaiPhong.setVisible(false);
-				//set current frame
-				contentPane.add(frmDatDichVu);
-				frmDatDichVu.setVisible(true);
-				break;
-			case 10:
-				//close another frame
-				frmLogin.setVisible(false);
-				frmRegister.setVisible(false);
-				frmQLDV.setVisible(false);
-				frmDatPhong.setVisible(false);
-				frmDichVu.setVisible(false);
-				frmTimKiemNV.setVisible(false);
-				frmThemNhanVien.setVisible(false);
-				frmDanhGia.setVisible(false);
-				frmDatDichVu.setVisible(false);
-				frmDanhSachPhong.setVisible(false);
-				frmCapNhatNhanVien.setVisible(false);
-				frmCapNhatLoaiPhong.setVisible(false);
-				//set current frame
-				contentPane.add(frmThemLoaiPhong);
-				frmThemLoaiPhong.setVisible(true);
-				break;
-				
-			case 11:
-				//close another frame
-				frmLogin.setVisible(false);
-				frmRegister.setVisible(false);
-				frmQLDV.setVisible(false);
-				frmDatPhong.setVisible(false);
-				frmDichVu.setVisible(false);
-				frmTimKiemNV.setVisible(false);
-				frmThemNhanVien.setVisible(false);
-				frmDanhGia.setVisible(false);
-				frmDatDichVu.setVisible(false);
-				frmCapNhatNhanVien.setVisible(false);
-				frmCapNhatLoaiPhong.setVisible(false);
-				//set current frame
-				contentPane.add(frmDanhSachPhong);
-				frmDanhSachPhong.setVisible(true);
-				break;
-				
-			case 12:
-				//close another frame
-				frmLogin.setVisible(false);
-				frmRegister.setVisible(false);
-				frmQLDV.setVisible(false);
-				frmDatPhong.setVisible(false);
-				frmDichVu.setVisible(false);
-				frmTimKiemNV.setVisible(false);
-				frmThemNhanVien.setVisible(false);
-				frmDanhGia.setVisible(false);
-				frmDatDichVu.setVisible(false);
-				frmDanhSachPhong.setVisible(false);
-				frmCapNhatLoaiPhong.setVisible(false);
-				//set current frame
-				contentPane.add(frmCapNhatNhanVien);
-				frmCapNhatNhanVien.setVisible(true);
-				break;
-			case 13:
-				//close another frame
-				frmLogin.setVisible(false);
-				frmRegister.setVisible(false);
-				frmQLDV.setVisible(false);
-				frmDatPhong.setVisible(false);
-				frmDichVu.setVisible(false);
-				frmTimKiemNV.setVisible(false);
-				frmThemNhanVien.setVisible(false);
-				frmDanhGia.setVisible(false);
-				frmDatDichVu.setVisible(false);
-				frmDanhSachPhong.setVisible(false);
-				frmCapNhatNhanVien.setVisible(false);
-				//set current frame
-				contentPane.add(frmCapNhatLoaiPhong);
-				frmCapNhatLoaiPhong.setVisible(true);
-				break;
+		case 2:
+			//close another frame
+			frmLogin.setVisible(false);
+			frmQLDV.setVisible(false);
+			frmDatPhong.setVisible(false);
+			frmDichVu.setVisible(false);
+			frmThemNhanVien.setVisible(false);
+			frmTimKiemNV.setVisible(false);
+			frmDanhGia.setVisible(false);
+			frmDatDichVu.setVisible(false);
+			frmThemLoaiPhong.setVisible(false);
+			frmDanhSachPhong.setVisible(false);
+			frmCapNhatNhanVien.setVisible(false);
+			frmCapNhatLoaiPhong.setVisible(false);
+			//set current frame
+			contentPane.add(frmRegister);
+			frmRegister.setVisible(true);
+			break;
+		
+		case 3:
+			//close another frame
+			frmLogin.setVisible(false);
+			frmRegister.setVisible(false);
+			frmDatPhong.setVisible(false);
+			frmDichVu.setVisible(false);
+			frmTimKiemNV.setVisible(false);
+			frmDatDichVu.setVisible(false);
+			frmThemNhanVien.setVisible(false);
+			frmDanhGia.setVisible(false);
+			frmThemLoaiPhong.setVisible(false);
+			frmDanhSachPhong.setVisible(false);
+			frmCapNhatNhanVien.setVisible(false);
+			frmCapNhatLoaiPhong.setVisible(false);
+			//set current frame
+			contentPane.add(frmQLDV);
+			frmQLDV.setVisible(true);
+			break;
+			
+		case 4:
+			//close another frame
+			frmLogin.setVisible(false);
+			frmRegister.setVisible(false);
+			frmQLDV.setVisible(false);
+			frmDichVu.setVisible(false);
+			frmThemNhanVien.setVisible(false);
+			frmTimKiemNV.setVisible(false);
+			frmDanhGia.setVisible(false);
+			frmDanhSachPhong.setVisible(false);
+			frmDatDichVu.setVisible(false);
+			frmThemLoaiPhong.setVisible(false);
+			frmCapNhatNhanVien.setVisible(false);
+			frmCapNhatLoaiPhong.setVisible(false);
+			
+			//set current frame
+			contentPane.add(frmDatPhong);
+			frmDatPhong.setVisible(true);
+			//frmDanhSachPhong.setVisible(false);
+			break;
+		case 5:
+			//close another frame
+			frmLogin.setVisible(false);
+			frmRegister.setVisible(false);
+			frmQLDV.setVisible(false);
+			frmDatPhong.setVisible(false);
+			frmTimKiemNV.setVisible(false);
+			frmThemNhanVien.setVisible(false);
+			frmDanhGia.setVisible(false);
+			frmDatDichVu.setVisible(false);
+			frmThemLoaiPhong.setVisible(false);
+			frmDanhSachPhong.setVisible(false);
+			frmCapNhatNhanVien.setVisible(false);
+			frmCapNhatLoaiPhong.setVisible(false);
+			//set current frame
+			contentPane.add(frmDichVu);
+			frmDichVu.setVisible(true);
+			break;
+			
+		case 6:
+			//close another frame
+			frmLogin.setVisible(false);
+			frmRegister.setVisible(false);
+			frmQLDV.setVisible(false);
+			frmDatPhong.setVisible(false);
+			frmDichVu.setVisible(false);
+			frmThemNhanVien.setVisible(false);
+			frmDatDichVu.setVisible(false);
+			frmDanhGia.setVisible(false);
+			frmThemLoaiPhong.setVisible(false);
+			frmDanhSachPhong.setVisible(false);
+			frmCapNhatNhanVien.setVisible(false);
+			frmCapNhatLoaiPhong.setVisible(false);
+			//set current frame
+			contentPane.add(frmTimKiemNV);
+			frmTimKiemNV.setVisible(true);
+			break;
+		case 7:
+			//close another frame
+			frmLogin.setVisible(false);
+			frmRegister.setVisible(false);
+			frmQLDV.setVisible(false);
+			frmDatPhong.setVisible(false);
+			frmDichVu.setVisible(false);
+			frmTimKiemNV.setVisible(false);
+			frmThemNhanVien.setVisible(false);
+			frmDatDichVu.setVisible(false);
+			frmThemLoaiPhong.setVisible(false);
+			frmDanhSachPhong.setVisible(false);
+			frmCapNhatNhanVien.setVisible(false);
+			frmCapNhatLoaiPhong.setVisible(false);
+			//set current frame
+			contentPane.add(frmThemNhanVien);
+			frmThemNhanVien.setVisible(true);
+			break;
+			
+		case 8:
+			//close another frame
+			frmLogin.setVisible(false);
+			frmRegister.setVisible(false);
+			frmQLDV.setVisible(false);
+			frmDatPhong.setVisible(false);
+			frmDichVu.setVisible(false);
+			frmTimKiemNV.setVisible(false);
+			frmThemNhanVien.setVisible(false);
+			frmDatDichVu.setVisible(false);
+			frmThemLoaiPhong.setVisible(false);
+			frmDanhSachPhong.setVisible(false);
+			frmCapNhatNhanVien.setVisible(false);
+			frmCapNhatLoaiPhong.setVisible(false);
+			//set current frame
+			contentPane.add(frmDanhGia);
+			frmDanhGia.setVisible(true);
+			break;
+			
+			
+		case 9:
+			//close another frame
+			frmLogin.setVisible(false);
+			frmRegister.setVisible(false);
+			frmQLDV.setVisible(false);
+			frmDatPhong.setVisible(false);
+			frmDichVu.setVisible(false);
+			frmTimKiemNV.setVisible(false);
+			frmThemNhanVien.setVisible(false);
+			frmDanhGia.setVisible(false);
+			frmThemLoaiPhong.setVisible(false);
+			frmDanhSachPhong.setVisible(false);
+			frmCapNhatNhanVien.setVisible(false);
+			frmCapNhatLoaiPhong.setVisible(false);
+			//set current frame
+			contentPane.add(frmDatDichVu);
+			frmDatDichVu.setVisible(true);
+			break;
+		case 10:
+			//close another frame
+			frmLogin.setVisible(false);
+			frmRegister.setVisible(false);
+			frmQLDV.setVisible(false);
+			frmDatPhong.setVisible(false);
+			frmDichVu.setVisible(false);
+			frmTimKiemNV.setVisible(false);
+			frmThemNhanVien.setVisible(false);
+			frmDanhGia.setVisible(false);
+			frmDatDichVu.setVisible(false);
+			frmDanhSachPhong.setVisible(false);
+			frmCapNhatNhanVien.setVisible(false);
+			frmCapNhatLoaiPhong.setVisible(false);
+			//set current frame
+			contentPane.add(frmThemLoaiPhong);
+			frmThemLoaiPhong.setVisible(true);
+			break;
+			
+		case 11:
+			//close another frame
+			frmLogin.setVisible(false);
+			frmRegister.setVisible(false);
+			frmQLDV.setVisible(false);
+			frmDatPhong.setVisible(false);
+			frmDichVu.setVisible(false);
+			frmTimKiemNV.setVisible(false);
+			frmThemNhanVien.setVisible(false);
+			frmDanhGia.setVisible(false);
+			frmDatDichVu.setVisible(false);
+			frmCapNhatNhanVien.setVisible(false);
+			frmCapNhatLoaiPhong.setVisible(false);
+			frmThemLoaiPhong.setVisible(false);
+			//set current frame
+			contentPane.add(frmDanhSachPhong);
+			frmDanhSachPhong.setVisible(true);
+			break;
+			
+		case 12:
+			//close another frame
+			frmLogin.setVisible(false);
+			frmRegister.setVisible(false);
+			frmQLDV.setVisible(false);
+			frmDatPhong.setVisible(false);
+			frmDichVu.setVisible(false);
+			frmTimKiemNV.setVisible(false);
+			frmThemNhanVien.setVisible(false);
+			frmDanhGia.setVisible(false);
+			frmDatDichVu.setVisible(false);
+			frmDanhSachPhong.setVisible(false);
+			frmCapNhatLoaiPhong.setVisible(false);
+			frmThemLoaiPhong.setVisible(false);
+			//set current frame
+			contentPane.add(frmCapNhatNhanVien);
+			frmCapNhatNhanVien.setVisible(true);
+			break;
+		case 13:
+			//close another frame
+			frmLogin.setVisible(false);
+			frmRegister.setVisible(false);
+			frmQLDV.setVisible(false);
+			frmDatPhong.setVisible(false);
+			frmDichVu.setVisible(false);
+			frmTimKiemNV.setVisible(false);
+			frmThemNhanVien.setVisible(false);
+			frmDanhGia.setVisible(false);
+			frmDatDichVu.setVisible(false);
+			frmDanhSachPhong.setVisible(false);
+			frmCapNhatNhanVien.setVisible(false);
+			frmThemLoaiPhong.setVisible(false);
+			//set current frame
+			contentPane.add(frmCapNhatLoaiPhong);
+			frmCapNhatLoaiPhong.setVisible(true);
+			break;
 		}
 	}
 
@@ -438,7 +443,7 @@ public class frmMain extends JFrame {
 		JMenuItem mntmtPhng = new JMenuItem("\u0110\u1EB7t ph\u00F2ng");
 		mntmtPhng.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		
-		JMenuItem mntmDanhSachPhong = new JMenuItem("Danh sach phong");
+		JMenuItem mntmDanhSachPhong = new JMenuItem("Danh s\u00E1ch ph\u00F2ng");
 		mntmDanhSachPhong.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		mntmDanhSachPhong.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -495,7 +500,8 @@ public class frmMain extends JFrame {
 		});
 		mnLoiPhng.add(mntmThmLoiPhng);
 		
-		JMenuItem mntmCapNhatLoai = new JMenuItem("cap nhat loai phong");
+		JMenuItem mntmCapNhatLoai = new JMenuItem("C\u1EADp nh\u1EADt");
+		mntmCapNhatLoai.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		mnLoiPhng.add(mntmCapNhatLoai);
 		mntmCapNhatLoai.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
