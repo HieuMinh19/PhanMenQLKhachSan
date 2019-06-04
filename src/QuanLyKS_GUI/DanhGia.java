@@ -5,8 +5,6 @@ import java.awt.EventQueue;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
-import java.awt.Color;
-import javax.swing.JTextPane;
 import javax.swing.JScrollPane;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -15,20 +13,24 @@ import javax.swing.JTextField;
 import com.ibm.icu.text.SimpleDateFormat;
 import com.toedter.calendar.JCalendar;
 
-import QuanLyKS_BUS.Account_BUS;
-import QuanLyKS_DTO.Account_DTO;
 import QuanLyKS_DTO.DanhGia_DTO;
 import QuanLyKS_BUS.DanhGia_BUS;
+import QuanLyKS_GUI.frmMain;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.util.Arrays;
+import javax.swing.JDesktopPane;
 
+
+import java.awt.event.ActionListener;
+import QuanLyKS_GUI.Register;
 import javax.swing.JOptionPane;
 import java.awt.event.ActionEvent;
 
 public class DanhGia extends JInternalFrame {
 	private JTextField txtMaPhong;
 	private DanhGia_DTO danhgiaDTO;
+	static DanhGia frame = new DanhGia();
+	public static Register registerForm = new Register();
+	
 
 	/**
 	 * Launch the application.
@@ -37,7 +39,7 @@ public class DanhGia extends JInternalFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					DanhGia frame = new DanhGia();
+					
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -117,6 +119,11 @@ public class DanhGia extends JInternalFrame {
 		getContentPane().add(btnGuiDanhGia);
 
 		JButton btnThoat = new JButton("THOÁT");
+		btnThoat.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frmMain.controlFrame(frmMain.FRM_BOOKING1);	
+			}
+		});
 		btnThoat.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnThoat.setBounds(326, 379, 89, 23);
 		getContentPane().add(btnThoat);

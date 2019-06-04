@@ -29,7 +29,6 @@ create table CHUCVU(
 )
 go
 /*create Nhan Vien */
-drop table NHANVIEN
 create table NHANVIEN
 (
 	MaNhanVien int identity(1,1) primary key,
@@ -48,6 +47,16 @@ create table BANGPHANCONG
 	LoaiCongViec varchar(50),
 	MaNhanVien int,
 )
+/*create table Khach hang*/
+go
+create table KHACHHANG(
+	MaKhachHang int primary key,
+	Name varchar(255),
+	Email varchar(30),
+	Phone varchar(20),
+	CMND varchar(20),
+)
+go
 /*create Hoa Don*/
 create table HOADON
 (
@@ -102,15 +111,14 @@ create table PHONG
 )
 go
 /*create table Chi Tiet Dat Phong*/
-create table CTDATPHONG
-(
-	MaDatPhong int identity(1,1) primary key,
-	TenKH varchar(100),
-	CMND varchar(20),
-	MaPhong int, 
-	NgayNhan varchar(25),
-	NgayTra varchar(25),
-	ThanhTien int,
+create table CTDATPHONG(
+	MaDatPhong int primary key,
+	createdAt Date,
+	MaKhachHang int,
+	DateFrom Date,
+	DateTo Date,
+	LoaiPhong int,
+	MaNhanVien int,
 )
 /*insert table Account*/
 INSERT INTO ACCOUNT( Username, Password,Role) VALUES ('admin1', '123456', 1)
