@@ -5,19 +5,30 @@ import java.awt.EventQueue;
 import javax.swing.JInternalFrame;
 
 import com.toedter.calendar.JDateChooser;
+
+import QuanLyKS_DTO.LoaiPhong_DTO;
+import QuanLyKS_BUS.LoaiPhong_BUS;
+
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JEditorPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class frmBooking_Step1 extends JInternalFrame {
 	private JTable table;
 	private JTextField textField;
+	ArrayList<LoaiPhong_DTO> listLP = LoaiPhong_BUS.LoadListLP();
 
 	/**
 	 * Launch the application.
@@ -66,18 +77,16 @@ public class frmBooking_Step1 extends JInternalFrame {
 		lblNewLabel_1.setBounds(249, 27, 296, 37);
 		getContentPane().add(lblNewLabel_1);
 		
-		JEditorPane dtrpnCjbsjk = new JEditorPane();
-		dtrpnCjbsjk.setText("c,jbsjk");
-		dtrpnCjbsjk.setBounds(208, 237, 277, 68);
-		getContentPane().add(dtrpnCjbsjk);
+		JEditorPane edMoTa = new JEditorPane();
+		edMoTa.setEditable(false);
+		edMoTa.setText("c,jbsjk");
+		edMoTa.setBounds(208, 266, 218, 37);
+		getContentPane().add(edMoTa);
 		
-		JLabel lblNewLabel_2 = new JLabel("M\u00F4 t\u1EA3");
-		lblNewLabel_2.setBounds(88, 237, 110, 25);
-		getContentPane().add(lblNewLabel_2);
-		
-		JEditorPane editorPane = new JEditorPane();
-		editorPane.setBounds(495, 237, 58, 68);
-		getContentPane().add(editorPane);
+		JEditorPane edGia = new JEditorPane();
+		edGia.setEditable(false);
+		edGia.setBounds(435, 266, 118, 37);
+		getContentPane().add(edGia);
 		
 		JButton btnNewButton = new JButton("Ti\u1EBFp t\u1EE5c");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -85,28 +94,77 @@ public class frmBooking_Step1 extends JInternalFrame {
 				
 			}
 		});
-		btnNewButton.setBounds(368, 459, 161, 37);
+		btnNewButton.setBounds(420, 494, 133, 25);
 		getContentPane().add(btnNewButton);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(300, 195, 253, 20);
-		getContentPane().add(comboBox);
+		JComboBox cbxLoaiPhong = new JComboBox();
+		cbxLoaiPhong.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent arg0) {
+				String nameLP = (String) cbxLoaiPhong.getSelectedItem();
+				for(int i = 0; i < listLP.size(); i++) {
+					LoaiPhong_DTO lpCompare = listLP.get(i);
+        			if(nameLP.equals( lpCompare.getTenLoaiPhong() ) ) {
+        				int Gia = lpCompare.getGiaPhong();
+        				edGia.setText(String.valueOf(Gia));
+        				edMoTa.setText(lpCompare.getMoTa());
+        			}
+        				 
+				}
+			}
+		});
+		cbxLoaiPhong.setBounds(300, 195, 253, 20);
+		getContentPane().add(cbxLoaiPhong);
+		
+		  //Load list LoaiPhong
+				
+		for(int i = 0; i < listLP.size(); i++) {
+			cbxLoaiPhong.addItem(listLP.get(i).getTenLoaiPhong());
+			cbxLoaiPhong.getSelectedItem();
+		}
 		
 		JLabel lblDchV = new JLabel("Lo\u1EA1i ph\u00F2ng");
 		lblDchV.setBounds(399, 167, 110, 25);
 		getContentPane().add(lblDchV);
-		
-		table = new JTable();
-		table.setBounds(208, 332, 321, 62);
+			
+		DefaultTableModel m = new DefaultTableModel(
+				new Object[][] {
+				}, 
+				new String[] {
+					"MaNhanVien", "TenNhanVien", "NgaySinh", "CMND", "NgayVaoLam", "TenChucVu"
+				}
+			);
+		table = new JTable(m);
+		table.setBounds(208, 383, 345, 62);
 		getContentPane().add(table);
-		
+		table.setRowSelectionAllowed(true);
+
 		textField = new JTextField();
 		textField.setBounds(204, 195, 86, 20);
 		getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("S\u1ED1 l\u01B0\u1EE3ng");
-		lblNewLabel_3.setBounds(208, 172, 46, 14);
+		lblNewLabel_3.setBounds(208, 167, 67, 19);
 		getContentPane().add(lblNewLabel_3);
+		
+		JButton btnNewButton_1 = new JButton("\u0110\u1EB7t ph\u00F2ng");
+		btnNewButton_1.setBounds(208, 494, 110, 25);
+		getContentPane().add(btnNewButton_1);
+		
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setBounds(208, 352, 345, 20);
+		getContentPane().add(comboBox_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("S\u1ED1 ph\u00F2ng");
+		lblNewLabel_2.setBounds(208, 327, 67, 14);
+		getContentPane().add(lblNewLabel_2);
+		
+		JLabel lblMT = new JLabel("M\u00F4 t\u1EA3");
+		lblMT.setBounds(229, 230, 61, 25);
+		getContentPane().add(lblMT);
+		
+		JLabel lblGi = new JLabel("Gi\u00E1");
+		lblGi.setBounds(435, 230, 61, 25);
+		getContentPane().add(lblGi);
 	}
 }
