@@ -10,10 +10,11 @@ import com.ibm.icu.text.SimpleDateFormat;
 import com.toedter.calendar.JCalendar;
 
 import QuanLyKS_BUS.CTDichVu_BUS;
-import QuanLyKS_DAL.Phong_DAL;
+import QuanLyKS_DTO.Phong_DTO;
 import QuanLyKS_DAL.DichVu_DAL;
 import QuanLyKS_DTO.CTDichVu_DTO;
 import QuanLyKS_DTO.DichVu_DTO;
+import QuanLyKS_BUS.Phong_BUS;
 
 import java.awt.Font;
 import java.awt.TextField;
@@ -54,8 +55,8 @@ public class DatDichVu extends JInternalFrame {
 	ResultSet rsDichVu = DichVu_DAL.getListDV();
 	private static int idDV = 0;
 	
-	Phong_DAL phongDAL = new Phong_DAL();
-	ResultSet rsPhong = Phong_DAL.selectAll();
+	Phong_BUS phongBUS = new Phong_BUS();
+
 	public DatDichVu() {
 		setBounds(100, 100, 667, 491);
 		getContentPane().setLayout(null);
@@ -109,14 +110,19 @@ public class DatDichVu extends JInternalFrame {
 		getContentPane().add(lbltDchV);
 		
 		//get list Phong
-		try {    
-	        while(rsPhong.next() ) {
-	        	
-	        	cbxMaPhong.addItem(rsPhong.getString("MaPhong"));
-	        	cbxMaPhong.getSelectedItem();
-			  }
-		} catch (SQLException e) {
-			e.printStackTrace();
+//		try {    
+//	        while(rsPhong.next() ) {
+//	        	
+//	        	cbxMaPhong.addItem(rsPhong.getString("MaPhong"));
+//	        	cbxMaPhong.getSelectedItem();
+//			  }
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+		
+		ArrayList<Phong_DTO> listPhong = phongBUS.LoadListPhong();
+		for(int i = 0; i <listPhong.size(); i++) {
+			cbxMaPhong.addItem(listPhong.get(i).getMaPhong());
 		}
 		
 		//get List Dich Vu

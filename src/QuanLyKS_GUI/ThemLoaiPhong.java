@@ -52,11 +52,11 @@ public class ThemLoaiPhong extends JInternalFrame {
 		LoaiPhong.setBounds(174, 24, 101, 14);
 		getContentPane().add(LoaiPhong);
 		
-		JLabel TenLoaiPhong = new JLabel("Tên Loại Phòng");
+		JLabel TenLoaiPhong = new JLabel("Tên loại phòng");
 		TenLoaiPhong.setBounds(59, 48, 80, 14);
 		getContentPane().add(TenLoaiPhong);
 		
-		JLabel GiaPhong = new JLabel("Giá Phòng");
+		JLabel GiaPhong = new JLabel("Gía Phòng");
 		GiaPhong.setBounds(59, 94, 80, 14);
 		getContentPane().add(GiaPhong);
 		
@@ -70,7 +70,7 @@ public class ThemLoaiPhong extends JInternalFrame {
 		getContentPane().add(txtGiaPhong);
 		txtGiaPhong.setColumns(10);
 		
-		JButton txtThemLoaiPhong = new JButton("Thêm Loại Phòng");
+		JButton txtThemLoaiPhong = new JButton("Thêm loại phòng");
 		txtThemLoaiPhong.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				loaiphongDTO = new LoaiPhong_DTO(); 
@@ -79,9 +79,9 @@ public class ThemLoaiPhong extends JInternalFrame {
 				loaiphongDTO.setGiaPhong(Integer.parseInt(txtGiaPhong.getText()));
 
 				 if(LoaiPhong_BUS.Insert(loaiphongDTO) == true)
-					 JOptionPane.showMessageDialog(null, "create new type of room to database successfully", "Notice !", JOptionPane.INFORMATION_MESSAGE);
+					 JOptionPane.showMessageDialog(null, "tạo loại phòng thành công", "Notice !", JOptionPane.INFORMATION_MESSAGE);
 				 else
-					 JOptionPane.showMessageDialog(null, "failed to add new database", "Notice !", JOptionPane.CLOSED_OPTION);
+					 JOptionPane.showMessageDialog(null, "Tạo loại phòng thất bại", "Notice !", JOptionPane.CLOSED_OPTION);
 			}
 		});
 		txtThemLoaiPhong.setBounds(162, 145, 113, 23);

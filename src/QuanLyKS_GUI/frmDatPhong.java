@@ -174,7 +174,6 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
         		}
         	}
         });
-        btnThoat = new javax.swing.JButton();
        
         jLabel9 = new javax.swing.JLabel();
         GiaPhong = new javax.swing.JLabel();
@@ -228,43 +227,20 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
         btnDongY.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         btnDongY.setText("\u0110\u1ED3ng \u00FD");
 
-        btnThoat.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        btnThoat.setText("Tho\u00E1t");
-
         jLabel9.setFont(new java.awt.Font("Times New Roman", 3, 36)); // NOI18N
         jLabel9.setText("\u0110\u1EB6T PH\u00D2NG");
 
         GiaPhong.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         GiaPhong.setText("M\u00C3 PH\u00D2NG");
-       
-         btnThoat.addActionListener(new ActionListener() {
-         	public void actionPerformed(ActionEvent arg0) {  
-         		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-         		String NgayNhan = sdf.format( dtNgayNhan.getDate() );
-         		String NgayTra = sdf.format( dtNgayTra.getDate() );
-         		//load list Phong
-                 ResultSet rslistPhong = Phong_DAL.selectCondition(idLP, NgayNhan, NgayTra);
-                  try {    
-                	  cbxMaPhong.removeAllItems();
-                  	while(rslistPhong.next() ) {
-                  		cbxMaPhong.addItem(rslistPhong.getString("MaPhong"));
-                  		cbxMaPhong.getSelectedItem();
-          		   }
-          		} catch (SQLException e) {
-          			// TODO Auto-generated catch block
-          			e.printStackTrace();
-          		}
-         	}
-         });
         
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         layout.setHorizontalGroup(
-        	layout.createParallelGroup(Alignment.TRAILING)
+        	layout.createParallelGroup(Alignment.LEADING)
         		.addGroup(layout.createSequentialGroup()
-        			.addGap(0, 304, Short.MAX_VALUE)
+        			.addGap(304)
         			.addComponent(jLabel9)
-        			.addGap(221))
-        		.addGroup(Alignment.LEADING, layout.createSequentialGroup()
+        			.addContainerGap(221, Short.MAX_VALUE))
+        		.addGroup(layout.createSequentialGroup()
         			.addGap(32)
         			.addGroup(layout.createParallelGroup(Alignment.LEADING)
         				.addComponent(NgayDatPhong, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
@@ -272,28 +248,22 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
         				.addComponent(LoaiPhong, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE)
         				.addComponent(GiaPhong)
         				.addComponent(TenKhachHang))
-        			.addPreferredGap(ComponentPlacement.RELATED)
-        			.addGroup(layout.createParallelGroup(Alignment.TRAILING)
-        				.addComponent(cbxMaPhong, GroupLayout.PREFERRED_SIZE, 495, GroupLayout.PREFERRED_SIZE)
-        				.addGroup(layout.createParallelGroup(Alignment.LEADING, false)
-        					.addGroup(layout.createSequentialGroup()
-        						.addGap(18)
-        						.addComponent(dtNgayNhan, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-        						.addGap(64)
-        						.addComponent(dtNgayTra, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-        					.addGroup(layout.createSequentialGroup()
-        						.addPreferredGap(ComponentPlacement.RELATED)
-        						.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        							.addComponent(txtTenKhachHang, GroupLayout.PREFERRED_SIZE, 474, GroupLayout.PREFERRED_SIZE)
-        							.addComponent(txtCMND)
-        							.addComponent(cbxLoaiPhong, GroupLayout.PREFERRED_SIZE, 486, GroupLayout.PREFERRED_SIZE)))))
+        			.addGap(13)
+        			.addGroup(layout.createParallelGroup(Alignment.TRAILING, false)
+        				.addComponent(cbxMaPhong, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        				.addGroup(Alignment.LEADING, layout.createSequentialGroup()
+        					.addGap(18)
+        					.addComponent(dtNgayNhan, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        					.addGap(64)
+        					.addComponent(dtNgayTra, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        				.addComponent(txtTenKhachHang, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 474, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(txtCMND, Alignment.LEADING)
+        				.addComponent(cbxLoaiPhong, 0, 486, Short.MAX_VALUE))
         			.addContainerGap())
-        		.addGroup(layout.createSequentialGroup()
-        			.addGap(284)
+        		.addGroup(Alignment.TRAILING, layout.createSequentialGroup()
+        			.addGap(406)
         			.addComponent(btnDongY)
-        			.addGap(123)
-        			.addComponent(btnThoat)
-        			.addContainerGap(195, Short.MAX_VALUE))
+        			.addContainerGap(259, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
@@ -325,11 +295,9 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
         			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
         				.addComponent(GiaPhong)
         				.addComponent(cbxMaPhong, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-        			.addGap(48)
-        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
-        				.addComponent(btnDongY)
-        				.addComponent(btnThoat))
-        			.addGap(216))
+        			.addGap(35)
+        			.addComponent(btnDongY)
+        			.addGap(35))
         );
         getContentPane().setLayout(layout);
 
@@ -356,7 +324,6 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
     private javax.swing.JLabel NgayDatPhong;
     private javax.swing.JLabel TenKhachHang;
     private javax.swing.JButton btnDongY;
-    private javax.swing.JButton btnThoat;
     private javax.swing.JComboBox<String> cbxLoaiPhong;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField txtCMND;

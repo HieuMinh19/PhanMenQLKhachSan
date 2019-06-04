@@ -1,6 +1,7 @@
-﻿GO
+﻿go
 create Database QUANLYKHACHSAN
-GO
+go
+use master
 use QUANLYKHACHSAN
 GO
 set dateformat ymd
@@ -28,6 +29,7 @@ create table CHUCVU(
 )
 go
 /*create Nhan Vien */
+drop table NHANVIEN
 create table NHANVIEN
 (
 	MaNhanVien int identity(1,1) primary key,
