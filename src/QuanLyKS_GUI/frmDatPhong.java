@@ -200,7 +200,7 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
 		   }
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e.printStackTrace(); 
 		}
       
         cbxLoaiPhong.addActionListener(new java.awt.event.ActionListener() {

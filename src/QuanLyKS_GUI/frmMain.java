@@ -5,13 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import QuanLyKS_GUI.Login;
-import QuanLyKS_GUI.Register;
-import QuanLyKS_GUI.frmTimKiemNV;
-
-import QuanLyKS_GUI.DanhGia;
-import QuanLyKS_GUI.frmThemNhanVien;
-import QuanLyKS_GUI.frmCapNhatNhanVien;
+import QuanLyKS_GUI.*;
 import javax.swing.JDesktopPane;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -36,6 +30,7 @@ public class frmMain extends JFrame {
 	/**
 	 * 
 	 */
+	static JDesktopPane desktopPane = new JDesktopPane();
 	//khai bao tat ca cac frame
 	static QLDichVu frmQLDV = new QLDichVu();
 	static Login frmLogin = new Login();
@@ -50,6 +45,8 @@ public class frmMain extends JFrame {
 	static frmDanhSachPhong frmDanhSachPhong = new frmDanhSachPhong();
 	static frmCapNhatNhanVien frmCapNhatNhanVien = new frmCapNhatNhanVien();
 	static frmCapNhatLoaiPhong frmCapNhatLoaiPhong = new frmCapNhatLoaiPhong();
+	static frmBooking_Step1 frmBooking1 = new frmBooking_Step1();
+	
 	
 	static frmMain frame = new frmMain();
 	
@@ -57,22 +54,24 @@ public class frmMain extends JFrame {
 	private Image backgroundImage;
 
 	//deifne static varriable cho frame
-	private static final int FRM_LOGIN = 1;
-	private static final int FRM_REGISTER = 2;
-	private static final int FRM_QLDV = 3;
-	private static final int FRM_DATPHONG = 4;
+	static final int FRM_LOGIN = 1;
+	static final int FRM_REGISTER = 2;
+	static final int FRM_QLDV = 3;
+	static final int FRM_DATPHONG = 4;
 	static final int FRM_DichVu = 5;
-	private static final int FRM_TIMKIEM = 6; 
+	static final int FRM_TIMKIEM = 6; 
 
-	private static final int FRM_THEMNHANVIEN = 7; 
-	private static final int FRM_DANHGIA = 8;
-	private static final int FRM_DATDICHVU = 9;
-	private static final int FRM_THEMLOAIPHONG = 10;
-	private static final int FRM_DANHSACHPHONG = 11;
-	private static final int FRM_CAPNHATNHANVIEN = 12;
-	private static final long serialVersionUID = 1L;
-	private static final int FRM_CAPNHATLOAIPHONG = 13;
-	private static JPanel contentPane;
+	static final int FRM_THEMNHANVIEN = 7; 
+	static final int FRM_DANHGIA = 8;
+	static final int FRM_DATDICHVU = 9;
+	static final int FRM_THEMLOAIPHONG = 10;
+	static final int FRM_DANHSACHPHONG = 11;
+	static final int FRM_CAPNHATNHANVIEN = 12;
+	static final int FRM_CAPNHATLOAIPHONG = 13;
+	static final int FRM_BOOKING1 = 14;
+	
+	static final long serialVersionUID = 1L;
+	private static JPanel contentPane;  
 	/**
 	 * Launch the application.
 	 */
@@ -92,6 +91,7 @@ public class frmMain extends JFrame {
 			frmDanhSachPhong.setVisible(false);
 			frmCapNhatNhanVien.setVisible(false);
 			frmCapNhatLoaiPhong.setVisible(false);
+			frmBooking1.setVisible(false);
 			//set current frame
 			contentPane.add(frmLogin);
 			frmLogin.setVisible(true);
@@ -111,6 +111,7 @@ public class frmMain extends JFrame {
 			frmDanhSachPhong.setVisible(false);
 			frmCapNhatNhanVien.setVisible(false);
 			frmCapNhatLoaiPhong.setVisible(false);
+			frmBooking1.setVisible(false);
 			//set current frame
 			contentPane.add(frmRegister);
 			frmRegister.setVisible(true);
@@ -130,6 +131,7 @@ public class frmMain extends JFrame {
 			frmDanhSachPhong.setVisible(false);
 			frmCapNhatNhanVien.setVisible(false);
 			frmCapNhatLoaiPhong.setVisible(false);
+			frmBooking1.setVisible(false);
 			//set current frame
 			contentPane.add(frmQLDV);
 			frmQLDV.setVisible(true);
@@ -149,7 +151,7 @@ public class frmMain extends JFrame {
 			frmThemLoaiPhong.setVisible(false);
 			frmCapNhatNhanVien.setVisible(false);
 			frmCapNhatLoaiPhong.setVisible(false);
-			
+			frmBooking1.setVisible(false);
 			//set current frame
 			contentPane.add(frmDatPhong);
 			frmDatPhong.setVisible(true);
@@ -169,6 +171,8 @@ public class frmMain extends JFrame {
 			frmDanhSachPhong.setVisible(false);
 			frmCapNhatNhanVien.setVisible(false);
 			frmCapNhatLoaiPhong.setVisible(false);
+			frmBooking1.setVisible(false);
+			frmBooking1.getParent();
 			//set current frame
 			contentPane.add(frmDichVu);
 			frmDichVu.setVisible(true);
@@ -188,6 +192,7 @@ public class frmMain extends JFrame {
 			frmDanhSachPhong.setVisible(false);
 			frmCapNhatNhanVien.setVisible(false);
 			frmCapNhatLoaiPhong.setVisible(false);
+			frmBooking1.setVisible(false);
 			//set current frame
 			contentPane.add(frmTimKiemNV);
 			frmTimKiemNV.setVisible(true);
@@ -206,6 +211,7 @@ public class frmMain extends JFrame {
 			frmDanhSachPhong.setVisible(false);
 			frmCapNhatNhanVien.setVisible(false);
 			frmCapNhatLoaiPhong.setVisible(false);
+			frmBooking1.setVisible(false);
 			//set current frame
 			contentPane.add(frmThemNhanVien);
 			frmThemNhanVien.setVisible(true);
@@ -225,6 +231,7 @@ public class frmMain extends JFrame {
 			frmDanhSachPhong.setVisible(false);
 			frmCapNhatNhanVien.setVisible(false);
 			frmCapNhatLoaiPhong.setVisible(false);
+			frmBooking1.setVisible(false);
 			//set current frame
 			contentPane.add(frmDanhGia);
 			frmDanhGia.setVisible(true);
@@ -245,6 +252,7 @@ public class frmMain extends JFrame {
 			frmDanhSachPhong.setVisible(false);
 			frmCapNhatNhanVien.setVisible(false);
 			frmCapNhatLoaiPhong.setVisible(false);
+			frmBooking1.setVisible(false);
 			//set current frame
 			contentPane.add(frmDatDichVu);
 			frmDatDichVu.setVisible(true);
@@ -263,6 +271,7 @@ public class frmMain extends JFrame {
 			frmDanhSachPhong.setVisible(false);
 			frmCapNhatNhanVien.setVisible(false);
 			frmCapNhatLoaiPhong.setVisible(false);
+			frmBooking1.setVisible(false);
 			//set current frame
 			contentPane.add(frmThemLoaiPhong);
 			frmThemLoaiPhong.setVisible(true);
@@ -282,6 +291,7 @@ public class frmMain extends JFrame {
 			frmCapNhatNhanVien.setVisible(false);
 			frmCapNhatLoaiPhong.setVisible(false);
 			frmThemLoaiPhong.setVisible(false);
+			frmBooking1.setVisible(false);
 			//set current frame
 			contentPane.add(frmDanhSachPhong);
 			frmDanhSachPhong.setVisible(true);
@@ -301,6 +311,7 @@ public class frmMain extends JFrame {
 			frmDanhSachPhong.setVisible(false);
 			frmCapNhatLoaiPhong.setVisible(false);
 			frmThemLoaiPhong.setVisible(false);
+			frmBooking1.setVisible(false);
 			//set current frame
 			contentPane.add(frmCapNhatNhanVien);
 			frmCapNhatNhanVien.setVisible(true);
@@ -319,9 +330,30 @@ public class frmMain extends JFrame {
 			frmDanhSachPhong.setVisible(false);
 			frmCapNhatNhanVien.setVisible(false);
 			frmThemLoaiPhong.setVisible(false);
+			frmBooking1.setVisible(false);
 			//set current frame
 			contentPane.add(frmCapNhatLoaiPhong);
 			frmCapNhatLoaiPhong.setVisible(true);
+			break;
+			
+		case 14:
+			//close another frame
+			frmLogin.setVisible(false);
+			frmRegister.setVisible(false);
+			frmQLDV.setVisible(false);
+			frmDatPhong.setVisible(false);
+			frmDichVu.setVisible(false);
+			frmTimKiemNV.setVisible(false);
+			frmThemNhanVien.setVisible(false);
+			frmDanhGia.setVisible(false);
+			frmDatDichVu.setVisible(false);
+			frmDanhSachPhong.setVisible(false);
+			frmCapNhatNhanVien.setVisible(false);
+			frmThemLoaiPhong.setVisible(false);
+			frmCapNhatLoaiPhong.setVisible(false);
+			//set current frame
+			contentPane.add(frmBooking1);
+			frmBooking1.setVisible(true);
 			break;
 		}
 	}
@@ -518,7 +550,7 @@ public class frmMain extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		JDesktopPane desktopPane = new JDesktopPane();
+		
 		desktopPane.setBorder(UIManager.getBorder("Button.border"));
 		desktopPane.setBackground(SystemColor.activeCaption);
 		contentPane.add(desktopPane, BorderLayout.SOUTH);

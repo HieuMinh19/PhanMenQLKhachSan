@@ -13,3 +13,4 @@ public class Phong_BUS {
 		return dal.LoadListPhong();
 	}
 }
+ 
