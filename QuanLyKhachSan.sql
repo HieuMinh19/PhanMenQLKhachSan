@@ -64,6 +64,7 @@ create table HOADON
 	MaHoaDon int identity(1,1) primary key,
 	NgayThuTien varchar(25),
 	SoTienThu int,
+	MaCTDatPhong int,
 	MaNhanVien int,
 )
 go
@@ -71,12 +72,10 @@ go
 create table CTDICHVU
 (
 	MaCTDichVu int identity(1,1) primary key,
-	TuNgay varchar(50),
-	DenNgay varchar(50),
 	MaDichVu int,
 	SoLuong int,
-	MaDatPhong int,
-	ThanhTien int,
+	MaCTDatPhong int,
+	TongTienDichVu int,
 )
 go
 /*create Dich Vu*/
@@ -86,15 +85,7 @@ create table DICHVU
 	TenDichVu varchar(50),
 	GiaDichVu int,
 )
-go
-/*create table Chi Tiet Hoa Don*/
-create table CTHOADON
-(
-	MaCTHoaDon int identity(1,1) primary key,
-	MaHoaDon int,
-	MaCTDichVu int,
-	MaCTDatPhong int,
-)
+
 go
 /*create table Loai Phong*/
 CREATE table LOAIPHONG
@@ -113,11 +104,11 @@ create table PHONG
 go
 /*create table Chi Tiet Dat Phong*/
 create table CTDATPHONG(
-	MaDatPhong int primary key,
-	createdAt Date,
+	MaCTDatPhong int primary key,
+	NgayThucHien Date,
 	MaKhachHang int,
-	DateFrom Date,
-	DateTo Date,
+	NgayNhan Date,
+	NgayTra Date,
 	MaPhong int,
 	MaNhanVien int,
 )

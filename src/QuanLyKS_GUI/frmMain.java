@@ -406,7 +406,7 @@ public class frmMain extends JFrame {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}
+			} 
 		});
 	}
 
@@ -462,23 +462,19 @@ public class frmMain extends JFrame {
 		
 		JMenu mnDichVu = new JMenu("D\u1ECBch v\u1EE5");
 		mnDichVu.setFont(new Font("Segoe UI", Font.PLAIN, 20));
-		JMenuItem mntmThemDichVu = new JMenuItem("Th\u00EAm d\u1ECBch v\u1EE5");
-		mntmThemDichVu.setFont(new Font("Segoe UI", Font.PLAIN, 20));
-		mntmThemDichVu.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				controlFrame(FRM_DichVu);
-			}
-		});
 		
-		JMenuItem mntmtDchV = new JMenuItem("\u0110\u1EB7t d\u1ECBch v\u1EE5");
-		mntmtDchV.setFont(new Font("Segoe UI", Font.PLAIN, 20));
-		mntmtDchV.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controlFrame(FRM_DATDICHVU);
+		JMenu mnNewMenu_1 = new JMenu("\u0110\u1EB7t ph\u00F2ng");
+		mnNewMenu_1.setFont(new Font("Segoe UI", Font.PLAIN, 20));
+		menuBar.add(mnNewMenu_1);
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("\u0110\u1EB7t ph\u00F2ng");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controlFrame(FRM_BOOKING1);
 			}
 		});
-		mnDichVu.add(mntmtDchV);
-		mnDichVu.add(mntmThemDichVu);
+		mntmNewMenuItem.setFont(new Font("Segoe UI", Font.PLAIN, 20));
+		mnNewMenu_1.add(mntmNewMenuItem);
 		menuBar.add(mnDichVu);
 		
 		JMenuItem mntmQuanLyDich = new JMenuItem("Qu\u1EA3n l\u00FD d\u1ECBch v\u1EE5");
@@ -495,9 +491,6 @@ public class frmMain extends JFrame {
 		mnPhng.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		menuBar.add(mnPhng);
 		
-		JMenuItem mntmtPhng = new JMenuItem("\u0110\u1EB7t ph\u00F2ng");
-		mntmtPhng.setFont(new Font("Segoe UI", Font.PLAIN, 20));
-		
 		JMenuItem mntmDanhSachPhong = new JMenuItem("Danh s\u00E1ch ph\u00F2ng");
 		mntmDanhSachPhong.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		mntmDanhSachPhong.addActionListener(new ActionListener() {
@@ -505,8 +498,6 @@ public class frmMain extends JFrame {
 				controlFrame(FRM_DANHSACHPHONG);
 			}
 		});
-		
-		mnPhng.add(mntmtPhng);
 		mnPhng.add(mntmDanhSachPhong);
 		
 		JMenu mnNhnVin = new JMenu("Nh\u00E2n vi\u00EAn");
@@ -558,27 +549,9 @@ public class frmMain extends JFrame {
 		JMenuItem mntmCapNhatLoai = new JMenuItem("C\u1EADp nh\u1EADt");
 		mntmCapNhatLoai.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		mnLoiPhng.add(mntmCapNhatLoai);
-		
-		JMenu mnNewMenu_1 = new JMenu("\u0110\u1EB7t ph\u00F2ng");
-		mnNewMenu_1.setFont(new Font("Segoe UI", Font.PLAIN, 20));
-		menuBar.add(mnNewMenu_1);
-		
-		JMenuItem mntmNewMenuItem = new JMenuItem("\u0110\u1EB7t ph\u00F2ng");
-		mntmNewMenuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				controlFrame(FRM_BOOKING1);
-			}
-		});
-		mntmNewMenuItem.setFont(new Font("Segoe UI", Font.PLAIN, 20));
-		mnNewMenu_1.add(mntmNewMenuItem);
 		mntmCapNhatLoai.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controlFrame(FRM_CAPNHATLOAIPHONG);
-			}
-		});
-		mntmtPhng.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				controlFrame(FRM_DATPHONG);
 			}
 		});
 		contentPane = new JPanel();
