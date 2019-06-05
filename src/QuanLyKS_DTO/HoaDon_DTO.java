@@ -1,18 +1,19 @@
 package QuanLyKS_DTO;
-
+import java.sql.Date;
 public class HoaDon_DTO {
 	private int iMaHoaDon;
-	private String strNgayThuTien;
+	private Date dtNgayThuTien;
 	private int iSoTienThu;
+	private int iMaCTDatPhong;
 	private int iMaNhanVien;
 
 	public HoaDon_DTO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public HoaDon_DTO(int iMaHoaDon, String strNgayThuTien, int iSoTienThu, int iMaNhanVien) {
+	public HoaDon_DTO(int iMaHoaDon, Date dtNgayThuTien, int iSoTienThu, int iMaNhanVien) {
 		this.iMaHoaDon = iMaHoaDon;
-		this.strNgayThuTien = strNgayThuTien;
+		this.dtNgayThuTien = dtNgayThuTien;
 		this.iSoTienThu = iSoTienThu;
 		this.iMaNhanVien = iMaNhanVien;
 	}
@@ -24,15 +25,13 @@ public class HoaDon_DTO {
 	public void setMaHoaDon(int iMaHoaDon) {
 		this.iMaHoaDon = iMaHoaDon;
 	}
-	public String getNgayThuTien() {
-		return strNgayThuTien;
+	public Date getNgayThuTien() {
+		return dtNgayThuTien;
 	}
 
-	public void setNgayThuTien(String strNgayThuTien) {
-		this.strNgayThuTien = strNgayThuTien;
+	public void setNgayThuTien(Date dtNgayThuTien) {
+		this.dtNgayThuTien = dtNgayThuTien;
 	}
-
-
 
 	public int getSoTienThu() {
 		return iSoTienThu;
@@ -42,6 +41,14 @@ public class HoaDon_DTO {
 		this.iSoTienThu = iSoTienThu;
 	}
 
+	public int getMaCTDatPhong() {
+		return iMaCTDatPhong;
+	}
+
+	public void setMaCTDatPhong(int iMaCTDatPhong) {
+		this.iMaCTDatPhong = iMaCTDatPhong;
+	}
+	
 	public int getMaNhanVien() {
 		return iMaNhanVien;
 	}

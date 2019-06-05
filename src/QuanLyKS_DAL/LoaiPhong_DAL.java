@@ -158,7 +158,7 @@ public class LoaiPhong_DAL {
 				loaiphong.setMaLoaiPhong(rs.getInt("MaLoaiPhong"));
 				loaiphong.setTenLoaiPhong(rs.getString("TenLoaiPhong"));
 				loaiphong.setGiaPhong(rs.getInt("GiaPhong"));
-				loaiphong.setMoTa(rs.getString("MoTa"));
+				//loaiphong.setMoTa(rs.getString("MoTa"));
 				dsloaiphong.add(loaiphong);
 			}
 			return dsloaiphong;

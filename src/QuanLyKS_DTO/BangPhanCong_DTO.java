@@ -1,8 +1,8 @@
 package QuanLyKS_DTO;
-
+import java.sql.Date;
 public class BangPhanCong_DTO {
 	private int iMaPhanCong;
-	private String strNgayPhanCong;
+	private Date dtNgayPhanCong;
 	private String strLoaiCongViec;
 	private int iMaNhanVien;
 
@@ -10,9 +10,9 @@ public class BangPhanCong_DTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public BangPhanCong_DTO(int iMaPhanCong, String strNgayPhanCong, String strLoaiCongViec, int iMaNhanVien) {
+	public BangPhanCong_DTO(int iMaPhanCong, Date strNgayPhanCong, String strLoaiCongViec, int iMaNhanVien) {
 		this.iMaPhanCong = iMaPhanCong;
-		this.strNgayPhanCong = strNgayPhanCong;
+		this.dtNgayPhanCong = dtNgayPhanCong;
 		this.strLoaiCongViec = strLoaiCongViec;
 		this.iMaNhanVien = iMaNhanVien;
 	}
@@ -25,12 +25,12 @@ public class BangPhanCong_DTO {
 		this.iMaPhanCong = iMaPhanCong;
 	}
 
-	public String getNgayPhanCong() {
-		return strNgayPhanCong;
+	public Date getNgayPhanCong() {
+		return dtNgayPhanCong;
 	}
 
-	public void setNgayPhanCong(String strNgayPhanCong) {
-		this.strNgayPhanCong = strNgayPhanCong;
+	public void setNgayPhanCong(Date dtNgayPhanCong) {
+		this.dtNgayPhanCong = dtNgayPhanCong;
 	}
 
 	public String getLoaiCongViec() {

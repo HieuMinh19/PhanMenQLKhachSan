@@ -12,8 +12,8 @@ public class CTDatPhong_BUS {
 	private static CTDatPhong_DAL ctdpDAL;
 	
 	public static boolean Insert(CTDatPhong_DTO ctdp) {
-		int iThanhTien = tinhThanhTien(ctdp.getNgayNhan(), ctdp.getNgayTra(), ctdp.getMaPhong());
-		ctdp.setThanhTien(iThanhTien);
+		//int iThanhTien = tinhThanhTien(ctdp.getNgayNhan(), ctdp.getNgayTra(), ctdp.getMaPhong());
+		//ctdp.setThanhTien(iThanhTien);
 		return CTDatPhong_DAL.Insert(ctdp);
 	}
 	

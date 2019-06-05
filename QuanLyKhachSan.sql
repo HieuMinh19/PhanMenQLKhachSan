@@ -20,7 +20,7 @@ create table CTDANHGIA
 (	ID int identity(1,1) primary key ,
 	NoiDung varchar(255),
 	-- VoteSao float, 
-	NgayDanhGia varchar(25),
+	NgayDanhGia Date,
 )
 go
 create table CHUCVU(
@@ -33,9 +33,9 @@ create table NHANVIEN
 (
 	MaNhanVien int identity(1,1) primary key,
 	TenNhanVien varchar(100),
-	NgaySinh varchar(25),
+	NgaySinh Date,
 	CMND int, 
-	NgayVaoLam varchar(25),
+	NgayVaoLam Date,
 	MaChucVu int,
 )
 go	
@@ -43,7 +43,7 @@ go
 create table BANGPHANCONG
 (
 	MaPhanCong int identity(1,1) primary key,
-	NgayPhanCong varchar(25),
+	NgayPhanCong Date,
 	LoaiCongViec varchar(50),
 	MaNhanVien int,
 )
@@ -94,7 +94,7 @@ CREATE table LOAIPHONG
 	TenLoaiPhong varchar(20),
 	GiaPhong int,
 )
-GO
+go
 /*create table Phong*/
 create table PHONG
 (
@@ -112,16 +112,12 @@ create table CTDATPHONG(
 	MaPhong int,
 	MaNhanVien int,
 )
+go
 /*insert table Account*/
 INSERT INTO ACCOUNT( Username, Password,Role) VALUES ('admin1', '123456', 1)
 INSERT INTO ACCOUNT( Username, Password,Role) VALUES ('duc', '123456', 2)
 /*insert table ChuongTrinhDanhGia*/
-
-INSERT INTO CTDANHGIA( NoiDung, VoteSao,NgayDanhGia) VALUES ('Che Độ Sạch sẽ', 3.5, '05/05/2019')
-INSERT INTO CTDANHGIA( NoiDung, VoteSao,NgayDanhGia) VALUES ('Dọn Vệ Sinh', 4.5, '10/06/2019')
-/*insert table CTDICHVU*/
-INSERT INTO CTDICHVU( TenCTDichVu, GiaDV, SoLuong) VALUES ( 'ăn sáng', 20000, 1);
-INSERT INTO CTDICHVU( TenCTDichVu, GiaDV, SoLuong) VALUES ( 'ăn trưa', 100000, 1);
+go
 /*insert table DICHVU*/
 INSERT INTO DICHVU( TenDichVu,GiaDichVu) VALUES ( 'ăn sáng', 30000);
 INSERT INTO DICHVU( TenDichVu,GiaDichVu) VALUES ( 'ăn toi', 100000);
@@ -129,25 +125,21 @@ INSERT INTO DICHVU( TenDichVu,GiaDichVu) VALUES ( 'ăn toi', 100000);
 /*insert table LOAIPHONG*/
 go
 INSERT INTO LOAIPHONG( TenLoaiPhong, GiaPhong) VALUES ( 'VIP', 250000);
-go
 INSERT INTO LOAIPHONG( TenLoaiPhong, GiaPhong) VALUES ( 'Thuong', 150000);
-
 go
 INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (101, 1);
 INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (201, 1);
 INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (302, 2);
 INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (202, 2);
-
-
-SELECT p.MaPhong from PHONG as p, CTDATPHONG as ctdp where (not EXISTS
-(select MaPhong from CTDATPHONG as ctdp where p.MaPhong  = ctdp.MaPhong and NgayNhan between '2019-05-13' and '2019-05-15')) and (p.MaLoaiPhong = 1)
-
-select lp.MaLoaiPhong, TenLoaiPhong, p.MaPhong, TenKH, CMND, NgayNhan, NgayTra, ThanhTien
-from PHONG as p, LOAIPHONG as lp, CTDATPHONG as ctdp 
-where p.MaPhong = ctdp.MaPhong and p.MaLoaiPhong = lp.MaLoaiPhong and '2018-05-04'< ctdp.NgayNhan
-
-SELECT DISTINCT p.MaPhong from PHONG as p where (not EXISTS(select MaPhong from CTDATPHONG as ctdp where p.MaPhong  = ctdp.MaPhong
-and NgayNhan between '2019-12-13' and '2019-12-16')) and (p.MaLoaiPhong = 1)
+go
+INSERT INTO CTDANHGIA( NoiDung, NgayDanhGia) VALUES ('Che Độ Sạch sẽ',  '05/05/2019')
+INSERT INTO CTDANHGIA( NoiDung, NgayDanhGia) VALUES ('Dọn Vệ Sinh',  '10/06/2019')
+/*insert table CTDICHVU*/
+go
+/*insert table CHUCVU*/
+INSERT INTO CHUCVU(TenChucVu) VALUES ('Quan Ly');
+INSERT INTO CHUCVU(TenChucVu) VALUES ('Nhân Viên');
+go
 
 
 

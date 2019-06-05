@@ -1,5 +1,5 @@
 package QuanLyKS_DAL;
-
+import java.sql.Date;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -15,7 +15,7 @@ public class CTDichVu_DAL {
 			ptmt = conn.prepareStatement(query);
 			ptmt.setInt(1, ctdvDTO.getMaDichVu());
 			ptmt.setInt(2, ctdvDTO.getSoLuong());
-			ptmt.setInt(3, ctdvDTO.getMaDatPhong());
+			ptmt.setInt(3, ctdvDTO.getMaCTDatPhong());
 			if( ptmt.executeUpdate() != 0) {
 				System.err.println("booking Service success");
 				return true;
