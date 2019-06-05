@@ -3,13 +3,13 @@ package QuanLyKS_DTO;
 import java.sql.Date;
 
 public class CTDatPhong_DTO {
-	private int iMaDatPhong;
-	private Date dtCreatedAt;
-	private int iMaKH;
-    private int iMaNhanVien;
-    private int iMaPhong;
+	private int iMaCTDatPhong;
+	private Date dtNgayThucHien;
+	private int iMaKhachHang;
 	private Date dtNgayNhan;
 	private Date dtNgayTra;
+	private int iMaPhong;
+	private int iMaNhanVien;
 	
 	
 	public CTDatPhong_DTO() {
@@ -28,11 +28,11 @@ public class CTDatPhong_DTO {
        
 	}
 	
-	public int getMaDatPhong() {
-		return iMaDatPhong;
+	public int getMaCTDatPhong() {
+		return iMaCTDatPhong;
 	}
-	public void setMaDatPhong(int iMaDatPhong) {
-		this.iMaDatPhong = iMaDatPhong;
+	public void setMaCTDatPhong(int iMaCTDatPhong) {
+		this.iMaCTDatPhong = iMaCTDatPhong;
     }
     
     public int getMaPhong() {
@@ -42,20 +42,20 @@ public class CTDatPhong_DTO {
 		this.iMaPhong = iMaPhong;
     }
 
-	public Date getCreatedAt() {
-		return dtCreatedAt;
+	public Date getdtNgayThucHien() {
+		return dtNgayThucHien;
 	}
 
-	public void setCreatedAt(Date dtCreatedAt) {
-		this.dtCreatedAt = dtCreatedAt;
+	public void setdtNgayThucHien(Date dtNgayThucHien) {
+		this.dtNgayThucHien = dtNgayThucHien;
 	}
 
-	public int getMaKH() {
-		return iMaKH;
+	public int getMaKhachHang() {
+		return iMaKhachHang;
 	}
 
-	public void setMaKH(int iMaKH) {
-		this.iMaKH = iMaKH;
+	public void setMaKhachHang(int iMaKhachHang) {
+		this.iMaKhachHang = iMaKhachHang;
 	}
 
 	public int getMaNhanVien() {

@@ -4,12 +4,13 @@ public class CTDichVu_DTO {
 	private int iMaCTDichVu;
 	private int iMaDichVu;
 	private int iSoLuong;
-	private int iMaDatPhong;
+	private int iMaCTDatPhong;
+	private int iTongTienDichVu;
 	
-	public CTDichVu_DTO( int iSoLuong, int iMaDichVu, int iMaDatPhong) {
+	public CTDichVu_DTO( int iSoLuong, int iMaCTDatPhong, int iTongTienDichVu) {
 		this.iSoLuong = iSoLuong;
-		this.iMaDichVu = iMaDichVu;
-		this.iMaDatPhong = iMaDatPhong;
+		this.iMaCTDatPhong = iMaCTDatPhong;
+		this.iTongTienDichVu = iTongTienDichVu;
 	}
 
 	public CTDichVu_DTO() {
@@ -41,12 +42,21 @@ public class CTDichVu_DTO {
 		this.iMaDichVu = iMaDichVu;
 	}
 
-	public int getMaDatPhong() {
-		return iMaDatPhong;
+	public int getMaCTDatPhong() {
+		return iMaCTDatPhong;
 	}
 
-	public void setMaDatPhong(int iMaDatPhong) {
-		this.iMaDatPhong = iMaDatPhong;
+	public void setMaCTDatPhong(int iMaCTDatPhong) {
+		this.iMaCTDatPhong = iMaCTDatPhong;
+	}
+	
+	
+	public int getTongTienDichVu() {
+		return iTongTienDichVu;
+	}
+
+	public void setTongTienDichVu(int iTongTienDichVu) {
+		this.iTongTienDichVu = iTongTienDichVu;
 	}
 
 }

@@ -133,7 +133,7 @@ public class frmBooking_Step1 extends JInternalFrame {
         			if(nameLP.equals( lpCompare.getTenLoaiPhong() ) ) {
         				int Gia = lpCompare.getGiaPhong();
         				edGia.setText(String.valueOf(Gia));
-        				edMoTa.setText(lpCompare.getMoTa());
+        				//edMoTa.setText(lpCompare.getMoTa());
         			}
         				 
 				}
