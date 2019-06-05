@@ -34,7 +34,7 @@ public class frmBooking_Step2 extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public frmBooking_Step2() {
-		setBounds(100, 100, 816, 541);
+		setBounds(100, 100, 810, 540);
 		getContentPane().setLayout(null);
 		
 		JEditorPane edDV01 = new JEditorPane();

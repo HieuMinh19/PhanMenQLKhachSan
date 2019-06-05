@@ -51,9 +51,10 @@ create table BANGPHANCONG
 go
 create table KHACHHANG(
 	MaKhachHang int primary key,
-	Name varchar(255),
+	HoTen varchar(255),
 	Email varchar(30),
-	Phone varchar(20),
+	DiaChi varchar(50),
+	DienThoai varchar(20),
 	CMND varchar(20),
 )
 go
