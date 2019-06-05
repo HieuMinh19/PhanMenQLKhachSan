@@ -3,6 +3,7 @@ package QuanLyKS_DAL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Date;
 
 import QuanLyKS_DTO.DanhGia_DTO;
 
@@ -13,11 +14,11 @@ public class DanhGia_DAL{
 	MyConnection mycon = new QuanLyKS_DAL.MyConnection();
 	Connection conn = mycon.getConnection();
 	String NoiDung = danhgia.getNoiDung();
-	String NgayDanhGia = danhgia.getNgayDanhGia();
+	Date NgayDanhGia = danhgia.getNgayDanhGia();
 	try {
 		ptmt = conn.prepareStatement(query);
 		ptmt.setString(1, NoiDung);
-		ptmt.setString(2, NgayDanhGia);
+		ptmt.setDate(2, NgayDanhGia);
 		if(ptmt.executeUpdate() !=0 ) {
 			System.err.println("thêm đánh giá thành công! ");
 			return true;

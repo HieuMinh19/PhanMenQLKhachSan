@@ -1,18 +1,18 @@
 package QuanLyKS_DTO;
-
+import java.sql.Date;
 public class DanhGia_DTO {
     private int iID;
     private String strNoiDung;
-    private String strNgayDanhGia;
+    private Date dtNgayDanhGia;
 
     public DanhGia_DTO() {
 	
     }
 
-    public DanhGia_DTO(int iID,String strNoiDung,String strNgayDanhGia) {
+    public DanhGia_DTO(int iID,String strNoiDung,Date dtNgayDanhGia) {
 		this.iID  = iID;
 		this.strNoiDung = strNoiDung;
-		this.strNgayDanhGia = strNgayDanhGia;
+		this.dtNgayDanhGia = dtNgayDanhGia;
     }
     public int getID() {
         return iID;
@@ -30,12 +30,12 @@ public class DanhGia_DTO {
         this.strNoiDung = strNoiDung;
     }
 
-    public String getNgayDanhGia() {
-        return strNgayDanhGia;
+    public Date getNgayDanhGia() {
+        return dtNgayDanhGia;
     }
 
-    public void setNgayDanhGia(String strNgayDanhGia) {
-        this.strNgayDanhGia = strNgayDanhGia;
+    public void setNgayDanhGia(Date dtNgayDanhGia) {
+        this.dtNgayDanhGia = dtNgayDanhGia;
     }
 
 }

@@ -3,6 +3,7 @@ import QuanLyKS_DTO.CTDatPhong_DTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Date;
 public class CTDatPhong_DAL {
 	public static boolean Insert(CTDatPhong_DTO ctDP){
 		PreparedStatement ptmt = null; 
@@ -11,14 +12,14 @@ public class CTDatPhong_DAL {
 		Connection conn = mycon.getConnection();
 		try {
 			ptmt = conn.prepareStatement(query);
-			ptmt.setString(1, ctDP.getTenHK()); 
-			ptmt.setString(2, ctDP.getCMND());
-			ptmt.setInt(3, ctDP.getMaPhong());
-			ptmt.setString(4, ctDP.getNgayNhan());
-			ptmt.setString(5, ctDP.getNgayTra());
-			ptmt.setInt(6, ctDP.getThanhTien());	
-			int ThanhTien = ctDP.getThanhTien();
-			System.out.print(ThanhTien);
+//			ptmt.setString(1, ctDP.getTenHK()); 
+//			ptmt.setString(2, ctDP.getCMND());
+//			ptmt.setInt(3, ctDP.getMaPhong());
+//			ptmt.setString(4, ctDP.getNgayNhan());
+//			ptmt.setString(5, ctDP.getNgayTra());
+//			ptmt.setInt(6, ctDP.getThanhTien());	
+//			int ThanhTien = ctDP.getThanhTien();
+			//System.out.print(ThanhTien);
 			if( ptmt.executeUpdate() != 0) {
 				System.err.println("insert thanh cong booking");
 				return true;
