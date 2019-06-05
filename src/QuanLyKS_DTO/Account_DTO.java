@@ -10,7 +10,7 @@ public class Account_DTO {
 	private String dtNgayLap;
 	
 	public Account_DTO() {
-	}
+	} 
 	
 	public Account_DTO(String NgayLap ,String Username, char[] Password, int ID) {
 		this.iID = ID;

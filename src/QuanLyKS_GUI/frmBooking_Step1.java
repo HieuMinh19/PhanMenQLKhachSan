@@ -4,10 +4,14 @@ import java.awt.EventQueue;
 
 import javax.swing.JInternalFrame;
 
+import com.ibm.icu.text.DateFormat;
+import com.ibm.icu.text.SimpleDateFormat;
 import com.toedter.calendar.JDateChooser;
 
 import QuanLyKS_DTO.LoaiPhong_DTO;
+import QuanLyKS_DTO.CTDatPhong_DTO;
 import QuanLyKS_BUS.LoaiPhong_BUS;
+import QuanLyKS_GUI.frmMain;
 
 
 import javax.swing.JLabel;
@@ -15,6 +19,7 @@ import java.awt.Font;
 import javax.swing.JEditorPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
@@ -24,12 +29,15 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
+import java.awt.event.InputMethodListener;
+import java.awt.event.InputMethodEvent;
+import javax.swing.event.AncestorListener;
+import javax.swing.event.AncestorEvent;
 
 public class frmBooking_Step1 extends JInternalFrame {
-	private JTable table;
-	private JTextField textField;
+	private JTable tbChiTiet;
 	ArrayList<LoaiPhong_DTO> listLP = LoaiPhong_BUS.LoadListLP();
-
+	public CTDatPhong_DTO ctdpDTO = new CTDatPhong_DTO();
 	/**
 	 * Launch the application.
 	 */
@@ -54,6 +62,23 @@ public class frmBooking_Step1 extends JInternalFrame {
 		getContentPane().setLayout(null);
 		
 		JDateChooser date_NgayNhanPhong = new JDateChooser();
+		date_NgayNhanPhong.addAncestorListener(new AncestorListener() {
+			public void ancestorAdded(AncestorEvent arg0) {
+				ctdpDTO.setNgayNhan(new Date(date_NgayNhanPhong.getDate().getTime()));
+			 	//System.out.println(NgayDen); 
+			}
+			public void ancestorMoved(AncestorEvent arg0) {
+			}
+			public void ancestorRemoved(AncestorEvent arg0) {
+			}
+		});
+		date_NgayNhanPhong.addInputMethodListener(new InputMethodListener() {
+			public void caretPositionChanged(InputMethodEvent arg0) {
+			}
+			public void inputMethodTextChanged(InputMethodEvent arg0) {
+				
+			}
+		});
 		date_NgayNhanPhong.setBounds(208, 121, 142, 25);
 		getContentPane().add(date_NgayNhanPhong);
 		date_NgayNhanPhong.setDateFormatString("dd/MM/yyyy");
@@ -88,14 +113,16 @@ public class frmBooking_Step1 extends JInternalFrame {
 		edGia.setBounds(435, 266, 118, 37);
 		getContentPane().add(edGia);
 		
-		JButton btnNewButton = new JButton("Ti\u1EBFp t\u1EE5c");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnTiepTuc = new JButton("Ti\u1EBFp t\u1EE5c");
+		btnTiepTuc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				int SoPhong = 1;
+				//frmMain.frmBooking2 = new frmBooking_Step2(SoPhong);
+				frmMain.controlFrame(frmMain.FRM_BOOKING2);
 			}
 		});
-		btnNewButton.setBounds(420, 494, 133, 25);
-		getContentPane().add(btnNewButton);
+		btnTiepTuc.setBounds(420, 494, 133, 25);
+		getContentPane().add(btnTiepTuc);
 		
 		JComboBox cbxLoaiPhong = new JComboBox();
 		cbxLoaiPhong.addItemListener(new ItemListener() {
@@ -112,7 +139,7 @@ public class frmBooking_Step1 extends JInternalFrame {
 				}
 			}
 		});
-		cbxLoaiPhong.setBounds(300, 195, 253, 20);
+		cbxLoaiPhong.setBounds(208, 195, 345, 20);
 		getContentPane().add(cbxLoaiPhong);
 		
 		  //Load list LoaiPhong
@@ -123,7 +150,7 @@ public class frmBooking_Step1 extends JInternalFrame {
 		}
 		
 		JLabel lblDchV = new JLabel("Lo\u1EA1i ph\u00F2ng");
-		lblDchV.setBounds(399, 167, 110, 25);
+		lblDchV.setBounds(336, 157, 110, 25);
 		getContentPane().add(lblDchV);
 			
 		DefaultTableModel m = new DefaultTableModel(
@@ -133,27 +160,18 @@ public class frmBooking_Step1 extends JInternalFrame {
 					"MaNhanVien", "TenNhanVien", "NgaySinh", "CMND", "NgayVaoLam", "TenChucVu"
 				}
 			);
-		table = new JTable(m);
-		table.setBounds(208, 383, 345, 62);
-		getContentPane().add(table);
-		table.setRowSelectionAllowed(true);
-
-		textField = new JTextField();
-		textField.setBounds(204, 195, 86, 20);
-		getContentPane().add(textField);
-		textField.setColumns(10);
+		tbChiTiet = new JTable(m);
+		tbChiTiet.setBounds(208, 383, 345, 62);
+		getContentPane().add(tbChiTiet);
+		tbChiTiet.setRowSelectionAllowed(true);
 		
-		JLabel lblNewLabel_3 = new JLabel("S\u1ED1 l\u01B0\u1EE3ng");
-		lblNewLabel_3.setBounds(208, 167, 67, 19);
-		getContentPane().add(lblNewLabel_3);
+		JButton btnDatPhong = new JButton("\u0110\u1EB7t ph\u00F2ng");
+		btnDatPhong.setBounds(208, 494, 110, 25);
+		getContentPane().add(btnDatPhong);
 		
-		JButton btnNewButton_1 = new JButton("\u0110\u1EB7t ph\u00F2ng");
-		btnNewButton_1.setBounds(208, 494, 110, 25);
-		getContentPane().add(btnNewButton_1);
-		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(208, 352, 345, 20);
-		getContentPane().add(comboBox_1);
+		JComboBox cbxMaPhong = new JComboBox();
+		cbxMaPhong.setBounds(208, 352, 345, 20);
+		getContentPane().add(cbxMaPhong);
 		
 		JLabel lblNewLabel_2 = new JLabel("S\u1ED1 ph\u00F2ng");
 		lblNewLabel_2.setBounds(208, 327, 67, 14);

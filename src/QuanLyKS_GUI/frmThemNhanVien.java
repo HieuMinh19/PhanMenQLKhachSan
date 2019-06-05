@@ -134,7 +134,7 @@ public class frmThemNhanVien extends JInternalFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		 
 		
 		Button button = new Button("Th\u00EAm nh\u00E2n vi\u00EAn");
 		button.addActionListener(new ActionListener() {
