@@ -26,7 +26,7 @@ public class Login extends JInternalFrame {
 					Login frame = new Login();
 					frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					e.printStackTrace(); 
 				}
 			}
 		});

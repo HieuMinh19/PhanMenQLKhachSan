@@ -11,7 +11,7 @@ public class CTDatPhong_DAL {
 		Connection conn = mycon.getConnection();
 		try {
 			ptmt = conn.prepareStatement(query);
-			ptmt.setString(1, ctDP.getTenHK());
+			ptmt.setString(1, ctDP.getTenHK()); 
 			ptmt.setString(2, ctDP.getCMND());
 			ptmt.setInt(3, ctDP.getMaPhong());
 			ptmt.setString(4, ctDP.getNgayNhan());

@@ -1,35 +1,31 @@
 package QuanLyKS_DTO;
 
+import java.sql.Date;
+
 public class CTDatPhong_DTO {
 	private int iMaDatPhong;
-	private String strTenKH;
-	private String strCMND;
-    private int iMaDichVu;
+	private Date dtCreatedAt;
+	private int iMaKH;
+    private int iMaNhanVien;
     private int iMaPhong;
-	private String strNgayNhan;
-	private String strNgayTra;
-	private int iThanhTien;
-	public CTDatPhong_DTO() {
+	private Date dtNgayNhan;
+	private Date dtNgayTra;
 	
+	
+	public CTDatPhong_DTO() {
+		
 	}
-
+	
 	public CTDatPhong_DTO( String strTenKH, String strCMND, int iMaDichVu, int iMaPhong, String NgayNhan, String NgayTra, int iThanhTien ) {
-		this.strTenKH = strTenKH;
-		this.strCMND = strCMND;
-        this.iMaDichVu = iMaDichVu;
+		;
         this.iMaPhong = iMaPhong;
-        this.strNgayNhan = NgayNhan;
-        this.strNgayTra = NgayTra;
-        this.iThanhTien = iThanhTien;
+      
 	}
 	
 	public CTDatPhong_DTO( String strTenKH, String strCMND, int iMaDichVu, int iMaPhong, String NgayNhan, String NgayTra) {
-		this.strTenKH = strTenKH;
-		this.strCMND = strCMND;
-        this.iMaDichVu = iMaDichVu;
+		
         this.iMaPhong = iMaPhong;
-        this.strNgayNhan = NgayNhan;
-        this.strNgayTra = NgayTra;
+       
 	}
 	
 	public int getMaDatPhong() {
@@ -39,27 +35,6 @@ public class CTDatPhong_DTO {
 		this.iMaDatPhong = iMaDatPhong;
     }
     
-	public String getTenHK() {
-		return strTenKH;
-	}
-	public void setTenHK(String strTenKH) {
-		this.strTenKH = strTenKH;
-    }
-    
-    public String getCMND() {
-		return strCMND;
-	}
-	public void setCMND(String strCMNN) {
-		this.strCMND = strCMNN;
-    }
-
-    public int getMaDichVu() {
-		return iMaDichVu;
-	}
-	public void setMaDichVu(int iMaDichVu) {
-		this.iMaDichVu = iMaDichVu;
-    }
-
     public int getMaPhong() {
 		return iMaPhong;
 	}
@@ -67,28 +42,44 @@ public class CTDatPhong_DTO {
 		this.iMaPhong = iMaPhong;
     }
 
-	public String getNgayNhan() {
-		return strNgayNhan;
+	public Date getCreatedAt() {
+		return dtCreatedAt;
 	}
 
-	public void setNgayNhan(String strNgayNhan) {
-		this.strNgayNhan = strNgayNhan;
+	public void setCreatedAt(Date dtCreatedAt) {
+		this.dtCreatedAt = dtCreatedAt;
 	}
 
-	public String getNgayTra() {
-		return strNgayTra;
+	public int getMaKH() {
+		return iMaKH;
 	}
 
-	public void setNgayTra(String strNgayTra) {
-		this.strNgayTra = strNgayTra;
+	public void setMaKH(int iMaKH) {
+		this.iMaKH = iMaKH;
 	}
 
-	public int getThanhTien() {
-		return iThanhTien;
+	public int getMaNhanVien() {
+		return iMaNhanVien;
 	}
 
-	public void setThanhTien(int iThanhTien) {
-		this.iThanhTien = iThanhTien;
+	public void setMaNhanVien(int iMaNhanVien) {
+		this.iMaNhanVien = iMaNhanVien;
+	}
+
+	public void setNgayNhan(Date dtNgayNhan) {
+		this.dtNgayNhan = dtNgayNhan;
+	}
+
+	public Date getNgayNhan() {
+		return dtNgayNhan;
+	}
+
+	public Date getNgayTra() {
+		return dtNgayTra;
+	}
+
+	public void setNgayTra(Date dtNgayTra) {
+		this.dtNgayTra = dtNgayTra;
 	}
 
 }

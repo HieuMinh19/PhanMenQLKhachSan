@@ -95,11 +95,6 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
          		}
         	}
         });
-        dtNgayNhan.addMouseListener(new MouseAdapter() {
-        	@Override
-        	public void mouseClicked(MouseEvent e) {
-        	}
-        });
       
         dtNgayNhan.addPropertyChangeListener(new PropertyChangeListener() {
         	public void propertyChange(PropertyChangeEvent arg0) {

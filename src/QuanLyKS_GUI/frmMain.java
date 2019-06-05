@@ -30,6 +30,7 @@ public class frmMain extends JFrame {
 	/**
 	 * 
 	 */
+	static int SoPhong = 0;
 	static JDesktopPane desktopPane = new JDesktopPane();
 	//khai bao tat ca cac frame
 	static QLDichVu frmQLDV = new QLDichVu();
@@ -46,6 +47,7 @@ public class frmMain extends JFrame {
 	static frmCapNhatNhanVien frmCapNhatNhanVien = new frmCapNhatNhanVien();
 	static frmCapNhatLoaiPhong frmCapNhatLoaiPhong = new frmCapNhatLoaiPhong();
 	static frmBooking_Step1 frmBooking1 = new frmBooking_Step1();
+	static frmBooking_Step2 frmBooking2 = new frmBooking_Step2();
 	
 	
 	static frmMain frame = new frmMain();
@@ -69,6 +71,7 @@ public class frmMain extends JFrame {
 	static final int FRM_CAPNHATNHANVIEN = 12;
 	static final int FRM_CAPNHATLOAIPHONG = 13;
 	static final int FRM_BOOKING1 = 14;
+	static final int FRM_BOOKING2 = 15;
 	
 	static final long serialVersionUID = 1L;
 	private static JPanel contentPane;  
@@ -92,6 +95,7 @@ public class frmMain extends JFrame {
 			frmCapNhatNhanVien.setVisible(false);
 			frmCapNhatLoaiPhong.setVisible(false);
 			frmBooking1.setVisible(false);
+			frmBooking2.setVisible(false);
 			//set current frame
 			contentPane.add(frmLogin);
 			frmLogin.setVisible(true);
@@ -112,6 +116,7 @@ public class frmMain extends JFrame {
 			frmCapNhatNhanVien.setVisible(false);
 			frmCapNhatLoaiPhong.setVisible(false);
 			frmBooking1.setVisible(false);
+			frmBooking2.setVisible(false);
 			//set current frame
 			contentPane.add(frmRegister);
 			frmRegister.setVisible(true);
@@ -132,6 +137,7 @@ public class frmMain extends JFrame {
 			frmCapNhatNhanVien.setVisible(false);
 			frmCapNhatLoaiPhong.setVisible(false);
 			frmBooking1.setVisible(false);
+			frmBooking2.setVisible(false);
 			//set current frame
 			contentPane.add(frmQLDV);
 			frmQLDV.setVisible(true);
@@ -152,6 +158,7 @@ public class frmMain extends JFrame {
 			frmCapNhatNhanVien.setVisible(false);
 			frmCapNhatLoaiPhong.setVisible(false);
 			frmBooking1.setVisible(false);
+			frmBooking2.setVisible(false);
 			//set current frame
 			contentPane.add(frmDatPhong);
 			frmDatPhong.setVisible(true);
@@ -172,7 +179,7 @@ public class frmMain extends JFrame {
 			frmCapNhatNhanVien.setVisible(false);
 			frmCapNhatLoaiPhong.setVisible(false);
 			frmBooking1.setVisible(false);
-			frmBooking1.getParent();
+			frmBooking2.setVisible(false);
 			//set current frame
 			contentPane.add(frmDichVu);
 			frmDichVu.setVisible(true);
@@ -193,6 +200,7 @@ public class frmMain extends JFrame {
 			frmCapNhatNhanVien.setVisible(false);
 			frmCapNhatLoaiPhong.setVisible(false);
 			frmBooking1.setVisible(false);
+			frmBooking2.setVisible(false);
 			//set current frame
 			contentPane.add(frmTimKiemNV);
 			frmTimKiemNV.setVisible(true);
@@ -212,6 +220,7 @@ public class frmMain extends JFrame {
 			frmCapNhatNhanVien.setVisible(false);
 			frmCapNhatLoaiPhong.setVisible(false);
 			frmBooking1.setVisible(false);
+			frmBooking2.setVisible(false);
 			//set current frame
 			contentPane.add(frmThemNhanVien);
 			frmThemNhanVien.setVisible(true);
@@ -232,6 +241,7 @@ public class frmMain extends JFrame {
 			frmCapNhatNhanVien.setVisible(false);
 			frmCapNhatLoaiPhong.setVisible(false);
 			frmBooking1.setVisible(false);
+			frmBooking2.setVisible(false);
 			//set current frame
 			contentPane.add(frmDanhGia);
 			frmDanhGia.setVisible(true);
@@ -253,6 +263,7 @@ public class frmMain extends JFrame {
 			frmCapNhatNhanVien.setVisible(false);
 			frmCapNhatLoaiPhong.setVisible(false);
 			frmBooking1.setVisible(false);
+			frmBooking2.setVisible(false);
 			//set current frame
 			contentPane.add(frmDatDichVu);
 			frmDatDichVu.setVisible(true);
@@ -272,6 +283,7 @@ public class frmMain extends JFrame {
 			frmCapNhatNhanVien.setVisible(false);
 			frmCapNhatLoaiPhong.setVisible(false);
 			frmBooking1.setVisible(false);
+			frmBooking2.setVisible(false);
 			//set current frame
 			contentPane.add(frmThemLoaiPhong);
 			frmThemLoaiPhong.setVisible(true);
@@ -292,6 +304,7 @@ public class frmMain extends JFrame {
 			frmCapNhatLoaiPhong.setVisible(false);
 			frmThemLoaiPhong.setVisible(false);
 			frmBooking1.setVisible(false);
+			frmBooking2.setVisible(false);
 			//set current frame
 			contentPane.add(frmDanhSachPhong);
 			frmDanhSachPhong.setVisible(true);
@@ -312,6 +325,7 @@ public class frmMain extends JFrame {
 			frmCapNhatLoaiPhong.setVisible(false);
 			frmThemLoaiPhong.setVisible(false);
 			frmBooking1.setVisible(false);
+			frmBooking2.setVisible(false);
 			//set current frame
 			contentPane.add(frmCapNhatNhanVien);
 			frmCapNhatNhanVien.setVisible(true);
@@ -331,6 +345,7 @@ public class frmMain extends JFrame {
 			frmCapNhatNhanVien.setVisible(false);
 			frmThemLoaiPhong.setVisible(false);
 			frmBooking1.setVisible(false);
+			frmBooking2.setVisible(false);
 			//set current frame
 			contentPane.add(frmCapNhatLoaiPhong);
 			frmCapNhatLoaiPhong.setVisible(true);
@@ -351,9 +366,32 @@ public class frmMain extends JFrame {
 			frmCapNhatNhanVien.setVisible(false);
 			frmThemLoaiPhong.setVisible(false);
 			frmCapNhatLoaiPhong.setVisible(false);
+			frmBooking2.setVisible(false);
 			//set current frame
 			contentPane.add(frmBooking1);
 			frmBooking1.setVisible(true);
+			break;
+			
+			
+		case 15:
+			//close another frame
+			frmLogin.setVisible(false);
+			frmRegister.setVisible(false);
+			frmQLDV.setVisible(false);
+			frmDatPhong.setVisible(false);
+			frmDichVu.setVisible(false);
+			frmTimKiemNV.setVisible(false);
+			frmThemNhanVien.setVisible(false);
+			frmDanhGia.setVisible(false);
+			frmDatDichVu.setVisible(false);
+			frmDanhSachPhong.setVisible(false);
+			frmCapNhatNhanVien.setVisible(false);
+			frmThemLoaiPhong.setVisible(false);
+			frmCapNhatLoaiPhong.setVisible(false);
+			frmBooking1.setVisible(false);
+			//set current frame
+			contentPane.add(frmBooking2);
+			frmBooking2.setVisible(true);
 			break;
 		}
 	}
@@ -375,22 +413,7 @@ public class frmMain extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frmMain() {
-//		backgroundImage = new ImageIcon("~/images/main-background.png").getImage();
-//	    Dimension size = new Dimension(backgroundImage.getWidth(null), backgroundImage.getHeight(null));
-//	    this.setPreferredSize(size);
-//	    this.setMinimumSize(size);
-//	    this.setMaximumSize(size);
-//	    this.setSize(size);
-//	    this.setLayout(null);
-//	    JPanel panel = new JPanel() {
-//	    	@Override
-//	    	public void paintComponent(Graphics g) {
-//	    	    g.drawImage(backgroundImage, 0, 0, null);
-//	        }
-//	    };
-//	    this.getContentPane().add(panel);
-		
+	public frmMain() {		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 563, 300);
 		
@@ -559,7 +582,7 @@ public class frmMain extends JFrame {
 			}
 		});
 		contentPane = new JPanel();
-		contentPane.setBorder(new LineBorder(new Color(0, 0, 0)));
+		contentPane.setBorder(new LineBorder(new Color(255, 0, 0)));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		

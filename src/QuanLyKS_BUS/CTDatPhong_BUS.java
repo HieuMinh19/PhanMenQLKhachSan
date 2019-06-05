@@ -19,7 +19,7 @@ public class CTDatPhong_BUS {
 	
 	public static int getMaPhong(String TenPhong) {
 		
-		return 0;
+		return 0; 
 	}
 	
 	private static int tinhThanhTien(String strDateFrom, String strDateTo, int iMaPhong) {
