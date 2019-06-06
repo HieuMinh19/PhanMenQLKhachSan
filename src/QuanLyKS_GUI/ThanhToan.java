@@ -5,7 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JInternalFrame;
 import com.toedter.calendar.JCalendar;
 
-public class frnThanhToan extends JInternalFrame {
+public class ThanhToan extends JInternalFrame {
 
 	/**
 	 * Launch the application.
@@ -14,7 +14,7 @@ public class frnThanhToan extends JInternalFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frnThanhToan frame = new frnThanhToan();
+					ThanhToan frame = new ThanhToan();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -25,7 +25,7 @@ public class frnThanhToan extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frnThanhToan() {
+	public ThanhToan() {
 		setBounds(100, 100, 617, 424);
 		getContentPane().setLayout(null);
 		

@@ -38,4 +38,8 @@ public class NhanVien_BUS extends JInternalFrame {
 	public static boolean Delete(int maNV) {
 		return NhanVien_DAL.Delete(maNV);
 	}
+
+	public static NhanVien_DTO Login(String username, String password) {
+		return NhanVien_DAL.login(username, password);
+	}
 }
