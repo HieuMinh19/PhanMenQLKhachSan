@@ -27,28 +27,30 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class frmDashboard extends JFrame {
 	/**
 	 * 
 	 */
-	static int SoPhong = 0;
+	
 	static JDesktopPane desktopPane = new JDesktopPane();
 	//khai bao tat ca cac frame
-	static QLDichVu frmQLDV;
-	static Register frmRegister;
-	static frmTimKiemNV frmTimKiemNV;
-	static frmDatPhong frmDatPhong;
-	static DichVu frmDichVu;
-	static frmThemNhanVien frmThemNhanVien;
-	static DanhGia frmDanhGia;
-	static DatDichVu frmDatDichVu;
-	static ThemLoaiPhong frmThemLoaiPhong;
-	static frmDanhSachPhong frmDanhSachPhong;
-	static frmCapNhatNhanVien frmCapNhatNhanVien;
-	static frmCapNhatLoaiPhong frmCapNhatLoaiPhong;
-	static frmBooking_Step1 frmBooking1;
-	static frmBooking_Step2 frmBooking2;
+	static QLDichVu frmQLDV = new QLDichVu();
+	static Register frmRegister = new Register();
+	static frmTimKiemNV frmTimKiemNV = new frmTimKiemNV();
+	static frmDatPhong frmDatPhong = new frmDatPhong();
+	static DichVu frmDichVu = new DichVu();
+	static frmThemNhanVien frmThemNhanVien = new frmThemNhanVien();
+	static DanhGia frmDanhGia = new DanhGia();
+	static DatDichVu frmDatDichVu = new DatDichVu();
+	static ThemLoaiPhong frmThemLoaiPhong = new ThemLoaiPhong();
+	static frmDanhSachPhong frmDanhSachPhong = new frmDanhSachPhong();
+	static frmCapNhatNhanVien frmCapNhatNhanVien = new frmCapNhatNhanVien();
+	static frmCapNhatLoaiPhong frmCapNhatLoaiPhong = new frmCapNhatLoaiPhong();
+	static frmBooking_Step1 frmBooking1 = new frmBooking_Step1();
+	static frmBooking_Step2 frmBooking2 = new frmBooking_Step2();
 	
 	
 	static frmDashboard frame = new frmDashboard(null);
@@ -83,7 +85,6 @@ public class frmDashboard extends JFrame {
 		case 2:
 			//close another frame
 			frmQLDV.setVisible(false);
-			frmDatPhong.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
 			frmTimKiemNV.setVisible(false);
@@ -336,6 +337,7 @@ public class frmDashboard extends JFrame {
 			frmCapNhatLoaiPhong.setVisible(false);
 			frmBooking2.setVisible(false);
 			//set current frame
+			frmBooking1 = new frmBooking_Step1();
 			contentPane.add(frmBooking1);
 			frmBooking1.setVisible(true);
 			break;
@@ -393,8 +395,21 @@ public class frmDashboard extends JFrame {
 		mnDichVu.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		
 		JMenu mnDatPhong = new JMenu("Booking");
+		mnDatPhong.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controlFrame(FRM_BOOKING1);
+			}
+		});
 		mnDatPhong.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		menuBar.add(mnDatPhong);
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Booking");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controlFrame(FRM_BOOKING1);
+			}
+		});
+		mnDatPhong.add(mntmNewMenuItem);
 		
 		JMenu mnDanhGia = new JMenu("Feedback");
 		mnDanhGia.setFont(new Font("Segoe UI", Font.PLAIN, 20));

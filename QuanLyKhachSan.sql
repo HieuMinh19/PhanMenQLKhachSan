@@ -1,4 +1,6 @@
 ﻿go
+drop database QUANLYKHACHSAN
+go
 create Database QUANLYKHACHSAN
 go
 use QUANLYKHACHSAN
@@ -19,6 +21,7 @@ create table CHUCVU(
 )
 go
 /*create Nhan Vien */
+drop table NHANVIEN
 create table NHANVIEN
 (
 	MaNhanVien int identity(1,1) primary key,
@@ -105,9 +108,6 @@ create table CTDATPHONG(
 	MaNhanVien int,
 )
 go
-/*insert table Account*/
-INSERT INTO ACCOUNT( Username, Password,Role) VALUES ('admin1', '123456', 1)
-INSERT INTO ACCOUNT( Username, Password,Role) VALUES ('duc', '123456', 2)
 /*insert table ChuongTrinhDanhGia*/
 go
 /*insert table DICHVU*/
@@ -132,7 +132,8 @@ go
 INSERT INTO CHUCVU(TenChucVu) VALUES ('Quan Ly');
 INSERT INTO CHUCVU(TenChucVu) VALUES ('Nhân Viên');
 go
-
+INSERT INTO NHANVIEN(Username, Password, TenNhanVien, NgaySinh, CMND, NgayVaoLam, MaChucVu) 
+values ('hieu', '123456', 'le minh hieu', '2019-06-05', 475834, '2012-05-05', 1)
 
 
 
