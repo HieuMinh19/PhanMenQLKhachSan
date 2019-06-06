@@ -51,7 +51,7 @@ public class frmDashboard extends JFrame {
 	static frmCapNhatLoaiPhong frmCapNhatLoaiPhong = new frmCapNhatLoaiPhong();
 	static frmBooking_Step1 frmBooking1 = new frmBooking_Step1();
 	static frmBooking_Step2 frmBooking2 = new frmBooking_Step2();
-	
+	static frmThanhToan frmThanhToan = new frmThanhToan();
 	
 	static frmDashboard frame = new frmDashboard(null);
 	
@@ -74,6 +74,7 @@ public class frmDashboard extends JFrame {
 	static final int FRM_CAPNHATLOAIPHONG = 13;
 	static final int FRM_BOOKING1 = 14;
 	static final int FRM_BOOKING2 = 15;
+	static final int FRM_THANHTOAN = 16;
 	
 	static final long serialVersionUID = 1L;
 	private static JPanel contentPane;  
@@ -362,6 +363,26 @@ public class frmDashboard extends JFrame {
 			contentPane.add(frmBooking2);
 			frmBooking2.setVisible(true);
 			break;
+		case 16:
+			//close another frame
+			frmRegister.setVisible(false);
+			frmQLDV.setVisible(false);
+			frmDatPhong.setVisible(false);
+			frmDichVu.setVisible(false);
+			frmTimKiemNV.setVisible(false);
+			frmThemNhanVien.setVisible(false);
+			frmDanhGia.setVisible(false);
+			frmDatDichVu.setVisible(false);
+			frmDanhSachPhong.setVisible(false);
+			frmCapNhatNhanVien.setVisible(false);
+			frmThemLoaiPhong.setVisible(false);
+			frmCapNhatLoaiPhong.setVisible(false);
+			frmBooking1.setVisible(false);
+			frmBooking2.setVisible(false);
+			//set current frame
+			contentPane.add(frmThanhToan);
+			frmThanhToan.setVisible(true);
+			break;
 		}
 	}
 
@@ -418,6 +439,14 @@ public class frmDashboard extends JFrame {
 		JMenu mnThanhToan = new JMenu("Payment");
 		mnThanhToan.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		menuBar.add(mnThanhToan);
+		
+		JMenuItem mntmThanhToan = new JMenuItem("Thanh Toan");
+		mntmThanhToan.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controlFrame(FRM_THANHTOAN);
+			}
+		});
+		mnThanhToan.add(mntmThanhToan);
 		
 		JMenu mnTimKiem = new JMenu("Search");
 		mnTimKiem.setFont(new Font("Segoe UI", Font.PLAIN, 20));

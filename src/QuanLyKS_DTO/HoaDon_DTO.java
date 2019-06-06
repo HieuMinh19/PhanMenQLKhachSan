@@ -6,18 +6,78 @@ public class HoaDon_DTO {
 	private int iSoTienThu;
 	private int iMaCTDatPhong;
 	private int iMaNhanVien;
-
+	//
+	private String strHoTen;
+	private String strTenLoaiPhong;
+	private int iGiaPhong;
+	private Date dtNgayNhan;
+	private Date dtNgayTra;
+	//
+	private int iSoLuong;
+	private String strTenDichVu;
+	private int iTongTienDichVu;
+	
 	public HoaDon_DTO() {
 		// TODO Auto-generated constructor stub
 	}
-
+////
+	public String getTenDichVu() {
+		return strTenDichVu;
+	}
+	public void setTenDichVu(String strTenDichVu) {
+		this.strTenDichVu = strTenDichVu;
+	}
+	public int getSoLuong() {
+		return iSoLuong;
+	}
+	public void setSoLuong(int iSoLuong) {
+		this.iSoLuong = iSoLuong;
+	}
+	public int getTongTienDichVu() {
+		return iTongTienDichVu;
+	}
+	public void setTongTienDichVu(int iTongTienDichVu) {
+		this.iTongTienDichVu = iTongTienDichVu;
+	}
+	//
+	public String getHoTen() {
+		return strHoTen;
+	}
+	public void setHoTen(String strHoTen) {
+		this.strHoTen = strHoTen;
+	}
+	public String getTenLoaiPhong() {
+		return strTenLoaiPhong;
+	}
+	public void setTenLoaiPhong(String strTenLoaiPhong) {
+		this.strTenLoaiPhong = strTenLoaiPhong;
+	}
+	public int getGiaPhong() {
+		return iGiaPhong;
+	}
+	public void setGiaPhong(int iGiaPhong) {
+		this.iGiaPhong = iGiaPhong;
+	}
+	public Date getNgayNhan() {
+		return dtNgayNhan;
+	}
+	public void setNgayNhan(Date dtNgayNhan) {
+		this.dtNgayNhan = dtNgayNhan;
+	}
+	public Date getNgayTra() {
+		return dtNgayTra;
+	}
+	public void setNgayTra(Date dtNgayTra) {
+		this.dtNgayTra = dtNgayTra;
+	}
+	//
+	
 	public HoaDon_DTO(int iMaHoaDon, Date dtNgayThuTien, int iSoTienThu, int iMaNhanVien) {
 		this.iMaHoaDon = iMaHoaDon;
 		this.dtNgayThuTien = dtNgayThuTien;
 		this.iSoTienThu = iSoTienThu;
 		this.iMaNhanVien = iMaNhanVien;
 	}
-
 
 	public int getMaHoaDon() {
 		return iMaHoaDon;

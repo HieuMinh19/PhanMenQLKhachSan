@@ -21,7 +21,6 @@ create table CHUCVU(
 )
 go
 /*create Nhan Vien */
-drop table NHANVIEN
 create table NHANVIEN
 (
 	MaNhanVien int identity(1,1) primary key,
@@ -45,7 +44,7 @@ create table BANGPHANCONG
 /*create table Khach hang*/
 go
 create table KHACHHANG(
-	MaKhachHang int primary key,
+	MaKhachHang int identity(1,1) primary key,
 	HoTen varchar(255),
 	Email varchar(30),
 	DiaChi varchar(50),
@@ -57,7 +56,7 @@ go
 create table HOADON
 (
 	MaHoaDon int identity(1,1) primary key,
-	NgayThuTien varchar(25),
+	NgayThuTien Date,
 	SoTienThu int,
 	MaCTDatPhong int,
 	MaNhanVien int,
@@ -99,7 +98,7 @@ create table PHONG
 go
 /*create table Chi Tiet Dat Phong*/
 create table CTDATPHONG(
-	MaCTDatPhong int primary key,
+	MaCTDatPhong int identity(1,1) primary key,
 	NgayThucHien Date,
 	MaKhachHang int,
 	NgayNhan Date,
@@ -107,8 +106,13 @@ create table CTDATPHONG(
 	MaPhong int,
 	MaNhanVien int,
 )
+
 go
-/*insert table ChuongTrinhDanhGia*/
+/*insert table KHACHHANG*/
+INSERT INTO KHACHHANG( HoTen,Email, DiaChi,DienThoai,CMND) 
+VALUES ( 'Nguyen Phuc Duc', 'ducnp@gmail.com','Nha Trang - Khanh Hoa', '0335280715','225764728');
+INSERT INTO KHACHHANG( HoTen,Email, DiaChi,DienThoai,CMND) 
+VALUES ( 'Le Minh Hieu', 'hieulm@gmail.com','Duc Hoa - Long An', '0330715528','225756258');
 go
 /*insert table DICHVU*/
 INSERT INTO DICHVU( TenDichVu,GiaDichVu) VALUES ( 'ăn sáng', 30000);
@@ -119,13 +123,12 @@ go
 INSERT INTO LOAIPHONG( TenLoaiPhong, GiaPhong) VALUES ( 'VIP', 250000);
 INSERT INTO LOAIPHONG( TenLoaiPhong, GiaPhong) VALUES ( 'Thuong', 150000);
 go
-INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (101, 1);
-INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (201, 1);
-INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (302, 2);
-INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (202, 2);
+INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (1, 1);
+INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (2, 2);
+
 go
-INSERT INTO CTDANHGIA( NoiDung, NgayDanhGia) VALUES ('Che Độ Sạch sẽ',  '05/05/2019')
-INSERT INTO CTDANHGIA( NoiDung, NgayDanhGia) VALUES ('Dọn Vệ Sinh',  '10/06/2019')
+INSERT INTO CTDANHGIA( NoiDung, NgayDanhGia) VALUES ('Che Do Sach Se',  '05/05/2019')
+INSERT INTO CTDANHGIA( NoiDung, NgayDanhGia) VALUES ('Don Ve Sinh',  '10/06/2019')
 /*insert table CTDICHVU*/
 go
 /*insert table CHUCVU*/
@@ -134,6 +137,20 @@ INSERT INTO CHUCVU(TenChucVu) VALUES ('Nhân Viên');
 go
 INSERT INTO NHANVIEN(Username, Password, TenNhanVien, NgaySinh, CMND, NgayVaoLam, MaChucVu) 
 values ('hieu', '123456', 'le minh hieu', '2019-06-05', 475834, '2012-05-05', 1)
-
-
+go
+/*insert table CTDATPHONG*/
+INSERT INTO CTDATPHONG( NgayThucHien,MaKhachHang, NgayNhan,NgayTra,MaPhong, MaNhanVien) 
+VALUES ( '02/06/2019', '1','03/06/2019', '05/06/2019',1,1);
+INSERT INTO CTDATPHONG( NgayThucHien,MaKhachHang, NgayNhan,NgayTra,MaPhong, MaNhanVien) 
+VALUES ( '02/05/2019', '2','03/05/2019', '05/05/2019',2,2);
+go
+/*insert table CTDICHVU*/
+INSERT INTO CTDICHVU( MaDichVu,SoLuong, MaCTDatPhong,TongTienDichVu) 
+VALUES ( 1,1,1,1);
+INSERT INTO CTDICHVU( MaDichVu,SoLuong, MaCTDatPhong,TongTienDichVu) 
+VALUES ( 2,2,2,2);
+INSERT INTO CTDICHVU( MaDichVu,SoLuong, MaCTDatPhong,TongTienDichVu) 
+VALUES ( 3,3,3,3);
+INSERT INTO CTDICHVU( MaDichVu,SoLuong, MaCTDatPhong,TongTienDichVu) 
+VALUES ( 1,1,1,1);
 
