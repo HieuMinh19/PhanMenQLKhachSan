@@ -11,7 +11,7 @@ import com.toedter.calendar.JDateChooser;
 import QuanLyKS_DTO.LoaiPhong_DTO;
 import QuanLyKS_DTO.CTDatPhong_DTO;
 import QuanLyKS_BUS.LoaiPhong_BUS;
-import QuanLyKS_GUI.frmMain;
+import QuanLyKS_GUI.frmDashboard;
 
 
 import javax.swing.JLabel;
@@ -117,8 +117,8 @@ public class frmBooking_Step1 extends JInternalFrame {
 		btnTiepTuc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int SoPhong = 1;
-				//frmMain.frmBooking2 = new frmBooking_Step2(SoPhong);
-				frmMain.controlFrame(frmMain.FRM_BOOKING2);
+				//frmDashboard.frmBooking2 = new frmBooking_Step2(SoPhong);
+				frmDashboard.controlFrame(frmDashboard.FRM_BOOKING2);
 			}
 		});
 		btnTiepTuc.setBounds(420, 494, 133, 25);

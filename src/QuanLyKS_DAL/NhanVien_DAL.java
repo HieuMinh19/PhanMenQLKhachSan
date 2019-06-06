@@ -9,7 +9,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import QuanLyKS_DTO.Account_DTO;
 import QuanLyKS_DTO.ChucVu_DTO;
 import QuanLyKS_DTO.NhanVien_DTO;
 
@@ -169,5 +168,36 @@ public class NhanVien_DAL extends JInternalFrame {
 			e.printStackTrace();
 		}
 		return null;	
+	}
+
+	public static NhanVien_DTO login(String username, String password){
+		//get connection
+		PreparedStatement ptmt = null; 
+		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
+		Connection conn = mycon.getConnection();
+		
+		String query = "SELECT MaNhanVien,TenNhanVien,NgaySinh,CMND,NgayVaoLam,CV.MaChucVu as 'MaChucVu',TenChucVu,Username,Password FROM NHANVIEN NV, CHUCVU CV WHERE NV.MACHUCVU=CV.MACHUCVU and Username=? and Password=?";
+		try {
+			ptmt = conn.prepareStatement(query);
+			ptmt.setString(1, username);
+			ptmt.setString(2, password);
+			ResultSet rs = ptmt.executeQuery();
+			rs.next();
+			NhanVien_DTO nv = new NhanVien_DTO();
+			nv.setMaNhanVien(rs.getInt("MaNhanVien"));
+			nv.setTenNhanVien(rs.getString("TenNhanVien"));
+			nv.setNgaySinh(rs.getDate("NgaySinh"));
+			nv.setCMND(rs.getInt("CMND"));
+			nv.setNgayVaoLam(rs.getDate("NgayVaoLam"));
+			nv.setMaChucVu(rs.getInt("MaChucVu"));
+			nv.setChucVu(new ChucVu_DTO(rs.getInt("MaChucVu"),rs.getString("TenChucVu")));
+			nv.setUsername(rs.getString("Username"));
+			nv.setPassword(rs.getString("Password"));
+			return nv;
+		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+			return null;	
+		}
 	}
 }

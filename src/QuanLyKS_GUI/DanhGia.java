@@ -15,7 +15,7 @@ import com.toedter.calendar.JCalendar;
 
 import QuanLyKS_DTO.DanhGia_DTO;
 import QuanLyKS_BUS.DanhGia_BUS;
-import QuanLyKS_GUI.frmMain;
+import QuanLyKS_GUI.frmDashboard;
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 
@@ -121,7 +121,7 @@ public class DanhGia extends JInternalFrame {
 		JButton btnThoat = new JButton("THOÁT");
 		btnThoat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				frmMain.controlFrame(frmMain.FRM_BOOKING1);	
+				frmDashboard.controlFrame(frmDashboard.FRM_BOOKING1);	
 			}
 		});
 		btnThoat.setFont(new Font("Tahoma", Font.BOLD, 13));

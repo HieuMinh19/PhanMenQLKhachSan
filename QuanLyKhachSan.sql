@@ -1,19 +1,9 @@
 ﻿go
 create Database QUANLYKHACHSAN
 go
-use master
 use QUANLYKHACHSAN
 GO
 set dateformat ymd
-go
-create table ACCOUNT
-(
-	ID int identity(1,1) primary key,
-	Username varchar(20),
-	Password varchar(30),
-	Role int,
-	NgayLap varchar(50),
-)
 go
 
 create table CTDANHGIA
@@ -32,6 +22,8 @@ go
 create table NHANVIEN
 (
 	MaNhanVien int identity(1,1) primary key,
+	Username varchar(20),
+	Password varchar(30),
 	TenNhanVien varchar(100),
 	NgaySinh Date,
 	CMND int, 

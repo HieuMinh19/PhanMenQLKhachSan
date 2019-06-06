@@ -11,6 +11,8 @@ public class NhanVien_DTO {
 	private Date dtNgayVaoLam;
 	private int iMaChucVu;
 	private ChucVu_DTO chucvu;
+	private String strUsername;
+	private String strPassword;
 	
 	public NhanVien_DTO() {
 		// TODO Auto-generated constructor stub
@@ -40,13 +42,37 @@ public class NhanVien_DTO {
 		this.chucvu = chucvu;
 		this.iMaNhanVien = iMaNhanVien;
 	}
-
-
+	
+	public NhanVien_DTO(int iMaNhanVien,String Username, String Password, String strTenNhanVien, Date dtNgaySinh, int iCMND,Date dtNgayVaoLam,ChucVu_DTO chucvu) {
+		this.strTenNhanVien = strTenNhanVien;
+		this.dtNgaySinh = dtNgaySinh;
+		this.iCMND = iCMND;
+		this.dtNgayVaoLam = dtNgayVaoLam;
+		this.chucvu = chucvu;
+		this.iMaNhanVien = iMaNhanVien;
+		this.strPassword = Password;
+		this.strUsername = Username;
+	}
+	
+	
 	public int getMaNhanVien() {
 		return iMaNhanVien;
 	}
 	public void setMaNhanVien(int iMaNhanVien) {
 		this.iMaNhanVien = iMaNhanVien;
+	}
+	
+	public String getUsername() {
+		return strUsername;
+	}
+	public void setUsername(String strUsername) {
+		this.strUsername = strUsername;
+	}
+	public String getPassword() {
+		return strPassword;
+	}
+	public void setPassword(String cs) {
+		this.strPassword = cs;
 	}
 
 	public String getTenNhanVien() {

@@ -1,12 +1,9 @@
 package QuanLyKS_GUI;
 import java.awt.EventQueue;
-import QuanLyKS_DTO.Account_DTO;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-
-import QuanLyKS_BUS.Account_BUS;
 
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
@@ -25,7 +22,7 @@ public class Register extends JInternalFrame {
 	private JTextField textUname;
 	private JPasswordField textPassword;
 	private JPasswordField textPasswordRetype;
-	private Account_DTO accountDTO;
+//	private Account_DTO accountDTO;
 
 	/**
 	 * Launch the application.
@@ -83,24 +80,24 @@ public class Register extends JInternalFrame {
 		JButton btnRegister = new JButton("Register");
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				accountDTO = new Account_DTO(); 
-				accountDTO.setUsername( textUname.getText() );
-				boolean isValidPass = Arrays.equals(textPassword.getPassword(),textPasswordRetype.getPassword());
-				if(isValidPass){
-					 accountDTO.setPassword( textPassword.getPassword() );
-					 accountDTO.setRole(2);
-					 
-					 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-					 String date = sdf.format( dtNgayLap.getDate() );
-					 accountDTO.setNgayLap(date);
-					 					 
-					 if(  Account_BUS.Insert(accountDTO) == true)
-						 JOptionPane.showMessageDialog(null, "Insert account Success", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);
-					 else
-						 JOptionPane.showMessageDialog(null, "Insert account Fail", "Fail: " + "Success Mesage", JOptionPane.CLOSED_OPTION);
-				 }else {
-					 JOptionPane.showMessageDialog(null, "2 Password is not the same", "Warning: " + "error Mesage", JOptionPane.INFORMATION_MESSAGE);
-				 }
+//				accountDTO = new Account_DTO(); 
+//				accountDTO.setUsername( textUname.getText() );
+//				boolean isValidPass = Arrays.equals(textPassword.getPassword(),textPasswordRetype.getPassword());
+//				if(isValidPass){
+//					 accountDTO.setPassword( textPassword.getPassword() );
+//					 accountDTO.setRole(2);
+//					 
+//					 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//					 String date = sdf.format( dtNgayLap.getDate() );
+//					 accountDTO.setNgayLap(date);
+//					 					 
+//					 if(  Account_BUS.Insert(accountDTO) == true)
+//						 JOptionPane.showMessageDialog(null, "Insert account Success", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);
+//					 else
+//						 JOptionPane.showMessageDialog(null, "Insert account Fail", "Fail: " + "Success Mesage", JOptionPane.CLOSED_OPTION);
+//				 }else {
+//					 JOptionPane.showMessageDialog(null, "2 Password is not the same", "Warning: " + "error Mesage", JOptionPane.INFORMATION_MESSAGE);
+//				 }
 			}
 		});
 		btnRegister.setBounds(137, 226, 89, 23);
