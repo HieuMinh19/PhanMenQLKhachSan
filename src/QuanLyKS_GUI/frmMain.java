@@ -34,7 +34,6 @@ public class frmMain extends JFrame {
 	static JDesktopPane desktopPane = new JDesktopPane();
 	//khai bao tat ca cac frame
 	static QLDichVu frmQLDV = new QLDichVu();
-	static Login frmLogin = new Login();
 	static Register frmRegister = new Register();
 	static frmTimKiemNV frmTimKiemNV = new frmTimKiemNV();
 	static frmDatPhong frmDatPhong = new frmDatPhong();
@@ -79,31 +78,9 @@ public class frmMain extends JFrame {
 	 * Launch the application.
 	 */
 	public static void controlFrame(int Frame) {
-		switch (Frame) {
-		case 1: 
-			//close another frame
-			frmRegister.setVisible(false);
-			frmQLDV.setVisible(false);
-			frmDatPhong.setVisible(false);
-			frmDichVu.setVisible(false);
-			frmThemNhanVien.setVisible(false);
-			frmTimKiemNV.setVisible(false);
-			frmDanhGia.setVisible(false);
-			frmDatDichVu.setVisible(false);
-			frmThemLoaiPhong.setVisible(false);
-			frmDanhSachPhong.setVisible(false);
-			frmCapNhatNhanVien.setVisible(false);
-			frmCapNhatLoaiPhong.setVisible(false);
-			frmBooking1.setVisible(false);
-			frmBooking2.setVisible(false);
-			//set current frame
-			contentPane.add(frmLogin);
-			frmLogin.setVisible(true);
-			break;
-			
+		switch (Frame) {	
 		case 2:
 			//close another frame
-			frmLogin.setVisible(false);
 			frmQLDV.setVisible(false);
 			frmDatPhong.setVisible(false);
 			frmDichVu.setVisible(false);
@@ -124,7 +101,6 @@ public class frmMain extends JFrame {
 		
 		case 3:
 			//close another frame
-			frmLogin.setVisible(false);
 			frmRegister.setVisible(false);
 			frmDatPhong.setVisible(false);
 			frmDichVu.setVisible(false);
@@ -145,7 +121,6 @@ public class frmMain extends JFrame {
 			
 		case 4:
 			//close another frame
-			frmLogin.setVisible(false);
 			frmRegister.setVisible(false);
 			frmQLDV.setVisible(false);
 			frmDichVu.setVisible(false);
@@ -166,7 +141,6 @@ public class frmMain extends JFrame {
 			break;
 		case 5:
 			//close another frame
-			frmLogin.setVisible(false);
 			frmRegister.setVisible(false);
 			frmQLDV.setVisible(false);
 			frmDatPhong.setVisible(false);
@@ -187,7 +161,6 @@ public class frmMain extends JFrame {
 			
 		case 6:
 			//close another frame
-			frmLogin.setVisible(false);
 			frmRegister.setVisible(false);
 			frmQLDV.setVisible(false);
 			frmDatPhong.setVisible(false);
@@ -207,7 +180,6 @@ public class frmMain extends JFrame {
 			break;
 		case 7:
 			//close another frame
-			frmLogin.setVisible(false);
 			frmRegister.setVisible(false);
 			frmQLDV.setVisible(false);
 			frmDatPhong.setVisible(false);
@@ -228,7 +200,6 @@ public class frmMain extends JFrame {
 			
 		case 8:
 			//close another frame
-			frmLogin.setVisible(false);
 			frmRegister.setVisible(false);
 			frmQLDV.setVisible(false);
 			frmDatPhong.setVisible(false);
@@ -250,7 +221,6 @@ public class frmMain extends JFrame {
 			
 		case 9:
 			//close another frame
-			frmLogin.setVisible(false);
 			frmRegister.setVisible(false);
 			frmQLDV.setVisible(false);
 			frmDatPhong.setVisible(false);
@@ -270,7 +240,6 @@ public class frmMain extends JFrame {
 			break;
 		case 10:
 			//close another frame
-			frmLogin.setVisible(false);
 			frmRegister.setVisible(false);
 			frmQLDV.setVisible(false);
 			frmDatPhong.setVisible(false);
@@ -291,7 +260,6 @@ public class frmMain extends JFrame {
 			
 		case 11:
 			//close another frame
-			frmLogin.setVisible(false);
 			frmRegister.setVisible(false);
 			frmQLDV.setVisible(false);
 			frmDatPhong.setVisible(false);
@@ -312,7 +280,6 @@ public class frmMain extends JFrame {
 			
 		case 12:
 			//close another frame
-			frmLogin.setVisible(false);
 			frmRegister.setVisible(false);
 			frmQLDV.setVisible(false);
 			frmDatPhong.setVisible(false);
@@ -332,7 +299,6 @@ public class frmMain extends JFrame {
 			break;
 		case 13:
 			//close another frame
-			frmLogin.setVisible(false);
 			frmRegister.setVisible(false);
 			frmQLDV.setVisible(false);
 			frmDatPhong.setVisible(false);
@@ -353,7 +319,6 @@ public class frmMain extends JFrame {
 			
 		case 14:
 			//close another frame
-			frmLogin.setVisible(false);
 			frmRegister.setVisible(false);
 			frmQLDV.setVisible(false);
 			frmDatPhong.setVisible(false);
@@ -375,7 +340,6 @@ public class frmMain extends JFrame {
 			
 		case 15:
 			//close another frame
-			frmLogin.setVisible(false);
 			frmRegister.setVisible(false);
 			frmQLDV.setVisible(false);
 			frmDatPhong.setVisible(false);

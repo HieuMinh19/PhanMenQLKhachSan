@@ -100,7 +100,7 @@ public class DanhGia extends JInternalFrame {
 					 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 					 String date = sdf.format( ngayDanhGia.getDate() );
 
-					 danhgiaDTO.setNgayDanhGia(date);
+//					 danhgiaDTO.setNgayDanhGia(date);
 
 
 
