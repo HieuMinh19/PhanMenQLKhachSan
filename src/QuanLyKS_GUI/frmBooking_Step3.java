@@ -5,11 +5,20 @@ import java.awt.EventQueue;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.util.ArrayList;
+
 import javax.swing.JTextPane;
-import javax.swing.JEditorPane;
-import java.awt.Color;
 import javax.swing.SwingConstants;
+
+import QuanLyKS_BUS.KhachHang_BUS;
+
 import javax.swing.JButton;
+
+import QuanLyKS_DTO.CTDichVu_DTO;
+import QuanLyKS_DTO.KhachHang_DTO;
+import QuanLyKS_DTO.CTDatPhong_DTO;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class frmBooking_Step3 extends JInternalFrame {
 
@@ -20,8 +29,7 @@ public class frmBooking_Step3 extends JInternalFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frmBooking_Step3 frame = new frmBooking_Step3();
-					frame.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -32,7 +40,9 @@ public class frmBooking_Step3 extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frmBooking_Step3() {
+	
+	public static KhachHang_DTO  khDTO;
+	public frmBooking_Step3(CTDatPhong_DTO ctdp, ArrayList<CTDichVu_DTO> listCTDV) {
 		setBounds(100, 100, 810, 540);
 		getContentPane().setLayout(null);
 		
@@ -71,9 +81,9 @@ public class frmBooking_Step3 extends JInternalFrame {
 		lblEmail.setBounds(68, 218, 90, 34);
 		getContentPane().add(lblEmail);
 		
-		JTextPane textPane = new JTextPane();
-		textPane.setBounds(205, 277, 225, 34);
-		getContentPane().add(textPane);
+		JTextPane txtSDT = new JTextPane();
+		txtSDT.setBounds(205, 277, 225, 34);
+		getContentPane().add(txtSDT);
 		
 		JLabel lblPhone = new JLabel("Phone");
 		lblPhone.setHorizontalAlignment(SwingConstants.CENTER);
@@ -81,9 +91,9 @@ public class frmBooking_Step3 extends JInternalFrame {
 		lblPhone.setBounds(68, 277, 90, 34);
 		getContentPane().add(lblPhone);
 		
-		JTextPane textPane_1 = new JTextPane();
-		textPane_1.setBounds(205, 341, 225, 34);
-		getContentPane().add(textPane_1);
+		JTextPane txtCMND = new JTextPane();
+		txtCMND.setBounds(205, 341, 225, 34);
+		getContentPane().add(txtCMND);
 		
 		JLabel label = new JLabel("Indentify Card");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
@@ -91,16 +101,33 @@ public class frmBooking_Step3 extends JInternalFrame {
 		label.setBounds(52, 341, 126, 34);
 		getContentPane().add(label);
 		
-		JButton button = new JButton("Back");
-		button.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		button.setBounds(146, 416, 180, 45);
-		getContentPane().add(button);
+		JButton btnBack = new JButton("Back");
+		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		btnBack.setBounds(146, 416, 180, 45);
+		getContentPane().add(btnBack);
 		
-		JButton button_1 = new JButton("Continue");
-		button_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		button_1.setBounds(497, 416, 180, 45);
-		getContentPane().add(button_1);
-
+		JButton btnContinue = new JButton("Continue");
+		btnContinue.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String strHoten = txtHoTen.getText();
+				String strEmail = txtEmail.getText();
+				String strDiaChi = txtDiaChi.getText();
+				String strSDT = txtSDT.getText();
+				String strCMND = txtCMND.getText();
+				int iMaKH = KhachHang_BUS.getnextMaKH();
+				
+				khDTO = new KhachHang_DTO(iMaKH, strHoten, strSDT, strCMND, strDiaChi, strEmail);
+				
+				
+			}
+		});
+		btnContinue.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		btnContinue.setBounds(497, 416, 180, 45);
+		getContentPane().add(btnContinue);
+		
+		
+		
+		
 	}
 
 }
