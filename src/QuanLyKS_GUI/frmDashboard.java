@@ -41,6 +41,7 @@ public class frmDashboard extends JFrame {
 	/**
 	 * 
 	 */
+	NhanVien_DTO user;
 	static CTDatPhong_DTO ctdp;
 	static ArrayList<CTDichVu_DTO> listCTDV = new ArrayList<CTDichVu_DTO>();
 	static KhachHang_DTO khDTO;
@@ -56,7 +57,7 @@ public class frmDashboard extends JFrame {
 	// 6
 	static frmThemNhanVien frmThemNhanVien = new frmThemNhanVien();
 	// 7
-	static DanhGia frmDanhGia = new DanhGia();
+	static frmDanhGia frmDanhGia = new frmDanhGia();
 	// 8
 	static DatDichVu frmDatDichVu = new DatDichVu();
 	// 9
@@ -77,10 +78,10 @@ public class frmDashboard extends JFrame {
 	// 17
 	static QLBangPhanCong QLBangPhanCong = new QLBangPhanCong();
 	// 18
-	static frmDashboard frame = new frmDashboard(null);
+//	static frmDashboard frame = new frmDashboard(null);
 	//19
 	static frmBooking_Step3 frmBooking3 = new frmBooking_Step3(ctdp, listCTDV);
-	static frmBooking_Step4 frmBooking4 = new frmBooking_Step4(ctdp, listCTDV, khDTO);
+//	static frmBooking_Step4 frmBooking4 = new frmBooking_Step4(ctdp, listCTDV, khDTO);
 	private Image backgroundImage;
 
 	// deifne static varriable cho frame
@@ -515,213 +516,229 @@ public class frmDashboard extends JFrame {
 			frmCapNhatLoaiPhong.setVisible(false);
 			frmBooking1.setVisible(false);
 			frmBooking2.setVisible(false);
-			frmBooking4.setVisible(false);
+//			frmBooking4.setVisible(false);
 			//set current frame
 			contentPane.add(frmBooking3);
 			frmBooking3.setVisible(true);
 			break;
 			
-		case 20:
-			// close another frame
-			frmRegister.setVisible(false);
-			frmDatPhong.setVisible(false);
-			frmTimKiemNV.setVisible(false);
-			frmDichVu.setVisible(false);
-			frmThemNhanVien.setVisible(false);
-			frmDanhGia.setVisible(false);
-			frmDatDichVu.setVisible(false);
-			frmThemLoaiPhong.setVisible(false);
-			frmDanhSachPhong.setVisible(false);
-			frmCapNhatNhanVien.setVisible(false);
-			frmCapNhatLoaiPhong.setVisible(false);
-			frmBooking1.setVisible(false);
-			frmQLDV.setVisible(false);
-			frmBooking2.setVisible(false);
-			frmThanhToan.setVisible(false);
-			BangPhanCong.setVisible(false);
-			// set current frame
-			contentPane.add(frmBooking4);
-			frmBooking4.setVisible(true);
-			break;
+//		case 20:
+//			// close another frame
+//			frmRegister.setVisible(false);
+//			frmDatPhong.setVisible(false);
+//			frmTimKiemNV.setVisible(false);
+//			frmDichVu.setVisible(false);
+//			frmThemNhanVien.setVisible(false);
+//			frmDanhGia.setVisible(false);
+//			frmDatDichVu.setVisible(false);
+//			frmThemLoaiPhong.setVisible(false);
+//			frmDanhSachPhong.setVisible(false);
+//			frmCapNhatNhanVien.setVisible(false);
+//			frmCapNhatLoaiPhong.setVisible(false);
+//			frmBooking1.setVisible(false);
+//			frmQLDV.setVisible(false);
+//			frmBooking2.setVisible(false);
+//			frmThanhToan.setVisible(false);
+//			BangPhanCong.setVisible(false);
+//			// set current frame
+//			contentPane.add(frmBooking4);
+//			frmBooking4.setVisible(true);
+//			break;
 		}
 	}
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-					frame.setUndecorated(true);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//					frame.setUndecorated(true);
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
 	 */
 	public frmDashboard(NhanVien_DTO user) {
+		this.user = user;
 		frmDashboard _self = this;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 811, 300);
-
+		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		setJMenuBar(menuBar);
 
-		JMenu mnDichVu = new JMenu("Service");
-		mnDichVu.setFont(new Font("Segoe UI", Font.PLAIN, 20));
+		switch (user.getChucVu().getMaChucVu()) {
+		case 1:
+			JMenu mnNhanVien = new JMenu("Employees");
+			mnNhanVien.setFont(new Font("Segoe UI", Font.PLAIN, 20));
+			menuBar.add(mnNhanVien);
 
-		JMenu mnDatPhong = new JMenu("Booking");
-		mnDatPhong.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				controlFrame(FRM_BOOKING1);
-			}
-		});
-		mnDatPhong.setFont(new Font("Segoe UI", Font.PLAIN, 20));
-		menuBar.add(mnDatPhong);
+			JMenuItem mntmThemNV = new JMenuItem("Insert");
+			mntmThemNV.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+			mntmThemNV.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					controlFrame(FRM_THEMNHANVIEN);
+				}
+			});
+			mnNhanVien.add(mntmThemNV);
+			
 
-		JMenu mnDanhGia = new JMenu("Feedback");
-		mnDanhGia.setFont(new Font("Segoe UI", Font.PLAIN, 20));
-		menuBar.add(mnDanhGia);
+			JMenuItem mntmCapNhatNV = new JMenuItem("Update and Delete");
+			mntmCapNhatNV.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+			mntmCapNhatNV.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					controlFrame(FRM_CAPNHATNHANVIEN);
+				}
+			});
+			
 
-		JMenu mnThanhToan = new JMenu("Payment");
-		mnThanhToan.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				controlFrame(FRM_THANHTOAN);
-			}
-		});
-		mnThanhToan.setFont(new Font("Segoe UI", Font.PLAIN, 20));
-		menuBar.add(mnThanhToan);
+			JMenu mnDichVu = new JMenu("Service");
+			mnDichVu.setFont(new Font("Segoe UI", Font.PLAIN, 20));
+			mnNhanVien.add(mntmCapNhatNV);
+			menuBar.add(mnDichVu);
 
-		JMenu mnTimKiem = new JMenu("Search");
-		mnTimKiem.setFont(new Font("Segoe UI", Font.PLAIN, 20));
-		menuBar.add(mnTimKiem);
+			JMenuItem mntmCapNhatDV = new JMenuItem("Update and Delete");
+			mntmCapNhatDV.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+			mntmCapNhatDV.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					controlFrame(FRM_QLDV);
 
-		JMenuItem mntmTimKiemNV = new JMenuItem("Employess");
-		mntmTimKiemNV.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controlFrame(FRM_TIMKIEM);
+				}
+			});
 
-			}
-		});
-		mntmTimKiemNV.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		mnTimKiem.add(mntmTimKiemNV);
+			JMenuItem mntmThemDV = new JMenuItem("Insert");
+			mntmThemDV.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+			mnDichVu.add(mntmThemDV);
+			mnDichVu.add(mntmCapNhatDV);
 
-		JMenuItem mntmTimKiemLP = new JMenuItem("Room Type");
-		mntmTimKiemLP.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		mnTimKiem.add(mntmTimKiemLP);
+			JMenu mnLoaiPhong = new JMenu("Room Type");
+			mnLoaiPhong.setFont(new Font("Segoe UI", Font.PLAIN, 20));
+			menuBar.add(mnLoaiPhong);
 
-		JMenuItem mntmTimKiemDV = new JMenuItem("Service");
-		mntmTimKiemDV.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		mnTimKiem.add(mntmTimKiemDV);
+			JMenuItem mntmThemLP = new JMenuItem("Insert");
+			mntmThemLP.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+			mntmThemLP.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					controlFrame(FRM_THEMLOAIPHONG);
+				}
+			});
+			mnLoaiPhong.add(mntmThemLP);
 
-		JMenu mnNhanVien = new JMenu("Employees");
-		mnNhanVien.setFont(new Font("Segoe UI", Font.PLAIN, 20));
-		menuBar.add(mnNhanVien);
+			JMenuItem mntmCapNhatLP = new JMenuItem("Update and Delete");
+			mntmCapNhatLP.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+			mnLoaiPhong.add(mntmCapNhatLP);
+			mntmCapNhatLP.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					controlFrame(FRM_CAPNHATLOAIPHONG);
+				}
+			});
 
-		JMenuItem mntmThemNV = new JMenuItem("Insert");
-		mntmThemNV.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		mntmThemNV.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				controlFrame(FRM_THEMNHANVIEN);
-			}
-		});
-		mnNhanVien.add(mntmThemNV);
+			JMenu mnPhng = new JMenu("Room");
+			mnPhng.setFont(new Font("Segoe UI", Font.PLAIN, 20));
+			menuBar.add(mnPhng);
+
+			JMenuItem mntmCapNhatP = new JMenuItem("Update and Delete");
+			mntmCapNhatP.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+			mntmCapNhatP.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					controlFrame(FRM_DANHSACHPHONG);
+				}
+			});
+
+			JMenuItem mntmThemP = new JMenuItem("Insert");
+			mntmThemP.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+			mnPhng.add(mntmThemP);
+			mnPhng.add(mntmCapNhatP);
+
+			JMenu mnBangPhanCong = new JMenu("Bang Phan Cong");
+			mnBangPhanCong.setFont(new Font("Segoe UI", Font.PLAIN, 20));
+			menuBar.add(mnBangPhanCong);
+
+			JMenuItem mntmThm = new JMenuItem("Th\u00EAm");
+			// mnBangPhanCong.add(mntmThm);
+			mntmThm.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+			mntmThm.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					controlFrame(FRM_BANGPHANCONG);
+				}
+			});
+			mnBangPhanCong.add(mntmThm);
+
+			JMenuItem mntmNewMenuItem_1 = new JMenuItem("Quan Ly BPC");
+			mntmNewMenuItem_1.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+			mntmNewMenuItem_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					controlFrame(FRM_QLBANGPHANCONG);
+				}
+			});
+			mnBangPhanCong.add(mntmNewMenuItem_1);
+			break;
+		case 2:
+			JMenu mnDatPhong = new JMenu("Booking");
+			mnDatPhong.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					controlFrame(FRM_BOOKING1);
+				}
+			});
+			mnDatPhong.setFont(new Font("Segoe UI", Font.PLAIN, 20));
+			menuBar.add(mnDatPhong);
+
+			JMenu mnDanhGia = new JMenu("Feedback");
+			mnDanhGia.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					controlFrame(FRM_DANHGIA);
+				}
+			});
+			mnDanhGia.setFont(new Font("Segoe UI", Font.PLAIN, 20));
+			menuBar.add(mnDanhGia);
+
+			JMenu mnThanhToan = new JMenu("Payment");
+			mnThanhToan.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					controlFrame(FRM_THANHTOAN);
+				}
+			});
+			mnThanhToan.setFont(new Font("Segoe UI", Font.PLAIN, 20));
+			menuBar.add(mnThanhToan);
+
+			JMenu mnTimKiem = new JMenu("Search");
+			mnTimKiem.setFont(new Font("Segoe UI", Font.PLAIN, 20));
+			menuBar.add(mnTimKiem);
+
+			JMenuItem mntmTimKiemNV = new JMenuItem("Employess");
+			mntmTimKiemNV.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					controlFrame(FRM_TIMKIEM);
+
+				}
+			});
+			mntmTimKiemNV.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+			mnTimKiem.add(mntmTimKiemNV);
+
+			JMenuItem mntmTimKiemLP = new JMenuItem("Room Type");
+			mntmTimKiemLP.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+			mnTimKiem.add(mntmTimKiemLP);
+
+			JMenuItem mntmTimKiemDV = new JMenuItem("Service");
+			mntmTimKiemDV.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+			mnTimKiem.add(mntmTimKiemDV);
+			break;
+		default:
+			break;
+		}
+
 		
-
-		JMenuItem mntmCapNhatNV = new JMenuItem("Update and Delete");
-		mntmCapNhatNV.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		mntmCapNhatNV.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				controlFrame(FRM_CAPNHATNHANVIEN);
-			}
-		});
 		
-		
-		mnNhanVien.add(mntmCapNhatNV);
-		menuBar.add(mnDichVu);
-
-		JMenuItem mntmCapNhatDV = new JMenuItem("Update and Delete");
-		mntmCapNhatDV.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		mntmCapNhatDV.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				controlFrame(FRM_QLDV);
-
-			}
-		});
-
-		JMenuItem mntmThemDV = new JMenuItem("Insert");
-		mntmThemDV.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		mnDichVu.add(mntmThemDV);
-		mnDichVu.add(mntmCapNhatDV);
-
-		JMenu mnLoaiPhong = new JMenu("Room Type");
-		mnLoaiPhong.setFont(new Font("Segoe UI", Font.PLAIN, 20));
-		menuBar.add(mnLoaiPhong);
-
-		JMenuItem mntmThemLP = new JMenuItem("Insert");
-		mntmThemLP.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		mntmThemLP.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controlFrame(FRM_THEMLOAIPHONG);
-			}
-		});
-		mnLoaiPhong.add(mntmThemLP);
-
-		JMenuItem mntmCapNhatLP = new JMenuItem("Update and Delete");
-		mntmCapNhatLP.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		mnLoaiPhong.add(mntmCapNhatLP);
-		mntmCapNhatLP.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				controlFrame(FRM_CAPNHATLOAIPHONG);
-			}
-		});
-
-		JMenu mnPhng = new JMenu("Room");
-		mnPhng.setFont(new Font("Segoe UI", Font.PLAIN, 20));
-		menuBar.add(mnPhng);
-
-		JMenuItem mntmCapNhatP = new JMenuItem("Update and Delete");
-		mntmCapNhatP.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		mntmCapNhatP.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controlFrame(FRM_DANHSACHPHONG);
-			}
-		});
-
-		JMenuItem mntmThemP = new JMenuItem("Insert");
-		mntmThemP.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		mnPhng.add(mntmThemP);
-		mnPhng.add(mntmCapNhatP);
-
-		JMenu mnBangPhanCong = new JMenu("Bang Phan Cong");
-		mnBangPhanCong.setFont(new Font("Segoe UI", Font.PLAIN, 20));
-		menuBar.add(mnBangPhanCong);
-
-		JMenuItem mntmThm = new JMenuItem("Th\u00EAm");
-		// mnBangPhanCong.add(mntmThm);
-		mntmThm.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		mntmThm.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				controlFrame(FRM_BANGPHANCONG);
-			}
-		});
-		mnBangPhanCong.add(mntmThm);
-
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Quan Ly BPC");
-		mntmNewMenuItem_1.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		mntmNewMenuItem_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				controlFrame(FRM_QLBANGPHANCONG);
-			}
-		});
-		mnBangPhanCong.add(mntmNewMenuItem_1);
 
 		contentPane = new JPanel();
 		contentPane.setBorder(new LineBorder(new Color(255, 0, 0)));

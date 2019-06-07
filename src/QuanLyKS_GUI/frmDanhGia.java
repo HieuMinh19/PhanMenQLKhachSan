@@ -25,10 +25,10 @@ import QuanLyKS_GUI.Register;
 import javax.swing.JOptionPane;
 import java.awt.event.ActionEvent;
 
-public class DanhGia extends JInternalFrame {
+public class frmDanhGia extends JInternalFrame {
 	private JTextField txtMaPhong;
 	private DanhGia_DTO danhgiaDTO;
-	static DanhGia frame = new DanhGia();
+	static frmDanhGia frame = new frmDanhGia();
 	public static Register registerForm = new Register();
 	
 
@@ -51,7 +51,7 @@ public class DanhGia extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
-	public DanhGia() {
+	public frmDanhGia() {
 		setBounds(100, 100, 550, 461);
 		getContentPane().setLayout(null);
 
