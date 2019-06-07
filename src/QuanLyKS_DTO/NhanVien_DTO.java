@@ -17,7 +17,9 @@ public class NhanVien_DTO {
 	public NhanVien_DTO() {
 		// TODO Auto-generated constructor stub
 	}
-	public NhanVien_DTO(String strTenNhanVien,  Date dtNgaySinh, int iCMND,Date dtNgayVaoLam,int iMaChucVu) {
+	public NhanVien_DTO(String strUsername,String strPassword,String strTenNhanVien,  Date dtNgaySinh, int iCMND,Date dtNgayVaoLam,int iMaChucVu) {
+		this.strUsername = strUsername;
+		this.strPassword = strPassword;
 		this.strTenNhanVien = strTenNhanVien;
 		this.dtNgaySinh = dtNgaySinh;
 		this.iCMND = iCMND;
