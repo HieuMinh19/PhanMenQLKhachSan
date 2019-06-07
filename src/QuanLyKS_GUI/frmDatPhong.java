@@ -46,7 +46,7 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
     public frmDatPhong() {
         initComponents();
        
-    }
+    } 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -82,7 +82,7 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
          		String NgayNhan = sdf.format( dtNgayNhan.getDate() );
          	 	String NgayTra = sdf.format( dtNgayTra.getDate() );
          		//load list Phong
-                ResultSet rslistPhong = Phong_DAL.selectCondition(idLP, NgayNhan, NgayTra);
+                 ResultSet rslistPhong = Phong_DAL.selectCondition(idLP, NgayNhan, NgayTra);
                  try {    
                	  cbxMaPhong.removeAllItems();
                  	while(rslistPhong.next() ) {
@@ -130,13 +130,13 @@ public class frmDatPhong extends javax.swing.JInternalFrame {
         		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
          		String NgayNhan = sdf.format( dtNgayNhan.getDate() );
          		String NgayTra = sdf.format( dtNgayTra.getDate() );
-         		//load list Phong
+         		//load list Phong 
                  ResultSet rslistPhong = Phong_DAL.selectCondition(idLP, NgayNhan, NgayTra);
                   try {    
                 	  cbxMaPhong.removeAllItems();
                   	while(rslistPhong.next() ) {
                   		cbxMaPhong.addItem(rslistPhong.getString("MaPhong"));
-                  		cbxMaPhong.getSelectedItem();
+                   		cbxMaPhong.getSelectedItem();
           		   }
           		} catch (SQLException e) {
           			// TODO Auto-generated catch block

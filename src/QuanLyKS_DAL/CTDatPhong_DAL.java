@@ -2,6 +2,7 @@ package QuanLyKS_DAL;
 import QuanLyKS_DTO.CTDatPhong_DTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Date;
 public class CTDatPhong_DAL {
@@ -39,6 +40,28 @@ public class CTDatPhong_DAL {
 	}
 
 	
-	
+	public static int buildMaCTDatPhong() {
+		PreparedStatement ptmt = null; 
+		String query = "SELECT top 1 MaCTDatPhong from CTDATPHONG "
+				+ "ORDER BY MaCTDatPhong DESC";
+		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
+		Connection conn = mycon.getConnection();
+		
+		try {
+			int nextID = 0;
+			ptmt = conn.prepareStatement(query);
+			ResultSet rs = ptmt.executeQuery();
+			while(rs.next()) 
+				nextID = rs.getInt("MaCTDatPhong") + 1;
+			
+			return nextID;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
 	
 }

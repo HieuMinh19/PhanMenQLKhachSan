@@ -7,10 +7,11 @@ public class CTDichVu_DTO {
 	private int iMaCTDatPhong;
 	private int iTongTienDichVu;
 	
-	public CTDichVu_DTO( int iSoLuong, int iMaCTDatPhong, int iTongTienDichVu) {
+	public CTDichVu_DTO( int iSoLuong, int iMaCTDatPhong, int iTongTienDichVu, int iMaDichVu) {
 		this.iSoLuong = iSoLuong;
 		this.iMaCTDatPhong = iMaCTDatPhong;
 		this.iTongTienDichVu = iTongTienDichVu;
+		this.iMaDichVu = iMaDichVu;
 	}
 
 	public CTDichVu_DTO() {

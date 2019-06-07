@@ -25,7 +25,7 @@ public class DichVu_BUS {
 	}
 	
 	
-	public ArrayList<DichVu_DTO> getListDV(){
+	public static ArrayList<DichVu_DTO> getListDV(){
 		return DichVu_DAL.getallDV();
 	}
 	

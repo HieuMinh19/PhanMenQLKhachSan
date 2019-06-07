@@ -97,8 +97,9 @@ create table PHONG
 )
 go
 /*create table Chi Tiet Dat Phong*/
+drop table CTDATPHONG
 create table CTDATPHONG(
-	MaCTDatPhong int identity(1,1) primary key,
+	MaCTDatPhong int primary key,
 	NgayThucHien Date,
 	MaKhachHang int,
 	NgayNhan Date,
@@ -117,6 +118,8 @@ go
 /*insert table DICHVU*/
 INSERT INTO DICHVU( TenDichVu,GiaDichVu) VALUES ( 'ăn sáng', 30000);
 INSERT INTO DICHVU( TenDichVu,GiaDichVu) VALUES ( 'ăn toi', 100000);
+INSERT INTO DICHVU( TenDichVu,GiaDichVu) VALUES ( 'Ve sinh', 50000);
+INSERT INTO DICHVU( TenDichVu,GiaDichVu) VALUES ( 'ăn trua', 100000);
 
 /*insert table LOAIPHONG*/
 go

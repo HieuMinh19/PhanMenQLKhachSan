@@ -12,5 +12,9 @@ public class Phong_BUS {
 	public ArrayList<Phong_DTO> LoadListPhong (){
 		return dal.LoadListPhong();
 	}
+	
+	public static ArrayList<Phong_DTO> getListCondition (int MaLoaiPhong, String NgayNhan, String NgayTra){
+		return Phong_DAL.getListCondition(MaLoaiPhong, NgayNhan, NgayTra);
+	}
 }
  

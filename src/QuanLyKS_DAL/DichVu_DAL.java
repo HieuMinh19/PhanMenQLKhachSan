@@ -54,11 +54,6 @@ public class DichVu_DAL {
 			return dvList;
 	}
 	
-	
-	
-	
-	
-	
 	public static boolean Insert(DichVu_DTO dichvu){
 		PreparedStatement ptmt = null; 
 		String query = "INSERT INTO DICHVU(TenDichVu,GiaDichVu) VALUES (?,?)";

@@ -31,11 +31,10 @@ public class QLDichVu extends JInternalFrame {
 	private static final long serialVersionUID = 1L;
 	private JTable table_2;
 	private JTextField txtTenDichVu;
-	
-	
+
 	ArrayList<DichVu_DTO> listDV_DTO =  new ArrayList<DichVu_DTO>();
 	static DichVu_BUS dvBus = new DichVu_BUS();	
-	public static ResultSet DV = dvBus.selectAll();
+	public static ResultSet DV = dvBus.selectAll(); 
 	private DichVu_DTO dichvu_DTO;
 	private JTextField txtGiaDichVu;
 	

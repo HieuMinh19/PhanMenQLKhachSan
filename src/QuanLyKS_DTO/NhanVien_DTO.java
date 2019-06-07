@@ -1,5 +1,4 @@
 package QuanLyKS_DTO;
-
 import java.sql.Date;
 
 public class NhanVien_DTO {
@@ -13,10 +12,11 @@ public class NhanVien_DTO {
 	private ChucVu_DTO chucvu;
 	private String strUsername;
 	private String strPassword;
-	
+	 
 	public NhanVien_DTO() {
-		// TODO Auto-generated constructor stub
+		this.iMaNhanVien = 0;
 	}
+	
 	public NhanVien_DTO(String strTenNhanVien,  Date dtNgaySinh, int iCMND,Date dtNgayVaoLam,int iMaChucVu) {
 		this.strTenNhanVien = strTenNhanVien;
 		this.dtNgaySinh = dtNgaySinh;
