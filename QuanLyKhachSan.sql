@@ -142,10 +142,12 @@ INSERT INTO CTDANHGIA( NoiDung, NgayDanhGia) VALUES ('Don Ve Sinh',  '10/06/2019
 go
 /*insert table CHUCVU*/
 INSERT INTO CHUCVU(TenChucVu) VALUES ('Quan Ly');
-INSERT INTO CHUCVU(TenChucVu) VALUES ('Nhân Viên');
+INSERT INTO CHUCVU(TenChucVu) VALUES ('Le tan');
 go
 INSERT INTO NHANVIEN(Username, Password, TenNhanVien, NgaySinh, CMND, NgayVaoLam, MaChucVu) 
-values ('hieu', '123456', 'le minh hieu', '2019-06-05', 475834, '2012-05-05', 1)
+values ('ql', '1', 'le minh hieu', '2019-06-05', 475834, '2012-05-05', 1)
+INSERT INTO NHANVIEN(Username, Password, TenNhanVien, NgaySinh, CMND, NgayVaoLam, MaChucVu) 
+values ('nv', '1', 'le minh hieu', '2019-06-05', 475834, '2012-05-05', 2)
 go
 /*insert table CTDATPHONG*/
 INSERT INTO CTDATPHONG( NgayThucHien,MaKhachHang, NgayNhan,NgayTra,MaPhong, MaNhanVien) 
