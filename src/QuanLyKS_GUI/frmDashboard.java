@@ -24,6 +24,7 @@ import com.sun.xml.internal.ws.api.server.Adapter.Toolkit;
 import QuanLyKS_DTO.NhanVien_DTO;
 import QuanLyKS_DTO.CTDatPhong_DTO;
 import QuanLyKS_DTO.CTDichVu_DTO;
+import QuanLyKS_DTO.KhachHang_DTO;
 
 import java.awt.SystemColor;
 import java.awt.Font;
@@ -42,6 +43,7 @@ public class frmDashboard extends JFrame {
 	 */
 	static CTDatPhong_DTO ctdp;
 	static ArrayList<CTDichVu_DTO> listCTDV = new ArrayList<CTDichVu_DTO>();
+	static KhachHang_DTO khDTO;
 	static JDesktopPane desktopPane = new JDesktopPane();
 	// khai bao tat ca cac frame
 
@@ -78,7 +80,7 @@ public class frmDashboard extends JFrame {
 	static frmDashboard frame = new frmDashboard(null);
 	//19
 	static frmBooking_Step3 frmBooking3 = new frmBooking_Step3(ctdp, listCTDV);
-	static frmBooking_Step4 frmBooking4 = new frmBooking_Step4();
+	static frmBooking_Step4 frmBooking4 = new frmBooking_Step4(ctdp, listCTDV, khDTO);
 	private Image backgroundImage;
 
 	// deifne static varriable cho frame
