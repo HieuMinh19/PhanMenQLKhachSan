@@ -105,7 +105,7 @@
 					    for (int i = 0; i < selectedRow.length; i++) {
 					    	startDate =	(Date) table.getValueAt(selectedRow[i], 4);
 					        endDate = (Date) table.getValueAt(selectedRow[i], 5);
-					        long getDiff = startDate.getTime() - endDate.getTime();
+					        long getDiff = endDate.getTime() - startDate.getTime();
 					        long getDaysDiff = getDiff / (24 * 60 * 60 * 1000);
 					        giatien = table.getValueAt(selectedRow[i], 3).toString()  ;
 					        giatien1 =  getDaysDiff * Long.parseLong(giatien) ;				      

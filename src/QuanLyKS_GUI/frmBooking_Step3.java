@@ -118,6 +118,7 @@ public class frmBooking_Step3 extends JInternalFrame {
 				
 				khDTO = new KhachHang_DTO(iMaKH, strHoten, strSDT, strCMND, strDiaChi, strEmail);
 				
+				frmDashboard.controlFrame(frmDashboard.FRM_BOOKING4);
 				
 			}
 		});
