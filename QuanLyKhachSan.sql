@@ -87,6 +87,7 @@ CREATE table LOAIPHONG
 	MaLoaiPhong int  identity(1,1) primary key,
 	TenLoaiPhong varchar(20),
 	GiaPhong int,
+	MoTa varchar(255),
 )
 go
 /*create table Phong*/
