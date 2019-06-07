@@ -44,7 +44,7 @@ create table BANGPHANCONG
 /*create table Khach hang*/
 go
 create table KHACHHANG(
-	MaKhachHang int identity(1,1) primary key,
+	MaKhachHang int primary key,
 	HoTen varchar(255),
 	Email varchar(30),
 	DiaChi varchar(50),
