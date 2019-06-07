@@ -98,6 +98,7 @@ create table PHONG
 )
 go
 /*create table Chi Tiet Dat Phong*/
+drop table CTDATPHONG
 create table CTDATPHONG(
 	MaCTDatPhong int identity(1,1) primary key,
 	NgayThucHien Date,
@@ -106,6 +107,7 @@ create table CTDATPHONG(
 	NgayTra Date,
 	MaPhong int,
 	MaNhanVien int,
+	ThanhTien int,
 )
 
 go
