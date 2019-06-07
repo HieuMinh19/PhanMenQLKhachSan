@@ -21,7 +21,7 @@ import javax.swing.border.LineBorder;
 import com.sun.xml.internal.ws.api.server.Adapter.Toolkit;
 
 import QuanLyKS_DTO.NhanVien_DTO;
-
+import QuanLyKS_DTO.CTDatPhong_DTO;
 import java.awt.SystemColor;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -36,6 +36,7 @@ public class frmDashboard extends JFrame {
 	/**
 	 * 
 	 */
+	static CTDatPhong_DTO ctdp;
 	
 	static JDesktopPane desktopPane = new JDesktopPane();
 	//khai bao tat ca cac frame
@@ -52,7 +53,7 @@ public class frmDashboard extends JFrame {
 	static frmCapNhatNhanVien frmCapNhatNhanVien = new frmCapNhatNhanVien();
 	static frmCapNhatLoaiPhong frmCapNhatLoaiPhong = new frmCapNhatLoaiPhong();
 	static frmBooking_Step1 frmBooking1 = new frmBooking_Step1();
-	static frmBooking_Step2 frmBooking2 = new frmBooking_Step2();
+	static frmBooking_Step2 frmBooking2 = new frmBooking_Step2(ctdp);
 	static frmThanhToan frmThanhToan = new frmThanhToan();
 	
 	static frmDashboard frame = new frmDashboard(null);

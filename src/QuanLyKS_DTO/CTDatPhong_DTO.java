@@ -1,6 +1,6 @@
 package QuanLyKS_DTO;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class CTDatPhong_DTO {
 	private int iMaCTDatPhong;
@@ -66,8 +66,8 @@ public class CTDatPhong_DTO {
 		this.iMaNhanVien = iMaNhanVien;
 	}
 
-	public void setNgayNhan(Date dtNgayNhan) {
-		this.dtNgayNhan = dtNgayNhan;
+	public void setNgayNhan(Date date) {
+		this.dtNgayNhan = date;
 	}
 
 	public Date getNgayNhan() {
@@ -79,7 +79,7 @@ public class CTDatPhong_DTO {
 	}
 
 	public void setNgayTra(Date dtNgayTra) {
-		this.dtNgayTra = dtNgayTra;
+		this.dtNgayTra = dtNgayTra; 
 	}
 
 }

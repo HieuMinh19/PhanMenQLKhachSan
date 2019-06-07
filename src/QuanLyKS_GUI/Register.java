@@ -48,11 +48,11 @@ public class Register extends JInternalFrame {
 		getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Username");
-		lblNewLabel.setBounds(52, 52, 69, 21);
+	 	lblNewLabel.setBounds(52, 52, 69, 21);
 		getContentPane().add(lblNewLabel);
 		
 		JLabel lblPassword = new JLabel("Password");
-		lblPassword.setBounds(52, 84, 100, 26);
+		lblPassword.setBounds(52, 84, 100, 26); 
 		getContentPane().add(lblPassword);
 		
 		JLabel lblRetypePassword = new JLabel("Retype password");

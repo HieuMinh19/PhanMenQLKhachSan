@@ -18,11 +18,11 @@ public class LoaiPhong_BUS {
 		return LoaiPhong_DAL.Insert(loaiphong);
 	}
 	public static ArrayList<LoaiPhong_DTO> LoadListLP   (){
-		return dal.LoadListLP();
+		return dal.LoadListLP(); 
 	}
 	
 	public ArrayList<LoaiPhong_DTO> selectAll() {
-		return dal.selectAll();
+		return dal.selectAll(); 
 	}
 	public static boolean Update(LoaiPhong_DTO loaiphong) {
 		return LoaiPhong_DAL.Update(loaiphong);

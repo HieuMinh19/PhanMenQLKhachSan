@@ -27,10 +27,43 @@ public class Phong_DAL {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.err.println(" ket noi that bai");
-		} 
+		}  
 		return null;
 	}
 
+	public static ArrayList<Phong_DTO> getListCondition(int MaLoaiPhong, String NgayNhan, String NgayTra) {
+		ArrayList<Phong_DTO> listPhong = new ArrayList<Phong_DTO>();
+		
+		PreparedStatement ptmt = null; 
+		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
+		Connection conn = mycon.getConnection();
+		String query = "SELECT DISTINCT p.MaPhong from PHONG as p where (not EXISTS ";
+		query += "(select MaPhong from CTDATPHONG as ctdp where p.MaPhong  = ctdp.MaPhong "
+				+ "and NgayNhan between ? and ?)) and (p.MaLoaiPhong = ?)";
+		try {
+			ptmt = conn.prepareStatement(query);
+			ptmt.setString(1, NgayNhan);
+			ptmt.setString(2, NgayTra);
+			ptmt.setInt(3, MaLoaiPhong);
+			ResultSet rs = ptmt.executeQuery();
+			
+			while(rs.next()) {
+				Phong_DTO phong = new Phong_DTO();
+				phong.setMaLoaiPhong(rs.getInt("MaLoaiPhong"));
+				phong.setMaPhong(rs.getInt("MaPhong"));
+				listPhong.add(phong); 
+			}
+			
+		}catch(SQLException e){
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return listPhong;
+	}
+	
+	
+	
 	public static ResultSet selectAll() {
 		PreparedStatement ptmt = null; 
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();

@@ -5,17 +5,17 @@ public class LoaiPhong_DTO {
     private int iMaLoaiPhong;
 	private String strTenLoaiPhong;
     private int iGiaPhong;
-    //private String strMoTa;
+    private String strMoTa;
     
     public LoaiPhong_DTO() {
 		
 	}
 
-	public LoaiPhong_DTO( int iMaLoaiPhong, String strTenLoaiPhong, int iGiaPhong) {
+	public LoaiPhong_DTO( int iMaLoaiPhong, String strTenLoaiPhong, int iGiaPhong, String strMoTa) {
 		this.iMaLoaiPhong = iMaLoaiPhong;
 		this.strTenLoaiPhong = strTenLoaiPhong;
 		this.iGiaPhong = iGiaPhong;
-//		this.strMoTa = strMoTa;
+		this.strMoTa = strMoTa;
     }
     
 	public LoaiPhong_DTO( int iMaLoaiPhong, String strTenLoaiPhong) {
@@ -42,14 +42,14 @@ public class LoaiPhong_DTO {
 	}
 	public void setGiaPhong(int iGiaPhong) {
         this.iGiaPhong = iGiaPhong;
-    }
+    } 
 
-//	public String getMoTa() {
-//		return strMoTa;
-//	}
-//
-//	public void setMoTa(String strMoTa) {
-//		this.strMoTa = strMoTa;
-//	}
+	public String getMoTa() {
+		return strMoTa;
+	}
+
+	public void setMoTa(String strMoTa) {
+		this.strMoTa = strMoTa;
+	}
 }
 

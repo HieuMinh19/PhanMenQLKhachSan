@@ -16,7 +16,7 @@ public class NhanVien_BUS extends JInternalFrame {
 	 */
 	public NhanVien_BUS() {
 		setBounds(100, 100, 450, 300);
-		dal = new NhanVien_DAL();
+		dal = new NhanVien_DAL(); 
 	}
 	
 	public ArrayList<NhanVien_DTO> SearchNV (String tukhoa, Date ngayvaolam){
