@@ -56,7 +56,10 @@ public class NhanVien_DTO {
 		this.strUsername = Username;
 	}
 	
-	
+	public NhanVien_DTO(int iMaNhanVien,String strTenNhanVien) {
+		this.strTenNhanVien = strTenNhanVien;
+		this.iMaNhanVien = iMaNhanVien;
+	}
 	public int getMaNhanVien() {
 		return iMaNhanVien;
 	}
