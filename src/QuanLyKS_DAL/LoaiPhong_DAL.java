@@ -72,6 +72,7 @@ public class LoaiPhong_DAL {
 				lp.setMaLoaiPhong(rs.getInt("MaLoaiPhong"));
 				lp.setTenLoaiPhong(rs.getString("TenLoaiPhong"));
 				lp.setGiaPhong(rs.getInt("GiaPhong"));
+				lp.setMoTa(rs.getString("MoTa"));
 				ds.add(lp);
 			}
 			return ds;
@@ -79,7 +80,7 @@ public class LoaiPhong_DAL {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;	
+		return null;	 
 	}
 	//
 	public static boolean Update(LoaiPhong_DTO loaiphong)  {
@@ -158,7 +159,7 @@ public class LoaiPhong_DAL {
 				loaiphong.setMaLoaiPhong(rs.getInt("MaLoaiPhong"));
 				loaiphong.setTenLoaiPhong(rs.getString("TenLoaiPhong"));
 				loaiphong.setGiaPhong(rs.getInt("GiaPhong"));
-				//loaiphong.setMoTa(rs.getString("MoTa"));
+				loaiphong.setMoTa(rs.getString("MoTa"));
 				dsloaiphong.add(loaiphong);
 			}
 			return dsloaiphong;

@@ -149,7 +149,7 @@ public class DatDichVu extends JInternalFrame {
 				
 				int SoLuong = Integer.parseInt(txtSoLuong.getText());
 					System.out.println(SoLuong);
-        		CTDichVu_DTO ctdvDTO = new CTDichVu_DTO(SoLuong, idDV, iMaPhong);
+//        		CTDichVu_DTO ctdvDTO = new CTDichVu_DTO(SoLuong, idDV, iMaPhong);
         		
 //        		if(CTDichVu_BUS.Insert(ctdvDTO) == true) {
 //        			JOptionPane.showMessageDialog(null, "Insert booking Success", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);

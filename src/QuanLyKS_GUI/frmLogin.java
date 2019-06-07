@@ -23,7 +23,7 @@ public class frmLogin extends JFrame {
 
 	private JPanel contentPane;
 	private JPasswordField txtMatKhau;
-
+	static NhanVien_DTO acc = new NhanVien_DTO();
 	/**
 	 * Launch the application.
 	 */
@@ -76,6 +76,9 @@ public class frmLogin extends JFrame {
 		JButton btnDangNhap = new JButton("LOG IN");
 		btnDangNhap.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
+				acc = NhanVien_BUS.Login(txtTaiKhoan.getText(),new String(txtMatKhau.getPassword()));
+
 				char[] a = txtMatKhau.getPassword();
          		//String b;
          		String b = String.valueOf(a);

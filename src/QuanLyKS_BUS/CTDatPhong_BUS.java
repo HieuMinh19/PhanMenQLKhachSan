@@ -48,6 +48,11 @@ public class CTDatPhong_BUS {
 		int iGiaPhong = Phong_DAL.getGiaPhong(iMaPhong);		
 		return iSoNgay * iGiaPhong;
 	}
+
+	public static int getnextID() {
+		return CTDatPhong_DAL.buildMaCTDatPhong();
+	}
+
 }
 
 

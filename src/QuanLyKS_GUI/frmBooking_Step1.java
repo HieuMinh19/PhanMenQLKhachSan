@@ -1,49 +1,52 @@
 package QuanLyKS_GUI;
 
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.InputMethodEvent;
+import java.awt.event.InputMethodListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JEditorPane;
 import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
-import com.ibm.icu.text.DateFormat;
 import com.ibm.icu.text.SimpleDateFormat;
 import com.toedter.calendar.JDateChooser;
 
-import QuanLyKS_DTO.LoaiPhong_DTO;
-import QuanLyKS_DTO.CTDatPhong_DTO;
+import QuanLyKS_BUS.CTDatPhong_BUS;
 import QuanLyKS_BUS.LoaiPhong_BUS;
-import QuanLyKS_GUI.frmDashboard;
+import QuanLyKS_BUS.Phong_BUS;
+import QuanLyKS_DAL.Phong_DAL;
+import QuanLyKS_DTO.CTDatPhong_DTO;
+import QuanLyKS_DTO.LoaiPhong_DTO;
+import QuanLyKS_DTO.Phong_DTO;
+import QuanLyKS_GUI.frmLogin;
 
-
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JEditorPane;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.sql.Date;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.awt.event.ActionEvent;
-import javax.swing.JComboBox;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
-import java.awt.event.ItemListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.InputMethodListener;
-import java.awt.event.InputMethodEvent;
-import javax.swing.event.AncestorListener;
-import javax.swing.event.AncestorEvent;
 
 public class frmBooking_Step1 extends JInternalFrame {
 	private JTable tbChiTiet;
 	ArrayList<LoaiPhong_DTO> listLP = LoaiPhong_BUS.LoadListLP();
-	public CTDatPhong_DTO ctdpDTO = new CTDatPhong_DTO();
+	ArrayList<Phong_DTO> listPhong = new ArrayList<Phong_DTO>();
+	public static CTDatPhong_DTO ctdpDTO = new CTDatPhong_DTO();
+	
+	private int iMaPhong = 0;
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
-			public void run() {
+			public void run() { 
 				try {
 					frmBooking_Step1 frame = new frmBooking_Step1();
 					frame.setVisible(true);
@@ -62,16 +65,7 @@ public class frmBooking_Step1 extends JInternalFrame {
 		getContentPane().setLayout(null);
 		
 		JDateChooser date_NgayNhanPhong = new JDateChooser();
-		date_NgayNhanPhong.addAncestorListener(new AncestorListener() {
-			public void ancestorAdded(AncestorEvent arg0) {
-				ctdpDTO.setNgayNhan(new Date(date_NgayNhanPhong.getDate().getTime()));
-			 	//System.out.println(NgayDen); 
-			}
-			public void ancestorMoved(AncestorEvent arg0) {
-			}
-			public void ancestorRemoved(AncestorEvent arg0) {
-			}
-		});
+		 
 		date_NgayNhanPhong.addInputMethodListener(new InputMethodListener() {
 			public void caretPositionChanged(InputMethodEvent arg0) {
 			}
@@ -112,42 +106,94 @@ public class frmBooking_Step1 extends JInternalFrame {
 		edGia.setEditable(false);
 		edGia.setBounds(435, 266, 118, 37);
 		getContentPane().add(edGia);
-		
+		JComboBox cbxMaPhong = new JComboBox();
+		cbxMaPhong.setBounds(208, 352, 345, 20);
 		JButton btnTiepTuc = new JButton("Ti\u1EBFp t\u1EE5c");
 		btnTiepTuc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int SoPhong = 1;
-				//frmDashboard.frmBooking2 = new frmBooking_Step2(SoPhong);
+				ctdpDTO.setNgayNhan(date_NgayNhanPhong.getDate());
+				ctdpDTO.setNgayTra(date_NgayTraPhong.getDate());
+				ctdpDTO.setMaNhanVien(frmLogin.acc.getMaNhanVien());
+				//get current date
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");        	 	
+				Date currentDate = new Date();
+				ctdpDTO.setdtNgayThucHien(currentDate);
+								
+				Object obj = cbxMaPhong.getSelectedItem();
+				int iMaPhong = Integer.parseInt(obj.toString());
+				ctdpDTO.setMaPhong(iMaPhong);
+				int iCTDP = CTDatPhong_BUS.getnextID();
+				ctdpDTO.setMaCTDatPhong(iCTDP);
+				
+				frmDashboard.frmBooking2 = new frmBooking_Step2(ctdpDTO);
 				frmDashboard.controlFrame(frmDashboard.FRM_BOOKING2);
 			}
 		});
 		btnTiepTuc.setBounds(420, 494, 133, 25);
 		getContentPane().add(btnTiepTuc);
 		
+		getContentPane().add(cbxMaPhong);
 		JComboBox cbxLoaiPhong = new JComboBox();
+	  //Load list LoaiPhong
+		for(int i = 0; i < listLP.size(); i++) {
+			cbxLoaiPhong.addItem(listLP.get(i).getTenLoaiPhong());
+			cbxLoaiPhong.getSelectedItem();
+		}
 		cbxLoaiPhong.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
 				String nameLP = (String) cbxLoaiPhong.getSelectedItem();
+				int iMaLoaiPhong = 0;
 				for(int i = 0; i < listLP.size(); i++) {
 					LoaiPhong_DTO lpCompare = listLP.get(i);
         			if(nameLP.equals( lpCompare.getTenLoaiPhong() ) ) {
         				int Gia = lpCompare.getGiaPhong();
         				edGia.setText(String.valueOf(Gia));
-        				//edMoTa.setText(lpCompare.getMoTa());
+        				edMoTa.setText(lpCompare.getMoTa());
+        				iMaLoaiPhong = lpCompare.getMaLoaiPhong();
         			}
         				 
 				}
+				
+				//set Default NgayNhanPhong
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");        	 	
+				Date currentDate = new Date();
+				date_NgayNhanPhong.setDate(currentDate);
+				Date dtNgayNhan =  new Date(date_NgayNhanPhong.getDate().getTime());
+				String strNgayNhan = sdf.format(dtNgayNhan);
+				
+				//set Default NgayTraPhong
+				date_NgayTraPhong.setDate(currentDate);
+				date_NgayNhanPhong.setDate(currentDate);
+				Date dtNgayTra =  new Date(date_NgayTraPhong.getDate().getTime());
+				String strNgayTra = sdf.format(dtNgayTra);
+				
+//				listPhong = Phong_BUS.getListCondition( iMaLoaiPhong, strNgayNhan, strNgayTra);    
+//               
+//                cbxMaPhong.removeAllItems();
+//                for(int i = 0; i <listPhong.size(); i++) {
+//                	cbxMaPhong.addItem(listPhong.get(i).getMaPhong());
+//                	cbxMaPhong.getSelectedItem();
+//                }
+				
+				ResultSet rslistPhong = Phong_DAL.selectCondition(iMaLoaiPhong, strNgayNhan, strNgayTra);
+				try {
+					cbxMaPhong.removeAllItems();
+					while(rslistPhong.next() ) {
+					 		cbxMaPhong.addItem(rslistPhong.getInt("MaPhong"));
+					 		cbxMaPhong.getSelectedItem();
+					   }
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+               	  
+         		
 			}
 		});
 		cbxLoaiPhong.setBounds(208, 195, 345, 20);
 		getContentPane().add(cbxLoaiPhong);
 		
-		  //Load list LoaiPhong
-				
-		for(int i = 0; i < listLP.size(); i++) {
-			cbxLoaiPhong.addItem(listLP.get(i).getTenLoaiPhong());
-			cbxLoaiPhong.getSelectedItem();
-		}
+	
 		
 		JLabel lblDchV = new JLabel("Lo\u1EA1i ph\u00F2ng");
 		lblDchV.setBounds(336, 157, 110, 25);
@@ -166,12 +212,15 @@ public class frmBooking_Step1 extends JInternalFrame {
 		tbChiTiet.setRowSelectionAllowed(true);
 		
 		JButton btnDatPhong = new JButton("\u0110\u1EB7t ph\u00F2ng");
+		btnDatPhong.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			} 
+		});
 		btnDatPhong.setBounds(208, 494, 110, 25);
 		getContentPane().add(btnDatPhong);
 		
-		JComboBox cbxMaPhong = new JComboBox();
-		cbxMaPhong.setBounds(208, 352, 345, 20);
-		getContentPane().add(cbxMaPhong);
+		 
 		
 		JLabel lblNewLabel_2 = new JLabel("S\u1ED1 ph\u00F2ng");
 		lblNewLabel_2.setBounds(208, 327, 67, 14);
@@ -184,5 +233,7 @@ public class frmBooking_Step1 extends JInternalFrame {
 		JLabel lblGi = new JLabel("Gi\u00E1");
 		lblGi.setBounds(435, 230, 61, 25);
 		getContentPane().add(lblGi);
+		
+		
 	}
 }

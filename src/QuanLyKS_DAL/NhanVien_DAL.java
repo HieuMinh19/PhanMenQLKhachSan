@@ -25,7 +25,7 @@ public class NhanVien_DAL extends JInternalFrame {
 		PreparedStatement ptmt = null; 
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
 		Connection conn = mycon.getConnection();
-		
+		 
 		String query = "SELECT * FROM NHANVIEN where TenNhanVien like '%" + tukhoa + "%' and datediff(DAY, NgayVaoLam, '" + ngayvaolam.toString() + "') >= 0";
 		try {
 			ptmt = conn.prepareStatement(query);
@@ -180,6 +180,7 @@ public class NhanVien_DAL extends JInternalFrame {
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
 		Connection conn = mycon.getConnection();
 		
+
 		//String query = "SELECT MaNhanVien,TenNhanVien,NgaySinh,CMND,NgayVaoLam,CV.MaChucVu as 'MaChucVu',TenChucVu,Username,Password FROM NHANVIEN NV, CHUCVU CV WHERE NV.MACHUCVU=CV.MACHUCVU and Username=? and Password=?";
 		String query = "SELECT * FROM NHANVIEN WHERE Username=? and Password=?";
 		try {

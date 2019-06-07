@@ -6,12 +6,15 @@ public class KhachHang_DTO {
 	private String strDienThoai;
 	private String strDiaChi;
 	private String strCMND;
+	private String strEmail;
 	
-	public KhachHang_DTO(int iMaKhachHang, String strHoTen, String strDienThoai, String strCMND) {
+	public KhachHang_DTO(int iMaKhachHang, String strHoTen, String strDienThoai, String strCMND, String strDiaChi, String strEmail) {
 		this.iMaKhachHang = iMaKhachHang;
 		this.strHoTen = strHoTen;
 		this.strDienThoai = strDienThoai;
 		this.strCMND = strCMND;
+		this.strDiaChi = strDiaChi;
+		this.strEmail = strEmail;
 	} 
 	
 	public KhachHang_DTO(String strHoTen, String strDienThoai, String strCMND) {
@@ -52,6 +55,14 @@ public class KhachHang_DTO {
 
 	public void setDiaChi(String strDiaChi) {
 		this.strDiaChi = strDiaChi;
+	}
+
+	public String getEmail() {
+		return strEmail;
+	}
+
+	public void setEmail(String strEmail) {
+		this.strEmail = strEmail;
 	}
 	
 }
