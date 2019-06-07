@@ -181,8 +181,7 @@ public class NhanVien_DAL extends JInternalFrame {
 		Connection conn = mycon.getConnection();
 		
 
-		//String query = "SELECT MaNhanVien,TenNhanVien,NgaySinh,CMND,NgayVaoLam,CV.MaChucVu as 'MaChucVu',TenChucVu,Username,Password FROM NHANVIEN NV, CHUCVU CV WHERE NV.MACHUCVU=CV.MACHUCVU and Username=? and Password=?";
-		String query = "SELECT * FROM NHANVIEN WHERE Username=? and Password=?";
+		String query = "SELECT MaNhanVien,TenNhanVien,NgaySinh,CMND,NgayVaoLam,CV.MaChucVu as 'MaChucVu',TenChucVu,Username,Password FROM NHANVIEN NV, CHUCVU CV WHERE NV.MACHUCVU=CV.MACHUCVU and Username=? and Password=?";
 		try {
 			ptmt = conn.prepareStatement(query);
 			ptmt.setString(1, username);
@@ -190,19 +189,14 @@ public class NhanVien_DAL extends JInternalFrame {
 			ResultSet rs = ptmt.executeQuery();
 			rs.next();
 			NhanVien_DTO nv = new NhanVien_DTO();
-
-			//char[] pass = account.getPassword(); 
-			//String dtNgayLap = account.getNgayLap();
-			//ep kieu tu string sang char
-		//	String strPass = new String(pass);
 			
-//			nv.setMaNhanVien(rs.getInt("MaNhanVien"));
-//			nv.setTenNhanVien(rs.getString("TenNhanVien"));
-//			nv.setNgaySinh(rs.getDate("NgaySinh"));
-//			nv.setCMND(rs.getInt("CMND"));
-//			nv.setNgayVaoLam(rs.getDate("NgayVaoLam"));
-//			nv.setMaChucVu(rs.getInt("MaChucVu"));
-//			nv.setChucVu(new ChucVu_DTO(rs.getInt("MaChucVu"),rs.getString("TenChucVu")));
+			nv.setMaNhanVien(rs.getInt("MaNhanVien"));
+			nv.setTenNhanVien(rs.getString("TenNhanVien"));
+			nv.setNgaySinh(rs.getDate("NgaySinh"));
+			nv.setCMND(rs.getInt("CMND"));
+			nv.setNgayVaoLam(rs.getDate("NgayVaoLam"));
+			nv.setMaChucVu(rs.getInt("MaChucVu"));
+			nv.setChucVu(new ChucVu_DTO(rs.getInt("MaChucVu"),rs.getString("TenChucVu")));
 			nv.setUsername(rs.getString("Username"));
 			nv.setPassword(rs.getString("Password"));
 			return nv;
