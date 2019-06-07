@@ -93,7 +93,7 @@
 					new Object[][] {
 					},
 					new String[] {
-						"MÃ£ PhÃ²ng", "TÃªn KhÃ¡ch HÃ ng", "TÃªn Loáº¡i PhÃ²ng","GiÃ¡ phÃ²ng", "NgÃ y Nháº­n", "NgÃ y Tráº£"
+							"Ma phong", "Ten khach hang", "Ten loai phong","Gia phong", "Ngay nhan", "Ngay tra"
 					}
 				);
 				table = new JTable(m);
@@ -122,7 +122,7 @@
 						new Object[][] {
 						},
 						new String[] {
-							"TÃªn Dá»‹ch Vá»¥", "Sá»‘ LÆ°á»£ng", "Tá»•ng Tiá»�n Dá»‹ch Vá»¥"
+								"Ten dich vu", "So luong", "Tong tien dich vu"
 						}
 					);
 					table_dich = new JTable(n);
