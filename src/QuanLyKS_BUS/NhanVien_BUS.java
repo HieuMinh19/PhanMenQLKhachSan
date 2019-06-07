@@ -42,4 +42,6 @@ public class NhanVien_BUS extends JInternalFrame {
 	public static NhanVien_DTO Login(String username, String password) {
 		return NhanVien_DAL.login(username, password);
 	}
+	
+	
 }
