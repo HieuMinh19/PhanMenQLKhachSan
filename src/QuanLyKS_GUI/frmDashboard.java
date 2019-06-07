@@ -1,12 +1,8 @@
 package QuanLyKS_GUI;
 
 import java.awt.BorderLayout;
-
-import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import QuanLyKS_GUI.*;
 import javax.swing.JDesktopPane;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -81,7 +77,7 @@ public class frmDashboard extends JFrame {
 //	static frmDashboard frame = new frmDashboard(null);
 	//19
 	static frmBooking_Step3 frmBooking3 = new frmBooking_Step3(ctdp, listCTDV);
-//	static frmBooking_Step4 frmBooking4 = new frmBooking_Step4(ctdp, listCTDV, khDTO);
+	static frmBooking_Step4 frmBooking4;
 	private Image backgroundImage;
 
 	// deifne static varriable cho frame
@@ -440,7 +436,7 @@ public class frmDashboard extends JFrame {
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
-			frmDanhGia.setVisible(false);
+			//frmDanhGia.setVisible(false);
 			frmDatDichVu.setVisible(false);
 			frmThemLoaiPhong.setVisible(false);
 			frmDanhSachPhong.setVisible(false);
@@ -508,7 +504,7 @@ public class frmDashboard extends JFrame {
 			frmDichVu.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmThemNhanVien.setVisible(false);
-			frmDanhGia.setVisible(false);
+			//frmDanhGia.setVisible(false);
 			frmDatDichVu.setVisible(false);
 			frmDanhSachPhong.setVisible(false);
 			frmCapNhatNhanVien.setVisible(false);
@@ -522,28 +518,29 @@ public class frmDashboard extends JFrame {
 			frmBooking3.setVisible(true);
 			break;
 			
-//		case 20:
-//			// close another frame
-//			frmRegister.setVisible(false);
-//			frmDatPhong.setVisible(false);
-//			frmTimKiemNV.setVisible(false);
-//			frmDichVu.setVisible(false);
-//			frmThemNhanVien.setVisible(false);
-//			frmDanhGia.setVisible(false);
-//			frmDatDichVu.setVisible(false);
-//			frmThemLoaiPhong.setVisible(false);
-//			frmDanhSachPhong.setVisible(false);
-//			frmCapNhatNhanVien.setVisible(false);
-//			frmCapNhatLoaiPhong.setVisible(false);
-//			frmBooking1.setVisible(false);
-//			frmQLDV.setVisible(false);
-//			frmBooking2.setVisible(false);
-//			frmThanhToan.setVisible(false);
-//			BangPhanCong.setVisible(false);
-//			// set current frame
-//			contentPane.add(frmBooking4);
-//			frmBooking4.setVisible(true);
-//			break;
+		case 20:
+			// close another frame
+			frmRegister.setVisible(false);
+			frmDatPhong.setVisible(false);
+			frmTimKiemNV.setVisible(false);
+			frmDichVu.setVisible(false);
+			frmThemNhanVien.setVisible(false);
+			frmDanhGia.setVisible(false);
+			frmDatDichVu.setVisible(false);
+			frmThemLoaiPhong.setVisible(false);
+			frmDanhSachPhong.setVisible(false);
+			frmCapNhatNhanVien.setVisible(false);
+			frmCapNhatLoaiPhong.setVisible(false);
+			frmBooking1.setVisible(false);
+			frmQLDV.setVisible(false);
+			frmBooking2.setVisible(false);
+			frmThanhToan.setVisible(false);
+			BangPhanCong.setVisible(false);
+			frmBooking3.setVisible(false);
+			// set current frame
+			contentPane.add(frmBooking4);
+			frmBooking4.setVisible(true);
+			break;
 		}
 	}
 
