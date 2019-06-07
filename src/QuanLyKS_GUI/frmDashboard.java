@@ -22,6 +22,8 @@ import com.sun.xml.internal.ws.api.server.Adapter.Toolkit;
 
 import QuanLyKS_DTO.NhanVien_DTO;
 import QuanLyKS_DTO.CTDatPhong_DTO;
+import QuanLyKS_DTO.CTDichVu_DTO;
+
 import java.awt.SystemColor;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -29,6 +31,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 
@@ -37,7 +40,7 @@ public class frmDashboard extends JFrame {
 	 * 
 	 */
 	static CTDatPhong_DTO ctdp;
-	
+	static ArrayList<CTDichVu_DTO> listCTDV = new ArrayList<CTDichVu_DTO>();
 	static JDesktopPane desktopPane = new JDesktopPane();
 	//khai bao tat ca cac frame
 	static QLDichVu frmQLDV = new QLDichVu();
@@ -54,6 +57,7 @@ public class frmDashboard extends JFrame {
 	static frmCapNhatLoaiPhong frmCapNhatLoaiPhong = new frmCapNhatLoaiPhong();
 	static frmBooking_Step1 frmBooking1 = new frmBooking_Step1();
 	static frmBooking_Step2 frmBooking2 = new frmBooking_Step2(ctdp);
+	static frmBooking_Step3 frmBooking3 = new frmBooking_Step3(ctdp, listCTDV);
 	static frmThanhToan frmThanhToan = new frmThanhToan();
 	
 	static frmDashboard frame = new frmDashboard(null);
@@ -77,6 +81,7 @@ public class frmDashboard extends JFrame {
 	static final int FRM_CAPNHATLOAIPHONG = 13;
 	static final int FRM_BOOKING1 = 14;
 	static final int FRM_BOOKING2 = 15;
+	static final int FRM_BOOKING3 = 17;
 	static final int FRM_THANHTOAN = 16;
 	
 	static final long serialVersionUID = 1L;
@@ -100,6 +105,7 @@ public class frmDashboard extends JFrame {
 			frmCapNhatLoaiPhong.setVisible(false);
 			frmBooking1.setVisible(false);
 			frmBooking2.setVisible(false);
+			frmBooking3.setVisible(false);
 			//set current frame
 			frmRegister = new Register();
 			contentPane.add(frmRegister);
@@ -121,6 +127,7 @@ public class frmDashboard extends JFrame {
 			frmCapNhatLoaiPhong.setVisible(false);
 			frmBooking1.setVisible(false);
 			frmBooking2.setVisible(false);
+			frmBooking3.setVisible(false);
 			//set current frame
 			contentPane.add(frmQLDV);
 			frmQLDV.setVisible(true);
@@ -141,6 +148,7 @@ public class frmDashboard extends JFrame {
 			frmCapNhatLoaiPhong.setVisible(false);
 			frmBooking1.setVisible(false);
 			frmBooking2.setVisible(false);
+			frmBooking3.setVisible(false);
 			//set current frame
 			contentPane.add(frmDatPhong);
 			frmDatPhong.setVisible(true);
@@ -161,6 +169,7 @@ public class frmDashboard extends JFrame {
 			frmCapNhatLoaiPhong.setVisible(false);
 			frmBooking1.setVisible(false);
 			frmBooking2.setVisible(false);
+			frmBooking3.setVisible(false);
 			//set current frame
 			contentPane.add(frmDichVu);
 			frmDichVu.setVisible(true);
@@ -182,6 +191,7 @@ public class frmDashboard extends JFrame {
 			frmBooking1.setVisible(false);
 			frmBooking2.setVisible(false);
 			frmThanhToan.setVisible(false);
+			frmBooking3.setVisible(false);
 			//set current frame
 			contentPane.add(frmTimKiemNV);
 			frmTimKiemNV.setVisible(true);
@@ -201,6 +211,7 @@ public class frmDashboard extends JFrame {
 			frmCapNhatLoaiPhong.setVisible(false);
 			frmBooking1.setVisible(false);
 			frmBooking2.setVisible(false);
+			frmBooking3.setVisible(false);
 			frmThemNhanVien = new frmThemNhanVien();
 			//set current frame
 			contentPane.add(frmThemNhanVien);
@@ -222,6 +233,7 @@ public class frmDashboard extends JFrame {
 			frmCapNhatLoaiPhong.setVisible(false);
 			frmBooking1.setVisible(false);
 			frmBooking2.setVisible(false);
+			frmBooking3.setVisible(false);
 			//set current frame
 			contentPane.add(frmDanhGia);
 			frmDanhGia.setVisible(true);
@@ -243,6 +255,7 @@ public class frmDashboard extends JFrame {
 			frmCapNhatLoaiPhong.setVisible(false);
 			frmBooking1.setVisible(false);
 			frmBooking2.setVisible(false);
+			frmBooking3.setVisible(false);
 			//set current frame
 			contentPane.add(frmDatDichVu);
 			frmDatDichVu.setVisible(true);
@@ -262,6 +275,7 @@ public class frmDashboard extends JFrame {
 			frmCapNhatLoaiPhong.setVisible(false);
 			frmBooking1.setVisible(false);
 			frmBooking2.setVisible(false);
+			frmBooking3.setVisible(false);
 			//set current frame
 			contentPane.add(frmThemLoaiPhong);
 			frmThemLoaiPhong.setVisible(true);
@@ -282,6 +296,7 @@ public class frmDashboard extends JFrame {
 			frmThemLoaiPhong.setVisible(false);
 			frmBooking1.setVisible(false);
 			frmBooking2.setVisible(false);
+			frmBooking3.setVisible(false);
 			//set current frame
 			contentPane.add(frmDanhSachPhong);
 			frmDanhSachPhong.setVisible(true);
@@ -302,6 +317,7 @@ public class frmDashboard extends JFrame {
 			frmThemLoaiPhong.setVisible(false);
 			frmBooking1.setVisible(false);
 			frmBooking2.setVisible(false);
+			frmBooking3.setVisible(false);
 			//set current frame
 			contentPane.add(frmCapNhatNhanVien);
 			frmCapNhatNhanVien.setVisible(true);
@@ -321,6 +337,7 @@ public class frmDashboard extends JFrame {
 			frmThemLoaiPhong.setVisible(false);
 			frmBooking1.setVisible(false);
 			frmBooking2.setVisible(false);
+			frmBooking3.setVisible(false);
 			//set current frame
 			contentPane.add(frmCapNhatLoaiPhong);
 			frmCapNhatLoaiPhong.setVisible(true);
@@ -341,6 +358,7 @@ public class frmDashboard extends JFrame {
 			frmThemLoaiPhong.setVisible(false);
 			frmCapNhatLoaiPhong.setVisible(false);
 			frmBooking2.setVisible(false);
+			frmBooking3.setVisible(false);
 			//set current frame
 			frmBooking1 = new frmBooking_Step1();
 			contentPane.add(frmBooking1);
@@ -363,6 +381,7 @@ public class frmDashboard extends JFrame {
 			frmThemLoaiPhong.setVisible(false);
 			frmCapNhatLoaiPhong.setVisible(false);
 			frmBooking1.setVisible(false);
+			frmBooking3.setVisible(false);
 			//set current frame
 			contentPane.add(frmBooking2);
 			frmBooking2.setVisible(true);
@@ -383,9 +402,30 @@ public class frmDashboard extends JFrame {
 			frmCapNhatLoaiPhong.setVisible(false);
 			frmBooking1.setVisible(false);
 			frmBooking2.setVisible(false);
+			frmBooking3.setVisible(false);
 			//set current frame
 			contentPane.add(frmThanhToan);
 			frmThanhToan.setVisible(true);
+			break;
+		case 17:
+			//close another frame
+			frmRegister.setVisible(false);
+			frmQLDV.setVisible(false);
+			frmDatPhong.setVisible(false);
+			frmDichVu.setVisible(false);
+			frmTimKiemNV.setVisible(false);
+			frmThemNhanVien.setVisible(false);
+			frmDanhGia.setVisible(false);
+			frmDatDichVu.setVisible(false);
+			frmDanhSachPhong.setVisible(false);
+			frmCapNhatNhanVien.setVisible(false);
+			frmThemLoaiPhong.setVisible(false);
+			frmCapNhatLoaiPhong.setVisible(false);
+			frmBooking1.setVisible(false);
+			frmBooking2.setVisible(false);
+			//set current frame
+			contentPane.add(frmBooking3);
+			frmBooking3.setVisible(true);
 			break;
 		}
 	}

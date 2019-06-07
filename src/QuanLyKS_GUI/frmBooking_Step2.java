@@ -1,7 +1,6 @@
 package QuanLyKS_GUI;
 
 import java.awt.EventQueue;
-
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -14,6 +13,9 @@ import QuanLyKS_DTO.DichVu_DTO;
 import QuanLyKS_DTO.CTDatPhong_DTO;
 import QuanLyKS_BUS.DichVu_BUS;
 import QuanLyKS_DTO.CTDichVu_DTO;
+import QuanLyKS_GUI.frmDashboard;
+import QuanLyKS_GUI.frmBooking_Step3;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -116,6 +118,12 @@ public class frmBooking_Step2 extends JInternalFrame {
 		getContentPane().add(btnAddDV04);
 		
 		JButton btnContinue = new JButton("Continue");
+		btnContinue.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frmDashboard.frmBooking3 =  new frmBooking_Step3(ctdp, listBookingDV);
+				frmDashboard.controlFrame(frmDashboard.FRM_BOOKING3);
+			}
+		});
 		btnContinue.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		btnContinue.setBounds(373, 418, 180, 45);
 		getContentPane().add(btnContinue);
@@ -234,7 +242,5 @@ public class frmBooking_Step2 extends JInternalFrame {
 				listBookingDV.add(dvTemp);
 			}
 		});
-		
-		
 	}
 }
