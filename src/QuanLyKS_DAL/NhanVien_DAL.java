@@ -53,6 +53,7 @@ public class NhanVien_DAL extends JInternalFrame {
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
 		Connection conn = mycon.getConnection();
 		//char[] nv.getPassword(); = nv.getPassword();
+		System.err.println("NgayPhanCong trong DAL" + nv.getNgaySinh());
 		String strPass = nv.getPassword();
 		try {
 			ptmt = conn.prepareStatement(query);
@@ -210,5 +211,24 @@ public class NhanVien_DAL extends JInternalFrame {
 //			e.printStackTrace();
 			return null;	
 		}
+	}
+	
+	
+	public ResultSet getListNhanVien(){
+		//get connection
+		PreparedStatement ptmt = null; 
+		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
+		Connection conn = mycon.getConnection();
+		System.err.println("vao get list nhan vien");
+		String query = "SELECT * FROM NHANVIEN";
+		try {
+			ptmt = conn.prepareStatement(query);
+			ResultSet rs = ptmt.executeQuery();
+			return rs;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;	
 	}
 }

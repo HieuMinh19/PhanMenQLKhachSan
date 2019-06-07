@@ -49,6 +49,8 @@ public class frmThemNhanVien extends JInternalFrame {
 	private static int idCV = 0;
 	ChucVu_DAL cvDAL = new ChucVu_DAL();
 	ResultSet rslistChucVu = cvDAL.getListChucVu();
+	
+	
 	private JPasswordField txtpass;
 	private JPasswordField txtconfpass;
 	private JTextField txtusername;
@@ -187,6 +189,7 @@ public class frmThemNhanVien extends JInternalFrame {
 	         		char[] a = txtpass.getPassword();
 	         		//String b;
 	         		String b = String.valueOf(a);
+	         		System.err.println("NgayPhanCong trong form" + dtngaysinh.getDate().getTime());
 	         		NhanVien_DTO nvDTO = new NhanVien_DTO(txtusername.getText(),b, txtTenNhanVien.getText(), new Date(dtngaysinh.getDate().getTime()), iCMND, new Date(dtngayvaolam.getDate().getTime()), idCV);
 	        		if(NhanVien_BUS.Insert(nvDTO) == true) {
 	        			JOptionPane.showMessageDialog(null, "Insert Employee Success", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);

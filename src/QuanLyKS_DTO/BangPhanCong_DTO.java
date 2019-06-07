@@ -16,7 +16,12 @@ public class BangPhanCong_DTO {
 		this.strLoaiCongViec = strLoaiCongViec;
 		this.iMaNhanVien = iMaNhanVien;
 	}
+	public BangPhanCong_DTO(Date strNgayPhanCong, String strLoaiCongViec, int iMaNhanVien) {
 
+		this.dtNgayPhanCong = strNgayPhanCong;
+		this.strLoaiCongViec = strLoaiCongViec;
+		this.iMaNhanVien = iMaNhanVien;
+	}
 	public int getMaPhanCong() {
 		return iMaPhanCong;
 	}

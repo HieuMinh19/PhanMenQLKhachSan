@@ -42,9 +42,9 @@ create table BANGPHANCONG
 	MaNhanVien int,
 )
 /*create table Khach hang*/
-go	
+go
 create table KHACHHANG(
-	MaKhachHang int primary key,
+	MaKhachHang int identity(1,1) primary key,
 	HoTen varchar(255),
 	Email varchar(30),
 	DiaChi varchar(50),
@@ -87,7 +87,6 @@ CREATE table LOAIPHONG
 	MaLoaiPhong int  identity(1,1) primary key,
 	TenLoaiPhong varchar(20),
 	GiaPhong int,
-	MoTa varchar(255),
 )
 go
 /*create table Phong*/
@@ -98,9 +97,8 @@ create table PHONG
 )
 go
 /*create table Chi Tiet Dat Phong*/
-drop table CTDATPHONG
 create table CTDATPHONG(
-	MaCTDatPhong int primary key,
+	MaCTDatPhong int identity(1,1) primary key,
 	NgayThucHien Date,
 	MaKhachHang int,
 	NgayNhan Date,
@@ -119,13 +117,11 @@ go
 /*insert table DICHVU*/
 INSERT INTO DICHVU( TenDichVu,GiaDichVu) VALUES ( 'ăn sáng', 30000);
 INSERT INTO DICHVU( TenDichVu,GiaDichVu) VALUES ( 'ăn toi', 100000);
-INSERT INTO DICHVU( TenDichVu,GiaDichVu) VALUES ( 'Ve sinh', 50000);
-INSERT INTO DICHVU( TenDichVu,GiaDichVu) VALUES ( 'ăn trua', 100000);
 
 /*insert table LOAIPHONG*/
 go
-INSERT INTO LOAIPHONG( TenLoaiPhong, GiaPhong) VALUES ( 'VIP', 250000, 'phong Vip 2 nguoi');
-INSERT INTO LOAIPHONG( TenLoaiPhong, GiaPhong) VALUES ( 'Thuong', 150000, 'Phong 2 giuong thuong');
+INSERT INTO LOAIPHONG( TenLoaiPhong, GiaPhong) VALUES ( 'VIP', 250000);
+INSERT INTO LOAIPHONG( TenLoaiPhong, GiaPhong) VALUES ( 'Thuong', 150000);
 go
 INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (1, 1);
 INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (2, 2);
