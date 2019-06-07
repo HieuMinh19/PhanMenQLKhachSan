@@ -55,6 +55,7 @@ public class frmBooking_Step4 extends JInternalFrame {
 		scrBooking.setViewportView(tbThongTinChung);
 		getContentPane().add(scrBooking);
 		
+		modelBooking.addRow(new Object[] {ctdp.getMaPhong(),khDTO.getTenKH(), ctdp.getMaNhanVien(), ctdp.getdtNgayThucHien(), ctdp.getNgayTra(), ctdp.getNgayTra()});
 		
 		
 		JScrollPane scrDV = new JScrollPane();
