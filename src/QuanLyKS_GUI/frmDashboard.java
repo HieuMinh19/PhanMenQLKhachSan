@@ -574,38 +574,28 @@ public class frmDashboard extends JFrame {
 		mnDichVu.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 
 		JMenu mnDatPhong = new JMenu("Booking");
-		mnDatPhong.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		mnDatPhong.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
 				controlFrame(FRM_BOOKING1);
 			}
 		});
 		mnDatPhong.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		menuBar.add(mnDatPhong);
 
-		JMenuItem mntmNewMenuItem = new JMenuItem("Booking");
-		mntmNewMenuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				controlFrame(FRM_BOOKING1);
-			}
-		});
-		mnDatPhong.add(mntmNewMenuItem);
-
 		JMenu mnDanhGia = new JMenu("Feedback");
 		mnDanhGia.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		menuBar.add(mnDanhGia);
 
 		JMenu mnThanhToan = new JMenu("Payment");
-		mnThanhToan.setFont(new Font("Segoe UI", Font.PLAIN, 20));
-		menuBar.add(mnThanhToan);
-
-		JMenuItem mntmThanhToan = new JMenuItem("Thanh Toan");
-		mntmThanhToan.setFont(new Font("Segoe UI", Font.PLAIN, 20));
-		mntmThanhToan.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		mnThanhToan.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
 				controlFrame(FRM_THANHTOAN);
 			}
 		});
-		mnThanhToan.add(mntmThanhToan);
+		mnThanhToan.setFont(new Font("Segoe UI", Font.PLAIN, 20));
+		menuBar.add(mnThanhToan);
 
 		JMenu mnTimKiem = new JMenu("Search");
 		mnTimKiem.setFont(new Font("Segoe UI", Font.PLAIN, 20));
