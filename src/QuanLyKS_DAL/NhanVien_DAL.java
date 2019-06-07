@@ -49,17 +49,20 @@ public class NhanVien_DAL extends JInternalFrame {
 	}
 	public static boolean Insert(NhanVien_DTO nv)  {
 		PreparedStatement ptmt = null; 
-		String query = "INSERT INTO NHANVIEN(TenNhanVien, NgaySinh, CMND, NgayVaoLam, MaChucVu) VALUES (?, ?, ?, ?, ?)";
+		String query = "INSERT INTO NHANVIEN(Username, Password, TenNhanVien, NgaySinh, CMND, NgayVaoLam, MaChucVu) VALUES (?, ?, ?, ?, ?, ?, ?)";
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
 		Connection conn = mycon.getConnection();
-		
+		//char[] nv.getPassword(); = nv.getPassword();
+		String strPass = nv.getPassword();
 		try {
 			ptmt = conn.prepareStatement(query);
-			ptmt.setString(1, nv.getTenNhanVien());
-			ptmt.setDate(2, nv.getNgaySinh());
-			ptmt.setInt(3, nv.getCMND());
-			ptmt.setDate(4, nv.getNgayVaoLam());
-			ptmt.setInt(5, nv.getMaChucVu());
+			ptmt.setString(1, nv.getUsername());
+			ptmt.setString(2, strPass);
+			ptmt.setString(3, nv.getTenNhanVien());
+			ptmt.setDate(4, nv.getNgaySinh());
+			ptmt.setInt(5, nv.getCMND());
+			ptmt.setDate(6, nv.getNgayVaoLam());
+			ptmt.setInt(7, nv.getMaChucVu());
 			
 			if( ptmt.executeUpdate() != 0) {
 				System.err.println("insert thanh cong nhan vien");
@@ -176,8 +179,9 @@ public class NhanVien_DAL extends JInternalFrame {
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
 		Connection conn = mycon.getConnection();
 		
-		String query = "SELECT MaNhanVien,TenNhanVien,NgaySinh,CMND,NgayVaoLam,CV.MaChucVu as 'MaChucVu',TenChucVu,Username,Password "
-				+ "FROM NHANVIEN NV, CHUCVU CV WHERE NV.MACHUCVU=CV.MACHUCVU and Username=? and Password=?";
+
+		//String query = "SELECT MaNhanVien,TenNhanVien,NgaySinh,CMND,NgayVaoLam,CV.MaChucVu as 'MaChucVu',TenChucVu,Username,Password FROM NHANVIEN NV, CHUCVU CV WHERE NV.MACHUCVU=CV.MACHUCVU and Username=? and Password=?";
+		String query = "SELECT * FROM NHANVIEN WHERE Username=? and Password=?";
 		try {
 			ptmt = conn.prepareStatement(query);
 			ptmt.setString(1, username);
@@ -185,13 +189,19 @@ public class NhanVien_DAL extends JInternalFrame {
 			ResultSet rs = ptmt.executeQuery();
 			rs.next();
 			NhanVien_DTO nv = new NhanVien_DTO();
-			nv.setMaNhanVien(rs.getInt("MaNhanVien"));
-			nv.setTenNhanVien(rs.getString("TenNhanVien"));
-			nv.setNgaySinh(rs.getDate("NgaySinh"));
-			nv.setCMND(rs.getInt("CMND"));
-			nv.setNgayVaoLam(rs.getDate("NgayVaoLam"));
-			nv.setMaChucVu(rs.getInt("MaChucVu"));
-			nv.setChucVu(new ChucVu_DTO(rs.getInt("MaChucVu"),rs.getString("TenChucVu")));
+
+			//char[] pass = account.getPassword(); 
+			//String dtNgayLap = account.getNgayLap();
+			//ep kieu tu string sang char
+		//	String strPass = new String(pass);
+			
+//			nv.setMaNhanVien(rs.getInt("MaNhanVien"));
+//			nv.setTenNhanVien(rs.getString("TenNhanVien"));
+//			nv.setNgaySinh(rs.getDate("NgaySinh"));
+//			nv.setCMND(rs.getInt("CMND"));
+//			nv.setNgayVaoLam(rs.getDate("NgayVaoLam"));
+//			nv.setMaChucVu(rs.getInt("MaChucVu"));
+//			nv.setChucVu(new ChucVu_DTO(rs.getInt("MaChucVu"),rs.getString("TenChucVu")));
 			nv.setUsername(rs.getString("Username"));
 			nv.setPassword(rs.getString("Password"));
 			return nv;

@@ -29,6 +29,8 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class frmDashboard extends JFrame {
 	/**
@@ -179,6 +181,7 @@ public class frmDashboard extends JFrame {
 			frmCapNhatLoaiPhong.setVisible(false);
 			frmBooking1.setVisible(false);
 			frmBooking2.setVisible(false);
+			frmThanhToan.setVisible(false);
 			//set current frame
 			contentPane.add(frmTimKiemNV);
 			frmTimKiemNV.setVisible(true);
@@ -442,6 +445,7 @@ public class frmDashboard extends JFrame {
 		menuBar.add(mnThanhToan);
 		
 		JMenuItem mntmThanhToan = new JMenuItem("Thanh Toan");
+		mntmThanhToan.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		mntmThanhToan.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				controlFrame(FRM_THANHTOAN);
@@ -454,6 +458,12 @@ public class frmDashboard extends JFrame {
 		menuBar.add(mnTimKiem);
 		
 		JMenuItem mntmTimKiemNV = new JMenuItem("Employess");
+		mntmTimKiemNV.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controlFrame(FRM_TIMKIEM);
+
+			}
+		});
 		mntmTimKiemNV.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		mnTimKiem.add(mntmTimKiemNV);
 		
