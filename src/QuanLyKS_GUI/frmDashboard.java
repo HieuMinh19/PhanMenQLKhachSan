@@ -22,6 +22,8 @@ import javax.swing.border.LineBorder;
 import com.sun.xml.internal.ws.api.server.Adapter.Toolkit;
 
 import QuanLyKS_DTO.NhanVien_DTO;
+import QuanLyKS_DTO.CTDatPhong_DTO;
+import QuanLyKS_DTO.CTDichVu_DTO;
 
 import java.awt.SystemColor;
 import java.awt.Font;
@@ -30,6 +32,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 
@@ -37,7 +40,8 @@ public class frmDashboard extends JFrame {
 	/**
 	 * 
 	 */
-
+	static CTDatPhong_DTO ctdp;
+	static ArrayList<CTDichVu_DTO> listCTDV = new ArrayList<CTDichVu_DTO>();
 	static JDesktopPane desktopPane = new JDesktopPane();
 	// khai bao tat ca cac frame
 
@@ -63,7 +67,7 @@ public class frmDashboard extends JFrame {
 	// 13
 	static frmBooking_Step1 frmBooking1 = new frmBooking_Step1();
 	// 14
-	static frmBooking_Step2 frmBooking2 = new frmBooking_Step2();
+	static frmBooking_Step2 frmBooking2 = new frmBooking_Step2(ctdp);
 	// 15
 	static frmThanhToan frmThanhToan = new frmThanhToan();
 	// 16
@@ -72,7 +76,9 @@ public class frmDashboard extends JFrame {
 	static QLBangPhanCong QLBangPhanCong = new QLBangPhanCong();
 	// 18
 	static frmDashboard frame = new frmDashboard(null);
-
+	//19
+	static frmBooking_Step3 frmBooking3 = new frmBooking_Step3(ctdp, listCTDV);
+	static frmBooking_Step4 frmBooking4 = new frmBooking_Step4();
 	private Image backgroundImage;
 
 	// deifne static varriable cho frame
@@ -93,6 +99,8 @@ public class frmDashboard extends JFrame {
 	static final int FRM_THANHTOAN = 16;
 	static final int FRM_BANGPHANCONG = 17;
 	static final int FRM_QLBANGPHANCONG = 18;
+	static final int FRM_BOOKING3 = 19;
+	static final int FRM_BOOKING4 = 20;
 	static final long serialVersionUID = 1L;
 	private static JPanel contentPane;
 
@@ -469,7 +477,6 @@ public class frmDashboard extends JFrame {
 			break;
 		case 18:
 			// close another frame
-
 			frmRegister.setVisible(false);
 			frmDatPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
@@ -489,6 +496,50 @@ public class frmDashboard extends JFrame {
 			// set current frame
 			contentPane.add(QLBangPhanCong);
 			QLBangPhanCong.setVisible(true);
+			break;
+		case 19:
+			//close another frame
+			frmRegister.setVisible(false);
+			frmQLDV.setVisible(false);
+			frmDatPhong.setVisible(false);
+			frmDichVu.setVisible(false);
+			frmTimKiemNV.setVisible(false);
+			frmThemNhanVien.setVisible(false);
+			frmDanhGia.setVisible(false);
+			frmDatDichVu.setVisible(false);
+			frmDanhSachPhong.setVisible(false);
+			frmCapNhatNhanVien.setVisible(false);
+			frmThemLoaiPhong.setVisible(false);
+			frmCapNhatLoaiPhong.setVisible(false);
+			frmBooking1.setVisible(false);
+			frmBooking2.setVisible(false);
+			frmBooking4.setVisible(false);
+			//set current frame
+			contentPane.add(frmBooking3);
+			frmBooking3.setVisible(true);
+			break;
+			
+		case 20:
+			// close another frame
+			frmRegister.setVisible(false);
+			frmDatPhong.setVisible(false);
+			frmTimKiemNV.setVisible(false);
+			frmDichVu.setVisible(false);
+			frmThemNhanVien.setVisible(false);
+			frmDanhGia.setVisible(false);
+			frmDatDichVu.setVisible(false);
+			frmThemLoaiPhong.setVisible(false);
+			frmDanhSachPhong.setVisible(false);
+			frmCapNhatNhanVien.setVisible(false);
+			frmCapNhatLoaiPhong.setVisible(false);
+			frmBooking1.setVisible(false);
+			frmQLDV.setVisible(false);
+			frmBooking2.setVisible(false);
+			frmThanhToan.setVisible(false);
+			BangPhanCong.setVisible(false);
+			// set current frame
+			contentPane.add(frmBooking4);
+			frmBooking4.setVisible(true);
 			break;
 		}
 	}
