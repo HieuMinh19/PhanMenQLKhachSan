@@ -76,7 +76,10 @@ public class frmLogin extends JFrame {
 		JButton btnDangNhap = new JButton("LOG IN");
 		btnDangNhap.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				NhanVien_DTO acc = NhanVien_BUS.Login(txtTaiKhoan.getText(),new String(txtMatKhau.getPassword()));
+				char[] a = txtMatKhau.getPassword();
+         		//String b;
+         		String b = String.valueOf(a);
+				NhanVien_DTO acc = NhanVien_BUS.Login(txtTaiKhoan.getText(),b);
 				if(acc != null)
 				{
 					JOptionPane.showMessageDialog(null, "Dang nhap thanh cong!", "Thong bao", JOptionPane.CLOSED_OPTION);

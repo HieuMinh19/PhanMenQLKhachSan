@@ -22,6 +22,8 @@ import QuanLyKS_DTO.NhanVien_DTO;
 import java.awt.ScrollPane;
 import javax.swing.JButton;
 import com.toedter.calendar.JCalendar;
+import com.toedter.calendar.JDateChooser;
+import javax.swing.JTextArea;
 
 public class frmTimKiemNV extends JInternalFrame {
 	
@@ -55,19 +57,17 @@ public class frmTimKiemNV extends JInternalFrame {
 		label.setBounds(296, 10, 160, 24);
 		getContentPane().add(label);
 		
-		TextField txtNhap = new TextField();
-		txtNhap.setBounds(157, 63, 247, 24);
-		getContentPane().add(txtNhap);
-		
 		JScrollPane scrListThongTin = new JScrollPane();
-		scrListThongTin.setBounds(37, 308, 605, 123);
+		scrListThongTin.setBounds(37, 308, 691, 123);
 		getContentPane().add(scrListThongTin);
 
-		JCalendar calendar = new JCalendar();
-		calendar.setBounds(167, 117, 198, 153);
-		getContentPane().add(calendar);
-
+		JTextArea txtTenNhanVien = new JTextArea();
+		txtTenNhanVien.setBounds(146, 63, 234, 52);
+		getContentPane().add(txtTenNhanVien);
 		
+		JDateChooser dtNgayVaoLam = new JDateChooser();
+		dtNgayVaoLam.setBounds(146, 128, 234, 46);
+		getContentPane().add(dtNgayVaoLam);
 		//------------------------------add table-------------------------------
 		DefaultTableModel m = new DefaultTableModel(
 			new Object[][] {
@@ -78,6 +78,7 @@ public class frmTimKiemNV extends JInternalFrame {
 		);
 		table = new JTable(m);
 		scrListThongTin.setViewportView(table);
+		
 		Button btnTimKiem = new Button("Tim kiem");
 		btnTimKiem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -86,14 +87,20 @@ public class frmTimKiemNV extends JInternalFrame {
 				        m.removeRow(i);
 				    }
 				}
-				ArrayList<NhanVien_DTO> dsnv = bus.SearchNV(txtNhap.getText(), new Date(calendar.getDate().getTime()));
+				System.err.println("txt Nhap"+ txtTenNhanVien.getText());
+				System.err.println("dt Ngay Vao Lam"+ dtNgayVaoLam.getDate());
+				ArrayList<NhanVien_DTO> dsnv = bus.SearchNV(txtTenNhanVien.getText(), new Date(dtNgayVaoLam.getDate().getTime()));
 				dsnv.forEach(nv -> m.addRow(new Object[]{nv.getMaNhanVien(), nv.getTenNhanVien(),nv.getNgaySinh(), nv.getCMND(),nv.getNgayVaoLam()}));
 			}
 		}); 
 		//-----------------------------------------------------------------------
 		
-		btnTimKiem.setBounds(440, 63, 79, 24);
+		btnTimKiem.setBounds(451, 96, 110, 61);
 		getContentPane().add(btnTimKiem);
+		
+		
+		
+		
 		
 	}
 }
