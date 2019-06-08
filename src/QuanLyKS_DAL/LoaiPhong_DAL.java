@@ -19,7 +19,7 @@ public class LoaiPhong_DAL {
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
 		Connection conn = mycon.getConnection();
 		
-		String query = "SELECT * FROM LOAIPHONG";
+		String query = "SELECT * FROM LOAIPHONG"; 
 		try {
 			ptmt = conn.prepareStatement(query);
 			ResultSet rs = ptmt.executeQuery();

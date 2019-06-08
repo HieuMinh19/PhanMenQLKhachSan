@@ -42,8 +42,8 @@ public class frmBooking_Step2 extends JInternalFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frmBooking_Step2 frame = new frmBooking_Step2(new CTDatPhong_DTO());
-					frame.setVisible(true);
+//					frmBooking_Step2 frame = new frmBooking_Step2(new CTDatPhong_DTO());
+//					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -104,10 +104,6 @@ public class frmBooking_Step2 extends JInternalFrame {
 		lblDichVu.setFont(new Font("Tahoma", Font.BOLD, 28));
 		lblDichVu.setBounds(259, 13, 135, 30);
 		getContentPane().add(lblDichVu);
-
-		
-		
-		
 		
 		render(listDV);
 
@@ -128,21 +124,18 @@ public class frmBooking_Step2 extends JInternalFrame {
 			edDV01.setBounds(53, 73 + i * (marginTop + rowHeight), 235, rowHeight);
 			getContentPane().add(edDV01);
 			Rows[pageSize * page + i][0] = edDV01;
-			//dataRows.add(edDV01);
 			
 			JEditorPane edSLDV01 = new JEditorPane();
 			edSLDV01.setEditable(true);
 			edSLDV01.setBounds(476, 73 + i * (marginTop + rowHeight), 71, rowHeight);
 			getContentPane().add(edSLDV01);
 			Rows[pageSize * page + i][2] = edSLDV01;
-			//dataRows.add(edSLDV01);
 			
 			JEditorPane edGiaDV01 = new JEditorPane();
 			edGiaDV01.setEditable(false);
 			edGiaDV01.setBounds(325, 73 + i * (marginTop + rowHeight), 128, rowHeight);
 			getContentPane().add(edGiaDV01);
 			Rows[pageSize * page + i][1] = edGiaDV01;
-			//dataRows.add(edGiaDV01);
 			
 			edDV01.setText(data.get(pageSize * page + i).getTenDichVu());
 			String  strGiaDV =  String.valueOf(data.get(pageSize * page + i).getGiaDichVu());
@@ -157,16 +150,6 @@ public class frmBooking_Step2 extends JInternalFrame {
 					Rows[pageSize * page + j][2].setEnabled(false);
 					isAdd[pageSize * page + j] = true;
 					
-					
-//					int iSL = Integer.parseInt( edSLDV01.getText() );
-//					int iMaCTDatPhong = ctdp.getMaCTDatPhong();
-//					int iDonGia = data.get(pageSize * page + j).getGiaDichVu();
-//					int iThanhTien = iSL * iDonGia;
-//					int iMaDV = data.get(pageSize * page + j).getMaDichVu();
-//					
-//					CTDichVu_DTO dvTemp = new CTDichVu_DTO(iSL, iMaCTDatPhong, iThanhTien, iMaDV);
-//					
-//					listBookingDV.add(dvTemp);
 				}
 			});
 			

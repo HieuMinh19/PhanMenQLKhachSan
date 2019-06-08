@@ -12,8 +12,8 @@ public class CTDichVu_BUS {
 	
 	
 	
-	public static int Insert(CTDichVu_DTO ctdv) {
-		//return CTDichVu_DAL.Insert(ctdv);
-		return 1;
+	public static boolean Insert(CTDichVu_DTO ctdv) {
+		return CTDichVu_DAL.Insert(ctdv);
+	
 	}
 }
