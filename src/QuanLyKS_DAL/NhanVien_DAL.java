@@ -225,4 +225,28 @@ public class NhanVien_DAL extends JInternalFrame {
 		}
 		return null;	
 	}
+	public ArrayList<NhanVien_DTO> selectAll(){
+		//get connection
+		PreparedStatement ptmt = null; 
+		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
+		Connection conn = mycon.getConnection();
+		
+		String query = "SELECT * FROM NHANVIEN";
+		try {
+			ptmt = conn.prepareStatement(query);
+			ResultSet rs = ptmt.executeQuery();
+			ArrayList<NhanVien_DTO> dscv = new ArrayList<NhanVien_DTO>();
+			while(rs.next()) {
+				NhanVien_DTO cv = new NhanVien_DTO();
+				cv.setMaNhanVien(rs.getInt("MaNhanVien"));
+				cv.setTenNhanVien(rs.getString("TenNhanVien"));
+				dscv.add(cv);
+			}
+			return dscv;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;	
+		}
+	}
 }
