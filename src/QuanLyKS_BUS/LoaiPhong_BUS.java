@@ -21,7 +21,7 @@ public class LoaiPhong_BUS {
 		return dal.LoadListLP(); 
 	}
 	
-	public ArrayList<LoaiPhong_DTO> selectAll() {
+	public static ArrayList<LoaiPhong_DTO> selectAll() {
 		return dal.selectAll(); 
 	}
 	public static boolean Update(LoaiPhong_DTO loaiphong) {

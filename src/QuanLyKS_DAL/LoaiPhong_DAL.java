@@ -85,7 +85,7 @@ public class LoaiPhong_DAL {
 	//
 	public static boolean Update(LoaiPhong_DTO loaiphong)  {
 		PreparedStatement ptmt = null; 
-		String query = "UPDATE LOAIPHONG SET TenLoaiPhong = ?, GiaPhong = ? WHERE MaLoaiPhong = ?";
+		String query = "UPDATE LOAIPHONG SET TenLoaiPhong = ?, GiaPhong = ?, mota = ? WHERE MaLoaiPhong = ?";
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
 		Connection conn = mycon.getConnection();
 
@@ -93,7 +93,8 @@ public class LoaiPhong_DAL {
 			ptmt = conn.prepareStatement(query);
 			ptmt.setString(1,loaiphong.getTenLoaiPhong());
 			ptmt.setInt(2, loaiphong.getGiaPhong());
-			ptmt.setInt(3, loaiphong.getMaLoaiPhong());
+			ptmt.setString(3, loaiphong.getMoTa());
+			ptmt.setInt(4, loaiphong.getMaLoaiPhong());
 
 			if( ptmt.executeUpdate() != 0) {
 				JOptionPane.showMessageDialog(null, "cập nhật loại phòng thành công", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);

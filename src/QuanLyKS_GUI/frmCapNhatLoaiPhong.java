@@ -24,7 +24,9 @@ public class frmCapNhatLoaiPhong extends JInternalFrame {
 	private JTextField txtGiaPhong;
 	private JTable table;
 	private int selectMaLoaiPhong;
-	private LoaiPhong_BUS loaiphong_bus;
+//	private LoaiPhong_BUS loaiphong_bus;
+	private JTextField txtMoTa;
+	ArrayList<LoaiPhong_DTO> dslp;
 
 	/**
 	 * Launch the application.
@@ -46,7 +48,7 @@ public class frmCapNhatLoaiPhong extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public frmCapNhatLoaiPhong() {
-		setBounds(100, 100, 586, 357);
+		setBounds(100, 100, 586, 459);
 		getContentPane().setLayout(null);
 		
 		JLabel lblCapNhat = new JLabel("Quản lý loại phòng");
@@ -72,15 +74,15 @@ public class frmCapNhatLoaiPhong extends JInternalFrame {
 		getContentPane().add(txtGiaPhong);
 		
 		JButton btnCapNhat = new JButton("Cập nhât");
-		btnCapNhat.setBounds(150, 276, 89, 23);
+		btnCapNhat.setBounds(153, 365, 89, 23);
 		//
 		
 		
 		JButton btnXoa = new JButton("Xóa");
-		btnXoa.setBounds(306, 276, 89, 23);
+		btnXoa.setBounds(306, 365, 89, 23);
 		getContentPane().add(btnXoa);
 		///
-		loaiphong_bus = new LoaiPhong_BUS();
+//		loaiphong_bus = new LoaiPhong_BUS();
 		
 		JScrollPane srcListLoaiPhong = new JScrollPane();
 		srcListLoaiPhong.setBounds(65, 41, 375, 123);
@@ -106,7 +108,8 @@ public class frmCapNhatLoaiPhong extends JInternalFrame {
 //			    	System.out.println(selectedColumns.length);
 			    	selectMaLoaiPhong = (int) table.getValueAt(selectedRow[i], 0);
 			        txtTenLoaiPhong.setText((String) table.getValueAt(selectedRow[i], 1));
-			        txtGiaPhong.setText(table.getValueAt(selectedRow[i], 2).toString()); 
+			        txtGiaPhong.setText(table.getValueAt(selectedRow[i], 2).toString());
+			        txtMoTa.setText(dslp.get(table.getSelectedRow()).getMoTa());
 			    }
 			  }
 
@@ -121,7 +124,7 @@ public class frmCapNhatLoaiPhong extends JInternalFrame {
 				        m.removeRow(i);
 				    }
 				}
-				ArrayList<LoaiPhong_DTO> dslp = loaiphong_bus.selectAll();
+				dslp = LoaiPhong_BUS.selectAll();
 				dslp.forEach(lp -> m.addRow(new Object[]{lp.getMaLoaiPhong(), lp.getTenLoaiPhong(),lp.getGiaPhong()}));
 			}
 		}); 
@@ -130,7 +133,7 @@ public class frmCapNhatLoaiPhong extends JInternalFrame {
 		
 		btnCapNhat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				boolean result = LoaiPhong_BUS.Update(new LoaiPhong_DTO(selectMaLoaiPhong, txtTenLoaiPhong.getText(),Integer.parseInt(txtGiaPhong.getText())));
+				boolean result = LoaiPhong_BUS.Update(new LoaiPhong_DTO(selectMaLoaiPhong, txtTenLoaiPhong.getText(),Integer.parseInt(txtGiaPhong.getText()),txtMoTa.getText()));
 				if(result) {
 					
 					if (m.getRowCount() > 0) {
@@ -138,13 +141,22 @@ public class frmCapNhatLoaiPhong extends JInternalFrame {
 					        m.removeRow(i);
 					    }
 					}
-					ArrayList<LoaiPhong_DTO> dslp = loaiphong_bus.LoadListLP();
+					dslp = LoaiPhong_BUS.LoadListLP();
 					dslp.forEach(lp -> m.addRow(new Object[]{lp.getMaLoaiPhong(),lp.getTenLoaiPhong(),lp.getGiaPhong()}));
 				}
 			}
 		});
 		//
 		getContentPane().add(btnCapNhat);
+		
+		JLabel lblMoTa = new JLabel("Mo ta");
+		lblMoTa.setBounds(38, 281, 56, 16);
+		getContentPane().add(lblMoTa);
+		
+		txtMoTa = new JTextField();
+		txtMoTa.setBounds(153, 278, 242, 74);
+		getContentPane().add(txtMoTa);
+		txtMoTa.setColumns(10);
 		
 		btnXoa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -155,7 +167,7 @@ public class frmCapNhatLoaiPhong extends JInternalFrame {
 					        m.removeRow(i);
 					    }
 					}
-					ArrayList<LoaiPhong_DTO> dslp = loaiphong_bus.LoadListLP();
+					dslp = LoaiPhong_BUS.LoadListLP();
 					dslp.forEach(lp -> m.addRow(new Object[]{lp.getMaLoaiPhong(), lp.getTenLoaiPhong(),lp.getGiaPhong()}));
 				}
 			}
