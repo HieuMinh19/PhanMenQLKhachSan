@@ -17,10 +17,10 @@ import javax.swing.JTable;
 import javax.swing.JButton;
 import com.toedter.calendar.JDateChooser;
 
-import QuanLyKS_BUS.ChucVu_BUS;
 import QuanLyKS_BUS.NhanVien_BUS;
-import QuanLyKS_DTO.ChucVu_DTO;
+import QuanLyKS_BUS.BangPhanCong_BUS;
 import QuanLyKS_DTO.NhanVien_DTO;
+import QuanLyKS_DTO.BangPhanCong_DTO;
 
 
 import javax.swing.SpringLayout;
@@ -35,16 +35,15 @@ import javax.swing.JTabbedPane;
 import java.awt.Choice;
 
 public class QLBangPhanCong extends JInternalFrame {
-	private JTextField txtTenNhanVien;
-	private JTextField txtCMND;
+	private JTextField txtTenCongViec;
 	private JTable table;
-	private NhanVien_BUS bus;
-	private ChucVu_BUS cv_bus;
+	private BangPhanCong_BUS bus;
+	private NhanVien_BUS cv_bus;
 	private int selectedRow;
 	private int selectedMaNhanVien;
 	private int selectedChucVuIndex;
-	private ArrayList<NhanVien_DTO> dsnv;
-	private ArrayList<ChucVu_DTO> dscv;
+	private ArrayList<BangPhanCong_DTO> dsnv;
+	private ArrayList<NhanVien_DTO> dscv;
 
 	/**
 	 * Launch the application.
@@ -66,64 +65,46 @@ public class QLBangPhanCong extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public QLBangPhanCong() {
-		bus=new NhanVien_BUS();
-		cv_bus = new ChucVu_BUS();
-		dsnv = new ArrayList<NhanVien_DTO>();
+		bus=new BangPhanCong_BUS();
+		cv_bus = new NhanVien_BUS();
+		dsnv = new ArrayList<BangPhanCong_DTO>();
 		setBounds(100, 100, 770, 596);
 		getContentPane().setLayout(null);
 		
-		txtTenNhanVien = new JTextField();
-		txtTenNhanVien.setColumns(10);
-		txtTenNhanVien.setBounds(214, 219, 320, 20);
-		getContentPane().add(txtTenNhanVien);
+		txtTenCongViec = new JTextField();
+		txtTenCongViec.setColumns(10);
+		txtTenCongViec.setBounds(214, 233, 320, 20);
+		getContentPane().add(txtTenCongViec);
 		
-		txtCMND = new JTextField();
-		txtCMND.setColumns(10);
-		txtCMND.setBounds(214, 277, 320, 20);
-		getContentPane().add(txtCMND);
+		JComboBox<NhanVien_DTO> cbxTenNhanVien = new JComboBox<NhanVien_DTO>();
+		cbxTenNhanVien.setBounds(214, 295, 320, 20);
+		getContentPane().add(cbxTenNhanVien);
 		
-		JComboBox<ChucVu_DTO> cbChucVu = new JComboBox<ChucVu_DTO>();
-		cbChucVu.setBounds(214, 326, 320, 20);
-		getContentPane().add(cbChucVu);
+		JLabel lblTnCngVic = new JLabel("Tên Công Việc");
+		lblTnCngVic.setBounds(56, 232, 103, 22);
+		getContentPane().add(lblTnCngVic);
 		
-		JLabel label = new JLabel("T\u00EAn nh\u00E2n vi\u00EAn");
-		label.setBounds(54, 218, 122, 22);
-		getContentPane().add(label);
+		JLabel lblTnNhnVin = new JLabel("Tên Nhân Viên");
+		lblTnNhnVin.setBounds(56, 294, 134, 22);
+		getContentPane().add(lblTnNhnVin);
 		
-		JLabel label_1 = new JLabel("CMND");
-		label_1.setBounds(54, 276, 75, 22);
-		getContentPane().add(label_1);
-		
-		JLabel label_2 = new JLabel("Ch\u1EE9c v\u1EE5");
-		label_2.setBounds(54, 325, 63, 22);
-		getContentPane().add(label_2);
-		
-		JLabel label_3 = new JLabel("Ng\u00E0y v\u00E0o l\u00E0m");
-		label_3.setBounds(54, 379, 122, 22);
-		getContentPane().add(label_3);
-		
-		JLabel label_4 = new JLabel("Ng\u00E0y sinh");
-		label_4.setBounds(54, 438, 108, 22);
-		getContentPane().add(label_4);
+		JLabel lblNgyLmVic = new JLabel("Ngày Làm Việc");
+		lblNgyLmVic.setBounds(56, 358, 122, 22);
+		getContentPane().add(lblNgyLmVic);
 		
 		
 		JButton btnCapNhat = new JButton("Cap Nhat");
-		btnCapNhat.setBounds(269, 501, 219, 25);
+		btnCapNhat.setBounds(92, 454, 157, 33);
 		getContentPane().add(btnCapNhat);
 		
 		JButton btnXoa = new JButton("Xoa");
-		btnXoa.setBounds(573, 476, 98, 71);
+		btnXoa.setBounds(362, 454, 134, 33);
 		getContentPane().add(btnXoa);
 		
-		JDateChooser date_NgaySinh = new JDateChooser();
-		date_NgaySinh.setBounds(214, 438, 320, 25);
-		getContentPane().add(date_NgaySinh); 
-		date_NgaySinh.setDateFormatString("dd/MM/yyyy");
-		
-		JDateChooser date_NgayVaoLam = new JDateChooser();
-		date_NgayVaoLam.setBounds(214, 379, 320, 25);
-		getContentPane().add(date_NgayVaoLam);
-		date_NgayVaoLam.setDateFormatString("dd/MM/yyyy");
+		JDateChooser dtNgayLamViec = new JDateChooser();
+		dtNgayLamViec.setBounds(214, 355, 320, 25);
+		getContentPane().add(dtNgayLamViec);
+		dtNgayLamViec.setDateFormatString("dd/MM/yyyy");
 
 		JScrollPane srcListNhanVien = new JScrollPane();
 		srcListNhanVien.setBounds(65, 25, 605, 123);
@@ -133,7 +114,7 @@ public class QLBangPhanCong extends JInternalFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"MaNhanVien", "TenNhanVien", "NgaySinh", "CMND", "NgayVaoLam", "TenChucVu"
+				"Mã Phân Công", "Ngày Làm Việc", "Tên Công Việc", "Tên Nhân Viên"
 			}
 		);
 		table = new JTable(m);
@@ -147,14 +128,15 @@ public class QLBangPhanCong extends JInternalFrame {
 			    for (int i = 0; i < selectedRowColums.length; i++) {
 //			    	System.out.println(selectedColumns.length);
 			    	selectedMaNhanVien = (int) table.getValueAt(selectedRowColums[i], 0);
-			        txtTenNhanVien.setText((String) table.getValueAt(selectedRowColums[i], 1));
-			        txtCMND.setText(table.getValueAt(selectedRowColums[i], 3).toString());
-			        date_NgayVaoLam.setDate((Date) table.getValueAt(selectedRowColums[i], 4));
-			        date_NgaySinh.setDate((Date) table.getValueAt(selectedRowColums[i], 2));   
+			        txtTenCongViec.setText((String) table.getValueAt(selectedRowColums[i], 2));
+			    //    txtTenCongViec.setText(table.getValueAt(selectedRowColums[i], 3).toString());
+			        dtNgayLamViec.setDate((Date) table.getValueAt(selectedRowColums[i], 1));
+			        cbxTenNhanVien.setSelectedIndex(selectedChucVuIndex);
+			    //    date_NgaySinh.setDate((Date) table.getValueAt(selectedRowColums[i], 2));   
 //			        (string) table.getValueAt(selectedRow[i], 5);
 			    }
-			    selectedChucVuIndex = dscv.indexOf(dsnv.get(selectedRow).getChucVu());
-		        cbChucVu.setSelectedIndex(selectedChucVuIndex);//(table.getValueAt(selectedRowColums[i], 5));
+			   selectedChucVuIndex = dscv.indexOf(dsnv.get(selectedRow).getNhanVien());
+		        cbxTenNhanVien.setSelectedIndex(selectedChucVuIndex);//(table.getValueAt(selectedRowColums[i], 5));
 			  }
 
         });
@@ -162,12 +144,12 @@ public class QLBangPhanCong extends JInternalFrame {
 		srcListNhanVien.setViewportView(table);
 
 		dscv = cv_bus.selectAll();
-		dscv.forEach(cv -> cbChucVu.addItem(cv));
+		dscv.forEach(cv -> cbxTenNhanVien.addItem(cv));
 		
 //		------------------------------------------------
 		
 //		------------------------------------------------
-		JButton btnLoadDanhSach = new JButton("Load Danh Sach Nhan Vien");
+		JButton btnLoadDanhSach = new JButton("Load Danh Sach Phan Cong");
 		btnLoadDanhSach.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (m.getRowCount() > 0) {
@@ -175,8 +157,8 @@ public class QLBangPhanCong extends JInternalFrame {
 				        m.removeRow(i);
 				    }
 				}
-				dsnv = bus.LoadListNV();
-				dsnv.forEach(nv -> m.addRow(new Object[]{nv.getMaNhanVien(), nv.getTenNhanVien(),nv.getNgaySinh(), nv.getCMND(),nv.getNgayVaoLam(),nv.getChucVu().getTenChucVu()}));
+				dsnv = bus.LoadListBPC();
+				dsnv.forEach(nv -> m.addRow(new Object[]{nv.getMaPhanCong(), nv.getNgayPhanCong(),nv.getLoaiCongViec(),nv.getNhanVien().getTenNhanVien()}));
 			}
 		}); 
 		btnLoadDanhSach.setBounds(257, 163, 202, 25);
@@ -184,30 +166,30 @@ public class QLBangPhanCong extends JInternalFrame {
 		
 		btnCapNhat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				boolean result = NhanVien_BUS.Update(new NhanVien_DTO(selectedMaNhanVien, txtTenNhanVien.getText(), new Date(date_NgaySinh.getDate().getTime()), Integer.parseInt(txtCMND.getText()), new Date(date_NgayVaoLam.getDate().getTime()), ((ChucVu_DTO) cbChucVu.getSelectedItem()).getMaChucVu()));
+				boolean result = BangPhanCong_BUS.Update(new BangPhanCong_DTO(selectedMaNhanVien, txtTenCongViec.getText(), new Date(dtNgayLamViec.getDate().getTime()),((NhanVien_DTO) cbxTenNhanVien.getSelectedItem()).getMaNhanVien()));
 				if(result) {
 					if (m.getRowCount() > 0) {
 					    for (int i = m.getRowCount() - 1; i > -1; i--) {
 					        m.removeRow(i);
 					    }
 					}
-					dsnv = bus.LoadListNV();
-					dsnv.forEach(nv -> m.addRow(new Object[]{nv.getMaNhanVien(), nv.getTenNhanVien(),nv.getNgaySinh(), nv.getCMND(),nv.getNgayVaoLam(),nv.getChucVu().getTenChucVu()}));
+					dsnv = bus.LoadListBPC();
+					dsnv.forEach(nv -> m.addRow(new Object[]{nv.getMaPhanCong(), nv.getNgayPhanCong(),nv.getLoaiCongViec(),nv.getNhanVien().getTenNhanVien()}));
 				}
 			}
 		});
 		
 		btnXoa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				boolean result = NhanVien_BUS.Delete(selectedMaNhanVien);
+				boolean result = BangPhanCong_BUS.Delete(selectedMaNhanVien);
 				if(result) {
 					if (m.getRowCount() > 0) {
 					    for (int i = m.getRowCount() - 1; i > -1; i--) {
 					        m.removeRow(i);
 					    }
 					}
-					dsnv = bus.LoadListNV();
-					dsnv.forEach(nv -> m.addRow(new Object[]{nv.getMaNhanVien(), nv.getTenNhanVien(),nv.getNgaySinh(), nv.getCMND(),nv.getNgayVaoLam()}));
+					dsnv = bus.LoadListBPC();
+					dsnv.forEach(nv -> m.addRow(new Object[]{nv.getMaPhanCong(), nv.getNgayPhanCong(),nv.getLoaiCongViec(),nv.getNhanVien().getTenNhanVien()}));
 				}
 			}
 		});

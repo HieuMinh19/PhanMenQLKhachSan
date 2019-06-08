@@ -5,15 +5,21 @@ public class BangPhanCong_DTO {
 	private Date dtNgayPhanCong;
 	private String strLoaiCongViec;
 	private int iMaNhanVien;
+	private NhanVien_DTO nhanvien;
 
 	public BangPhanCong_DTO() {
 		// TODO Auto-generated constructor stub
 	}
-
-	public BangPhanCong_DTO(int iMaPhanCong, Date strNgayPhanCong, String strLoaiCongViec, int iMaNhanVien) {
+	public NhanVien_DTO getNhanVien() {
+		return nhanvien;
+	}
+	public void setNhanVien(NhanVien_DTO nhanvien) {
+		this.nhanvien = nhanvien;
+	}
+	public BangPhanCong_DTO(int iMaPhanCong,String strLoaiCongViec, Date strNgayPhanCong,  int iMaNhanVien) {
 		this.iMaPhanCong = iMaPhanCong;
-		this.dtNgayPhanCong = dtNgayPhanCong;
 		this.strLoaiCongViec = strLoaiCongViec;
+		this.dtNgayPhanCong = strNgayPhanCong;
 		this.iMaNhanVien = iMaNhanVien;
 	}
 	public BangPhanCong_DTO(Date strNgayPhanCong, String strLoaiCongViec, int iMaNhanVien) {

@@ -1,5 +1,5 @@
 package QuanLyKS_BUS;
-
+import QuanLyKS_DTO.ChucVu_DTO;
 import java.sql.Date;
 import java.util.ArrayList;
 import QuanLyKS_DTO.NhanVien_DTO;
@@ -43,5 +43,7 @@ public class NhanVien_BUS extends JInternalFrame {
 		return NhanVien_DAL.login(username, password);
 	}
 	
-	
+	public ArrayList<NhanVien_DTO> selectAll() {
+		return dal.selectAll();
+	}
 }
