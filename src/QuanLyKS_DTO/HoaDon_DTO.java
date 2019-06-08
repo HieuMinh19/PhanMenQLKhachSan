@@ -71,11 +71,12 @@ public class HoaDon_DTO {
 		this.dtNgayTra = dtNgayTra;
 	}
 	//
-	
-	public HoaDon_DTO(int iMaHoaDon, Date dtNgayThuTien, int iSoTienThu, int iMaNhanVien) {
-		this.iMaHoaDon = iMaHoaDon;
+	//int iMaHoaDon, Date dtNgayThuTien, 
+	public HoaDon_DTO(Date dtNgayThuTien,int iSoTienThu, int iMaCTDatPhong,int iMaNhanVien ) {
+		//this.iMaHoaDon = iMaHoaDon;
 		this.dtNgayThuTien = dtNgayThuTien;
 		this.iSoTienThu = iSoTienThu;
+		this.iMaCTDatPhong = iMaCTDatPhong;
 		this.iMaNhanVien = iMaNhanVien;
 	}
 

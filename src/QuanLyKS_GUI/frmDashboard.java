@@ -37,7 +37,7 @@ public class frmDashboard extends JFrame {
 	/**
 	 * 
 	 */
-	NhanVien_DTO user;
+	static NhanVien_DTO user;
 	static CTDatPhong_DTO ctdp;
 	static ArrayList<CTDichVu_DTO> listCTDV = new ArrayList<CTDichVu_DTO>();
 	static KhachHang_DTO khDTO;

@@ -71,37 +71,40 @@ public class HoaDon_DAL extends JInternalFrame {
 		}
 		return null;	
 	}
-//	public static boolean Insert(NhanVien_DTO nv)  {
-//		PreparedStatement ptmt = null; 
-//		String query = "INSERT INTO NHANVIEN(TenNhanVien, NgaySinh, CMND, NgayVaoLam, MaChucVu) VALUES (?, ?, ?, ?, ?)";
-//		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
-//		Connection conn = mycon.getConnection();
-//		
-//		try {
-//			ptmt = conn.prepareStatement(query);
-//			ptmt.setString(1, nv.getTenNhanVien());
-//			ptmt.setDate(2, nv.getNgaySinh());
-//			ptmt.setInt(3, nv.getCMND());
-//			ptmt.setDate(4, nv.getNgayVaoLam());
-//			ptmt.setInt(5, nv.getMaChucVu());
-//			
-//			if( ptmt.executeUpdate() != 0) {
-//				System.err.println("insert thanh cong nhan vien");
-//				return true;
-//			}
-//				
-//			else {
-//				System.err.println("khoi tao nhan vien that bai");
-//				return false;
-//			}
-//			
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//		return false;
-//	} 
+	public static boolean Insert(HoaDon_DTO hd)  {
+		PreparedStatement ptmt = null; 
+		String query = "INSERT INTO HOADON(NgayThuTien,SoTienThu, MaCTDatPhong,MaNhanVien) VALUES (?,?, ?,?)";
+		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
+		Connection conn = mycon.getConnection();
+		
+		try {
+			ptmt = conn.prepareStatement(query);
+			ptmt.setDate(1, hd.getNgayThuTien());
+			ptmt.setInt(2, hd.getSoTienThu());
+			ptmt.setInt(3, hd.getMaCTDatPhong());
+			ptmt.setInt(4, hd.getMaNhanVien());
+			//ptmt.setDate(2, hd.getNgaySinh());
+			//ptmt.setInt(3, hd.getCMND());
+			//ptmt.setDate(4, hd.getNgayVaoLam());
+			//ptmt.setInt(5, hd.getMaChucVu());
+			
+			if( ptmt.executeUpdate() != 0) {
+				System.err.println("insert thanh cong nhan vien");
+				return true;
+			}
+				
+			else {
+				System.err.println("khoi tao nhan vien that bai");
+				return false;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false;
+	} 
 //	
 //	public static boolean Update(NhanVien_DTO nv)  {
 //		PreparedStatement ptmt = null; 

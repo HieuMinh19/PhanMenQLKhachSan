@@ -30,9 +30,9 @@ public class HoaDon_BUS extends JInternalFrame {
 //		return dal.LoadListNV();
 //	}
 //	
-//	public static boolean Insert(NhanVien_DTO nhanvien) {
-//		return NhanVien_DAL.Insert(nhanvien);
-//	}
+	public static boolean Insert(HoaDon_DTO nhanvien) {
+		return HoaDon_DAL.Insert(nhanvien);
+	}
 //	
 //	public static boolean Update(NhanVien_DTO nhanvien) {
 //		return NhanVien_DAL.Update(nhanvien);
