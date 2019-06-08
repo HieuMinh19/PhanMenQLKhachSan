@@ -60,26 +60,26 @@ public class DichVu extends JInternalFrame {
 
 		JLabel lblNewLabel = new JLabel("TH\u00CAM D\u1ECACH V\u1EE4");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 36));
-		lblNewLabel.setBounds(80, 11, 286, 44);
+		lblNewLabel.setBounds(216, 39, 286, 44);
 		getContentPane().add(lblNewLabel);
 
 		JLabel lblNewLabel_2 = new JLabel("T\u00EAn d\u1ECBch v\u1EE5");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_2.setBounds(10, 113, 103, 14);
+		lblNewLabel_2.setBounds(107, 113, 103, 14);
 		getContentPane().add(lblNewLabel_2);
 
 		JLabel lblNewLabel_3 = new JLabel("Gi\u00E1 d\u1ECBch v\u1EE5");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_3.setBounds(10, 151, 103, 14);
+		lblNewLabel_3.setBounds(117, 151, 103, 14);
 		getContentPane().add(lblNewLabel_3);
 
 		txtTenDichVu = new JTextField();
-		txtTenDichVu.setBounds(108, 111, 124, 20);
+		txtTenDichVu.setBounds(317, 110, 185, 20);
 		getContentPane().add(txtTenDichVu);
 		txtTenDichVu.setColumns(10);
 
 		txtGiaDichVu = new JTextField();
-		txtGiaDichVu.setBounds(108, 149, 124, 20);
+		txtGiaDichVu.setBounds(317, 148, 185, 20);
 		getContentPane().add(txtGiaDichVu);
 		txtGiaDichVu.setColumns(10);
 
@@ -91,13 +91,13 @@ public class DichVu extends JInternalFrame {
 				dichvu_DTO.setGiaDichVu( Integer.parseInt(txtGiaDichVu.getText()));
 				
 				 if(  DichVu_BUS.Insert(dichvu_DTO) == true)
-					 JOptionPane.showMessageDialog(null, "Insert account Success", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);
+					 JOptionPane.showMessageDialog(null, "Them DV Thanh Cong", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);
 				 else
-					 JOptionPane.showMessageDialog(null, "Insert account Fail", "Fail: " + "Success Mesage", JOptionPane.CLOSED_OPTION);
+					 JOptionPane.showMessageDialog(null, "Them DV That Bai", "Fail: " + "Success Mesage", JOptionPane.CLOSED_OPTION);
 
 			}
 		});
-		btnThemDichVu.setBounds(121, 198, 140, 23);
+		btnThemDichVu.setBounds(246, 213, 175, 55);
 		getContentPane().add(btnThemDichVu);
 
 		JButton btnNewButton = new JButton("THÃŠM");

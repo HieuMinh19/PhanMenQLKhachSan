@@ -5,7 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import QuanLyKS_DTO.ChucVu_DTO;
 import QuanLyKS_DTO.DichVu_DTO;
+import QuanLyKS_DTO.NhanVien_DTO;
 public class DichVu_DAL {
 	DichVu_DTO DichVu = new DichVu_DTO();
 	
@@ -26,6 +28,36 @@ public class DichVu_DAL {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();	
+		}
+		return null;	
+	}
+	
+	public ArrayList<DichVu_DTO> LoadListDV (){
+		//get connection
+		PreparedStatement ptmt = null; 
+		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
+		Connection conn = mycon.getConnection();
+		
+		String query = "SELECT MaDichVu,TenDichVu,GiaDichVu FROM DichVu";
+		try {
+			ptmt = conn.prepareStatement(query);
+			ResultSet rs = ptmt.executeQuery();
+			ArrayList<DichVu_DTO> dsnv = new ArrayList<DichVu_DTO>();
+			while(rs.next()) {
+				DichVu_DTO nv = new DichVu_DTO();
+				nv.setMaDichVu(rs.getInt("MaDichVu"));
+				nv.setTenDichVu(rs.getString("TenDichVu"));
+				//nv.setNgaySinh(rs.getDate("NgaySinh"));
+				//nv.setCMND(rs.getInt("CMND"));
+				//nv.setNgayVaoLam(rs.getDate("NgayVaoLam"));
+				nv.setGiaDichVu(rs.getInt("GiaDichVu"));
+				//nv.setChucVu(new ChucVu_DTO(rs.getInt("MaChucVu"),rs.getString("TenChucVu")));
+				dsnv.add(nv);
+			}
+			return dsnv;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return null;	
 	}
@@ -112,25 +144,27 @@ public class DichVu_DAL {
 			 return false;
 		}
 	}
-	public static boolean Delete(DichVu_DTO dichvu){
+	public static boolean Delete(int dichvu){
 		PreparedStatement ptmt = null; 
 
 		String query = ("DELETE FROM DICHVU where MaDichVu = ? ");
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
 		Connection conn = mycon.getConnection();
-		Integer MaDichVu = dichvu.getMaDichVu();
-		try {
-			ptmt = conn.prepareStatement(query);
-			ptmt.setInt(1, MaDichVu);
-			if( ptmt.executeUpdate() != 0) {
-				System.err.println("delete  thanh cong dich vu");
-				return true;
-			}
+		//Integer MaDichVu = dichvu.getMaDichVu();
+	
+			try {
+				ptmt = conn.prepareStatement(query);
+				ptmt.setInt(1, dichvu);
 
-			else {
-				System.err.println("delte dich vu that bai");
-				return false;
-			}
+				if( ptmt.executeUpdate() != 0) {
+					System.err.println("delete thanh cong nhan vien");
+					return true;
+				}
+
+				else {
+					System.err.println("xoa nhan vien that bai");
+					return false;
+				}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -612,6 +612,12 @@ public class frmDashboard extends JFrame {
 
 			JMenuItem mntmThemDV = new JMenuItem("Insert");
 			mntmThemDV.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+			mntmThemDV.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					controlFrame(FRM_DichVu);
+
+				}
+			});
 			mnDichVu.add(mntmThemDV);
 			mnDichVu.add(mntmCapNhatDV);
 
