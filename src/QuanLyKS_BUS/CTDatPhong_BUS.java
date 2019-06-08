@@ -1,6 +1,7 @@
 package QuanLyKS_BUS;
 import java.text.ParseException;
-import java.util.Date;
+import java.util.ArrayList;
+import java.sql.Date;
 import com.ibm.icu.text.SimpleDateFormat;
 import com.ibm.icu.util.Calendar;
 
@@ -21,36 +22,40 @@ public class CTDatPhong_BUS {
 		
 		return 0; 
 	}
-	
-	private static int tinhThanhTien(String strDateFrom, String strDateTo, int iMaPhong) {
-		int iSoNgay = 0;
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Date dtNgayNhan = null, dtNgayTra = null;
-		
-		//dem so ngay dat phong
-		try {
-			dtNgayNhan = sdf.parse(strDateFrom);
-			Calendar calNgayNhan = Calendar.getInstance();
-			calNgayNhan.setTime(dtNgayNhan);
-			dtNgayTra = sdf.parse(strDateTo);
-			Calendar calNgayTra = Calendar.getInstance();
-			calNgayTra.setTime(dtNgayTra);
-			
-			while(calNgayNhan.compareTo(calNgayTra) < 0) {
-				iSoNgay++;
-				calNgayTra.add(Calendar.DATE, -1);
-			}
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		int iGiaPhong = Phong_DAL.getGiaPhong(iMaPhong);		
-		return iSoNgay * iGiaPhong;
-	}
+//	
+//	private static int tinhThanhTien(String strDateFrom, String strDateTo, int iMaPhong) {
+//		int iSoNgay = 0;
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//		Date dtNgayNhan = null, dtNgayTra = null;
+//		
+//		//dem so ngay dat phong
+//		try {
+//			dtNgayNhan = sdf.parse(strDateFrom);
+//			Calendar calNgayNhan = Calendar.getInstance();
+//			calNgayNhan.setTime(dtNgayNhan);
+//			dtNgayTra = sdf.parse(strDateTo);
+//			Calendar calNgayTra = Calendar.getInstance();
+//			calNgayTra.setTime(dtNgayTra);
+//			
+//			while(calNgayNhan.compareTo(calNgayTra) < 0) {
+//				iSoNgay++;
+//				calNgayTra.add(Calendar.DATE, -1);
+//			}
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//		int iGiaPhong = Phong_DAL.getGiaPhong(iMaPhong);		
+//		return iSoNgay * iGiaPhong;
+//	}
 
 	public static int getnextID() {
 		return CTDatPhong_DAL.buildMaCTDatPhong();
+	}
+	
+	public static ArrayList<CTDatPhong_DTO> searchKH(int maPhong, Date ng) {
+		return CTDatPhong_DAL.searchKH(maPhong, ng);
 	}
 
 }

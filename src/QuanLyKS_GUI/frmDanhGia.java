@@ -12,8 +12,11 @@ import javax.swing.JTextField;
 
 import com.ibm.icu.text.SimpleDateFormat;
 import com.toedter.calendar.JCalendar;
+import com.toedter.calendar.JDateChooser;
 
+import QuanLyKS_DTO.CTDatPhong_DTO;
 import QuanLyKS_DTO.DanhGia_DTO;
+import QuanLyKS_BUS.CTDatPhong_BUS;
 import QuanLyKS_BUS.DanhGia_BUS;
 import QuanLyKS_GUI.frmDashboard;
 import javax.swing.JButton;
@@ -21,15 +24,22 @@ import javax.swing.JDesktopPane;
 
 
 import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.util.ArrayList;
+
 import QuanLyKS_GUI.Register;
 import javax.swing.JOptionPane;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class frmDanhGia extends JInternalFrame {
 	private JTextField txtMaPhong;
 	private DanhGia_DTO danhgiaDTO;
 	static frmDanhGia frame = new frmDanhGia();
 	public static Register registerForm = new Register();
+	private JTable table;
 	
 
 	/**
@@ -52,62 +62,71 @@ public class frmDanhGia extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public frmDanhGia() {
-		setBounds(100, 100, 550, 461);
+		setBounds(100, 100, 797, 521);
 		getContentPane().setLayout(null);
 
-		JLabel DanhGia = new JLabel("ĐÁNH GIÁ");
-		DanhGia.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 34));
-		DanhGia.setBounds(174, 11, 188, 37);
+		JLabel DanhGia = new JLabel("Tiep nhan danh gia");
+		DanhGia.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 28));
+		DanhGia.setBounds(111, 13, 294, 37);
 		getContentPane().add(DanhGia);
 
-		JLabel NhanXet = new JLabel("NHẬN XÉT");
+		JLabel NhanXet = new JLabel("Danh gia");
 		NhanXet.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 13));
-		NhanXet.setBounds(68, 95, 124, 14);
+		NhanXet.setBounds(108, 286, 84, 14);
 		getContentPane().add(NhanXet);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(202, 90, 198, 97);
+		scrollPane.setBounds(204, 286, 326, 97);
 		getContentPane().add(scrollPane);
 
 		JTextArea txtNoiDungDanhGia = new JTextArea();
 		scrollPane.setViewportView(txtNoiDungDanhGia);
-		txtNoiDungDanhGia.setText("Ã½ kiáº¿n");
 
-		JLabel MaPhong = new JLabel("MÃ PHÒNG");
+		JLabel MaPhong = new JLabel("Ma phong");
 		MaPhong.setFont(new Font("Tahoma", Font.BOLD, 13));
-		MaPhong.setBounds(68, 59, 124, 14);
+		MaPhong.setBounds(111, 124, 84, 14);
 		getContentPane().add(MaPhong);
+		
 
 		txtMaPhong = new JTextField();
-		txtMaPhong.setText("AUTO LOAD");
-		txtMaPhong.setBounds(202, 56, 198, 23);
+		txtMaPhong.setBounds(254, 120, 198, 23);
 		getContentPane().add(txtMaPhong);
 		txtMaPhong.setColumns(10);
 
-		JCalendar ngayDanhGia = new JCalendar();
-		ngayDanhGia.setBounds(202, 205, 198, 153);
-		getContentPane().add(ngayDanhGia);
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(204, 198, 326, 75);
+		getContentPane().add(scrollPane_1);
+		
+		DefaultTableModel m = new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Ten khach hang", "CMND"
+			}
+		);
+		table = new JTable(m);
+		scrollPane_1.setViewportView(table);
+		
+		JDateChooser dateNgayDanhGia = new JDateChooser();
+		dateNgayDanhGia.setBounds(251, 86, 201, 25);
+		getContentPane().add(dateNgayDanhGia);
+		dateNgayDanhGia.setDateFormatString("dd-MM-yyyy");
 
-		JButton btnGuiDanhGia = new JButton("GHI NHẬN");
-		btnGuiDanhGia.setFont(new Font("Tahoma", Font.BOLD, 13));
-
-		btnGuiDanhGia.addActionListener(new ActionListener() {
+		JButton btnDanhGia = new JButton("GHI NHẬN");
+		btnDanhGia.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnDanhGia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				danhgiaDTO = new DanhGia_DTO(); 
 				danhgiaDTO.setNoiDung(txtNoiDungDanhGia.getText());
+				
+				danhgiaDTO.setNgayDanhGia(new Date(dateNgayDanhGia.getDate().getTime()));
+				
+				danhgiaDTO.setMaPhong(Integer.parseInt(txtMaPhong.getText()));
 
-
-					 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-					 String date = sdf.format( ngayDanhGia.getDate() );
-
-//					 danhgiaDTO.setNgayDanhGia(date);
-
-
-
-					 if(  DanhGia_BUS.Insert(danhgiaDTO) == true)
-						 JOptionPane.showMessageDialog(null, "thÃªm Ä‘Ã¡nh giÃ¡ thÃ nh cÃ´ng", "thÃ´ng bÃ¡o", JOptionPane.INFORMATION_MESSAGE);
-					 else
-						 JOptionPane.showMessageDialog(null, "thÃªm Ä‘Ã¡nh giÃ¡ tháº¥t báº¡i", "thÃ´ng bÃ¡o", JOptionPane.CLOSED_OPTION);
+				if(  DanhGia_BUS.Insert(danhgiaDTO) == true)
+					JOptionPane.showMessageDialog(null, "Ghi nhan danh gia thanh cong", "thong bao", JOptionPane.INFORMATION_MESSAGE);
+				else
+					JOptionPane.showMessageDialog(null, "Ghi nhan danh gia that bai", "thong bao", JOptionPane.CLOSED_OPTION);
 
 
 
@@ -115,23 +134,30 @@ public class frmDanhGia extends JInternalFrame {
 			}
 
 		});
-		btnGuiDanhGia.setBounds(120, 379, 129, 23);
-		getContentPane().add(btnGuiDanhGia);
+		btnDanhGia.setEnabled(false);
+		btnDanhGia.setBounds(305, 396, 214, 37);
+		getContentPane().add(btnDanhGia);
 
-		JButton btnThoat = new JButton("THOÁT");
-		btnThoat.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				frmDashboard.controlFrame(frmDashboard.FRM_BOOKING1);	
-			}
-		});
-		btnThoat.setFont(new Font("Tahoma", Font.BOLD, 13));
-		btnThoat.setBounds(326, 379, 89, 23);
-		getContentPane().add(btnThoat);
-
-		JLabel NgayDanhGia = new JLabel("NGÀY ĐÁNH GIÁ");
+		JLabel NgayDanhGia = new JLabel("cho ngay");
 		NgayDanhGia.setFont(new Font("Tahoma", Font.BOLD, 13));
-		NgayDanhGia.setBounds(68, 274, 124, 14);
+		NgayDanhGia.setBounds(111, 86, 84, 23);
 		getContentPane().add(NgayDanhGia);
-
+		
+		JButton btnNewButton = new JButton("Tim kiem");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (m.getRowCount() > 0) {
+				    for (int i = m.getRowCount() - 1; i > -1; i--) {
+				        m.removeRow(i);
+				    }
+				}
+				ArrayList<CTDatPhong_DTO> listCTDP =  CTDatPhong_BUS.searchKH(Integer.parseInt(txtMaPhong.getText()), new Date(dateNgayDanhGia.getDate().getTime()));
+				btnDanhGia.setEnabled(listCTDP.size() > 0);
+				listCTDP.forEach(ctdp -> m.addRow(new Object[] {ctdp.getKhachHang().getTenKH(), ctdp.getKhachHang().getCMND()}));
+			}
+		});
+		btnNewButton.setBounds(315, 160, 97, 25);
+		getContentPane().add(btnNewButton);
+		
 	}
 }

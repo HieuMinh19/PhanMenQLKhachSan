@@ -8,6 +8,8 @@ public class KhachHang_DTO {
 	private String strCMND;
 	private String strEmail; 
 	
+	public KhachHang_DTO() {}
+	
 	public KhachHang_DTO(int iMaKhachHang, String strHoTen, String strDienThoai, String strCMND, String strDiaChi, String strEmail) {
 		this.iMaKhachHang = iMaKhachHang;
 		this.strHoTen = strHoTen;
