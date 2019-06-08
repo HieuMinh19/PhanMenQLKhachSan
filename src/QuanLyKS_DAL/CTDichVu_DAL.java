@@ -16,6 +16,7 @@ public class CTDichVu_DAL {
 			ptmt.setInt(1, ctdvDTO.getMaDichVu());
 			ptmt.setInt(2, ctdvDTO.getSoLuong());
 			ptmt.setInt(3, ctdvDTO.getMaCTDatPhong());
+			System.err.println("MaCTDatPhong trong CTDichVu DAL" +" "+ ctdvDTO.getMaCTDatPhong());
 			ptmt.setInt(4, ctdvDTO.getTongTienDichVu());
 			if( ptmt.executeUpdate() != 0) {
 				System.err.println("booking Service success");

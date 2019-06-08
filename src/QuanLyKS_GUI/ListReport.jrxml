@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="BasicReport" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="570611af-e9f9-48df-8033-974f84785ce5">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ListReport" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="253afafe-dd5b-410f-ae07-787f65e33bc4">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="QLKS-2505"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
 	<queryString language="SQL">
-		<![CDATA[SELECT "CTDATPHONG"."MaDatPhong",
-	"CTDATPHONG"."TenKH",
-	"CTDATPHONG"."CMND",
+		<![CDATA[SELECT 
+"CTDATPHONG"."MaCTDatPhong",
+	"KHACHHANG"."HoTen",
+	"KHACHHANG"."CMND",
 	"CTDATPHONG"."MaPhong",
 	"CTDATPHONG"."NgayNhan",
 	"CTDATPHONG"."NgayTra",
@@ -16,16 +17,17 @@
 	
 FROM "CTDATPHONG",
 	"PHONG",
-	"LOAIPHONG"
+	"LOAIPHONG","KHACHHANG"
 WHERE 
 	 "CTDATPHONG"."MaPhong" = "PHONG"."MaPhong" 
-	 AND "PHONG"."MaLoaiPhong" = "LOAIPHONG"."MaLoaiPhong"]]>
+	 AND "PHONG"."MaLoaiPhong" = "LOAIPHONG"."MaLoaiPhong"
+	 AND "CTDATPHONG"."MaKhachHang" = "KHACHHANG"."MaKhachHang"]]>
 	</queryString>
-	<field name="MaDatPhong" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.label" value="MaDatPhong"/>
+	<field name="MaCTDatPhong" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="MaCTDatPhong"/>
 	</field>
-	<field name="TenKH" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="TenKH"/>
+	<field name="HoTen" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="HoTen"/>
 	</field>
 	<field name="CMND" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="CMND"/>
@@ -33,10 +35,10 @@ WHERE
 	<field name="MaPhong" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.label" value="MaPhong"/>
 	</field>
-	<field name="NgayNhan" class="java.lang.String">
+	<field name="NgayNhan" class="java.sql.Date">
 		<property name="com.jaspersoft.studio.field.label" value="NgayNhan"/>
 	</field>
-	<field name="NgayTra" class="java.lang.String">
+	<field name="NgayTra" class="java.sql.Date">
 		<property name="com.jaspersoft.studio.field.label" value="NgayTra"/>
 	</field>
 	<field name="MaLoaiPhong" class="java.lang.Integer">
@@ -51,11 +53,11 @@ WHERE
 	<variable name="ThanhTien1" class="java.lang.Integer" resetType="Column" calculation="Sum">
 		<variableExpression><![CDATA[$F{ThanhTien}]]></variableExpression>
 	</variable>
-	<group name="MaDatPhong">
-		<groupExpression><![CDATA[$F{MaDatPhong}]]></groupExpression>
+	<group name="MaCTDatPhong">
+		<groupExpression><![CDATA[$F{MaCTDatPhong}]]></groupExpression>
 	</group>
-	<group name="TenKH">
-		<groupExpression><![CDATA[$F{TenKH}]]></groupExpression>
+	<group name="HoTen">
+		<groupExpression><![CDATA[$F{HoTen}]]></groupExpression>
 	</group>
 	<group name="CMND">
 		<groupExpression><![CDATA[$F{CMND}]]></groupExpression>
@@ -79,7 +81,7 @@ WHERE
 		<groupExpression><![CDATA[$F{ThanhTien}]]></groupExpression>
 	</group>
 	<group name="DatPhong">
-		<groupExpression><![CDATA[$F{MaDatPhong}]]></groupExpression>
+		<groupExpression><![CDATA[$F{MaCTDatPhong}]]></groupExpression>
 	</group>
 	<group name="SumThanhTien"/>
 	<group name="Group1"/>
@@ -189,13 +191,13 @@ WHERE
 			</rectangle>
 			<textField>
 				<reportElement x="110" y="0" width="100" height="41" uuid="8cd4198c-1528-4a23-a87d-4404054d6901"/>
-				<textFieldExpression><![CDATA[$F{MaDatPhong}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{MaCTDatPhong}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="10" y="0" width="100" height="41" uuid="d658d4b9-9d8f-4f2f-8808-db972e1f3035">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7942673d-b676-4164-b4f1-ddc83499ca52"/>
 				</reportElement>
-				<textFieldExpression><![CDATA[$F{TenKH}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{HoTen}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="610" y="0" width="100" height="41" uuid="f45f1f16-856b-4e69-8ef0-274779c3877e"/>
