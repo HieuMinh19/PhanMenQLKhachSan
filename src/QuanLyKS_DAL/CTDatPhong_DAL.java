@@ -14,13 +14,36 @@ public class CTDatPhong_DAL {
 		Connection conn = mycon.getConnection();
 		try {
 			ptmt = conn.prepareStatement(query);
+			
 			ptmt.setInt(1, ctDP.getMaCTDatPhong());
-			ptmt.setDate(2, (Date) ctDP.getdtNgayThucHien());
+			System.err.println("MaCTDatPhong trong CTDatPhong DAL" +" "+ ctDP.getMaCTDatPhong());
+			
+			//
+
+			java.sql.Date sqlStartDate = new java.sql.Date(ctDP.getdtNgayThucHien().getTime());
+			//
+			ptmt.setDate(2, sqlStartDate);
+			System.err.println("NgayThucHien trong CTDatPhong DAL" +" "+ ctDP.getdtNgayThucHien());
+			
 			ptmt.setInt(3,  ctDP.getMaKhachHang());
-			ptmt.setDate(4,  (Date) ctDP.getNgayNhan());
-			ptmt.setDate(5,  (Date) ctDP.getNgayTra());
+			System.err.println("MaKhachHang trong CTDatPhong DAL" +""+ ctDP.getMaKhachHang());
+			//
+			java.sql.Date NgayNhan = new java.sql.Date(ctDP.getNgayNhan().getTime());
+			//
+			ptmt.setDate(4,  NgayNhan);
+			System.err.println("NgayNhan trong CTDatPhong DAL" +""+ ctDP.getNgayNhan());
+			//
+			java.sql.Date NgayTra = new java.sql.Date(ctDP.getNgayTra().getTime());
+			//
+			ptmt.setDate(5,  NgayTra);
+			System.err.println("NgayTra trong CTDatPhong DAL" +""+ ctDP.getNgayTra());
+			
 			ptmt.setInt(6,  ctDP.getMaPhong());
+			System.err.println("MaPhong trong CTDatPhong DAL" +""+ ctDP.getMaPhong());
+			
 			ptmt.setInt(7,  ctDP.getMaNhanVien());
+			System.err.println("MaNhanVien trong CTDatPhong DAL" +""+ ctDP.getMaNhanVien());
+			
 			if( ptmt.executeUpdate() != 0) {
 				System.err.println("insert thanh cong booking");
 				return true;

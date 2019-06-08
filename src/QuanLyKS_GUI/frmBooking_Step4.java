@@ -4,26 +4,32 @@ import java.awt.EventQueue;
 import java.util.ArrayList;
 
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import com.ibm.icu.text.SimpleDateFormat;
 
+import QuanLyKS_DTO.BangPhanCong_DTO;
 import QuanLyKS_DTO.CTDatPhong_DTO;
 import QuanLyKS_DTO.CTDichVu_DTO;
 import QuanLyKS_DTO.DichVu_DTO;
 import QuanLyKS_DTO.KhachHang_DTO;
 import QuanLyKS_DTO.LoaiPhong_DTO;
+import QuanLyKS_DTO.NhanVien_DTO;
 import QuanLyKS_BUS.CTDatPhong_BUS;
 import QuanLyKS_BUS.CTDichVu_BUS;
 import QuanLyKS_BUS.DichVu_BUS;
+import QuanLyKS_BUS.HoaDon_BUS;
 import QuanLyKS_BUS.KhachHang_BUS;
 import QuanLyKS_BUS.LoaiPhong_BUS;
 import QuanLyKS_BUS.Phong_BUS;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class frmBooking_Step4 extends JInternalFrame {
@@ -103,11 +109,40 @@ public class frmBooking_Step4 extends JInternalFrame {
 		btnDatPhong.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				CTDatPhong_BUS.Insert(ctdp);
-				for(int i = 0; i < listCTDV.size(); i++) {
-					CTDichVu_BUS.Insert(listCTDV.get(i));
-				}
-				KhachHang_BUS.Insert(khDTO);
+					
+					String strTenLoaiPhong = Phong_BUS.getTenLoaiPhong(ctdp.getMaPhong());
+					System.err.println("Ten Loai Phong trong str4" +""+ strTenLoaiPhong);
+					int iGiaPhong = Phong_BUS.getGiaPhong(ctdp.getMaPhong());
+					System.err.println("GiaPhong trong str4" +""+ iGiaPhong);
+					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			 		String NgayNhan = sdf.format( ctdp.getNgayNhan());
+			 		System.err.println("NgayNhan trong str4" +""+ NgayNhan);
+			 	 	String NgayTra = sdf.format( ctdp.getNgayTra() );
+			 		System.err.println("NgayTra trong str4" +""+ NgayTra);
+					String NgayThucHien = sdf.format( ctdp.getdtNgayThucHien() );
+					
+					System.err.println("NgayThucHien trong str4" +""+ NgayThucHien);
+					
+					
+				//	dtngaysinh.getDate().getTime()
+					//modelBooking.addRow(new Object[] {ctdp.getMaPhong(), khDTO.getTenKH(), strTenLoaiPhong, iGiaPhong, NgayNhan, NgayTra});
+					
+					
+					CTDatPhong_BUS.Insert(ctdp);
+					for(int i = 0; i < listCTDV.size(); i++) {
+						CTDichVu_BUS.Insert(listCTDV.get(i));
+					}
+					KhachHang_BUS.Insert(khDTO);
+					
+					JOptionPane.showMessageDialog(null, "Dat Phong Thanh Cong", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);
+				
+//				/////////////
+//					if(HoaDon_BUS.Insert(nvDTO) == true) {
+//	        			JOptionPane.showMessageDialog(null, "Thanh Toan Thanh Cong", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);
+//	        		}else {
+//	        			JOptionPane.showMessageDialog(null, "Thanh Toan That Bai", "Fail: " + "Success Mesage", JOptionPane.CLOSED_OPTION);
+//	        		}
+				
 			}
 		});
 		btnDatPhong.setBounds(433, 385, 97, 25);
