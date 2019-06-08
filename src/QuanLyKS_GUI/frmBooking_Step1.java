@@ -114,23 +114,25 @@ public class frmBooking_Step1 extends JInternalFrame {
 		edMoTa.setText("c,jbsjk");
 		edMoTa.setBounds(208, 266, 218, 37);
 		getContentPane().add(edMoTa);
-		
+
 		JEditorPane edGia = new JEditorPane();
 		edGia.setEditable(false);
-		edGia.setBounds(435, 266, 118, 37);
+	 	edGia.setBounds(435, 266, 118, 37);
 		getContentPane().add(edGia);
 		JComboBox cbxMaPhong = new JComboBox();
 		cbxMaPhong.setBounds(208, 352, 345, 20);
-		JButton btnTiepTuc = new JButton("Ti\u1EBFp t\u1EE5c");
-		btnTiepTuc.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ctdpDTO.setNgayNhan(date_NgayNhanPhong.getDate());
+	 	JButton btnTiepTuc = new JButton("Ti\u1EBFp t\u1EE5c");
+		btnTiepTuc.addActionListener(new ActionListener() { 
+			public void actionPerformed(ActionEvent e) {					 
+			 	 System.err.println("update thanh cong dich vu" + date_NgayNhanPhong.getDate().getTime());
+				 
+			   	ctdpDTO.setNgayNhan( date_NgayNhanPhong.getDate());
 				ctdpDTO.setNgayTra(date_NgayTraPhong.getDate());
 				ctdpDTO.setMaNhanVien(frmLogin.acc.getMaNhanVien());
 				//get current date
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");        	 	
 				Date currentDate = new Date();
-				ctdpDTO.setdtNgayThucHien(currentDate);
+				ctdpDTO.setdtNgayThucHien( currentDate);
 								
 				Object obj = cbxMaPhong.getSelectedItem();
 				int iMaPhong = Integer.parseInt(obj.toString());

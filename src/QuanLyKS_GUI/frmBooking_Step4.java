@@ -6,15 +6,25 @@ import java.util.ArrayList;
 import javax.swing.JInternalFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
+
+import com.ibm.icu.text.SimpleDateFormat;
 
 import QuanLyKS_DTO.CTDatPhong_DTO;
 import QuanLyKS_DTO.CTDichVu_DTO;
+import QuanLyKS_DTO.DichVu_DTO;
 import QuanLyKS_DTO.KhachHang_DTO;
+import QuanLyKS_DTO.LoaiPhong_DTO;
+import QuanLyKS_BUS.CTDatPhong_BUS;
+import QuanLyKS_BUS.CTDichVu_BUS;
+import QuanLyKS_BUS.DichVu_BUS;
+import QuanLyKS_BUS.KhachHang_BUS;
+import QuanLyKS_BUS.LoaiPhong_BUS;
+import QuanLyKS_BUS.Phong_BUS;
 
-import javax.swing.JLabel;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class frmBooking_Step4 extends JInternalFrame {
 	private JTable tbThongTinChung;
@@ -51,12 +61,20 @@ public class frmBooking_Step4 extends JInternalFrame {
 					"Ma phong", "Ten khach hang", "Ten loai phong","Gia phong", "Ngay nhan", "Ngay tra"
 				}
 			);
-		tbThongTinChung = new JTable(modelBooking);
+		tbThongTinChung = new JTable(modelBooking); 
 		scrBooking.setViewportView(tbThongTinChung);
 		getContentPane().add(scrBooking);
 		
-		modelBooking.addRow(new Object[] {ctdp.getMaPhong(),khDTO.getTenKH(), ctdp.getMaNhanVien(), ctdp.getdtNgayThucHien(), ctdp.getNgayTra(), ctdp.getNgayTra()});
+		ArrayList<LoaiPhong_DTO>  listLP = LoaiPhong_BUS.LoadListLP();
 		
+		String strTenLoaiPhong = Phong_BUS.getTenLoaiPhong(ctdp.getMaPhong());
+		int iGiaPhong = Phong_BUS.getGiaPhong(ctdp.getMaPhong());
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+ 		String NgayNhan = sdf.format( ctdp.getNgayNhan());
+ 	 	String NgayTra = sdf.format( ctdp.getNgayTra() );
+		String NgayThucHien = sdf.format( ctdp.getdtNgayThucHien() );
+		modelBooking.addRow(new Object[] {ctdp.getMaPhong(), khDTO.getTenKH(), strTenLoaiPhong, iGiaPhong, NgayNhan, NgayTra});
+		 
 		
 		JScrollPane scrDV = new JScrollPane();
 		scrDV.setBounds(40, 253, 556, 98);
@@ -71,10 +89,27 @@ public class frmBooking_Step4 extends JInternalFrame {
 		scrDV.setViewportView(tbThongTinDichVu);
 		getContentPane().add(scrDV);
 		
-		listCTDV.forEach(ctdv->modelDV.addRow(new Object[] {ctdv.getMaDichVu(), ctdv.getSoLuong(), ctdv.getTongTienDichVu()}));
+		ArrayList<DichVu_DTO> listDV = DichVu_BUS.getListDV();
+		for(int i = 0; i < listCTDV.size(); i++) {
+			for(int j = 0; j < listDV.size(); j++){
+				if(listDV.get(j).getMaDichVu() == listCTDV.get(i).getMaDichVu())
+					modelDV.addRow(new Object[] {listDV.get(j).getTenDichVu(), listCTDV.get(i).getSoLuong(), 
+							listCTDV.get(i).getTongTienDichVu()});
+			}
+			
+		}		
 		
-		
-		JButton btnDatPhong = new JButton("Dat phong");
+		JButton btnDatPhong = new JButton("\u0110\u1EB7t ph\u00F2ng");
+		btnDatPhong.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				CTDatPhong_BUS.Insert(ctdp);
+				for(int i = 0; i < listCTDV.size(); i++) {
+					CTDichVu_BUS.Insert(listCTDV.get(i));
+				}
+				KhachHang_BUS.Insert(khDTO);
+			}
+		});
 		btnDatPhong.setBounds(433, 385, 97, 25);
 		getContentPane().add(btnDatPhong);
 

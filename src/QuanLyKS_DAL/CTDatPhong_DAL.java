@@ -8,19 +8,19 @@ import java.sql.Date;
 public class CTDatPhong_DAL {
 	public static boolean Insert(CTDatPhong_DTO ctDP){
 		PreparedStatement ptmt = null; 
-		String query = "INSERT INTO CTDATPHONG(TenKH, CMND, MaPhong, NgayNhan, NgayTra, ThanhTien) VALUES (?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO CTDATPHONG(MaCTDatPhong, NgayThucHien, MaKhachHang, NgayNhan, NgayTra, MaPhong, MaNhanVien)"
+				+ " VALUES (?, ?, ?, ?, ?, ?, ?)";
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
 		Connection conn = mycon.getConnection();
 		try {
 			ptmt = conn.prepareStatement(query);
-//			ptmt.setString(1, ctDP.getTenHK()); 
-//			ptmt.setString(2, ctDP.getCMND());
-//			ptmt.setInt(3, ctDP.getMaPhong());
-//			ptmt.setString(4, ctDP.getNgayNhan());
-//			ptmt.setString(5, ctDP.getNgayTra());
-//			ptmt.setInt(6, ctDP.getThanhTien());	
-//			int ThanhTien = ctDP.getThanhTien();
-			//System.out.print(ThanhTien);
+			ptmt.setInt(1, ctDP.getMaCTDatPhong());
+			ptmt.setDate(2, (Date) ctDP.getdtNgayThucHien());
+			ptmt.setInt(3,  ctDP.getMaKhachHang());
+			ptmt.setDate(4,  (Date) ctDP.getNgayNhan());
+			ptmt.setDate(5,  (Date) ctDP.getNgayTra());
+			ptmt.setInt(6,  ctDP.getMaPhong());
+			ptmt.setInt(7,  ctDP.getMaNhanVien());
 			if( ptmt.executeUpdate() != 0) {
 				System.err.println("insert thanh cong booking");
 				return true;
@@ -57,7 +57,7 @@ public class CTDatPhong_DAL {
 			return nextID;
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			// TODO Auto-generated catch block 
 			e.printStackTrace();
 		}
 		

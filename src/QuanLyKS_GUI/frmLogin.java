@@ -84,7 +84,7 @@ public class frmLogin extends JFrame {
          		String b = String.valueOf(a);
 				NhanVien_DTO acc = NhanVien_BUS.Login(txtTaiKhoan.getText(),b);
 				if(acc != null)
-				{
+		 		{
 					JOptionPane.showMessageDialog(null, "Dang nhap thanh cong!", "Thong bao", JOptionPane.CLOSED_OPTION);
 					frmDashboard main = new frmDashboard(acc);
 					_self.setVisible(false);
