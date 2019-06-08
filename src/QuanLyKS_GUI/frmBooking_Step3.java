@@ -41,7 +41,7 @@ public class frmBooking_Step3 extends JInternalFrame {
 	 * Create the frame.
 	 */
 	
-	public static KhachHang_DTO  khDTO;
+	
 	public frmBooking_Step3(CTDatPhong_DTO ctdp, ArrayList<CTDichVu_DTO> listCTDV) {
 		setBounds(100, 100, 810, 540);
 		getContentPane().setLayout(null);
@@ -115,8 +115,8 @@ public class frmBooking_Step3 extends JInternalFrame {
 				String strSDT = txtSDT.getText();
 				String strCMND = txtCMND.getText();
 				int iMaKH = KhachHang_BUS.getnextMaKH();
-				
-				khDTO = new KhachHang_DTO(iMaKH, strHoten, strSDT, strCMND, strDiaChi, strEmail);
+			
+				 KhachHang_DTO khDTO = new KhachHang_DTO(iMaKH, strHoten, strSDT, strCMND, strDiaChi, strEmail);
 				
 				frmDashboard.frmBooking4 = new frmBooking_Step4(ctdp, listCTDV, khDTO);
 				frmDashboard.controlFrame(frmDashboard.FRM_BOOKING4);

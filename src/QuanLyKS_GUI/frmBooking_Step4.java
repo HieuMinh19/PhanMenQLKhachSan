@@ -111,23 +111,19 @@ public class frmBooking_Step4 extends JInternalFrame {
 				
 					
 					String strTenLoaiPhong = Phong_BUS.getTenLoaiPhong(ctdp.getMaPhong());
-					System.err.println("Ten Loai Phong trong str4" +""+ strTenLoaiPhong);
 					int iGiaPhong = Phong_BUS.getGiaPhong(ctdp.getMaPhong());
-					System.err.println("GiaPhong trong str4" +""+ iGiaPhong);
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			 		String NgayNhan = sdf.format( ctdp.getNgayNhan());
-			 		System.err.println("NgayNhan trong str4" +""+ NgayNhan);
 			 	 	String NgayTra = sdf.format( ctdp.getNgayTra() );
-			 		System.err.println("NgayTra trong str4" +""+ NgayTra);
 					String NgayThucHien = sdf.format( ctdp.getdtNgayThucHien() );
 					
 					System.err.println("NgayThucHien trong str4" +""+ NgayThucHien);
 					
 					
 				//	dtngaysinh.getDate().getTime()
-					//modelBooking.addRow(new Object[] {ctdp.getMaPhong(), khDTO.getTenKH(), strTenLoaiPhong, iGiaPhong, NgayNhan, NgayTra});
+					modelBooking.addRow(new Object[] {ctdp.getMaPhong(), khDTO.getTenKH(), strTenLoaiPhong, iGiaPhong, NgayNhan, NgayTra});
 					
-					
+					ctdp.setMaKhachHang(khDTO.getMaKH());
 					CTDatPhong_BUS.Insert(ctdp);
 					for(int i = 0; i < listCTDV.size(); i++) {
 						CTDichVu_BUS.Insert(listCTDV.get(i));
@@ -136,12 +132,7 @@ public class frmBooking_Step4 extends JInternalFrame {
 					
 					JOptionPane.showMessageDialog(null, "Dat Phong Thanh Cong", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);
 				
-//				/////////////
-//					if(HoaDon_BUS.Insert(nvDTO) == true) {
-//	        			JOptionPane.showMessageDialog(null, "Thanh Toan Thanh Cong", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);
-//	        		}else {
-//	        			JOptionPane.showMessageDialog(null, "Thanh Toan That Bai", "Fail: " + "Success Mesage", JOptionPane.CLOSED_OPTION);
-//	        		}
+					frmDashboard.frmBooking4.setVisible(false);
 				
 			}
 		});

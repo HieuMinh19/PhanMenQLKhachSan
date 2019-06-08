@@ -18,6 +18,7 @@ import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -125,12 +126,22 @@ public class frmBooking_Step1 extends JInternalFrame {
 		btnTiepTuc.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e) {					 
 			 	 System.err.println("update thanh cong dich vu" + date_NgayNhanPhong.getDate().getTime());
-				 
+			 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
+			 	 Date NgayNhan = date_NgayNhanPhong.getDate();
+			 	 Date NgayTra = date_NgayTraPhong.getDate();
+			 	 
+			 	 //break if NgayNhan > NgayTra
+			 	 if(NgayNhan.compareTo(NgayTra) > 0) {
+			 		JOptionPane.showMessageDialog(null, "Ngày Nhận và ngày trả không phù hợp", "Success: " + "Warning Message", JOptionPane.INFORMATION_MESSAGE);
+			 		 return;
+			 	 }
+			 		 
+			 	 
 			   	ctdpDTO.setNgayNhan( date_NgayNhanPhong.getDate());
 				ctdpDTO.setNgayTra(date_NgayTraPhong.getDate());
 				ctdpDTO.setMaNhanVien(frmLogin.acc.getMaNhanVien());
-				//get current date
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");        	 	
+				
+				//get current date   	 	
 				Date currentDate = new Date();
 				ctdpDTO.setdtNgayThucHien( currentDate);
 								
@@ -139,6 +150,7 @@ public class frmBooking_Step1 extends JInternalFrame {
 				ctdpDTO.setMaPhong(iMaPhong);
 				int iCTDP = CTDatPhong_BUS.getnextID();
 				ctdpDTO.setMaCTDatPhong(iCTDP);
+					
 				
 				frmDashboard.frmBooking2 = new frmBooking_Step2(ctdpDTO);
 				frmDashboard.controlFrame(frmDashboard.FRM_BOOKING2);

@@ -19,16 +19,20 @@ public class KhachHang_DAL {
 			int nextID = 0;
 			ptmt = conn.prepareStatement(query);
 			ResultSet rs = ptmt.executeQuery();
-			while(rs.next()) 
-				nextID = rs.getInt("MaKhachHang") + 1;
+			if(rs == null)
+				return 1;
+			else
+				while(rs.next()) 
+					nextID = rs.getInt("MaKhachHang") + 1;
 			
 			return nextID;
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return 0;
 		}
-		return 0;
+		
 	}
 	
 	public static boolean Insert(KhachHang_DTO kh){
