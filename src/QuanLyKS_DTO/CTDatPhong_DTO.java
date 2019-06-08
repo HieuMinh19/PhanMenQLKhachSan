@@ -11,6 +11,7 @@ public class CTDatPhong_DTO {
 	private int iMaPhong;
 	private int iMaNhanVien;
 	private int iThanhTien;
+	private KhachHang_DTO kh;
 	
 	
 	public CTDatPhong_DTO() {
@@ -26,6 +27,13 @@ public class CTDatPhong_DTO {
 		
         this.iMaPhong = iMaPhong;
        
+	}
+	
+	public CTDatPhong_DTO(KhachHang_DTO kh, int iMaPhong, Date NgayNhan, Date NgayTra) {
+        this.kh = kh;
+        this.iMaPhong = iMaPhong;
+        this.dtNgayNhan = NgayNhan;
+        this.dtNgayTra = NgayTra;
 	}
 	
 	public int getMaCTDatPhong() {
@@ -80,6 +88,14 @@ public class CTDatPhong_DTO {
 
 	public void setNgayTra(Date dtNgayTra) {
 		this.dtNgayTra = dtNgayTra; 
+	}
+
+	public KhachHang_DTO getKhachHang() {
+		return kh;
+	}
+
+	public void setKhachHang(KhachHang_DTO kh) {
+		this.kh = kh; 
 	}
 
 }

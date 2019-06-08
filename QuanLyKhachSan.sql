@@ -11,8 +11,8 @@ go
 create table CTDANHGIA
 (	ID int identity(1,1) primary key ,
 	NoiDung varchar(255),
-	-- VoteSao float, 
 	NgayDanhGia Date,
+	MaPhong int,
 )
 go
 create table CHUCVU(
