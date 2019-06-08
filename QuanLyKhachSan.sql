@@ -44,7 +44,7 @@ create table BANGPHANCONG
 /*create table Khach hang*/
 go
 create table KHACHHANG(
-	MaKhachHang int identity(1,1) primary key,
+	MaKhachHang int primary key,
 	HoTen varchar(255),
 	Email varchar(30),
 	DiaChi varchar(50),
@@ -98,16 +98,14 @@ create table PHONG
 )
 go
 /*create table Chi Tiet Dat Phong*/
-drop table CTDATPHONG
 create table CTDATPHONG(
-	MaCTDatPhong int identity(1,1) primary key,
+	MaCTDatPhong int primary key,
 	NgayThucHien Date,
 	MaKhachHang int,
 	NgayNhan Date,
 	NgayTra Date,
 	MaPhong int,
 	MaNhanVien int,
-	ThanhTien int,
 )
 
 go

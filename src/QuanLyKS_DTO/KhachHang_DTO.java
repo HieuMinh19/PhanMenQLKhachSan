@@ -6,7 +6,7 @@ public class KhachHang_DTO {
 	private String strDienThoai;
 	private String strDiaChi;
 	private String strCMND;
-	private String strEmail;
+	private String strEmail; 
 	
 	public KhachHang_DTO() {}
 	

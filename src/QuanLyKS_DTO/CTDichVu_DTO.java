@@ -5,7 +5,7 @@ public class CTDichVu_DTO {
 	private int iMaDichVu;
 	private int iSoLuong;
 	private int iMaCTDatPhong;
-	private int iTongTienDichVu;
+	private int iTongTienDichVu; 
 	
 	public CTDichVu_DTO( int iSoLuong, int iMaCTDatPhong, int iTongTienDichVu, int iMaDichVu) {
 		this.iSoLuong = iSoLuong;

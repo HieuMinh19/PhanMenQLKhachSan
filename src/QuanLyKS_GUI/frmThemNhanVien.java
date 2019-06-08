@@ -152,7 +152,7 @@ public class frmThemNhanVien extends JInternalFrame {
 		txtconfpass = new JPasswordField();
 		txtconfpass.setBounds(528, 157, 198, 22);
 		getContentPane().add(txtconfpass);
-		
+		 
 		txtusername = new JTextField();
 		txtusername.setColumns(10);
 		txtusername.setBounds(151, 98, 198, 20);

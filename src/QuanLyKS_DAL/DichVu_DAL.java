@@ -112,7 +112,7 @@ public class DichVu_DAL {
 			System.err.println(" ket noi that bai");
 			 return false;
 		}
-	}
+	} 
 	
 	public static boolean Update(DichVu_DTO dichvu){
 		PreparedStatement ptmt = null; 

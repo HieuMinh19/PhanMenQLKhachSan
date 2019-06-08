@@ -16,5 +16,13 @@ public class Phong_BUS {
 	public static ArrayList<Phong_DTO> getListCondition (int MaLoaiPhong, String NgayNhan, String NgayTra){
 		return Phong_DAL.getListCondition(MaLoaiPhong, NgayNhan, NgayTra);
 	}
+
+	public static String getTenLoaiPhong(int iMaPhong) {
+		return Phong_DAL.getLoaiPhongbyMaPhong(iMaPhong);
+	}
+
+	public static int getGiaPhong(int iMaPhong) {
+		return Phong_DAL.getGiaPhong(iMaPhong);
+	}
 }
  

@@ -61,7 +61,27 @@ public class Phong_DAL {
 		return listPhong;
 	}
 	
-	
+	public static String getLoaiPhongbyMaPhong(int iMaPhong) {
+		String strLoaiPhong = "";
+		PreparedStatement ptmt = null; 
+		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
+		Connection conn = mycon.getConnection();
+		String query = "select TenLoaiPhong from PHONG as p, LOAIPHONG as lp  where p.MaLoaiPhong = lp.MaLoaiPhong and p.MaPhong = ?";
+		try {
+			ptmt = conn.prepareStatement(query);
+			ptmt.setInt(1, iMaPhong);
+			ResultSet rs = ptmt.executeQuery();
+			
+			while(rs.next() ) {
+				strLoaiPhong = rs.getString("TenLoaiPhong");
+ 		   }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.err.println(" ket noi that bai");
+		}
+		return strLoaiPhong;
+	}
 	
 	public static ResultSet selectAll() {
 		PreparedStatement ptmt = null; 

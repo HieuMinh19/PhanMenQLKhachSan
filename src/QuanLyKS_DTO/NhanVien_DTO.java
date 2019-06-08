@@ -14,7 +14,7 @@ public class NhanVien_DTO {
 	private String strPassword;
 	 
 	public NhanVien_DTO() {
-		this.iMaNhanVien = 0;
+		this.iMaNhanVien = 0; 
 	}
 	public NhanVien_DTO(String strUsername,String strPassword,String strTenNhanVien,  Date dtNgaySinh, int iCMND,Date dtNgayVaoLam,int iMaChucVu) {
 		this.strUsername = strUsername;

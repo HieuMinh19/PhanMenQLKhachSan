@@ -1,5 +1,4 @@
 package QuanLyKS_DTO;
-
 import java.util.Date;
 
 public class CTDatPhong_DTO {
@@ -21,7 +20,7 @@ public class CTDatPhong_DTO {
 	public CTDatPhong_DTO( String strTenKH, String strCMND, int iMaDichVu, int iMaPhong, String NgayNhan, String NgayTra, int iThanhTien ) {
         this.iMaPhong = iMaPhong;
       
-	}
+	} 
 	
 	public CTDatPhong_DTO( String strTenKH, String strCMND, int iMaDichVu, int iMaPhong, String NgayNhan, String NgayTra) {
 		
@@ -82,7 +81,7 @@ public class CTDatPhong_DTO {
 		return dtNgayNhan;
 	}
 
-	public Date getNgayTra() {
+	public Date getNgayTra() { 
 		return dtNgayTra;
 	}
 
