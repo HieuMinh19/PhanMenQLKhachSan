@@ -19,11 +19,11 @@ public class HoaDon_BUS extends JInternalFrame {
 		dal = new HoaDon_DAL();
 	}
 	
-	public ArrayList<HoaDon_DTO> SearchNV (int mactdatphong){
-		return dal.SearchNV(mactdatphong);
+	public ArrayList<HoaDon_DTO> SearchNV (int mactdatphong,Date ngaytra){
+		return dal.SearchNV(mactdatphong, ngaytra);
 	}
-	public ArrayList<HoaDon_DTO> SearchTenDV (int mactdatphong){
-		return dal.SearchTenDV(mactdatphong);
+	public ArrayList<HoaDon_DTO> SearchTenDV (int mactdatphong,Date ngaytra){
+		return dal.SearchTenDV(mactdatphong,ngaytra);
 	}
 	
 //	public ArrayList<NhanVien_DTO> LoadListNV (){

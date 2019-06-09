@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ListReport" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="253afafe-dd5b-410f-ae07-787f65e33bc4">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ListReport_1" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b3acf1c8-2255-4715-b824-65b7e4be53ec">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
 	<queryString language="SQL">
@@ -13,15 +13,16 @@
 	"CTDATPHONG"."NgayTra",
 	"LOAIPHONG"."MaLoaiPhong",
 	"LOAIPHONG"."TenLoaiPhong",
-	"CTDATPHONG"."ThanhTien"
+	"HOADON"."SoTienThu"
 	
 FROM "CTDATPHONG",
 	"PHONG",
-	"LOAIPHONG","KHACHHANG"
+	"LOAIPHONG","KHACHHANG","HOADON"
 WHERE 
 	 "CTDATPHONG"."MaPhong" = "PHONG"."MaPhong" 
 	 AND "PHONG"."MaLoaiPhong" = "LOAIPHONG"."MaLoaiPhong"
-	 AND "CTDATPHONG"."MaKhachHang" = "KHACHHANG"."MaKhachHang"]]>
+	 AND "CTDATPHONG"."MaKhachHang" = "KHACHHANG"."MaKhachHang"
+	 AND  "CTDATPHONG"."MaCTDatPhong" = "HOADON"."MaCTDatPhong"]]>
 	</queryString>
 	<field name="MaCTDatPhong" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.label" value="MaCTDatPhong"/>
@@ -47,11 +48,11 @@ WHERE
 	<field name="TenLoaiPhong" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="TenLoaiPhong"/>
 	</field>
-	<field name="ThanhTien" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.label" value="ThanhTien"/>
+	<field name="SoTienThu" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="SoTienThu"/>
 	</field>
 	<variable name="ThanhTien1" class="java.lang.Integer" resetType="Column" calculation="Sum">
-		<variableExpression><![CDATA[$F{ThanhTien}]]></variableExpression>
+		<variableExpression><![CDATA[$F{SoTienThu}]]></variableExpression>
 	</variable>
 	<group name="MaCTDatPhong">
 		<groupExpression><![CDATA[$F{MaCTDatPhong}]]></groupExpression>
@@ -77,13 +78,13 @@ WHERE
 	<group name="TenLoaiPhong">
 		<groupExpression><![CDATA[$F{TenLoaiPhong}]]></groupExpression>
 	</group>
-	<group name="ThanhTien">
-		<groupExpression><![CDATA[$F{ThanhTien}]]></groupExpression>
+	<group name="SoTienThu">
+		<groupExpression><![CDATA[$F{SoTienThu}]]></groupExpression>
 	</group>
 	<group name="DatPhong">
 		<groupExpression><![CDATA[$F{MaCTDatPhong}]]></groupExpression>
 	</group>
-	<group name="SumThanhTien"/>
+	<group name="SumSoTienThu"/>
 	<group name="Group1"/>
 	<group name="Footer"/>
 	<background>
@@ -223,7 +224,7 @@ WHERE
 				<reportElement x="710" y="0" width="100" height="30" uuid="aa97c282-720a-43c2-a5ad-feff6f695340">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ced5dde8-d47d-44d5-b015-8e6eaad378a8"/>
 				</reportElement>
-				<textFieldExpression><![CDATA[$F{ThanhTien}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{SoTienThu}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import QuanLyKS_DTO.LoaiPhong_DTO;
 import QuanLyKS_DTO.Phong_DTO;
 
 public class Phong_DAL {
@@ -130,15 +131,15 @@ public class Phong_DAL {
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
 		Connection conn = mycon.getConnection();
 		
-		String query = "SELECT * FROM PHONG";
+		String query = "SELECT MaPhong, lp.TenLoaiPhong from PHONG p, LOAIPHONG lp where p.MaLoaiPhong=lp.MaLoaiPhong";
 		try {
 			ptmt = conn.prepareStatement(query);
 			ResultSet rs = ptmt.executeQuery();
 			ArrayList<Phong_DTO> dsnv = new ArrayList<Phong_DTO>();
 			while(rs.next()) {
 				Phong_DTO phong = new Phong_DTO();
-				phong.setMaLoaiPhong(rs.getInt("MaLoaiPhong"));
 				phong.setMaPhong(rs.getInt("MaPhong"));
+				phong.setLoaiPhong(new LoaiPhong_DTO(rs.getInt("MaPhong"),rs.getString("TenLoaiPhong")));
 				dsnv.add(phong);
 			}
 			return dsnv;
@@ -148,6 +149,8 @@ public class Phong_DAL {
 		}
 		return null;	
 	}
+	
+	
 	
 	
 	

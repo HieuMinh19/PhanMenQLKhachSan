@@ -437,7 +437,7 @@ public class frmDashboard extends JFrame {
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
-			//frmDanhGia.setVisible(false);
+			frmDanhGia.setVisible(false);
 			frmDatDichVu.setVisible(false);
 			frmThemLoaiPhong.setVisible(false);
 			frmDanhSachPhong.setVisible(false);
