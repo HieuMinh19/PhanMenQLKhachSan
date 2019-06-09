@@ -19,6 +19,7 @@ import QuanLyKS_DTO.KhachHang_DTO;
 import QuanLyKS_DTO.CTDatPhong_DTO;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class frmBooking_Step3 extends JInternalFrame {
 
@@ -46,67 +47,74 @@ public class frmBooking_Step3 extends JInternalFrame {
 		setBounds(100, 100, 810, 540);
 		getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("CUSTOMER INFORMATION");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 28));
-		lblNewLabel.setBounds(192, 13, 385, 34);
+		JLabel lblNewLabel = new JLabel("Ti\u1EBFp nh\u1EADn th\u00F4ng tin kh\u00E1ch h\u00E0ng");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblNewLabel.setBounds(220, 23, 361, 34);
 		getContentPane().add(lblNewLabel);
 		
 		JTextPane txtHoTen = new JTextPane();
-		txtHoTen.setBounds(205, 101, 437, 34);
+		txtHoTen.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtHoTen.setBounds(205, 101, 437, 30);
 		getContentPane().add(txtHoTen);
 		
-		JLabel lblNewLabel_1 = new JLabel("Name");
+		JLabel lblNewLabel_1 = new JLabel("H\u1ECD t\u00EAn");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_1.setBounds(68, 101, 90, 34);
+		lblNewLabel_1.setBounds(102, 101, 76, 34);
 		getContentPane().add(lblNewLabel_1);
 		
 		JTextPane txtDiaChi = new JTextPane();
-		txtDiaChi.setBounds(205, 158, 437, 34);
+		txtDiaChi.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtDiaChi.setBounds(205, 158, 437, 30);
 		getContentPane().add(txtDiaChi);
 		
-		JLabel lblAddress = new JLabel("Address");
+		JLabel lblAddress = new JLabel("\u0110\u1ECBa ch\u1EC9");
 		lblAddress.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAddress.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblAddress.setBounds(68, 158, 90, 34);
+		lblAddress.setBounds(107, 158, 71, 34);
 		getContentPane().add(lblAddress);
 		
 		JTextPane txtEmail = new JTextPane();
-		txtEmail.setBounds(205, 218, 437, 34);
+		txtEmail.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtEmail.setBounds(205, 218, 437, 30);
 		getContentPane().add(txtEmail);
 		
 		JLabel lblEmail = new JLabel("Email");
 		lblEmail.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblEmail.setBounds(68, 218, 90, 34);
+		lblEmail.setBounds(114, 218, 64, 34);
 		getContentPane().add(lblEmail);
 		
 		JTextPane txtSDT = new JTextPane();
-		txtSDT.setBounds(205, 277, 225, 34);
+		txtSDT.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtSDT.setBounds(205, 277, 225, 30);
 		getContentPane().add(txtSDT);
 		
-		JLabel lblPhone = new JLabel("Phone");
+		JLabel lblPhone = new JLabel("S\u1ED1 \u0111i\u1EC7n tho\u1EA1i");
 		lblPhone.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPhone.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblPhone.setBounds(68, 277, 90, 34);
+		lblPhone.setBounds(62, 277, 116, 34);
 		getContentPane().add(lblPhone);
 		
 		JTextPane txtCMND = new JTextPane();
-		txtCMND.setBounds(205, 341, 225, 34);
+		txtCMND.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtCMND.setBounds(205, 341, 225, 30);
 		getContentPane().add(txtCMND);
 		
-		JLabel label = new JLabel("Indentify Card");
-		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		label.setBounds(52, 341, 126, 34);
-		getContentPane().add(label);
+		JLabel lblSCmnd = new JLabel("S\u1ED1 CMND");
+		lblSCmnd.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSCmnd.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblSCmnd.setBounds(88, 341, 90, 34);
+		getContentPane().add(lblSCmnd);
 		
-		JButton btnBack = new JButton("Back");
-		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		btnBack.setBounds(146, 416, 180, 45);
+		JButton btnBack = new JButton("Quay l\u1EA1i");
+		btnBack.setBackground(Color.ORANGE);
+		btnBack.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnBack.setBounds(205, 416, 150, 40);
 		getContentPane().add(btnBack);
 		
-		JButton btnContinue = new JButton("Continue");
+		JButton btnContinue = new JButton("Ti\u1EBFp t\u1EE5c");
+		btnContinue.setBackground(Color.ORANGE);
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String strHoten = txtHoTen.getText();
@@ -123,8 +131,8 @@ public class frmBooking_Step3 extends JInternalFrame {
 				
 			}
 		});
-		btnContinue.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		btnContinue.setBounds(497, 416, 180, 45);
+		btnContinue.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnContinue.setBounds(492, 416, 150, 40);
 		getContentPane().add(btnContinue);
 		
 		

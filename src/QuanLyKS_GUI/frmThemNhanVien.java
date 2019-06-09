@@ -35,6 +35,7 @@ import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JPasswordField;
+import java.awt.Color;
 
 public class frmThemNhanVien extends JInternalFrame {
 	private JTextField txtTenNhanVien;
@@ -73,11 +74,6 @@ public class frmThemNhanVien extends JInternalFrame {
 	public frmThemNhanVien() {
 		setBounds(100, 100, 934, 585);
 		getContentPane().setLayout(null);
-		
-		JLabel lblThmNhnVin = new JLabel("Th\u00EAm nh\u00E2n vi\u00EAn");
-		lblThmNhnVin.setFont(new Font("Sylfaen", Font.PLAIN, 22));
-		lblThmNhnVin.setBounds(242, 27, 159, 35);
-		getContentPane().add(lblThmNhnVin);
 		
 		JLabel lblNewLabel = new JLabel("T\u00EAn nh\u00E2n vi\u00EAn");
 		lblNewLabel.setBounds(23, 157, 99, 22);
@@ -204,6 +200,12 @@ public class frmThemNhanVien extends JInternalFrame {
 		});
 		button.setBounds(344, 345, 146, 52);
 		getContentPane().add(button);
+		
+		JLabel lblThmNhnVin = new JLabel("Th\u00EAm nh\u00E2n vi\u00EAn");
+		lblThmNhnVin.setForeground(Color.BLUE);
+		lblThmNhnVin.setFont(new Font("Tahoma", Font.BOLD, 25));
+		lblThmNhnVin.setBounds(325, 29, 200, 30);
+		getContentPane().add(lblThmNhnVin);
 		
 		
 		

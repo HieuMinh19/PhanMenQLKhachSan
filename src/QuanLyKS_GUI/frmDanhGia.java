@@ -33,6 +33,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Color;
 
 public class frmDanhGia extends JInternalFrame {
 	private JTextField txtMaPhong;
@@ -62,58 +63,56 @@ public class frmDanhGia extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public frmDanhGia() {
-		setBounds(100, 100, 797, 521);
+		setBounds(100, 100, 900, 700);
 		getContentPane().setLayout(null);
 
-		JLabel DanhGia = new JLabel("Tiep nhan danh gia");
-		DanhGia.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 28));
-		DanhGia.setBounds(111, 13, 294, 37);
-		getContentPane().add(DanhGia);
-
-		JLabel NhanXet = new JLabel("Danh gia");
-		NhanXet.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 13));
-		NhanXet.setBounds(108, 286, 84, 14);
+		JLabel NhanXet = new JLabel("Nội dung phản hồi");
+		NhanXet.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		NhanXet.setBounds(68, 372, 154, 30);
 		getContentPane().add(NhanXet);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(204, 286, 326, 97);
+		scrollPane.setBounds(240, 372, 439, 129);
 		getContentPane().add(scrollPane);
+		
+				JTextArea txtNoiDungDanhGia = new JTextArea();
+				txtNoiDungDanhGia.setFont(new Font("Monospaced", Font.PLAIN, 14));
+				scrollPane.setViewportView(txtNoiDungDanhGia);
 
-		JTextArea txtNoiDungDanhGia = new JTextArea();
-		scrollPane.setViewportView(txtNoiDungDanhGia);
-
-		JLabel MaPhong = new JLabel("Ma phong");
-		MaPhong.setFont(new Font("Tahoma", Font.BOLD, 13));
-		MaPhong.setBounds(111, 124, 84, 14);
-		getContentPane().add(MaPhong);
+		JLabel lbPhong = new JLabel("Phòng");
+		lbPhong.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lbPhong.setBounds(164, 157, 58, 23);
+		getContentPane().add(lbPhong);
 		
 
 		txtMaPhong = new JTextField();
-		txtMaPhong.setBounds(254, 120, 198, 23);
+		txtMaPhong.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtMaPhong.setBounds(234, 155, 150, 30);
 		getContentPane().add(txtMaPhong);
 		txtMaPhong.setColumns(10);
 
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(204, 198, 326, 75);
+		scrollPane_1.setBounds(470, 112, 297, 68);
 		getContentPane().add(scrollPane_1);
 		
 		DefaultTableModel m = new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
-				"Ten khach hang", "CMND"
+				"Tên khách hàng", "CMND"
 			}
 		);
 		table = new JTable(m);
 		scrollPane_1.setViewportView(table);
 		
 		JDateChooser dateNgayDanhGia = new JDateChooser();
-		dateNgayDanhGia.setBounds(251, 86, 201, 25);
+		dateNgayDanhGia.setBounds(234, 112, 150, 30);
 		getContentPane().add(dateNgayDanhGia);
 		dateNgayDanhGia.setDateFormatString("dd-MM-yyyy");
 
 		JButton btnDanhGia = new JButton("GHI NHẬN");
-		btnDanhGia.setFont(new Font("Tahoma", Font.BOLD, 13));
+		btnDanhGia.setBackground(Color.ORANGE);
+		btnDanhGia.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnDanhGia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				danhgiaDTO = new DanhGia_DTO(); 
@@ -135,15 +134,17 @@ public class frmDanhGia extends JInternalFrame {
 
 		});
 		btnDanhGia.setEnabled(false);
-		btnDanhGia.setBounds(305, 396, 214, 37);
+		btnDanhGia.setBounds(336, 525, 214, 37);
 		getContentPane().add(btnDanhGia);
 
-		JLabel NgayDanhGia = new JLabel("cho ngay");
-		NgayDanhGia.setFont(new Font("Tahoma", Font.BOLD, 13));
-		NgayDanhGia.setBounds(111, 86, 84, 23);
+		JLabel NgayDanhGia = new JLabel("Phản hồi cho ngày");
+		NgayDanhGia.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		NgayDanhGia.setBounds(64, 112, 156, 23);
 		getContentPane().add(NgayDanhGia);
 		
-		JButton btnNewButton = new JButton("Tim kiem");
+		JButton btnNewButton = new JButton("Kiểm tra");
+		btnNewButton.setBackground(Color.GREEN);
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (m.getRowCount() > 0) {
@@ -156,8 +157,14 @@ public class frmDanhGia extends JInternalFrame {
 				listCTDP.forEach(ctdp -> m.addRow(new Object[] {ctdp.getKhachHang().getTenKH(), ctdp.getKhachHang().getCMND()}));
 			}
 		});
-		btnNewButton.setBounds(315, 160, 97, 25);
+		btnNewButton.setBounds(354, 206, 166, 37);
 		getContentPane().add(btnNewButton);
+		
+		JLabel lblTipNhnPhn = new JLabel("Tiếp nhận phản hồi từ khách hàng");
+		lblTipNhnPhn.setForeground(Color.BLUE);
+		lblTipNhnPhn.setFont(new Font("Tahoma", Font.BOLD, 25));
+		lblTipNhnPhn.setBounds(240, 13, 439, 42);
+		getContentPane().add(lblTipNhnPhn);
 		
 	}
 }

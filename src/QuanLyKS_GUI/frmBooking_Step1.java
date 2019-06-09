@@ -33,6 +33,7 @@ import QuanLyKS_DTO.CTDatPhong_DTO;
 import QuanLyKS_DTO.LoaiPhong_DTO;
 import QuanLyKS_DTO.Phong_DTO;
 import QuanLyKS_GUI.frmLogin;
+import java.awt.Color;
 
 
 public class frmBooking_Step1 extends JInternalFrame {
@@ -62,21 +63,21 @@ public class frmBooking_Step1 extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public frmBooking_Step1() {
-		setBounds(100, 100, 729, 593);
+		getContentPane().setFont(new Font("Times New Roman", Font.PLAIN, 13));
+		setBounds(100, 100, 900, 700);
 		getContentPane().setLayout(null);
 		
 		JDateChooser date_NgayNhanPhong = new JDateChooser();
-		 
-		date_NgayNhanPhong.setBounds(208, 121, 142, 25);
+		date_NgayNhanPhong.getCalendarButton().setFont(new Font("Tahoma", Font.PLAIN, 16));
+		date_NgayNhanPhong.setBounds(208, 121, 150, 30);
 		getContentPane().add(date_NgayNhanPhong);
-		date_NgayNhanPhong.setDateFormatString("yyyy-MM-dd");
+		date_NgayNhanPhong.setDateFormatString("dd-MM-yyyy");
 		
 		
 		JDateChooser date_NgayTraPhong = new JDateChooser();
-		
-		date_NgayTraPhong.setBounds(420, 121, 133, 25);
+		date_NgayTraPhong.setBounds(499, 121, 150, 30);
 		getContentPane().add(date_NgayTraPhong);
-		date_NgayTraPhong.setDateFormatString("yyyy-MM-dd");
+		date_NgayTraPhong.setDateFormatString("dd-MM-yyyy");
 		
 		
 		//set Default NgayNhanPhong
@@ -98,31 +99,38 @@ public class frmBooking_Step1 extends JInternalFrame {
 		
 		
 		JLabel lblNewLabel = new JLabel("Ng\u00E0y nh\u1EADn ph\u00F2ng");
-		lblNewLabel.setBounds(224, 85, 110, 25);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel.setBounds(208, 83, 142, 25);
 		getContentPane().add(lblNewLabel);
 		
 		JLabel lblNgyTrPhng = new JLabel("Ng\u00E0y tr\u1EA3 ph\u00F2ng");
-		lblNgyTrPhng.setBounds(435, 85, 110, 25);
+		lblNgyTrPhng.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNgyTrPhng.setBounds(513, 83, 133, 25);
 		getContentPane().add(lblNgyTrPhng);
 		
 		JLabel lblNewLabel_1 = new JLabel("CH\u00C0O M\u1EEANG B\u1EA0N \u0110\u1EB6T PH\u00D2NG");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel_1.setBounds(249, 27, 296, 37);
+		lblNewLabel_1.setForeground(Color.RED);
+		lblNewLabel_1.setFont(new Font("Times New Roman", Font.PLAIN, 30));
+		lblNewLabel_1.setBounds(208, 13, 441, 37);
 		getContentPane().add(lblNewLabel_1);
 		
 		JEditorPane edMoTa = new JEditorPane();
+		edMoTa.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		edMoTa.setEditable(false);
-		edMoTa.setText("c,jbsjk");
-		edMoTa.setBounds(208, 266, 218, 37);
+		edMoTa.setBounds(208, 253, 441, 91);
 		getContentPane().add(edMoTa);
 
 		JEditorPane edGia = new JEditorPane();
+		edGia.setToolTipText("");
+		edGia.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		edGia.setEditable(false);
-	 	edGia.setBounds(435, 266, 118, 37);
+	 	edGia.setBounds(499, 191, 150, 30);
 		getContentPane().add(edGia);
 		JComboBox cbxMaPhong = new JComboBox();
-		cbxMaPhong.setBounds(208, 352, 345, 20);
+		cbxMaPhong.setBounds(208, 371, 173, 30);
 	 	JButton btnTiepTuc = new JButton("Ti\u1EBFp t\u1EE5c");
+	 	btnTiepTuc.setBackground(Color.ORANGE);
+	 	btnTiepTuc.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnTiepTuc.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e) {					 
 			 	 System.err.println("update thanh cong dich vu" + date_NgayNhanPhong.getDate().getTime());
@@ -156,11 +164,12 @@ public class frmBooking_Step1 extends JInternalFrame {
 				frmDashboard.controlFrame(frmDashboard.FRM_BOOKING2);
 			}
 		});
-		btnTiepTuc.setBounds(309, 427, 133, 25);
+		btnTiepTuc.setBounds(375, 433, 150, 40);
 		getContentPane().add(btnTiepTuc);
 		
 		getContentPane().add(cbxMaPhong);
 		JComboBox cbxLoaiPhong = new JComboBox();
+		cbxLoaiPhong.setFont(new Font("Tahoma", Font.PLAIN, 16));
 	  //Load list LoaiPhong
 		for(int i = 0; i < listLP.size(); i++) {
 			cbxLoaiPhong.addItem(listLP.get(i).getTenLoaiPhong());
@@ -204,7 +213,7 @@ public class frmBooking_Step1 extends JInternalFrame {
          		
 			}
 		});
-		cbxLoaiPhong.setBounds(208, 195, 345, 20);
+		cbxLoaiPhong.setBounds(208, 191, 218, 30);
 		getContentPane().add(cbxLoaiPhong);
 		
 		//autoload MaPong Validated
@@ -234,7 +243,8 @@ public class frmBooking_Step1 extends JInternalFrame {
        	  ///////end autoload
 		
 		JLabel lblDchV = new JLabel("Lo\u1EA1i ph\u00F2ng");
-		lblDchV.setBounds(336, 157, 110, 25);
+		lblDchV.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblDchV.setBounds(97, 191, 99, 25);
 		getContentPane().add(lblDchV);
 			
 		DefaultTableModel m = new DefaultTableModel(
@@ -248,15 +258,18 @@ public class frmBooking_Step1 extends JInternalFrame {
 		 
 		
 		JLabel lblNewLabel_2 = new JLabel("S\u1ED1 ph\u00F2ng");
-		lblNewLabel_2.setBounds(208, 327, 67, 14);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel_2.setBounds(111, 372, 76, 24);
 		getContentPane().add(lblNewLabel_2);
 		
 		JLabel lblMT = new JLabel("M\u00F4 t\u1EA3");
-		lblMT.setBounds(229, 230, 61, 25);
+		lblMT.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblMT.setBounds(143, 253, 45, 25);
 		getContentPane().add(lblMT);
 		
 		JLabel lblGi = new JLabel("Gi\u00E1");
-		lblGi.setBounds(435, 230, 61, 25);
+		lblGi.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblGi.setBounds(450, 191, 38, 25);
 		getContentPane().add(lblGi);
 		
 		

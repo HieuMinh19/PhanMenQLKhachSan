@@ -33,6 +33,8 @@ import java.sql.Date;
 import java.awt.event.ActionEvent;
 import javax.swing.JTabbedPane;
 import java.awt.Choice;
+import java.awt.Font;
+import java.awt.Color;
 
 public class frmCapNhatNhanVien extends JInternalFrame {
 	private JTextField txtTenNhanVien;
@@ -69,71 +71,83 @@ public class frmCapNhatNhanVien extends JInternalFrame {
 		bus=new NhanVien_BUS();
 		cv_bus = new ChucVu_BUS();
 		dsnv = new ArrayList<NhanVien_DTO>();
-		setBounds(100, 100, 770, 596);
+		setBounds(100, 100, 900, 700);
 		getContentPane().setLayout(null);
 		
 		txtTenNhanVien = new JTextField();
+		txtTenNhanVien.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		txtTenNhanVien.setColumns(10);
-		txtTenNhanVien.setBounds(214, 219, 320, 20);
+		txtTenNhanVien.setBounds(217, 364, 349, 30);
 		getContentPane().add(txtTenNhanVien);
 		
 		txtCMND = new JTextField();
+		txtCMND.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		txtCMND.setColumns(10);
-		txtCMND.setBounds(214, 277, 320, 20);
+		txtCMND.setBounds(217, 432, 170, 30);
 		getContentPane().add(txtCMND);
 		
 		JComboBox<ChucVu_DTO> cbChucVu = new JComboBox<ChucVu_DTO>();
-		cbChucVu.setBounds(214, 326, 320, 20);
+		cbChucVu.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		cbChucVu.setBounds(217, 496, 170, 30);
 		getContentPane().add(cbChucVu);
 		
-		JLabel label = new JLabel("T\u00EAn nh\u00E2n vi\u00EAn");
-		label.setBounds(54, 218, 122, 22);
-		getContentPane().add(label);
+		JLabel lblHTn = new JLabel("Họ tên");
+		lblHTn.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblHTn.setBounds(156, 367, 53, 22);
+		getContentPane().add(lblHTn);
 		
 		JLabel label_1 = new JLabel("CMND");
-		label_1.setBounds(54, 276, 75, 22);
+		label_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		label_1.setBounds(156, 435, 49, 22);
 		getContentPane().add(label_1);
 		
 		JLabel label_2 = new JLabel("Ch\u1EE9c v\u1EE5");
-		label_2.setBounds(54, 325, 63, 22);
+		label_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		label_2.setBounds(140, 498, 65, 22);
 		getContentPane().add(label_2);
 		
 		JLabel label_3 = new JLabel("Ng\u00E0y v\u00E0o l\u00E0m");
-		label_3.setBounds(54, 379, 122, 22);
+		label_3.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		label_3.setBounds(458, 496, 108, 22);
 		getContentPane().add(label_3);
 		
 		JLabel label_4 = new JLabel("Ng\u00E0y sinh");
-		label_4.setBounds(54, 438, 108, 22);
+		label_4.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		label_4.setBounds(488, 432, 78, 22);
 		getContentPane().add(label_4);
 		
 		
-		JButton btnCapNhat = new JButton("Cap Nhat");
-		btnCapNhat.setBounds(269, 501, 219, 25);
+		JButton btnCapNhat = new JButton("Cập nhật");
+		btnCapNhat.setBackground(Color.ORANGE);
+		btnCapNhat.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnCapNhat.setBounds(252, 573, 150, 40);
 		getContentPane().add(btnCapNhat);
 		
-		JButton btnXoa = new JButton("Xoa");
-		btnXoa.setBounds(573, 476, 98, 71);
+		JButton btnXoa = new JButton("Xóa");
+		btnXoa.setBackground(Color.ORANGE);
+		btnXoa.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnXoa.setBounds(515, 573, 150, 40);
 		getContentPane().add(btnXoa);
 		
 		JDateChooser date_NgaySinh = new JDateChooser();
-		date_NgaySinh.setBounds(214, 438, 320, 25);
+		date_NgaySinh.setBounds(578, 432, 150, 30);
 		getContentPane().add(date_NgaySinh); 
 		date_NgaySinh.setDateFormatString("dd/MM/yyyy");
 		
 		JDateChooser date_NgayVaoLam = new JDateChooser();
-		date_NgayVaoLam.setBounds(214, 379, 320, 25);
+		date_NgayVaoLam.setBounds(578, 496, 150, 30);
 		getContentPane().add(date_NgayVaoLam);
 		date_NgayVaoLam.setDateFormatString("dd/MM/yyyy");
 
 		JScrollPane srcListNhanVien = new JScrollPane();
-		srcListNhanVien.setBounds(65, 25, 605, 123);
+		srcListNhanVien.setBounds(50, 68, 766, 198);
 		getContentPane().add(srcListNhanVien);
 		
 		DefaultTableModel m = new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
-				"MaNhanVien", "TenNhanVien", "NgaySinh", "CMND", "NgayVaoLam", "TenChucVu"
+				"Mã nhân viên", "Tên nhân viên", "Ngày sinh", "CMND", "Ngày vào làm", "Tên chức vụ"
 			}
 		);
 		table = new JTable(m);
@@ -167,7 +181,9 @@ public class frmCapNhatNhanVien extends JInternalFrame {
 //		------------------------------------------------
 		
 //		------------------------------------------------
-		JButton btnLoadDanhSach = new JButton("Load Danh Sach Nhan Vien");
+		JButton btnLoadDanhSach = new JButton("Danh sách nhân viên");
+		btnLoadDanhSach.setBackground(Color.GREEN);
+		btnLoadDanhSach.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnLoadDanhSach.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (m.getRowCount() > 0) {
@@ -179,8 +195,14 @@ public class frmCapNhatNhanVien extends JInternalFrame {
 				dsnv.forEach(nv -> m.addRow(new Object[]{nv.getMaNhanVien(), nv.getTenNhanVien(),nv.getNgaySinh(), nv.getCMND(),nv.getNgayVaoLam(),nv.getChucVu().getTenChucVu()}));
 			}
 		}); 
-		btnLoadDanhSach.setBounds(257, 163, 202, 25);
+		btnLoadDanhSach.setBounds(325, 284, 236, 40);
 		getContentPane().add(btnLoadDanhSach);
+		
+		JLabel lblQunLNhn = new JLabel("Quản lý nhân viên");
+		lblQunLNhn.setForeground(Color.BLUE);
+		lblQunLNhn.setFont(new Font("Tahoma", Font.BOLD, 25));
+		lblQunLNhn.setBounds(319, 13, 242, 42);
+		getContentPane().add(lblQunLNhn);
 		
 		btnCapNhat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
