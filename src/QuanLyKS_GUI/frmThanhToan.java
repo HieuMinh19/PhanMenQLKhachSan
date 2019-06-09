@@ -33,10 +33,12 @@ import QuanLyKS_BUS.HoaDon_BUS;
 	
 	import java.util.concurrent.TimeUnit;
 import java.awt.Button;
+import com.toedter.calendar.JDateChooser;
 	public class frmThanhToan extends JInternalFrame {
 		int tienPhong =0;
 		int tiendichVu =0;
 		int tongtien =0;
+		int mactdatphong;
 		private HoaDon_BUS bus;
 		private JTable table;
 		private JTable table_dich;
@@ -93,7 +95,7 @@ import java.awt.Button;
 			getContentPane().add(lblInvoicePayment);
 			
 			JTextPane txtPhong = new JTextPane();
-			txtPhong.setBounds(334, 88, 102, 29);
+			txtPhong.setBounds(253, 88, 102, 29);
 			getContentPane().add(txtPhong);
 			
 			JTextPane txtTongTienDichVu = new JTextPane();
@@ -102,7 +104,7 @@ import java.awt.Button;
 			
 			JLabel lblNewLabel = new JLabel("Room");
 			lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
-			lblNewLabel.setBounds(208, 88, 52, 29);
+			lblNewLabel.setBounds(165, 88, 52, 29);
 			getContentPane().add(lblNewLabel);
 			
 			JScrollPane scrlistthanhtoan = new JScrollPane();
@@ -117,22 +119,7 @@ import java.awt.Button;
 					}
 				);
 				table = new JTable(m);
-//				ListSelectionModel cellSelectionModel = table.getSelectionModel();
-//			    cellSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-//			    cellSelectionModel.addListSelectionListener(new ListSelectionListener() {
-//					public void valueChanged(ListSelectionEvent e) {
-//					    int[] selectedRow = table.getSelectedRows();
-//					    for (int i = 0; i < selectedRow.length; i++) {
-//					    	startDate =	(Date) table.getValueAt(selectedRow[i], 4);
-//					        endDate = (Date) table.getValueAt(selectedRow[i], 5);
-//					        long getDiff = endDate.getTime() - startDate.getTime();
-//					        long getDaysDiff = getDiff / (24 * 60 * 60 * 1000);
-//					        giatien = table.getValueAt(selectedRow[i], 3).toString()  ;
-//					        giatien1 =  getDaysDiff * Long.parseLong(giatien) ;				      
-//					        txtTongTien.setText(String.valueOf(giatien1));
-//					    }
-//					  }
-//		        });
+
 				scrlistthanhtoan.setViewportView(table);
 				JScrollPane scrlisttendichvu = new JScrollPane();
 				scrlisttendichvu.setBounds(12, 332, 556, 98);
@@ -150,14 +137,23 @@ import java.awt.Button;
 			JButton btnSearchThanhToan = new JButton("Search");
 			btnSearchThanhToan.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-				
+//					System.err.println("ffffffffffffffffff");
+//					System.err.println("frm Thanh Toan theo ngay"+" "+ dtNgayTra.getDate());
+//					System.err.println("frm Thanh Toan theo ngay co get time"+" "+ dtNgayTra.getDate().getTime());
+//					System.err.println("ffffffffffffffffff");
+					
+					long millis = System.currentTimeMillis();
+					 java.sql.Date date = new java.sql.Date(millis);
+					 System.out.println("Ngay Hien tai"+" "+date);
+					
+					
 					if (m.getRowCount() > 0) {
 					    for (int i = m.getRowCount() - 1; i > -1; i--) {
 					        m.removeRow(i);
 					    }
 					};
 					
-					ArrayList<HoaDon_DTO> dsnv = bus.SearchNV(Integer.parseInt(txtPhong.getText()));
+					ArrayList<HoaDon_DTO> dsnv = bus.SearchNV(Integer.parseInt(txtPhong.getText()), date);
 					dsnv.forEach(nv -> m.addRow(new Object[]{
 							nv.getMaCTDatPhong(), 
 							nv.getHoTen(),
@@ -172,7 +168,7 @@ import java.awt.Button;
 					        n.removeRow(i);
 					    }
 					};
-					ArrayList<HoaDon_DTO> tendv = bus.SearchTenDV(Integer.parseInt(txtPhong.getText()));
+					ArrayList<HoaDon_DTO> tendv = bus.SearchTenDV(Integer.parseInt(txtPhong.getText()),date);
 					tendv.forEach(nv -> n.addRow(new Object[]{ 
 							nv.getTenDichVu(),
 							nv.getSoLuong(), 
@@ -180,13 +176,8 @@ import java.awt.Button;
 							}));
 				    /////
 					dsnv.forEach((element) -> {
-				         // a =  element.getMaCTDatPhong();
-//				          System.out.println("ma pg"+a);
-//				            System.out.println(element.getHoTen());
-//				            System.out.println(element.getTenLoaiPhong());
-//				            System.out.println(element.getGiaPhong());
-//				            System.out.println(element.getNgayNhan());
-//				            System.out.println(element.getNgayTra());
+
+						mactdatphong = element.getMaCTDatPhong();
 				            startDate = element.getNgayNhan();
 				            System.out.println("Ngay Nhan"+startDate);
 				            endDate = element.getNgayTra();
@@ -197,31 +188,14 @@ import java.awt.Button;
 				            System.out.println("ngay"+getDaysDiff);
 				            tienPhong +=  getDaysDiff * element.getGiaPhong();	
 				            System.out.println("tien phogn"+tienPhong);
-				            //startDate =	(Date) table.getValueAt(selectedRow[i], 4);
-					      //  endDate = (Date) table.getValueAt(selectedRow[i], 5);
-					       // long getDiff = endDate.getTime() - startDate.getTime();
-					       // long getDaysDiff = getDiff / (24 * 60 * 60 * 1000);
-					       // giatien = table.getValueAt(selectedRow[i], 3).toString()  ;
-					       // giatien1 =  getDaysDiff * Long.parseLong(giatien) ;				      
-					       // txtTongTien.setText(String.valueOf(giatien1));
+				     
 				           txtTongTienPhong.setText(String.valueOf(tienPhong));
 				        });
 					tendv.forEach((element) -> {
-			         // a =  element.getMaCTDatPhong();
-//			          System.out.println("ma pg"+a);
-//			            System.out.println(element.getHoTen());
-//			            System.out.println(element.getTenLoaiPhong());
-//			            System.out.println(element.getGiaPhong());
-//			            System.out.println(element.getNgayNhan());
-//			            System.out.println(element.getNgayTra());
+
+						
 						tiendichVu += element.getTongTienDichVu();
-			            //startDate =	(Date) table.getValueAt(selectedRow[i], 4);
-				      //  endDate = (Date) table.getValueAt(selectedRow[i], 5);
-				       // long getDiff = endDate.getTime() - startDate.getTime();
-				       // long getDaysDiff = getDiff / (24 * 60 * 60 * 1000);
-				       // giatien = table.getValueAt(selectedRow[i], 3).toString()  ;
-				       // giatien1 =  getDaysDiff * Long.parseLong(giatien) ;				      
-				       // txtTongTien.setText(String.valueOf(giatien1));
+			
 						txtTongTienDichVu.setText(String.valueOf(tiendichVu));
 			        });
 					txtTongTienThanhToan.setText(String.valueOf(tiendichVu+tienPhong));
@@ -232,7 +206,7 @@ import java.awt.Button;
 				
 			});
 			btnSearchThanhToan.setFont(new Font("Tahoma", Font.PLAIN, 18));
-			btnSearchThanhToan.setBounds(620, 88, 102, 29);
+			btnSearchThanhToan.setBounds(473, 81, 107, 36);
 			getContentPane().add(btnSearchThanhToan);
 			
 			JLabel lblTngTinDich = new JLabel("T\u1ED5ng Ti\u1EC1n Dich Vu");
@@ -263,18 +237,30 @@ import java.awt.Button;
 					 long millis = System.currentTimeMillis();
 					 java.sql.Date date = new java.sql.Date(millis);
 					 System.out.println("Ngay Hien Tại Date"+" "+date); 
-
-					
-         		HoaDon_DTO nvDTO = new HoaDon_DTO(date,SoTienThu1,SoPhong1,MaNhanVien);
+				if(SoTienThu1 > 0) {
+					HoaDon_DTO nvDTO = new HoaDon_DTO(date,SoTienThu1,mactdatphong,MaNhanVien);
 	        		if(HoaDon_BUS.Insert(nvDTO) == true) {
+//	        			tienPhong = 0;
+//						tiendichVu = 0;
+//						tongtien = 0;
 	        			JOptionPane.showMessageDialog(null, "Thanh Toan Thanh Cong", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);
+	        			txtTongTienThanhToan.setText(String.valueOf(0));
+	        			txtTongTienPhong.setText(String.valueOf(0));
+	        			txtTongTienDichVu.setText(String.valueOf(0));
 	        		}else {
 	        			JOptionPane.showMessageDialog(null, "Thanh Toan That Bai", "Fail: " + "Success Mesage", JOptionPane.CLOSED_OPTION);
 	        		}
+				}else {
+					
+					JOptionPane.showMessageDialog(null, "Phong Trong Nen Khong THanh Toan", "Fail: " + "Success Mesage", JOptionPane.CLOSED_OPTION);
+				}
+					
+         		
 			}
 			});
 			btnThanhToan.setBounds(522, 527, 164, 24);
 			getContentPane().add(btnThanhToan);
+			
 			
 		}
 	}
