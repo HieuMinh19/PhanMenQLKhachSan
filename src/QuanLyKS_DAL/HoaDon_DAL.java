@@ -20,12 +20,12 @@ public class HoaDon_DAL extends JInternalFrame {
 	}
 	
 	//connect table NHANVIEN
-	public ArrayList<HoaDon_DTO> SearchNV (int tukhoa){
+	public ArrayList<HoaDon_DTO> SearchNV (int tukhoa, java.sql.Date ngayvaolam){
 		//get connection
 		PreparedStatement ptmt = null; 
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
 		Connection conn = mycon.getConnection();
-		String query = "SELECT CTDATPHONG.MaCTDatPhong, KHACHHANG.HoTen , LOAIPHONG.TenLoaiPhong,LOAIPHONG.GiaPhong,   CTDATPHONG.NgayNhan, CTDATPHONG.NgayTra FROM CTDATPHONG, KHACHHANG, PHONG, LOAIPHONG WHERE CTDATPHONG.MaKhachHang = KHACHHANG.MaKhachHang and CTDATPHONG.MaPhong = PHONG.MaPhong and LOAIPHONG.MaLoaiPhong = PHONG.MaLoaiPhong and CTDATPHONG.MaPhong = '"+tukhoa+"' ";
+		String query = "SELECT CTDATPHONG.MaCTDatPhong, KHACHHANG.HoTen , LOAIPHONG.TenLoaiPhong,LOAIPHONG.GiaPhong,   CTDATPHONG.NgayNhan, CTDATPHONG.NgayTra FROM CTDATPHONG, KHACHHANG, PHONG, LOAIPHONG WHERE CTDATPHONG.MaKhachHang = KHACHHANG.MaKhachHang and CTDATPHONG.MaPhong = PHONG.MaPhong and LOAIPHONG.MaLoaiPhong = PHONG.MaLoaiPhong and CTDATPHONG.MaPhong = '"+tukhoa+"' and datediff(DAY, NgayTra, '" + ngayvaolam.toString() + "') = 0 ";
 		try {
 			ptmt = conn.prepareStatement(query);
 			ResultSet rs = ptmt.executeQuery();
@@ -47,12 +47,12 @@ public class HoaDon_DAL extends JInternalFrame {
 		}
 		return null;	
 	}
-	public ArrayList<HoaDon_DTO> SearchTenDV (int tukhoa){
+	public ArrayList<HoaDon_DTO> SearchTenDV (int tukhoa,java.sql.Date ngayvaolam){
 		//get connection
 		PreparedStatement ptmt = null; 
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
 		Connection conn = mycon.getConnection();
-		String query = "SELECT DICHVU.TenDichVu, CTDICHVU.SoLuong,CTDICHVU.TongTienDichVu FROM CTDATPHONG, DICHVU, CTDICHVU WHERE DICHVU.MaDichVu = CTDICHVU.MaDichVu and CTDICHVU.MaCTDatPhong = CTDATPHONG.MaCTDatPhong and CTDATPHONG.MaPhong = '"+tukhoa+"' ";
+		String query = "SELECT DICHVU.TenDichVu, CTDICHVU.SoLuong,CTDICHVU.TongTienDichVu FROM CTDATPHONG, DICHVU, CTDICHVU WHERE DICHVU.MaDichVu = CTDICHVU.MaDichVu and CTDICHVU.MaCTDatPhong = CTDATPHONG.MaCTDatPhong and CTDATPHONG.MaPhong = '"+tukhoa+"' and datediff(DAY, NgayTra, '" + ngayvaolam.toString() + "') = 0 ";
 		try {
 			ptmt = conn.prepareStatement(query);
 			ResultSet rs = ptmt.executeQuery();
