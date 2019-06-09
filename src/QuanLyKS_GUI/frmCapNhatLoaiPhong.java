@@ -20,6 +20,7 @@ import QuanLyKS_DTO.LoaiPhong_DTO;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.Color;
+import javax.swing.SwingConstants;
 
 public class frmCapNhatLoaiPhong extends JInternalFrame {
 	private JTextField txtTenLoaiPhong;
@@ -173,7 +174,7 @@ public class frmCapNhatLoaiPhong extends JInternalFrame {
 		
 		txtMoTa = new JTextField();
 		txtMoTa.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txtMoTa.setBounds(503, 282, 328, 90);
+		txtMoTa.setBounds(503, 282, 328, 116);
 		getContentPane().add(txtMoTa);
 		txtMoTa.setColumns(10);
 		
