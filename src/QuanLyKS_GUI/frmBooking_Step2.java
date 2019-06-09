@@ -96,6 +96,12 @@ public class frmBooking_Step2 extends JInternalFrame {
 		getContentPane().add(btnContinue);
 		
 		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frmDashboard.frmBooking1 = new frmBooking_Step1(ctdp);
+				frmDashboard.controlFrame(frmDashboard.FRM_BOOKING1);
+			}
+		});
 		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		btnBack.setBounds(81, 418, 180, 45);
 		getContentPane().add(btnBack);

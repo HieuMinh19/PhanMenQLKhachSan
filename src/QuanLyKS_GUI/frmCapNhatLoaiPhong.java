@@ -130,17 +130,17 @@ public class frmCapNhatLoaiPhong extends JInternalFrame {
 		
 		btnCapNhat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				boolean result = LoaiPhong_BUS.Update(new LoaiPhong_DTO(selectMaLoaiPhong, txtTenLoaiPhong.getText(),Integer.parseInt(txtGiaPhong.getText())));
-				if(result) {
-					
-					if (m.getRowCount() > 0) {
-					    for (int i = m.getRowCount() - 1; i > -1; i--) {
-					        m.removeRow(i);
-					    }
-					}
-					ArrayList<LoaiPhong_DTO> dslp = loaiphong_bus.LoadListLP();
-					dslp.forEach(lp -> m.addRow(new Object[]{lp.getMaLoaiPhong(),lp.getTenLoaiPhong(),lp.getGiaPhong()}));
-				}
+//				boolean result = LoaiPhong_BUS.Update(new LoaiPhong_DTO(selectMaLoaiPhong, txtTenLoaiPhong.getText(),Integer.parseInt(txtGiaPhong.getText())));
+//				if(result) {
+//					
+//					if (m.getRowCount() > 0) {
+//					    for (int i = m.getRowCount() - 1; i > -1; i--) {
+//					        m.removeRow(i);
+//					    }
+//					}
+//					ArrayList<LoaiPhong_DTO> dslp = loaiphong_bus.LoadListLP();
+//					dslp.forEach(lp -> m.addRow(new Object[]{lp.getMaLoaiPhong(),lp.getTenLoaiPhong(),lp.getGiaPhong()}));
+//				}
 			}
 		});
 		//
