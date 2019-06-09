@@ -33,6 +33,8 @@ import java.sql.Date;
 import java.awt.event.ActionEvent;
 import javax.swing.JTabbedPane;
 import java.awt.Choice;
+import java.awt.Font;
+import java.awt.Color;
 
 public class QLBangPhanCong extends JInternalFrame {
 	private JTextField txtTenCongViec;
@@ -68,53 +70,62 @@ public class QLBangPhanCong extends JInternalFrame {
 		bus=new BangPhanCong_BUS();
 		cv_bus = new NhanVien_BUS();
 		dsnv = new ArrayList<BangPhanCong_DTO>();
-		setBounds(100, 100, 770, 596);
+		setBounds(100, 100, 900, 700);
 		getContentPane().setLayout(null);
 		
 		txtTenCongViec = new JTextField();
+		txtTenCongViec.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		txtTenCongViec.setColumns(10);
-		txtTenCongViec.setBounds(214, 233, 320, 20);
+		txtTenCongViec.setBounds(303, 350, 300, 30);
 		getContentPane().add(txtTenCongViec);
 		
 		JComboBox<NhanVien_DTO> cbxTenNhanVien = new JComboBox<NhanVien_DTO>();
-		cbxTenNhanVien.setBounds(214, 295, 320, 20);
+		cbxTenNhanVien.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		cbxTenNhanVien.setBounds(303, 406, 300, 30);
 		getContentPane().add(cbxTenNhanVien);
 		
-		JLabel lblTnCngVic = new JLabel("Tên Công Việc");
-		lblTnCngVic.setBounds(56, 232, 103, 22);
+		JLabel lblTnCngVic = new JLabel("Tên công việc");
+		lblTnCngVic.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblTnCngVic.setBounds(178, 352, 113, 22);
 		getContentPane().add(lblTnCngVic);
 		
-		JLabel lblTnNhnVin = new JLabel("Tên Nhân Viên");
-		lblTnNhnVin.setBounds(56, 294, 134, 22);
+		JLabel lblTnNhnVin = new JLabel("Tên nhân viên");
+		lblTnNhnVin.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblTnNhnVin.setBounds(178, 408, 113, 22);
 		getContentPane().add(lblTnNhnVin);
 		
-		JLabel lblNgyLmVic = new JLabel("Ngày Làm Việc");
-		lblNgyLmVic.setBounds(56, 358, 122, 22);
+		JLabel lblNgyLmVic = new JLabel("Ngày làm việc");
+		lblNgyLmVic.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNgyLmVic.setBounds(182, 463, 110, 22);
 		getContentPane().add(lblNgyLmVic);
 		
 		
-		JButton btnCapNhat = new JButton("Cap Nhat");
-		btnCapNhat.setBounds(92, 454, 157, 33);
+		JButton btnCapNhat = new JButton("Cập nhật");
+		btnCapNhat.setBackground(Color.ORANGE);
+		btnCapNhat.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnCapNhat.setBounds(298, 540, 150, 40);
 		getContentPane().add(btnCapNhat);
 		
-		JButton btnXoa = new JButton("Xoa");
-		btnXoa.setBounds(362, 454, 134, 33);
+		JButton btnXoa = new JButton("Xóa");
+		btnXoa.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnXoa.setBackground(Color.ORANGE);
+		btnXoa.setBounds(482, 540, 150, 40);
 		getContentPane().add(btnXoa);
 		
 		JDateChooser dtNgayLamViec = new JDateChooser();
-		dtNgayLamViec.setBounds(214, 355, 320, 25);
+		dtNgayLamViec.setBounds(303, 463, 300, 30);
 		getContentPane().add(dtNgayLamViec);
 		dtNgayLamViec.setDateFormatString("dd/MM/yyyy");
 
 		JScrollPane srcListNhanVien = new JScrollPane();
-		srcListNhanVien.setBounds(65, 25, 605, 123);
+		srcListNhanVien.setBounds(126, 74, 626, 123);
 		getContentPane().add(srcListNhanVien);
 		
 		DefaultTableModel m = new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
-				"Mã Phân Công", "Ngày Làm Việc", "Tên Công Việc", "Tên Nhân Viên"
+				"Mã phân công", "Ngày làm việc", "Tên công việc", "Tên nhân viên"
 			}
 		);
 		table = new JTable(m);
@@ -149,7 +160,9 @@ public class QLBangPhanCong extends JInternalFrame {
 //		------------------------------------------------
 		
 //		------------------------------------------------
-		JButton btnLoadDanhSach = new JButton("Load Danh Sach Phan Cong");
+		JButton btnLoadDanhSach = new JButton("Danh sách phân công");
+		btnLoadDanhSach.setBackground(Color.GREEN);
+		btnLoadDanhSach.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnLoadDanhSach.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (m.getRowCount() > 0) {
@@ -161,8 +174,14 @@ public class QLBangPhanCong extends JInternalFrame {
 				dsnv.forEach(nv -> m.addRow(new Object[]{nv.getMaPhanCong(), nv.getNgayPhanCong(),nv.getLoaiCongViec(),nv.getNhanVien().getTenNhanVien()}));
 			}
 		}); 
-		btnLoadDanhSach.setBounds(257, 163, 202, 25);
+		btnLoadDanhSach.setBounds(303, 210, 270, 40);
 		getContentPane().add(btnLoadDanhSach);
+		
+		JLabel label = new JLabel("Tra c\u1EE9u th\u00F4ng tin nh\u00E2n vi\u00EAn");
+		label.setForeground(Color.BLUE);
+		label.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		label.setBounds(271, 13, 322, 37);
+		getContentPane().add(label);
 		
 		btnCapNhat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

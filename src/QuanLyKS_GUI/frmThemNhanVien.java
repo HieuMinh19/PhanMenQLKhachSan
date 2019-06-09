@@ -50,11 +50,9 @@ public class frmThemNhanVien extends JInternalFrame {
 	private static int idCV = 0;
 	ChucVu_DAL cvDAL = new ChucVu_DAL();
 	ResultSet rslistChucVu = cvDAL.getListChucVu();
-	
-	
+	private JTextField txtusername;
 	private JPasswordField txtpass;
 	private JPasswordField txtconfpass;
-	private JTextField txtusername;
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -72,32 +70,38 @@ public class frmThemNhanVien extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public frmThemNhanVien() {
-		setBounds(100, 100, 934, 585);
+		setBounds(100, 100, 900, 700);
 		getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("T\u00EAn nh\u00E2n vi\u00EAn");
-		lblNewLabel.setBounds(23, 157, 99, 22);
+		JLabel lblNewLabel = new JLabel("H\u1ECD t\u00EAn");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel.setBounds(474, 119, 57, 22);
 		getContentPane().add(lblNewLabel);
 		
 		JLabel lblCmnd = new JLabel("CMND");
-		lblCmnd.setBounds(23, 208, 75, 22);
+		lblCmnd.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblCmnd.setBounds(474, 189, 49, 22);
 		getContentPane().add(lblCmnd);
 		
 		txtTenNhanVien = new JTextField();
-		txtTenNhanVien.setBounds(151, 158, 198, 20);
+		txtTenNhanVien.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtTenNhanVien.setBounds(543, 117, 170, 30);
 		getContentPane().add(txtTenNhanVien);
 		txtTenNhanVien.setColumns(10);
 		
 		txtCMND = new JTextField();
-		txtCMND.setBounds(151, 209, 198, 20);
+		txtCMND.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtCMND.setBounds(543, 187, 170, 30);
 		getContentPane().add(txtCMND);
 		txtCMND.setColumns(10);
 		
 		JLabel lblChcV = new JLabel("Ch\u1EE9c v\u1EE5");
-		lblChcV.setBounds(23, 256, 63, 22);
+		lblChcV.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblChcV.setBounds(466, 389, 65, 22);
 		getContentPane().add(lblChcV);
 		
 		JComboBox<String> cbxChucVu = new JComboBox<String>();
+		cbxChucVu.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		cbxChucVu.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
 				//get the value selected of cbx and using loop to scan Arraylist LoaiPhong
@@ -110,48 +114,48 @@ public class frmThemNhanVien extends JInternalFrame {
         		}
 			}
 		});
-		cbxChucVu.setBounds(151, 257, 198, 20);
+		cbxChucVu.setBounds(543, 387, 170, 30);
 		getContentPane().add(cbxChucVu);
 		
 		JDateChooser dtngaysinh = new JDateChooser();
-		dtngaysinh.setBounds(528, 256, 198, 22);
+		dtngaysinh.setDateFormatString("dd/MM/yyyy");
+		dtngaysinh.setBounds(543, 256, 170, 30);
 		getContentPane().add(dtngaysinh);
 		
 		JDateChooser dtngayvaolam = new JDateChooser();
-		dtngayvaolam.setBounds(528, 208, 198, 22);
+		dtngayvaolam.setDateFormatString("dd/MM/yyyy");
+		dtngayvaolam.setBounds(543, 322, 170, 30);
 		getContentPane().add(dtngayvaolam);
 		
 		JLabel label_1 = new JLabel("Ng\u00E0y sinh");
-		label_1.setBounds(403, 243, 87, 35);
+		label_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		label_1.setBounds(453, 256, 78, 30);
 		getContentPane().add(label_1);
 		
 		JLabel label_2 = new JLabel("Ng\u00E0y v\u00E0o l\u00E0m");
-		label_2.setBounds(403, 208, 99, 22);
+		label_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		label_2.setBounds(423, 322, 108, 22);
 		getContentPane().add(label_2);
 		
-		JLabel lblTaiKhoan = new JLabel("Tai Khoan");
-		lblTaiKhoan.setBounds(23, 98, 99, 22);
+		JLabel lblTaiKhoan = new JLabel("T\u00E0i kho\u1EA3n");
+		lblTaiKhoan.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblTaiKhoan.setBounds(97, 119, 78, 22);
 		getContentPane().add(lblTaiKhoan);
 		
-		JLabel lblMatKhau = new JLabel("Mat Khau");
-		lblMatKhau.setBounds(403, 101, 99, 22);
+		JLabel lblMatKhau = new JLabel("M\u1EADt kh\u1EA9u");
+		lblMatKhau.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblMatKhau.setBounds(102, 189, 73, 22);
 		getContentPane().add(lblMatKhau);
 		
-		JLabel lblXacNhanMk = new JLabel("Xac Nhan MK");
-		lblXacNhanMk.setBounds(403, 160, 99, 22);
+		JLabel lblXacNhanMk = new JLabel("X\u00E1c nh\u1EADn m\u1EADt kh\u1EA9u");
+		lblXacNhanMk.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblXacNhanMk.setBounds(23, 256, 152, 22);
 		getContentPane().add(lblXacNhanMk);
-		
-		txtpass = new JPasswordField();
-		txtpass.setBounds(528, 98, 198, 22);
-		getContentPane().add(txtpass);
-		
-		txtconfpass = new JPasswordField();
-		txtconfpass.setBounds(528, 157, 198, 22);
-		getContentPane().add(txtconfpass);
 		 
 		txtusername = new JTextField();
+		txtusername.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		txtusername.setColumns(10);
-		txtusername.setBounds(151, 98, 198, 20);
+		txtusername.setBounds(187, 121, 170, 30);
 		getContentPane().add(txtusername);
 		
         try {    
@@ -168,7 +172,8 @@ public class frmThemNhanVien extends JInternalFrame {
 		 
 		
 		Button button = new Button("Th\u00EAm nh\u00E2n vi\u00EAn");
-		button.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		button.setBackground(Color.ORANGE);
+		button.setFont(new Font("Tahoma", Font.BOLD, 18));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -198,7 +203,7 @@ public class frmThemNhanVien extends JInternalFrame {
          		
 			}
 		});
-		button.setBounds(344, 345, 146, 52);
+		button.setBounds(352, 478, 150, 40);
 		getContentPane().add(button);
 		
 		JLabel lblThmNhnVin = new JLabel("Th\u00EAm nh\u00E2n vi\u00EAn");
@@ -206,6 +211,16 @@ public class frmThemNhanVien extends JInternalFrame {
 		lblThmNhnVin.setFont(new Font("Tahoma", Font.BOLD, 25));
 		lblThmNhnVin.setBounds(325, 29, 200, 30);
 		getContentPane().add(lblThmNhnVin);
+		
+		txtpass = new JPasswordField();
+		txtpass.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtpass.setBounds(187, 187, 170, 30);
+		getContentPane().add(txtpass);
+		
+		txtconfpass = new JPasswordField();
+		txtconfpass.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtconfpass.setBounds(187, 256, 170, 30);
+		getContentPane().add(txtconfpass);
 		
 		
 		

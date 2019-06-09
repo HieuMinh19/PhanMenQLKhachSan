@@ -27,7 +27,6 @@ import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.util.ArrayList;
 
-import QuanLyKS_GUI.Register;
 import javax.swing.JOptionPane;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
@@ -39,7 +38,6 @@ public class frmDanhGia extends JInternalFrame {
 	private JTextField txtMaPhong;
 	private DanhGia_DTO danhgiaDTO;
 	static frmDanhGia frame = new frmDanhGia();
-	public static Register registerForm = new Register();
 	private JTable table;
 	
 

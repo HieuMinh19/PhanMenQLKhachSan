@@ -34,6 +34,7 @@ import java.sql.SQLException;
 import com.toedter.calendar.JDateChooser;
 import QuanLyKS_DTO.NhanVien_DTO;
 import QuanLyKS_BUS.BangPhanCong_BUS;
+import java.awt.Color;
 
 
 public class BangPhanCong extends JInternalFrame {
@@ -69,34 +70,33 @@ public class BangPhanCong extends JInternalFrame {
 		//BangPhanCong_DAL CTDichVu_DAL = new BangPhanCong_DAL();
 //        ResultSet   = CTDichVu_DAL.getListDV();
 
-		setBounds(100, 100, 776, 481);
+		setBounds(100, 100, 900, 700);
 		getContentPane().setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Ph\u00E2n C\u00F4ng C\u00F4ng Vi\u1EC7c");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 36));
-		lblNewLabel.setBounds(80, 11, 467, 44);
-		getContentPane().add(lblNewLabel);
-
 		JLabel lblNewLabel_2 = new JLabel("T\u00EAn C\u00F4ng Vi\u1EC7c");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_2.setBounds(142, 154, 103, 14);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel_2.setBounds(166, 179, 117, 22);
 		getContentPane().add(lblNewLabel_2);
 
 		JLabel lblNewLabel_3 = new JLabel("Ng\u00E0y L\u00E0m Vi\u1EC7c");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_3.setBounds(143, 201, 124, 14);
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel_3.setBounds(166, 244, 117, 22);
 		getContentPane().add(lblNewLabel_3);
 
 		JDateChooser dtNgayLam = new JDateChooser();
-		dtNgayLam.setBounds(291, 193, 172, 22);
+		dtNgayLam.setDateFormatString("dd/MM/yyyy");
+		dtNgayLam.setBounds(295, 244, 250, 30);
 		getContentPane().add(dtNgayLam);
 
 		txtTenCongViec = new JTextField();
-		txtTenCongViec.setBounds(291, 151, 172, 20);
+		txtTenCongViec.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtTenCongViec.setBounds(295, 176, 250, 30);
 		getContentPane().add(txtTenCongViec);
 		txtTenCongViec.setColumns(10);
 
 		JButton btnThemPhanCong = new JButton("Th\u00EAm Ph\u00E2n C\u00F4ng");
+		btnThemPhanCong.setBackground(Color.GREEN);
+		btnThemPhanCong.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnThemPhanCong.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -115,15 +115,16 @@ public class BangPhanCong extends JInternalFrame {
 
 			}
 		});
-		btnThemPhanCong.setBounds(228, 244, 140, 23);
+		btnThemPhanCong.setBounds(319, 305, 200, 40);
 		getContentPane().add(btnThemPhanCong);
 		
 		JLabel lblTnNhnVin = new JLabel("T\u00EAn Nh\u00E2n Vi\u00EAn");
-		lblTnNhnVin.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblTnNhnVin.setBounds(142, 111, 103, 14);
+		lblTnNhnVin.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblTnNhnVin.setBounds(166, 111, 117, 30);
 		getContentPane().add(lblTnNhnVin);
 		
 		JComboBox<String> cbxTenNhanVien = new JComboBox<String>();
+		cbxTenNhanVien.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		cbxTenNhanVien.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
 				System.err.println("cbx ten nhan vien");
@@ -137,8 +138,14 @@ public class BangPhanCong extends JInternalFrame {
         		}
 			}
 		});
-		cbxTenNhanVien.setBounds(291, 107, 172, 20);
+		cbxTenNhanVien.setBounds(295, 112, 250, 30);
 		getContentPane().add(cbxTenNhanVien);
+		
+		JLabel lblThmPhnCng = new JLabel("Th\u00EAm ph\u00E2n c\u00F4ng ");
+		lblThmPhnCng.setForeground(Color.BLUE);
+		lblThmPhnCng.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblThmPhnCng.setBounds(319, 13, 196, 37);
+		getContentPane().add(lblThmPhnCng);
 		
 		  try {    
 				System.err.println("try cbx ten nhan vien");
