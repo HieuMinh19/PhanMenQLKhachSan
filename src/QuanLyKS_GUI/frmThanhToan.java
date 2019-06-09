@@ -37,6 +37,7 @@ import java.awt.Button;
 		int tienPhong =0;
 		int tiendichVu =0;
 		int tongtien =0;
+		int mactdatphong;
 		private HoaDon_BUS bus;
 		private JTable table;
 		private JTable table_dich;
@@ -187,6 +188,7 @@ import java.awt.Button;
 //				            System.out.println(element.getGiaPhong());
 //				            System.out.println(element.getNgayNhan());
 //				            System.out.println(element.getNgayTra());
+						mactdatphong = element.getMaCTDatPhong();
 				            startDate = element.getNgayNhan();
 				            System.out.println("Ngay Nhan"+startDate);
 				            endDate = element.getNgayTra();
@@ -214,6 +216,7 @@ import java.awt.Button;
 //			            System.out.println(element.getGiaPhong());
 //			            System.out.println(element.getNgayNhan());
 //			            System.out.println(element.getNgayTra());
+						
 						tiendichVu += element.getTongTienDichVu();
 			            //startDate =	(Date) table.getValueAt(selectedRow[i], 4);
 				      //  endDate = (Date) table.getValueAt(selectedRow[i], 5);
@@ -265,7 +268,7 @@ import java.awt.Button;
 					 System.out.println("Ngay Hien Tại Date"+" "+date); 
 
 					
-         		HoaDon_DTO nvDTO = new HoaDon_DTO(date,SoTienThu1,SoPhong1,MaNhanVien);
+         		HoaDon_DTO nvDTO = new HoaDon_DTO(date,SoTienThu1,mactdatphong,MaNhanVien);
 	        		if(HoaDon_BUS.Insert(nvDTO) == true) {
 	        			JOptionPane.showMessageDialog(null, "Thanh Toan Thanh Cong", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);
 	        		}else {
