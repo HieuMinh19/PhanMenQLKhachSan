@@ -109,9 +109,9 @@ create table CTDATPHONG(
 )
 go
 INSERT INTO NHANVIEN(Username, Password, TenNhanVien, NgaySinh, CMND, NgayVaoLam, MaChucVu) 
-values ('ql', '1', 'le minh hieu', '1998-11-15', 225786369, '2019-05-05', 1)
+values ('hieu', '1', 'Le Minh Hieu', '1998-11-15', 225786369, '2019-05-05', 1)
 INSERT INTO NHANVIEN(Username, Password, TenNhanVien, NgaySinh, CMND, NgayVaoLam, MaChucVu) 
-values ('nv', '1', 'Nguyen Phuc Duc', '1998-08-09', 225764728, '2019-05-18', 2)
+values ('duc', '1', 'Nguyen Phuc Duc', '1998-08-09', 225764728, '2019-05-18', 2)
 INSERT INTO NHANVIEN(Username, Password, TenNhanVien, NgaySinh, CMND, NgayVaoLam, MaChucVu) 
 values ('hai', '1', 'Tran Ngoc Hai', '1998-03-20', 225712598, '2019-06-11', 2)
 INSERT INTO NHANVIEN(Username, Password, TenNhanVien, NgaySinh, CMND, NgayVaoLam, MaChucVu) 
@@ -119,6 +119,8 @@ values ('duy', '1', 'Duy Zoan', '1998-06-07', 225896128, '2019-07-02', 2)
 go
 INSERT INTO CHUCVU(TenChucVu) VALUES ('Quan Ly');
 INSERT INTO CHUCVU(TenChucVu) VALUES ('Le tan');
+INSERT INTO CHUCVU(TenChucVu) VALUES ('Bao ve');
+INSERT INTO CHUCVU(TenChucVu) VALUES ('Tap vu');
 go
 INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (1, 1);
 INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (2, 2);
@@ -126,11 +128,12 @@ INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (3, 3);
 INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (4, 4);
 INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (5, 5);
 go
-INSERT INTO LOAIPHONG( TenLoaiPhong, GiaPhong,MoTa) VALUES ( 'Binh Dan', 100000, 'Chi Co Quat');
-INSERT INTO LOAIPHONG( TenLoaiPhong, GiaPhong,MoTa) VALUES ( 'Thuong Gia', 400000,'Co Quat Lanh va Nuoc Co Ga');
-INSERT INTO LOAIPHONG( TenLoaiPhong, GiaPhong,MoTa) VALUES ( 'Vip', 5000000, 'Co Quat Lanh, Nuoc Co Ga, Tivi');
+INSERT INTO LOAIPHONG( TenLoaiPhong, GiaPhong,MoTa) VALUES ( 'Binh Dan', 300000, 'Mot giuong doi . May lanh');
+INSERT INTO LOAIPHONG( TenLoaiPhong, GiaPhong,MoTa) VALUES ( 'Thuong Gia', 20000000,'Mot giuong doi . May lanh . View ngam bien . Tivi . Co phong lam viec');
+INSERT INTO LOAIPHONG( TenLoaiPhong, GiaPhong,MoTa) VALUES ( 'Vip', 4000000, 'Mot giuong doi . May lanh . View ngam bien . Tivi');
 go
 INSERT INTO DICHVU( TenDichVu,GiaDichVu) VALUES ( 'An Sang', 30000);
+INSERT INTO DICHVU( TenDichVu,GiaDichVu) VALUES ( 'An Trua', 35000);
 INSERT INTO DICHVU( TenDichVu,GiaDichVu) VALUES ( 'An Toi', 35000);
-INSERT INTO DICHVU( TenDichVu,GiaDichVu) VALUES ( 'Banh Piza', 60000);
-INSERT INTO DICHVU( TenDichVu,GiaDichVu) VALUES ( 'Buffer Trua', 100000);
+INSERT INTO DICHVU( TenDichVu,GiaDichVu) VALUES ( 'Massage', 600000);
+INSERT INTO DICHVU( TenDichVu,GiaDichVu) VALUES ( 'Du thuyen', 1000000);

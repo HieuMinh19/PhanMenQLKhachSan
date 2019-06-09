@@ -77,10 +77,12 @@ public class frmDashboard extends JFrame {
 	//19
 	static frmBooking_Step3 frmBooking3 = new frmBooking_Step3(ctdp, listCTDV);
 	static frmBooking_Step4 frmBooking4;
+	
+	static frmThemPhong frmThemPhong = new frmThemPhong();
 	private Image backgroundImage;
 
 	// deifne static varriable cho frame
-	static final int FRM_REGISTER = 2;
+	static final int FRM_THEMPHONG = 2;
 	static final int FRM_QLDV = 3;
 	static final int FRM_DATPHONG = 4;
 	static final int FRM_DichVu = 5;
@@ -108,32 +110,31 @@ public class frmDashboard extends JFrame {
 	 */
 	public static void controlFrame(int Frame) {
 		switch (Frame) {
-//		case 2:
-//			// close another frame
-//			frmQLDV.setVisible(false);
-//			frmDichVu.setVisible(false);
-//			frmThemNhanVien.setVisible(false);
-//			frmTimKiemNV.setVisible(false);
-//			frmDanhGia.setVisible(false);
-////			frmDatDichVu.setVisible(false);
-//			frmThemLoaiPhong.setVisible(false);
-//			frmDanhSachPhong.setVisible(false);
-//			frmCapNhatNhanVien.setVisible(false);
-//			frmCapNhatLoaiPhong.setVisible(false);
-//			frmBooking1.setVisible(false);
-//			frmBooking2.setVisible(false);
-//			frmThanhToan.setVisible(false);
-//			BangPhanCong.setVisible(false);
-//			QLBangPhanCong.setVisible(false);
-//			// set current frame
-//
-//			contentPane.add(frmRegister);
-//			frmRegister.setVisible(true);
-//			break;
+		case 2:
+			// close another frame
+			frmQLDV.setVisible(false);
+			frmDichVu.setVisible(false);
+			frmThemNhanVien.setVisible(false);
+			frmTimKiemNV.setVisible(false);
+			frmDanhGia.setVisible(false);
+			frmThemLoaiPhong.setVisible(false);
+			frmDanhSachPhong.setVisible(false);
+			frmCapNhatNhanVien.setVisible(false);
+			frmCapNhatLoaiPhong.setVisible(false);
+			frmBooking1.setVisible(false);
+			frmBooking2.setVisible(false);
+			frmThanhToan.setVisible(false);
+			BangPhanCong.setVisible(false);
+			QLBangPhanCong.setVisible(false);
+			// set current frame
+
+			contentPane.add(frmThemPhong);
+			frmThemPhong.setVisible(true);
+			break;
 
 		case 3:
 			// close another frame
-//			frmRegister.setVisible(false);
+			frmThemPhong.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
 			frmTimKiemNV.setVisible(false);
@@ -155,7 +156,7 @@ public class frmDashboard extends JFrame {
 
 		case 5:
 			// close another frame
-//			frmRegister.setVisible(false);
+			frmThemPhong.setVisible(false);
 			frmThemNhanVien.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDanhGia.setVisible(false);
@@ -177,7 +178,7 @@ public class frmDashboard extends JFrame {
 
 		case 6:
 			// close another frame
-//			frmRegister.setVisible(false);
+			frmThemPhong.setVisible(false);
 			frmThemNhanVien.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmDanhGia.setVisible(false);
@@ -200,7 +201,7 @@ public class frmDashboard extends JFrame {
 			// close another frame
 			
 			
-//			frmRegister.setVisible(false);
+			frmThemPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmDanhGia.setVisible(false);
@@ -221,7 +222,7 @@ public class frmDashboard extends JFrame {
 			break;
 		case 8:
 			// close another frame
-//			frmRegister.setVisible(false);
+			frmThemPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -263,7 +264,7 @@ public class frmDashboard extends JFrame {
 //			break;
 		case 10:
 			// close another frame
-//			frmRegister.setVisible(false);
+			frmThemPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -285,7 +286,7 @@ public class frmDashboard extends JFrame {
 
 		case 11:
 			// close another fram
-//			frmRegister.setVisible(false);
+			frmThemPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -307,7 +308,7 @@ public class frmDashboard extends JFrame {
 
 		case 12:
 			// close another frame
-//			frmRegister.setVisible(false);
+			frmThemPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -328,7 +329,7 @@ public class frmDashboard extends JFrame {
 			break;
 		case 13:
 			// close another frame
-//			frmRegister.setVisible(false);
+			frmThemPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -350,7 +351,7 @@ public class frmDashboard extends JFrame {
 
 		case 14:
 			// close another frame
-//			frmRegister.setVisible(false);
+			frmThemPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -373,7 +374,7 @@ public class frmDashboard extends JFrame {
 
 		case 15:
 			// close another frame
-//			frmRegister.setVisible(false);
+			frmThemPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -395,7 +396,7 @@ public class frmDashboard extends JFrame {
 		case 16:
 			// close another frame
 
-//			frmRegister.setVisible(false);
+			frmThemPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -417,7 +418,7 @@ public class frmDashboard extends JFrame {
 		case 17:
 			// close another frame
 
-//			frmRegister.setVisible(false);
+			frmThemPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -438,7 +439,7 @@ public class frmDashboard extends JFrame {
 			break;
 		case 18:
 			// close another frame
-//			frmRegister.setVisible(false);
+			frmThemPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -459,7 +460,7 @@ public class frmDashboard extends JFrame {
 			break;
 		case 19:
 			//close another frame
-//			frmRegister.setVisible(false);
+			frmThemPhong.setVisible(false);
 			frmQLDV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmTimKiemNV.setVisible(false);
@@ -480,7 +481,7 @@ public class frmDashboard extends JFrame {
 			
 		case 20:
 			// close another frame
-//			frmRegister.setVisible(false);
+			frmThemPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -609,6 +610,11 @@ public class frmDashboard extends JFrame {
 			
 			JMenuItem mntmThemP = new JMenuItem("Thêm phòng");
 			mntmThemP.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+			mntmThemP.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					controlFrame(FRM_THEMPHONG);
+				}
+			});
 			mnPhng.add(mntmThemP);
 			
 			JMenuItem mntmCapNhatP = new JMenuItem("Cập nhật danh sách phòng");
