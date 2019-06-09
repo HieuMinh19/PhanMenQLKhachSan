@@ -18,6 +18,8 @@ import javax.swing.table.DefaultTableModel;
 import QuanLyKS_BUS.LoaiPhong_BUS;
 import QuanLyKS_DTO.LoaiPhong_DTO;
 import javax.swing.JButton;
+import java.awt.Font;
+import java.awt.Color;
 
 public class frmCapNhatLoaiPhong extends JInternalFrame {
 	private JTextField txtTenLoaiPhong;
@@ -48,44 +50,54 @@ public class frmCapNhatLoaiPhong extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public frmCapNhatLoaiPhong() {
-		setBounds(100, 100, 586, 459);
+		setBounds(100, 100, 900, 700);
 		getContentPane().setLayout(null);
 		
 		JLabel lblCapNhat = new JLabel("Quản lý loại phòng");
-		lblCapNhat.setBounds(198, 11, 131, 14);
+		lblCapNhat.setForeground(Color.BLUE);
+		lblCapNhat.setFont(new Font("Tahoma", Font.BOLD, 25));
+		lblCapNhat.setBounds(313, 13, 242, 42);
 		getContentPane().add(lblCapNhat);
 		
 		JLabel TenLoaiPhong = new JLabel("Tên loại phòng");
-		TenLoaiPhong.setBounds(38, 223, 86, 14);
+		TenLoaiPhong.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		TenLoaiPhong.setBounds(367, 126, 125, 23);
 		getContentPane().add(TenLoaiPhong);
 		
 		txtTenLoaiPhong = new JTextField();
-		txtTenLoaiPhong.setBounds(153, 220, 242, 20);
+		txtTenLoaiPhong.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtTenLoaiPhong.setBounds(504, 124, 327, 30);
 		getContentPane().add(txtTenLoaiPhong);
 		txtTenLoaiPhong.setColumns(10);
 		
 		JLabel GiaPhong = new JLabel("Giá phòng");
-		GiaPhong.setBounds(38, 248, 86, 14);
+		GiaPhong.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		GiaPhong.setBounds(403, 195, 89, 23);
 		getContentPane().add(GiaPhong);
 		
 		txtGiaPhong = new JTextField();
+		txtGiaPhong.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		txtGiaPhong.setColumns(10);
-		txtGiaPhong.setBounds(153, 245, 242, 20);
+		txtGiaPhong.setBounds(504, 193, 327, 30);
 		getContentPane().add(txtGiaPhong);
 		
-		JButton btnCapNhat = new JButton("Cập nhât");
-		btnCapNhat.setBounds(153, 365, 89, 23);
+		JButton btnCapNhat = new JButton("Cập nhật");
+		btnCapNhat.setBackground(Color.ORANGE);
+		btnCapNhat.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnCapNhat.setBounds(503, 445, 150, 40);
 		//
 		
 		
 		JButton btnXoa = new JButton("Xóa");
-		btnXoa.setBounds(306, 365, 89, 23);
+		btnXoa.setBackground(Color.ORANGE);
+		btnXoa.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnXoa.setBounds(681, 445, 150, 40);
 		getContentPane().add(btnXoa);
 		///
 //		loaiphong_bus = new LoaiPhong_BUS();
 		
 		JScrollPane srcListLoaiPhong = new JScrollPane();
-		srcListLoaiPhong.setBounds(65, 41, 375, 123);
+		srcListLoaiPhong.setBounds(38, 126, 300, 305);
 		getContentPane().add(srcListLoaiPhong);
 		
 		DefaultTableModel m = new DefaultTableModel(
@@ -96,6 +108,7 @@ public class frmCapNhatLoaiPhong extends JInternalFrame {
 				}
 		);
 		table = new JTable(m);
+		table.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		ListSelectionModel cellSelectionModel = table.getSelectionModel();
 	    cellSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	    cellSelectionModel.addListSelectionListener(new ListSelectionListener() {
@@ -116,7 +129,10 @@ public class frmCapNhatLoaiPhong extends JInternalFrame {
         });
 		table.setRowSelectionAllowed(true);
 		srcListLoaiPhong.setViewportView(table);
-		JButton btnLoadDanhSach = new JButton("Load Loai Phong");
+		JButton btnLoadDanhSach = new JButton("Danh sách loại phòng");
+		btnLoadDanhSach.setBackground(Color.GREEN);
+		btnLoadDanhSach.setForeground(Color.BLACK);
+		btnLoadDanhSach.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnLoadDanhSach.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (m.getRowCount() > 0) {
@@ -128,7 +144,7 @@ public class frmCapNhatLoaiPhong extends JInternalFrame {
 				dslp.forEach(lp -> m.addRow(new Object[]{lp.getMaLoaiPhong(), lp.getTenLoaiPhong(),lp.getGiaPhong()}));
 			}
 		}); 
-		btnLoadDanhSach.setBounds(152, 175, 202, 25);
+		btnLoadDanhSach.setBounds(77, 445, 242, 40);
 		getContentPane().add(btnLoadDanhSach);
 		
 		btnCapNhat.addActionListener(new ActionListener() {
@@ -150,12 +166,14 @@ public class frmCapNhatLoaiPhong extends JInternalFrame {
 		//
 		getContentPane().add(btnCapNhat);
 		
-		JLabel lblMoTa = new JLabel("Mo ta");
-		lblMoTa.setBounds(38, 281, 56, 16);
+		JLabel lblMoTa = new JLabel("Mô tả");
+		lblMoTa.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblMoTa.setBounds(435, 282, 57, 23);
 		getContentPane().add(lblMoTa);
 		
 		txtMoTa = new JTextField();
-		txtMoTa.setBounds(153, 278, 242, 74);
+		txtMoTa.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtMoTa.setBounds(503, 282, 328, 90);
 		getContentPane().add(txtMoTa);
 		txtMoTa.setColumns(10);
 		

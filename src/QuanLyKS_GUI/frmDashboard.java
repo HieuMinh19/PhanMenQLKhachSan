@@ -46,7 +46,6 @@ public class frmDashboard extends JFrame {
 
 	static Register frmRegister = new Register();// 2
 	static QLDichVu frmQLDV = new QLDichVu();// 3
-	static frmDatPhong frmDatPhong = new frmDatPhong();
 	// 4
 	static DichVu frmDichVu = new DichVu();// 5
 	static frmTimKiemNV frmTimKiemNV = new frmTimKiemNV();
@@ -123,7 +122,6 @@ public class frmDashboard extends JFrame {
 			frmCapNhatLoaiPhong.setVisible(false);
 			frmBooking1.setVisible(false);
 			frmBooking2.setVisible(false);
-			frmDatPhong.setVisible(false);
 			frmThanhToan.setVisible(false);
 			BangPhanCong.setVisible(false);
 			QLBangPhanCong.setVisible(false);
@@ -147,7 +145,6 @@ public class frmDashboard extends JFrame {
 			frmCapNhatLoaiPhong.setVisible(false);
 			frmBooking1.setVisible(false);
 			frmBooking2.setVisible(false);
-			frmDatPhong.setVisible(false);
 			frmThanhToan.setVisible(false);
 			BangPhanCong.setVisible(false);
 			QLBangPhanCong.setVisible(false);
@@ -156,33 +153,9 @@ public class frmDashboard extends JFrame {
 			frmQLDV.setVisible(true);
 			break;
 
-		case 4:
-			// close another frame
-			frmRegister.setVisible(false);
-			frmDichVu.setVisible(false);
-			frmThemNhanVien.setVisible(false);
-			frmTimKiemNV.setVisible(false);
-			frmDanhGia.setVisible(false);
-			frmDatDichVu.setVisible(false);
-			frmThemLoaiPhong.setVisible(false);
-			frmDanhSachPhong.setVisible(false);
-			frmCapNhatNhanVien.setVisible(false);
-			frmCapNhatLoaiPhong.setVisible(false);
-			frmBooking1.setVisible(false);
-			frmBooking2.setVisible(false);
-			frmQLDV.setVisible(false);
-			frmThanhToan.setVisible(false);
-			BangPhanCong.setVisible(false);
-			QLBangPhanCong.setVisible(false);
-			// set current frame
-			contentPane.add(frmDatPhong);
-			frmDatPhong.setVisible(true);
-			// frmDanhSachPhong.setVisible(false);
-			break;
 		case 5:
 			// close another frame
 			frmRegister.setVisible(false);
-			frmDatPhong.setVisible(false);
 			frmThemNhanVien.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDanhGia.setVisible(false);
@@ -205,7 +178,6 @@ public class frmDashboard extends JFrame {
 		case 6:
 			// close another frame
 			frmRegister.setVisible(false);
-			frmDatPhong.setVisible(false);
 			frmThemNhanVien.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmDanhGia.setVisible(false);
@@ -229,7 +201,6 @@ public class frmDashboard extends JFrame {
 			
 			
 			frmRegister.setVisible(false);
-			frmDatPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmDanhGia.setVisible(false);
@@ -251,7 +222,6 @@ public class frmDashboard extends JFrame {
 		case 8:
 			// close another frame
 			frmRegister.setVisible(false);
-			frmDatPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -273,7 +243,6 @@ public class frmDashboard extends JFrame {
 		case 9:
 			// close another frame
 			frmRegister.setVisible(false);
-			frmDatPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -295,7 +264,6 @@ public class frmDashboard extends JFrame {
 		case 10:
 			// close another frame
 			frmRegister.setVisible(false);
-			frmDatPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -318,7 +286,6 @@ public class frmDashboard extends JFrame {
 		case 11:
 			// close another fram
 			frmRegister.setVisible(false);
-			frmDatPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -341,7 +308,6 @@ public class frmDashboard extends JFrame {
 		case 12:
 			// close another frame
 			frmRegister.setVisible(false);
-			frmDatPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -363,7 +329,6 @@ public class frmDashboard extends JFrame {
 		case 13:
 			// close another frame
 			frmRegister.setVisible(false);
-			frmDatPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -386,7 +351,6 @@ public class frmDashboard extends JFrame {
 		case 14:
 			// close another frame
 			frmRegister.setVisible(false);
-			frmDatPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -410,7 +374,6 @@ public class frmDashboard extends JFrame {
 		case 15:
 			// close another frame
 			frmRegister.setVisible(false);
-			frmDatPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -433,7 +396,6 @@ public class frmDashboard extends JFrame {
 			// close another frame
 
 			frmRegister.setVisible(false);
-			frmDatPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -456,7 +418,6 @@ public class frmDashboard extends JFrame {
 			// close another frame
 
 			frmRegister.setVisible(false);
-			frmDatPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -478,7 +439,6 @@ public class frmDashboard extends JFrame {
 		case 18:
 			// close another frame
 			frmRegister.setVisible(false);
-			frmDatPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -501,7 +461,6 @@ public class frmDashboard extends JFrame {
 			//close another frame
 			frmRegister.setVisible(false);
 			frmQLDV.setVisible(false);
-			frmDatPhong.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -522,7 +481,6 @@ public class frmDashboard extends JFrame {
 		case 20:
 			// close another frame
 			frmRegister.setVisible(false);
-			frmDatPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -574,11 +532,11 @@ public class frmDashboard extends JFrame {
 
 		switch (user.getChucVu().getMaChucVu()) {
 		case 1:
-			JMenu mnNhanVien = new JMenu("Employees");
+			JMenu mnNhanVien = new JMenu("Nhân viên");
 			mnNhanVien.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 			menuBar.add(mnNhanVien);
 
-			JMenuItem mntmThemNV = new JMenuItem("Insert");
+			JMenuItem mntmThemNV = new JMenuItem("Thêm nhân viên");
 			mntmThemNV.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 			mntmThemNV.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -588,7 +546,7 @@ public class frmDashboard extends JFrame {
 			mnNhanVien.add(mntmThemNV);
 			
 
-			JMenuItem mntmCapNhatNV = new JMenuItem("Update and Delete");
+			JMenuItem mntmCapNhatNV = new JMenuItem("Cập nhật danh sách nhân viên");
 			mntmCapNhatNV.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 			mntmCapNhatNV.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -597,21 +555,12 @@ public class frmDashboard extends JFrame {
 			});
 			
 
-			JMenu mnDichVu = new JMenu("Service");
+			JMenu mnDichVu = new JMenu("Dịch vụ");
 			mnDichVu.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 			mnNhanVien.add(mntmCapNhatNV);
 			menuBar.add(mnDichVu);
-
-			JMenuItem mntmCapNhatDV = new JMenuItem("Update and Delete");
-			mntmCapNhatDV.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-			mntmCapNhatDV.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					controlFrame(FRM_QLDV);
-
-				}
-			});
-
-			JMenuItem mntmThemDV = new JMenuItem("Insert");
+			
+			JMenuItem mntmThemDV = new JMenuItem("Thêm dịch vụ");
 			mntmThemDV.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 			mntmThemDV.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -620,13 +569,23 @@ public class frmDashboard extends JFrame {
 				}
 			});
 			mnDichVu.add(mntmThemDV);
+
+
+			JMenuItem mntmCapNhatDV = new JMenuItem("Cập nhật danh sách dịch vụ");
+			mntmCapNhatDV.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+			mntmCapNhatDV.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					controlFrame(FRM_QLDV);
+
+				}
+			});
 			mnDichVu.add(mntmCapNhatDV);
 
-			JMenu mnLoaiPhong = new JMenu("Room Type");
+			JMenu mnLoaiPhong = new JMenu("Loại phòng");
 			mnLoaiPhong.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 			menuBar.add(mnLoaiPhong);
 
-			JMenuItem mntmThemLP = new JMenuItem("Insert");
+			JMenuItem mntmThemLP = new JMenuItem("Thêm loại phòng");
 			mntmThemLP.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 			mntmThemLP.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
@@ -635,7 +594,7 @@ public class frmDashboard extends JFrame {
 			});
 			mnLoaiPhong.add(mntmThemLP);
 
-			JMenuItem mntmCapNhatLP = new JMenuItem("Update and Delete");
+			JMenuItem mntmCapNhatLP = new JMenuItem("Cập nhật danh sách loại phòng");
 			mntmCapNhatLP.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 			mnLoaiPhong.add(mntmCapNhatLP);
 			mntmCapNhatLP.addActionListener(new ActionListener() {
@@ -644,28 +603,29 @@ public class frmDashboard extends JFrame {
 				}
 			});
 
-			JMenu mnPhng = new JMenu("Room");
+			JMenu mnPhng = new JMenu("Phòng");
 			mnPhng.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 			menuBar.add(mnPhng);
-
-			JMenuItem mntmCapNhatP = new JMenuItem("Update and Delete");
+			
+			JMenuItem mntmThemP = new JMenuItem("Thêm phòng");
+			mntmThemP.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+			mnPhng.add(mntmThemP);
+			
+			JMenuItem mntmCapNhatP = new JMenuItem("Cập nhật danh sách phòng");
 			mntmCapNhatP.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 			mntmCapNhatP.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					controlFrame(FRM_DANHSACHPHONG);
 				}
 			});
-
-			JMenuItem mntmThemP = new JMenuItem("Insert");
-			mntmThemP.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-			mnPhng.add(mntmThemP);
 			mnPhng.add(mntmCapNhatP);
 
-			JMenu mnBangPhanCong = new JMenu("Bang Phan Cong");
+
+			JMenu mnBangPhanCong = new JMenu("Phân công nhân viên");
 			mnBangPhanCong.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 			menuBar.add(mnBangPhanCong);
 
-			JMenuItem mntmThm = new JMenuItem("Th\u00EAm");
+			JMenuItem mntmThm = new JMenuItem("Phân công nhiệm vụ");
 			// mnBangPhanCong.add(mntmThm);
 			mntmThm.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 			mntmThm.addActionListener(new ActionListener() {
@@ -675,7 +635,7 @@ public class frmDashboard extends JFrame {
 			});
 			mnBangPhanCong.add(mntmThm);
 
-			JMenuItem mntmNewMenuItem_1 = new JMenuItem("Quan Ly BPC");
+			JMenuItem mntmNewMenuItem_1 = new JMenuItem("Cập nhật phân công nhiệm vụ");
 			mntmNewMenuItem_1.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 			mntmNewMenuItem_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
@@ -685,7 +645,7 @@ public class frmDashboard extends JFrame {
 			mnBangPhanCong.add(mntmNewMenuItem_1);
 			break;
 		case 2:
-			JMenu mnDatPhong = new JMenu("Booking");
+			JMenu mnDatPhong = new JMenu("Đặt phòng");
 			mnDatPhong.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
@@ -695,7 +655,7 @@ public class frmDashboard extends JFrame {
 			mnDatPhong.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 			menuBar.add(mnDatPhong);
 
-			JMenu mnDanhGia = new JMenu("Feedback");
+			JMenu mnDanhGia = new JMenu("Phản hồi");
 			mnDanhGia.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
@@ -705,7 +665,7 @@ public class frmDashboard extends JFrame {
 			mnDanhGia.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 			menuBar.add(mnDanhGia);
 
-			JMenu mnThanhToan = new JMenu("Payment");
+			JMenu mnThanhToan = new JMenu("Thanh toán");
 			mnThanhToan.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
@@ -715,11 +675,11 @@ public class frmDashboard extends JFrame {
 			mnThanhToan.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 			menuBar.add(mnThanhToan);
 
-			JMenu mnTimKiem = new JMenu("Search");
+			JMenu mnTimKiem = new JMenu("Tìm kiếm thông tin");
 			mnTimKiem.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 			menuBar.add(mnTimKiem);
 
-			JMenuItem mntmTimKiemNV = new JMenuItem("Employess");
+			JMenuItem mntmTimKiemNV = new JMenuItem("Nhân viên");
 			mntmTimKiemNV.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					controlFrame(FRM_TIMKIEM);
@@ -729,11 +689,11 @@ public class frmDashboard extends JFrame {
 			mntmTimKiemNV.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 			mnTimKiem.add(mntmTimKiemNV);
 
-			JMenuItem mntmTimKiemLP = new JMenuItem("Room Type");
+			JMenuItem mntmTimKiemLP = new JMenuItem("Loại phòng");
 			mntmTimKiemLP.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 			mnTimKiem.add(mntmTimKiemLP);
 
-			JMenuItem mntmTimKiemDV = new JMenuItem("Service");
+			JMenuItem mntmTimKiemDV = new JMenuItem("Dịch vụ");
 			mntmTimKiemDV.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 			mnTimKiem.add(mntmTimKiemDV);
 			break;

@@ -18,6 +18,7 @@ import java.awt.event.ActionEvent;
 import QuanLyKS_BUS.NhanVien_BUS;
 import QuanLyKS_DTO.NhanVien_DTO;
 import javax.swing.JPasswordField;
+import java.awt.Color;
 
 public class frmLogin extends JFrame {
 
@@ -32,7 +33,6 @@ public class frmLogin extends JFrame {
 			public void run() {
 				try {
 					frmLogin frame = new frmLogin();
-					frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,33 +47,36 @@ public class frmLogin extends JFrame {
 	public frmLogin() {
 		frmLogin _self = this;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 560, 300);
+		setBounds(100, 100, 560, 358);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.LIGHT_GRAY);
+		contentPane.setForeground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JTextPane txtTaiKhoan = new JTextPane();
 		txtTaiKhoan.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txtTaiKhoan.setBounds(161, 50, 243, 30);
+		txtTaiKhoan.setBounds(147, 104, 240, 30);
 		contentPane.add(txtTaiKhoan);
 		
-		JLabel lblPassword = new JLabel("Password");
+		JLabel lblPassword = new JLabel("Mật khẩu");
 		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblPassword.setBounds(67, 113, 82, 30);
+		lblPassword.setBounds(62, 166, 73, 30);
 		contentPane.add(lblPassword);
 		
-		JLabel lblAccount = new JLabel("Account");
+		JLabel lblAccount = new JLabel("Tài khoản");
 		lblAccount.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblAccount.setBounds(77, 50, 72, 30);
+		lblAccount.setBounds(53, 104, 82, 30);
 		contentPane.add(lblAccount);
 
 		txtMatKhau = new JPasswordField();
 		txtMatKhau.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txtMatKhau.setBounds(161, 115, 243, 30);
+		txtMatKhau.setBounds(147, 167, 240, 30);
 		contentPane.add(txtMatKhau);
 		
-		JButton btnDangNhap = new JButton("LOG IN");
+		JButton btnDangNhap = new JButton("Đăng nhập");
+		btnDangNhap.setBackground(Color.MAGENTA);
 		btnDangNhap.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -85,7 +88,7 @@ public class frmLogin extends JFrame {
 				NhanVien_DTO acc = NhanVien_BUS.Login(txtTaiKhoan.getText(),b);
 				if(acc != null)
 		 		{
-					JOptionPane.showMessageDialog(null, "Dang nhap thanh cong!", "Thong bao", JOptionPane.CLOSED_OPTION);
+//					JOptionPane.showMessageDialog(null, "Dang nhap thanh cong!", "Thong bao", JOptionPane.CLOSED_OPTION);
 					frmDashboard main = new frmDashboard(acc);
 					_self.setVisible(false);
 					main.setVisible(true);
@@ -93,13 +96,20 @@ public class frmLogin extends JFrame {
 				}
 				else
 				{
-					JOptionPane.showMessageDialog(null, "Sai tai khoan hoac mat khau!", "Loi dang nhap", JOptionPane.CLOSED_OPTION);
+					JOptionPane.showMessageDialog(null, "Sai tên đăng nhập hoặc mật khẩu!", "Đăng nhập không thành công", JOptionPane.CLOSED_OPTION);
 				}
 			}
 		});
 		btnDangNhap.setFont(new Font("Tahoma", Font.BOLD, 18));
-		btnDangNhap.setBounds(201, 175, 156, 38);
+		btnDangNhap.setBounds(194, 220, 156, 38);
 		contentPane.add(btnDangNhap);
+		
+		JLabel lblNewLabel = new JLabel("Chúc một buổi làm việc tốt lành");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
+		lblNewLabel.setForeground(Color.RED);
+		lblNewLabel.setBackground(Color.LIGHT_GRAY);
+		lblNewLabel.setBounds(101, 42, 347, 30);
+		contentPane.add(lblNewLabel);
 		
 	}
 }

@@ -34,6 +34,7 @@ import QuanLyKS_BUS.HoaDon_BUS;
 	import java.util.concurrent.TimeUnit;
 import java.awt.Button;
 import com.toedter.calendar.JDateChooser;
+import java.awt.Color;
 	public class frmThanhToan extends JInternalFrame {
 		int tienPhong =0;
 		int tiendichVu =0;
@@ -72,34 +73,33 @@ import com.toedter.calendar.JDateChooser;
 			ArrayList<Integer> TienDichVu = new ArrayList<>();
 			bus=new HoaDon_BUS();
 			
-			setBounds(100, 100, 972, 692);
+			setBounds(100, 100, 900, 700);
 			getContentPane().setLayout(null);
 			
 			JTextPane txtTongTienThanhToan = new JTextPane();
-			txtTongTienThanhToan.setBounds(792, 430, 139, 36);
+			txtTongTienThanhToan.setFont(new Font("Tahoma", Font.PLAIN, 16));
+			txtTongTienThanhToan.setBounds(594, 456, 170, 30);
 			getContentPane().add(txtTongTienThanhToan);
 			
 			
 			JTextPane txtTongTienPhong = new JTextPane();
-			txtTongTienPhong.setBounds(792, 332, 139, 36);
+			txtTongTienPhong.setFont(new Font("Tahoma", Font.PLAIN, 16));
+			txtTongTienPhong.setBounds(594, 339, 170, 30);
 			getContentPane().add(txtTongTienPhong);
 			//txtTongTien.setText("ds");
-			JLabel lblTngTin = new JLabel("T\u1ED5ng Ti\u1EC1n Ph\u00F2ng");
-			lblTngTin.setFont(new Font("Tahoma", Font.PLAIN, 16));
-			lblTngTin.setBounds(580, 332, 142, 49);
+			JLabel lblTngTin = new JLabel("T\u1ED5ng ti\u1EC1n ph\u00F2ng");
+			lblTngTin.setFont(new Font("Tahoma", Font.PLAIN, 18));
+			lblTngTin.setBounds(443, 332, 142, 40);
 			getContentPane().add(lblTngTin);
 			
-			JLabel lblInvoicePayment = new JLabel("Thanh Toan");
-			lblInvoicePayment.setFont(new Font("Tahoma", Font.BOLD, 25));
-			lblInvoicePayment.setBounds(329, 13, 239, 62);
-			getContentPane().add(lblInvoicePayment);
-			
 			JTextPane txtPhong = new JTextPane();
-			txtPhong.setBounds(253, 88, 102, 29);
+			txtPhong.setFont(new Font("Tahoma", Font.PLAIN, 16));
+			txtPhong.setBounds(253, 88, 150, 30);
 			getContentPane().add(txtPhong);
 			
 			JTextPane txtTongTienDichVu = new JTextPane();
-			txtTongTienDichVu.setBounds(792, 381, 139, 36);
+			txtTongTienDichVu.setFont(new Font("Tahoma", Font.PLAIN, 16));
+			txtTongTienDichVu.setBounds(594, 400, 170, 30);
 			getContentPane().add(txtTongTienDichVu);
 			
 			JLabel lblNewLabel = new JLabel("Room");
@@ -108,7 +108,7 @@ import com.toedter.calendar.JDateChooser;
 			getContentPane().add(lblNewLabel);
 			
 			JScrollPane scrlistthanhtoan = new JScrollPane();
-			scrlistthanhtoan.setBounds(12, 155, 932, 164);
+			scrlistthanhtoan.setBounds(12, 155, 860, 164);
 			getContentPane().add(scrlistthanhtoan);
 			
 			DefaultTableModel m = new DefaultTableModel(
@@ -122,7 +122,7 @@ import com.toedter.calendar.JDateChooser;
 
 				scrlistthanhtoan.setViewportView(table);
 				JScrollPane scrlisttendichvu = new JScrollPane();
-				scrlisttendichvu.setBounds(12, 332, 556, 98);
+				scrlisttendichvu.setBounds(12, 332, 369, 98);
 				getContentPane().add(scrlisttendichvu);
 				
 				DefaultTableModel n = new DefaultTableModel(
@@ -134,7 +134,8 @@ import com.toedter.calendar.JDateChooser;
 					);
 					table_dich = new JTable(n);
 					scrlisttendichvu.setViewportView(table_dich);
-			JButton btnSearchThanhToan = new JButton("Search");
+			JButton btnSearchThanhToan = new JButton("T\u00ECm ki\u1EBFm");
+			btnSearchThanhToan.setBackground(Color.GREEN);
 			btnSearchThanhToan.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 //					System.err.println("ffffffffffffffffff");
@@ -205,21 +206,23 @@ import com.toedter.calendar.JDateChooser;
 				}
 				
 			});
-			btnSearchThanhToan.setFont(new Font("Tahoma", Font.PLAIN, 18));
-			btnSearchThanhToan.setBounds(473, 81, 107, 36);
+			btnSearchThanhToan.setFont(new Font("Tahoma", Font.BOLD, 18));
+			btnSearchThanhToan.setBounds(473, 81, 132, 36);
 			getContentPane().add(btnSearchThanhToan);
 			
-			JLabel lblTngTinDich = new JLabel("T\u1ED5ng Ti\u1EC1n Dich Vu");
-			lblTngTinDich.setFont(new Font("Tahoma", Font.PLAIN, 16));
-			lblTngTinDich.setBounds(580, 375, 164, 49);
+			JLabel lblTngTinDich = new JLabel("T\u1ED5ng ti\u1EC1n d\u1ECBch v\u1EE5");
+			lblTngTinDich.setFont(new Font("Tahoma", Font.PLAIN, 18));
+			lblTngTinDich.setBounds(443, 394, 139, 36);
 			getContentPane().add(lblTngTinDich);
 			
-			JLabel lblTngTinThanh = new JLabel("T\u1ED5ng Ti\u1EC1n Thanh To\u00E1n");
+			JLabel lblTngTinThanh = new JLabel("T\u1ED5ng:");
 			lblTngTinThanh.setFont(new Font("Tahoma", Font.PLAIN, 18));
-			lblTngTinThanh.setBounds(580, 425, 183, 49);
+			lblTngTinThanh.setBounds(533, 456, 52, 30);
 			getContentPane().add(lblTngTinThanh);
 			
-			Button btnThanhToan = new Button("Thanh To\u00E1n");
+			Button btnThanhToan = new Button("Thanh to\u00E1n");
+			btnThanhToan.setBackground(Color.ORANGE);
+			btnThanhToan.setFont(new Font("Tahoma", Font.BOLD, 18));
 			btnThanhToan.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					String SoTienThu = txtTongTienThanhToan.getText();
@@ -258,8 +261,14 @@ import com.toedter.calendar.JDateChooser;
          		
 			}
 			});
-			btnThanhToan.setBounds(522, 527, 164, 24);
+			btnThanhToan.setBounds(336, 536, 211, 40);
 			getContentPane().add(btnThanhToan);
+			
+			JLabel lblNewLabel_1 = new JLabel("Thanh to\u00E1n ");
+			lblNewLabel_1.setForeground(Color.BLUE);
+			lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 25));
+			lblNewLabel_1.setBounds(310, 23, 150, 30);
+			getContentPane().add(lblNewLabel_1);
 			
 			
 		}

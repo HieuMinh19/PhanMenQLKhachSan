@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import QuanLyKS_DTO.LoaiPhong_DTO;
 import QuanLyKS_DTO.Phong_DTO;
 
@@ -125,7 +127,7 @@ public class Phong_DAL {
 		return iGiaPhong;
 	}
 
-	public ArrayList<Phong_DTO> LoadListPhong (){
+	public static ArrayList<Phong_DTO> LoadListPhong (){
 		//get connection
 		PreparedStatement ptmt = null; 
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
@@ -150,7 +152,37 @@ public class Phong_DAL {
 		return null;	
 	}
 	
-	
+	public static boolean Update(Phong_DTO phong)  {
+		PreparedStatement ptmt = null; 
+		String query = "UPDATE PHONG SET MaPhong = ? , MaLoaiPhong= ? WHERE MaPhong = ?";
+		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
+		Connection conn = mycon.getConnection();
+
+		try {
+			ptmt = conn.prepareStatement(query);
+			ptmt.setInt(1,phong.getMaPhong());
+			ptmt.setInt(2, phong.getMaLoaiPhong());
+			ptmt.setInt(3,phong.getMaPhong());
+			
+			if( ptmt.executeUpdate() != 0) {
+				JOptionPane.showMessageDialog(null, "cap nhat phong thanh cong", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);
+				System.err.println("update Phong Thanh Cong");
+				return true;
+			}
+			
+			else {
+				JOptionPane.showMessageDialog(null, "cap nhat phong that bai", "FAIL:" + "Fail Mesage", JOptionPane.INFORMATION_MESSAGE);
+				System.err.println("update Loai Phong That Bai");
+				return false;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
 	
 	
 	

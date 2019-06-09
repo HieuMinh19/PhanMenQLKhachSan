@@ -21,6 +21,7 @@ import QuanLyKS_GUI.frmBooking_Step3;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class frmBooking_Step2 extends JInternalFrame {
 	private JButton btnRemove01;
@@ -58,7 +59,7 @@ public class frmBooking_Step2 extends JInternalFrame {
 	static ArrayList<CTDichVu_DTO> listBookingDV = new ArrayList<CTDichVu_DTO>();
 	public frmBooking_Step2(CTDatPhong_DTO ctdp) {
 		this.ctdp = ctdp;
-		setBounds(100, 100, 810, 540); 
+		setBounds(100, 100, 900, 700); 
 		getContentPane().setLayout(null);
 		
 		//define
@@ -69,7 +70,8 @@ public class frmBooking_Step2 extends JInternalFrame {
 				for(int i = 0; i < listDV.size(); i++)
 					isAdd[i] = false;
 				
-		JButton btnContinue = new JButton("Continue");
+		JButton btnContinue = new JButton("Ti\u1EBFp theo");
+		btnContinue.setBackground(Color.ORANGE);
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -91,24 +93,25 @@ public class frmBooking_Step2 extends JInternalFrame {
 				frmDashboard.controlFrame(frmDashboard.FRM_BOOKING3);
 			}
 		});
-		btnContinue.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		btnContinue.setBounds(373, 418, 180, 45);
+		btnContinue.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnContinue.setBounds(616, 440, 150, 40);
 		getContentPane().add(btnContinue);
 		
-		JButton btnBack = new JButton("Back");
+		JButton btnBack = new JButton("Quay l\u1EA1i");
+		btnBack.setBackground(Color.ORANGE);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frmDashboard.frmBooking1 = new frmBooking_Step1(ctdp);
 				frmDashboard.controlFrame(frmDashboard.FRM_BOOKING1);
 			}
 		});
-		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		btnBack.setBounds(81, 418, 180, 45);
+		btnBack.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnBack.setBounds(154, 440, 150, 40);
 		getContentPane().add(btnBack);
 		
-		JLabel lblDichVu = new JLabel("SERVICE");
-		lblDichVu.setFont(new Font("Tahoma", Font.BOLD, 28));
-		lblDichVu.setBounds(259, 13, 135, 30);
+		JLabel lblDichVu = new JLabel("Th\u00EAm c\u00E1c d\u1ECBch v\u1EE5 theo y\u00EAu c\u1EA7u kh\u00E1ch h\u00E0ng");
+		lblDichVu.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblDichVu.setBounds(197, 23, 489, 33);
 		getContentPane().add(lblDichVu);
 		
 		render(listDV);

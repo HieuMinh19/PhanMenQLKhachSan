@@ -31,6 +31,9 @@ import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import java.awt.Color;
+import javax.swing.JLabel;
 
 public class frmBooking_Step4 extends JInternalFrame {
 	private JTable tbThongTinChung;
@@ -55,16 +58,16 @@ public class frmBooking_Step4 extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public frmBooking_Step4(CTDatPhong_DTO ctdp, ArrayList<CTDichVu_DTO> listCTDV, KhachHang_DTO khDTO) {
-		setBounds(100, 100, 1046, 516);
+		setBounds(100, 100, 900, 700);
 		getContentPane().setLayout(null);
 		
 		JScrollPane scrBooking = new JScrollPane();
-		scrBooking.setBounds(40, 39, 932, 164);
+		scrBooking.setBounds(42, 133, 800, 150);
 		DefaultTableModel modelBooking = new DefaultTableModel(
 				new Object[][] {
 				},
 				new String[] {
-					"Ma phong", "Ten khach hang", "Ten loai phong","Gia phong", "Ngay nhan", "Ngay tra"
+					"Mã phòng", "Tên khách hàng", "Tên loại phòng","Giá phòng", "Ngày nhận", "Ngày trả"
 				}
 			);
 		tbThongTinChung = new JTable(modelBooking); 
@@ -83,12 +86,12 @@ public class frmBooking_Step4 extends JInternalFrame {
 		 
 		
 		JScrollPane scrDV = new JScrollPane();
-		scrDV.setBounds(40, 253, 556, 98);
+		scrDV.setBounds(153, 318, 556, 98);
 		DefaultTableModel modelDV = new DefaultTableModel(
 				new Object[][] {
 				},
 				new String[] {
-					"Ten dich vu", "So luong", "Tong tien dich vu"
+					"Tên dịch vụ", "Số lượng", "Tổng tiền dịch vụ"
 				}
 			);
 		tbThongTinDichVu = new JTable(modelDV);
@@ -106,6 +109,8 @@ public class frmBooking_Step4 extends JInternalFrame {
 		}		
 		
 		JButton btnDatPhong = new JButton("\u0110\u1EB7t ph\u00F2ng");
+		btnDatPhong.setBackground(Color.ORANGE);
+		btnDatPhong.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnDatPhong.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -136,8 +141,14 @@ public class frmBooking_Step4 extends JInternalFrame {
 				
 			}
 		});
-		btnDatPhong.setBounds(433, 385, 97, 25);
+		btnDatPhong.setBounds(334, 463, 248, 40);
 		getContentPane().add(btnDatPhong);
+		
+		JLabel lblNewLabel = new JLabel("Ki\u1EC3m tra l\u1EA1i th\u00F4ng tin \u0111\u1EB7t ph\u00F2ng");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblNewLabel.setForeground(Color.RED);
+		lblNewLabel.setBounds(236, 37, 366, 40);
+		getContentPane().add(lblNewLabel);
 
 	}
 }
