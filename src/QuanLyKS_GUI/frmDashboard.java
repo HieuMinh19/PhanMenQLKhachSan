@@ -401,6 +401,7 @@ public class frmDashboard extends JFrame {
 			frmThanhToan.setVisible(false);
 			BangPhanCong.setVisible(false);
 			QLBangPhanCong.setVisible(false);
+			//frmBooking4.setVisible(true);
 			// set current frame
 			contentPane.add(frmBooking1);
 			frmBooking1.setVisible(true);
