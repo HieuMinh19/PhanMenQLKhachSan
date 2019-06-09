@@ -18,6 +18,8 @@ import QuanLyKS_DTO.LoaiPhong_DTO;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import java.awt.Color;
 
 public class ThemLoaiPhong extends JInternalFrame {
 	private JTextField txtTenLoaiPhong;
@@ -44,33 +46,34 @@ public class ThemLoaiPhong extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public ThemLoaiPhong() {
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 900, 700);
 		getContentPane().setLayout(null);
 		
-		JLabel LoaiPhong = new JLabel("THÊM LOẠI PHÒNG");
-		LoaiPhong.setHorizontalAlignment(SwingConstants.TRAILING);
-		LoaiPhong.setBounds(174, 24, 101, 14);
-		getContentPane().add(LoaiPhong);
-		
 		JLabel TenLoaiPhong = new JLabel("Tên loại phòng");
-		TenLoaiPhong.setBounds(59, 48, 80, 14);
+		TenLoaiPhong.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		TenLoaiPhong.setBounds(177, 89, 119, 22);
 		getContentPane().add(TenLoaiPhong);
 		
 		JLabel GiaPhong = new JLabel("Gía Phòng");
-		GiaPhong.setBounds(59, 94, 80, 14);
+		GiaPhong.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		GiaPhong.setBounds(215, 149, 81, 22);
 		getContentPane().add(GiaPhong);
 		
 		txtTenLoaiPhong = new JTextField();
-		txtTenLoaiPhong.setBounds(149, 49, 212, 20);
+		txtTenLoaiPhong.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtTenLoaiPhong.setBounds(314, 86, 300, 30);
 		getContentPane().add(txtTenLoaiPhong);
 		txtTenLoaiPhong.setColumns(10);
 		
 		txtGiaPhong = new JTextField();
-		txtGiaPhong.setBounds(149, 91, 212, 20);
+		txtGiaPhong.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtGiaPhong.setBounds(315, 146, 300, 30);
 		getContentPane().add(txtGiaPhong);
 		txtGiaPhong.setColumns(10);
 		
 		JButton txtThemLoaiPhong = new JButton("Thêm loại phòng");
+		txtThemLoaiPhong.setFont(new Font("Tahoma", Font.BOLD, 18));
+		txtThemLoaiPhong.setBackground(Color.GREEN);
 		txtThemLoaiPhong.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				loaiphongDTO = new LoaiPhong_DTO(); 
@@ -84,8 +87,14 @@ public class ThemLoaiPhong extends JInternalFrame {
 					 JOptionPane.showMessageDialog(null, "Tạo loại phòng thất bại", "Notice !", JOptionPane.CLOSED_OPTION);
 			}
 		});
-		txtThemLoaiPhong.setBounds(162, 145, 113, 23);
+		txtThemLoaiPhong.setBounds(373, 214, 200, 40);
 		getContentPane().add(txtThemLoaiPhong);
+		
+		JLabel lblThmLoiPhng = new JLabel("Thêm loại phòng");
+		lblThmLoiPhng.setForeground(Color.BLUE);
+		lblThmLoiPhng.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblThmLoiPhng.setBounds(357, 13, 188, 37);
+		getContentPane().add(lblThmLoiPhng);
 
 	}
 }

@@ -33,6 +33,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.JComboBox;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
+import java.awt.Font;
+import java.awt.Color;
 
 public class QLDichVu extends JInternalFrame {
 	/**
@@ -72,7 +74,7 @@ public class QLDichVu extends JInternalFrame {
 	public QLDichVu() {
 		bus=new DichVu_BUS();
 		dsnv = new ArrayList<DichVu_DTO>();
-		setBounds(100, 100, 768, 480);
+		setBounds(100, 100, 900, 700);
 		getContentPane().setLayout(null);
 		JScrollPane scrListDV = new JScrollPane();
 		scrListDV.addMouseListener(new MouseAdapter() {
@@ -80,14 +82,14 @@ public class QLDichVu extends JInternalFrame {
 			
 			}
 		});
-		scrListDV.setBounds(59, 40, 693, 189);
+		scrListDV.setBounds(31, 115, 391, 189);
 		getContentPane().add(scrListDV);
 		
 		DefaultTableModel m = new DefaultTableModel(
 				new Object[][] {
 				},
 				new String[] {
-					"Mã Dịch Vụ", "Tên Dịch Vụ", "Giá Dịch Vụ"
+					"Mã dịch vụ", "Tên dịch vụ", "Giá dịch vụ"
 				}
 			);
 		table = new JTable(m);
@@ -104,7 +106,9 @@ public class QLDichVu extends JInternalFrame {
 			  }
         });
 	    scrListDV.setViewportView(table);
-		JButton btnLoadData = new JButton("Load list Service");
+		JButton btnLoadData = new JButton("Danh sách dịch vụ");
+		btnLoadData.setBackground(Color.GREEN);
+		btnLoadData.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnLoadData.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -117,19 +121,23 @@ public class QLDichVu extends JInternalFrame {
 				dsnv.forEach(nv -> m.addRow(new Object[]{nv.getMaDichVu(), nv.getTenDichVu(),nv.getGiaDichVu()}));
 			}
 		});
-		btnLoadData.setBounds(331, 229, 150, 37);
+		btnLoadData.setBounds(125, 333, 200, 40);
 		getContentPane().add(btnLoadData);
 		
 		JLabel lblTnDchVu = new JLabel("T\u00EAn d\u1ECBch v\u1EE5");
-		lblTnDchVu.setBounds(144, 282, 78, 14);
+		lblTnDchVu.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblTnDchVu.setBounds(486, 170, 93, 30);
 		getContentPane().add(lblTnDchVu);
 		
 		txtTenDichVu = new JTextField();
-		txtTenDichVu.setBounds(273, 279, 226, 20);
+		txtTenDichVu.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		txtTenDichVu.setBounds(591, 170, 170, 30);
 		getContentPane().add(txtTenDichVu);
 		txtTenDichVu.setColumns(10);
 		
-		JButton btnUpdate = new JButton("Update");
+		JButton btnUpdate = new JButton("Cập nhật");
+		btnUpdate.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnUpdate.setBackground(Color.ORANGE);
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			Integer GiaDichVu =	Integer.parseInt(txtGiaDichVu.getText());
@@ -146,19 +154,23 @@ public class QLDichVu extends JInternalFrame {
 
 			}
 		});
-		btnUpdate.setBounds(194, 362, 109, 37);
+		btnUpdate.setBounds(518, 333, 150, 40);
 		getContentPane().add(btnUpdate);
 
 		txtGiaDichVu = new JTextField();
+		txtGiaDichVu.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		txtGiaDichVu.setColumns(10);
-		txtGiaDichVu.setBounds(275, 312, 224, 20);
+		txtGiaDichVu.setBounds(591, 237, 170, 30);
 		getContentPane().add(txtGiaDichVu);
 
-		JLabel lblGiaDichVu = new JLabel("Gia Dich Vu");
-		lblGiaDichVu.setBounds(144, 315, 109, 14);
+		JLabel lblGiaDichVu = new JLabel("Giá dịch vụ");
+		lblGiaDichVu.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblGiaDichVu.setBounds(491, 239, 88, 27);
 		getContentPane().add(lblGiaDichVu);
 
-		JButton btndelete = new JButton("Delete");
+		JButton btndelete = new JButton("Xóa");
+		btndelete.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btndelete.setBackground(Color.ORANGE);
 		btndelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				boolean result = DichVu_BUS.Delete(selectedMaNhanVien);
@@ -173,7 +185,13 @@ public class QLDichVu extends JInternalFrame {
 				}
 			}
 		});
-		btndelete.setBounds(403, 362, 125, 37);
+		btndelete.setBounds(680, 333, 150, 40);
 		getContentPane().add(btndelete);
+		
+		JLabel label = new JLabel("Tra cứu thông tin nhân viên");
+		label.setForeground(Color.BLUE);
+		label.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		label.setBounds(253, 13, 322, 37);
+		getContentPane().add(label);
 	}
 }

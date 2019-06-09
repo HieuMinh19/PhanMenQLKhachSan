@@ -24,6 +24,9 @@ import javax.swing.JButton;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JTextArea;
+import java.awt.Font;
+import java.awt.Color;
+import javax.swing.JLabel;
 
 public class frmTimKiemNV extends JInternalFrame {
 	
@@ -49,24 +52,22 @@ public class frmTimKiemNV extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public frmTimKiemNV() {
-		setBounds(100, 100, 781, 480);
+		setBounds(100, 100, 900, 700);
 		getContentPane().setLayout(null);
 		bus=new NhanVien_BUS();
 		
-		Label label = new Label("Tim kiem thong tin");
-		label.setBounds(296, 10, 160, 24);
-		getContentPane().add(label);
-		
 		JScrollPane scrListThongTin = new JScrollPane();
-		scrListThongTin.setBounds(37, 308, 691, 123);
+		scrListThongTin.setBounds(98, 238, 691, 339);
 		getContentPane().add(scrListThongTin);
 
 		JTextArea txtTenNhanVien = new JTextArea();
-		txtTenNhanVien.setBounds(146, 63, 234, 52);
+		txtTenNhanVien.setFont(new Font("Monospaced", Font.PLAIN, 16));
+		txtTenNhanVien.setBounds(166, 82, 150, 30);
 		getContentPane().add(txtTenNhanVien);
 		
 		JDateChooser dtNgayVaoLam = new JDateChooser();
-		dtNgayVaoLam.setBounds(146, 128, 234, 46);
+		dtNgayVaoLam.setDateFormatString("dd/MM/yyyy");
+		dtNgayVaoLam.setBounds(564, 82, 150, 30);
 		getContentPane().add(dtNgayVaoLam);
 		//------------------------------add table-------------------------------
 		DefaultTableModel m = new DefaultTableModel(
@@ -79,24 +80,27 @@ public class frmTimKiemNV extends JInternalFrame {
 		table = new JTable(m);
 		scrListThongTin.setViewportView(table);
 		
-		Button btnTimKiem = new Button("Tim kiem");
-		btnTimKiem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (m.getRowCount() > 0) {
-				    for (int i = m.getRowCount() - 1; i > -1; i--) {
-				        m.removeRow(i);
-				    }
-				}
-				System.err.println("txt Nhap"+ txtTenNhanVien.getText());
-				System.err.println("dt Ngay Vao Lam"+ dtNgayVaoLam.getDate());
-				ArrayList<NhanVien_DTO> dsnv = bus.SearchNV(txtTenNhanVien.getText(), new Date(dtNgayVaoLam.getDate().getTime()));
-				dsnv.forEach(nv -> m.addRow(new Object[]{nv.getMaNhanVien(), nv.getTenNhanVien(),nv.getNgaySinh(), nv.getCMND(),nv.getNgayVaoLam()}));
-			}
-		}); 
-		//-----------------------------------------------------------------------
-		
-		btnTimKiem.setBounds(451, 96, 110, 61);
+		JButton btnTimKiem = new JButton("T\u00ECm ki\u1EBFm");
+		btnTimKiem.setBackground(Color.GREEN);
+		btnTimKiem.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnTimKiem.setBounds(351, 138, 150, 40);
 		getContentPane().add(btnTimKiem);
+		
+		JLabel lblNewLabel = new JLabel("H\u1ECD t\u00EAn");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel.setBounds(98, 81, 56, 27);
+		getContentPane().add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("V\u00E0o l\u00E0m tr\u01B0\u1EDBc ng\u00E0y");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel_1.setBounds(397, 79, 155, 30);
+		getContentPane().add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("Tra c\u1EE9u th\u00F4ng tin nh\u00E2n vi\u00EAn");
+		lblNewLabel_2.setForeground(Color.BLUE);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblNewLabel_2.setBounds(275, 13, 322, 37);
+		getContentPane().add(lblNewLabel_2);
 		
 		
 		
