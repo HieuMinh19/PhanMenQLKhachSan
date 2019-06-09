@@ -133,6 +133,7 @@ public class frmCapNhatLoaiPhong extends JInternalFrame {
 		
 		btnCapNhat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
 				boolean result = LoaiPhong_BUS.Update(new LoaiPhong_DTO(selectMaLoaiPhong, txtTenLoaiPhong.getText(),Integer.parseInt(txtGiaPhong.getText()),txtMoTa.getText()));
 				if(result) {
 					
