@@ -122,11 +122,21 @@ INSERT INTO CHUCVU(TenChucVu) VALUES ('Le tan');
 INSERT INTO CHUCVU(TenChucVu) VALUES ('Bao ve');
 INSERT INTO CHUCVU(TenChucVu) VALUES ('Tap vu');
 go
-INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (1, 1);
-INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (2, 2);
-INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (3, 3);
-INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (4, 4);
-INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (5, 5);
+INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (101, 1);
+INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (102, 1);
+INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (103, 1);
+INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (104, 1);
+INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (105, 1);
+INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (201, 2);
+INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (202, 2);
+INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (203, 2);
+INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (204, 2);
+INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (205, 2);
+INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (301, 3);
+INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (302, 3);
+INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (303, 3);
+INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (304, 3);
+INSERT INTO PHONG(MaPhong, MaLoaiPhong) values (305, 3);
 go
 INSERT INTO LOAIPHONG( TenLoaiPhong, GiaPhong,MoTa) VALUES ( 'Binh Dan', 300000, 'Mot giuong doi . May lanh');
 INSERT INTO LOAIPHONG( TenLoaiPhong, GiaPhong,MoTa) VALUES ( 'Thuong Gia', 20000000,'Mot giuong doi . May lanh . View ngam bien . Tivi . Co phong lam viec');

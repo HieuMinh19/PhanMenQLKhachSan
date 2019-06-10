@@ -22,6 +22,7 @@ import QuanLyKS_DAL.DichVu_DAL;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.awt.Color;
 
 
 
@@ -58,32 +59,31 @@ public class DichVu extends JInternalFrame {
 		setBounds(100, 100, 776, 481);
 		getContentPane().setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("TH\u00CAM D\u1ECACH V\u1EE4");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 36));
-		lblNewLabel.setBounds(216, 39, 286, 44);
-		getContentPane().add(lblNewLabel);
-
 		JLabel lblNewLabel_2 = new JLabel("T\u00EAn d\u1ECBch v\u1EE5");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_2.setBounds(107, 113, 103, 14);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel_2.setBounds(212, 112, 93, 25);
 		getContentPane().add(lblNewLabel_2);
 
 		JLabel lblNewLabel_3 = new JLabel("Gi\u00E1 d\u1ECBch v\u1EE5");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_3.setBounds(117, 151, 103, 14);
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel_3.setBounds(217, 172, 88, 25);
 		getContentPane().add(lblNewLabel_3);
 
 		txtTenDichVu = new JTextField();
-		txtTenDichVu.setBounds(317, 110, 185, 20);
+		txtTenDichVu.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtTenDichVu.setBounds(317, 110, 200, 30);
 		getContentPane().add(txtTenDichVu);
 		txtTenDichVu.setColumns(10);
 
 		txtGiaDichVu = new JTextField();
-		txtGiaDichVu.setBounds(317, 148, 185, 20);
+		txtGiaDichVu.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtGiaDichVu.setBounds(317, 170, 200, 30);
 		getContentPane().add(txtGiaDichVu);
 		txtGiaDichVu.setColumns(10);
 
 		JButton btnThemDichVu = new JButton("Th\u00EAm d\u1ECBch v\u1EE5");
+		btnThemDichVu.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnThemDichVu.setBackground(Color.ORANGE);
 		btnThemDichVu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dichvu_DTO = new DichVu_DTO(); 
@@ -97,8 +97,14 @@ public class DichVu extends JInternalFrame {
 
 			}
 		});
-		btnThemDichVu.setBounds(246, 213, 175, 55);
+		btnThemDichVu.setBounds(340, 226, 160, 40);
 		getContentPane().add(btnThemDichVu);
+		
+		JLabel lblThmDchV = new JLabel("Th\u00EAm d\u1ECBch v\u1EE5");
+		lblThmDchV.setForeground(Color.BLUE);
+		lblThmDchV.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblThmDchV.setBounds(317, 29, 160, 37);
+		getContentPane().add(lblThmDchV);
 
 		JButton btnNewButton = new JButton("THÃŠM");
 		btnNewButton.addActionListener(new ActionListener() {

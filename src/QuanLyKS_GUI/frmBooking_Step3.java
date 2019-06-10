@@ -107,12 +107,6 @@ public class frmBooking_Step3 extends JInternalFrame {
 		lblSCmnd.setBounds(88, 341, 90, 34);
 		getContentPane().add(lblSCmnd);
 		
-		JButton btnBack = new JButton("Quay l\u1EA1i");
-		btnBack.setBackground(Color.ORANGE);
-		btnBack.setFont(new Font("Tahoma", Font.BOLD, 18));
-		btnBack.setBounds(205, 416, 150, 40);
-		getContentPane().add(btnBack);
-		
 		JButton btnContinue = new JButton("Ti\u1EBFp t\u1EE5c");
 		btnContinue.setBackground(Color.ORANGE);
 		btnContinue.addActionListener(new ActionListener() {
@@ -132,7 +126,7 @@ public class frmBooking_Step3 extends JInternalFrame {
 			}
 		});
 		btnContinue.setFont(new Font("Tahoma", Font.BOLD, 18));
-		btnContinue.setBounds(492, 416, 150, 40);
+		btnContinue.setBounds(309, 419, 150, 40);
 		getContentPane().add(btnContinue);
 		
 		

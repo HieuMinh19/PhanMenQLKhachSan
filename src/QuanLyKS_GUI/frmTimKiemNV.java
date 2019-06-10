@@ -81,6 +81,19 @@ public class frmTimKiemNV extends JInternalFrame {
 		scrListThongTin.setViewportView(table);
 		
 		JButton btnTimKiem = new JButton("T\u00ECm ki\u1EBFm");
+		btnTimKiem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (m.getRowCount() > 0) {
+				    for (int i = m.getRowCount() - 1; i > -1; i--) {
+				        m.removeRow(i);
+				    }
+				}
+				System.err.println("txt Nhap"+ txtTenNhanVien.getText());
+				System.err.println("dt Ngay Vao Lam"+ dtNgayVaoLam.getDate());
+				ArrayList<NhanVien_DTO> dsnv = bus.SearchNV(txtTenNhanVien.getText(), new Date(dtNgayVaoLam.getDate().getTime()));
+				dsnv.forEach(nv -> m.addRow(new Object[]{nv.getMaNhanVien(), nv.getTenNhanVien(),nv.getNgaySinh(), nv.getCMND(),nv.getNgayVaoLam()}));
+			}
+		}); 
 		btnTimKiem.setBackground(Color.GREEN);
 		btnTimKiem.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnTimKiem.setBounds(351, 138, 150, 40);

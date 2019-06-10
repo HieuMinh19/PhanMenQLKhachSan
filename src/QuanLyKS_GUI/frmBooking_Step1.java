@@ -139,8 +139,9 @@ public class frmBooking_Step1 extends JInternalFrame {
 			 	 Date NgayTra = date_NgayTraPhong.getDate();
 			 	 
 			 	 //break if NgayNhan > NgayTra
-			 	 if(NgayNhan.compareTo(NgayTra) > 0) {
-			 		JOptionPane.showMessageDialog(null, "Ngày Nhận và ngày trả không phù hợp", "Success: " + "Warning Message", JOptionPane.INFORMATION_MESSAGE);
+			 	Date currentDate = new Date();
+			 	 if(NgayNhan.compareTo(NgayTra) > 0 || NgayNhan.compareTo(currentDate) < 0) {
+			 		JOptionPane.showMessageDialog(null, "Ngày nhận và ngày trả không phù hợp", "Success: " + "Warning Message", JOptionPane.INFORMATION_MESSAGE);
 			 		 return;
 			 	 }
 			 		 
@@ -150,7 +151,6 @@ public class frmBooking_Step1 extends JInternalFrame {
 				ctdpDTO.setMaNhanVien(frmLogin.acc.getMaNhanVien());
 				
 				//get current date   	 	
-				Date currentDate = new Date();
 				ctdpDTO.setdtNgayThucHien( currentDate);
 								
 				Object obj = cbxMaPhong.getSelectedItem();
@@ -392,7 +392,7 @@ public class frmBooking_Step1 extends JInternalFrame {
 			 	 
 			 	 //break if NgayNhan > NgayTra
 			 	 if(NgayNhan.compareTo(NgayTra) > 0) {
-			 		JOptionPane.showMessageDialog(null, "Ngày Nhận và ngày trả không phù hợp", "Success: " + "Warning Message", JOptionPane.INFORMATION_MESSAGE);
+			 		JOptionPane.showMessageDialog(null, "NgÃ y Nháº­n vÃ  ngÃ y tráº£ khÃ´ng phÃ¹ há»£p", "Success: " + "Warning Message", JOptionPane.INFORMATION_MESSAGE);
 			 		 return;
 			 	 }
 			 		 
