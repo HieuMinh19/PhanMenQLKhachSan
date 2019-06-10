@@ -188,10 +188,10 @@ public class QLDichVu extends JInternalFrame {
 		btndelete.setBounds(680, 333, 150, 40);
 		getContentPane().add(btndelete);
 		
-		JLabel label = new JLabel("Tra cứu thông tin nhân viên");
-		label.setForeground(Color.BLUE);
-		label.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		label.setBounds(253, 13, 322, 37);
-		getContentPane().add(label);
+		JLabel lblTraCuThng = new JLabel("Tra cứu thông tin dịch vụ");
+		lblTraCuThng.setForeground(Color.BLUE);
+		lblTraCuThng.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblTraCuThng.setBounds(253, 13, 322, 37);
+		getContentPane().add(lblTraCuThng);
 	}
 }
