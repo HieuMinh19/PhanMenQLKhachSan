@@ -84,7 +84,7 @@ public class frmBooking_Step1 extends JInternalFrame {
 	 */
 	public frmBooking_Step1() {
 		getContentPane().setFont(new Font("Times New Roman", Font.PLAIN, 13));
-		setBounds(100, 100, 900, 700);
+		setBounds(100, 100, 900, 800);
 		getContentPane().setLayout(null);
 		
 		JDateChooser date_NgayNhanPhong = new JDateChooser();
@@ -207,7 +207,7 @@ public class frmBooking_Step1 extends JInternalFrame {
 //				frmDashboard.controlFrame(frmDashboard.FRM_BOOKING2);
 			}
 		});
-		btnTiepTuc.setBounds(499, 500 + (pageSize - 1) * (marginTop + rowHeight) + marginTop + rowHeight, 150, 40);
+		btnTiepTuc.setBounds(499, 520 + (pageSize - 1) * (marginTop + rowHeight) + marginTop + rowHeight, 150, 40);
 		getContentPane().add(btnTiepTuc);
 		
 		getContentPane().add(cbxMaPhong);
@@ -375,7 +375,7 @@ public class frmBooking_Step1 extends JInternalFrame {
 		});
 		btnDatThem.setBackground(Color.ORANGE);
 		btnDatThem.setFont(new Font("Tahoma", Font.BOLD, 18));
-		btnDatThem.setBounds(208, 500 + (pageSize - 1) * (marginTop + rowHeight) + marginTop + rowHeight, 150, 40);
+		btnDatThem.setBounds(208, 520 + (pageSize - 1) * (marginTop + rowHeight) + marginTop + rowHeight, 150, 40);
 		getContentPane().add(btnDatThem);
 		
 		
@@ -436,6 +436,21 @@ public class frmBooking_Step1 extends JInternalFrame {
 		lblDichVu.setBounds(197, 437, 489, 33);
 		getContentPane().add(lblDichVu);
 		
+		JLabel lblNewLabel_3 = new JLabel("Tên dịch vụ");
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_3.setBounds(122, 483, 83, 25);
+		getContentPane().add(lblNewLabel_3);
+		
+		JLabel lblGiTin = new JLabel("Giá tiền");
+		lblGiTin.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblGiTin.setBounds(359, 483, 54, 25);
+		getContentPane().add(lblGiTin);
+		
+		JLabel lblSLng = new JLabel("Số lượng");
+		lblSLng.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblSLng.setBounds(481, 483, 64, 25);
+		getContentPane().add(lblSLng);
+		
 		render(listDV);
 	}
 
@@ -448,19 +463,19 @@ public class frmBooking_Step1 extends JInternalFrame {
 			final int j = i;
 			JEditorPane edDV01 = new JEditorPane();
 			edDV01.setEditable(false);
-			edDV01.setBounds(53, 500 + i * (marginTop + rowHeight), 235, rowHeight);
+			edDV01.setBounds(53, 520 + i * (marginTop + rowHeight), 235, rowHeight);
 			getContentPane().add(edDV01);
 			Rows[pageSize * page + i][0] = edDV01;
 			
 			JEditorPane edSLDV01 = new JEditorPane();
 			edSLDV01.setEditable(true);
-			edSLDV01.setBounds(476, 500 + i * (marginTop + rowHeight), 71, rowHeight);
+			edSLDV01.setBounds(476, 520 + i * (marginTop + rowHeight), 71, rowHeight);
 			getContentPane().add(edSLDV01);
 			Rows[pageSize * page + i][2] = edSLDV01;
 			
 			JEditorPane edGiaDV01 = new JEditorPane();
 			edGiaDV01.setEditable(false);
-			edGiaDV01.setBounds(325, 500 + i * (marginTop + rowHeight), 128, rowHeight);
+			edGiaDV01.setBounds(325, 520 + i * (marginTop + rowHeight), 128, rowHeight);
 			getContentPane().add(edGiaDV01);
 			Rows[pageSize * page + i][1] = edGiaDV01;
 			
@@ -480,7 +495,7 @@ public class frmBooking_Step1 extends JInternalFrame {
 				}
 			});
 			
-			btnAddDV01.setBounds(593, 500 + i * (marginTop + rowHeight), 84, rowHeight);
+			btnAddDV01.setBounds(593, 520 + i * (marginTop + rowHeight), 84, rowHeight);
 			getContentPane().add(btnAddDV01);
 			Rows[pageSize * page + i][3] = btnAddDV01;
 			//dataRows.add(btnAddDV01);
@@ -496,7 +511,7 @@ public class frmBooking_Step1 extends JInternalFrame {
 				}
 			});
 			btnRemove01.setEnabled(false);
-			btnRemove01.setBounds(700, 500 + i * (marginTop + rowHeight), 84, rowHeight);
+			btnRemove01.setBounds(700, 520 + i * (marginTop + rowHeight), 84, rowHeight);
 			getContentPane().add(btnRemove01);
 			Rows[pageSize * page + i][4] = btnRemove01;
 			
@@ -507,7 +522,7 @@ public class frmBooking_Step1 extends JInternalFrame {
 			final int j = i;
 //			int m = data.size() % pageSize;
 			JButton button = new JButton(Integer.toString(i + 1));
-			button.setBounds(53 + i * (50 + marginLeft), 500 + (pageSize - 1) * (marginTop + rowHeight) + marginTop + rowHeight, 50, 39);
+			button.setBounds(53 + i * (50 + marginLeft), 520 + (pageSize - 1) * (marginTop + rowHeight) + marginTop + rowHeight, 50, 39);
 			getContentPane().add(button);
 			dataRows.add(button);
 			if(page == i) {
