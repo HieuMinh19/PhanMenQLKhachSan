@@ -6,8 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import QuanLyKS_BUS.ChucVu_BUS;
 import QuanLyKS_BUS.LoaiPhong_BUS;
 import QuanLyKS_BUS.Phong_BUS;
+import QuanLyKS_DTO.ChucVu_DTO;
 import QuanLyKS_DTO.DichVu_DTO;
 import QuanLyKS_DTO.LoaiPhong_DTO;
 import QuanLyKS_DTO.NhanVien_DTO;
@@ -36,8 +38,12 @@ public class frmDanhSachPhong extends JInternalFrame {
 	private JTable table;
 	private LoaiPhong_BUS bus;
 	private Phong_BUS pbus;
+//	private LoaiPhong_BUS cv_bus;
 	private JTextField txtMaPhong;
 	private ArrayList<Phong_DTO> dsp;
+	private ArrayList<LoaiPhong_DTO> dscv;
+	private int selectedChucVuIndex;
+	private int selectedRow;
 	/**
 	 * Launch the application.
 	 */
@@ -60,11 +66,17 @@ public class frmDanhSachPhong extends JInternalFrame {
 	public frmDanhSachPhong() {
 		bus = new LoaiPhong_BUS();
 		pbus = new Phong_BUS();
+		//cv_bus = new ChucVu_BUS();
 		setBounds(100, 100, 900, 700);
 		getContentPane().setLayout(null);
 
+		JComboBox cbLoaiPhong = new JComboBox();
+		cbLoaiPhong.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		cbLoaiPhong.setBounds(649, 266, 191, 30);
+		getContentPane().add(cbLoaiPhong);
+		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(94, 107, 248, 250);
+		scrollPane.setBounds(94, 107, 365, 250);
 		getContentPane().add(scrollPane);
 
 		table = new JTable();
@@ -74,7 +86,7 @@ public class frmDanhSachPhong extends JInternalFrame {
 				new Object[][] {
 				},
 				new String[] {
-					"Ma Phong", "Loai Phong"
+					"Mã Phòng", "Tên Loại Phòng"
 				}
 			);
 		table = new JTable(m);
@@ -82,20 +94,23 @@ public class frmDanhSachPhong extends JInternalFrame {
 	    cellSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	    cellSelectionModel.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
-				
-			    int[] selectedRow = table.getSelectedRows();
-			    
-			
-			    for (int i = 0; i < selectedRow.length; i++) {
-			        txtMaPhong.setText(table.getValueAt(selectedRow[i], 0).toString());
-			    	txtLoaiPhong.setText((String) table.getValueAt(selectedRow[i], 1));
-			    	
-			    }
-			  }
 
+			selectedRow = table.getSelectedRow() < 0 ? 0 : table.getSelectedRow();
+		    int[] selectedRowColums = table.getSelectedRows();
+		
+		    for (int i = 0; i < selectedRowColums.length; i++) {
+		    	
+		        txtMaPhong.setText(table.getValueAt(selectedRowColums[i], 0).toString());
+		    }
+		    selectedChucVuIndex = dscv.indexOf(dsp.get(selectedRow).getLoaiPhong());
+		    cbLoaiPhong.setSelectedIndex(selectedChucVuIndex);//(table.getValueAt(selectedRowColums[i], 5));
+			}
         });
 		table.setRowSelectionAllowed(true);
 		scrollPane.setViewportView(table);
+		
+		dscv = LoaiPhong_BUS.selectAll();
+		dscv.forEach(cv -> cbLoaiPhong.addItem(cv));
 		
 		JButton btnLoadListPhong = new JButton("Danh s\u00E1ch ph\u00F2ng");
 		btnLoadListPhong.setBackground(Color.GREEN);
@@ -117,18 +132,18 @@ public class frmDanhSachPhong extends JInternalFrame {
 		
 		txtMaPhong = new JTextField();
 		txtMaPhong.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txtMaPhong.setBounds(605, 249, 150, 30);
+		txtMaPhong.setBounds(649, 203, 191, 30);
 		getContentPane().add(txtMaPhong);
 		txtMaPhong.setColumns(10);
 		
 		JLabel lblMaphong = new JLabel("M\u00E3 ph\u00F2ng");
 		lblMaphong.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblMaphong.setBounds(514, 251, 79, 22);
+		lblMaphong.setBounds(543, 211, 79, 22);
 		getContentPane().add(lblMaphong);
 		
 		JLabel lblLoaiPhong = new JLabel("T\u00EAn lo\u1EA1i ph\u00F2ng");
 		lblLoaiPhong.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblLoaiPhong.setBounds(471, 307, 119, 22);
+		lblLoaiPhong.setBounds(503, 269, 119, 22);
 		getContentPane().add(lblLoaiPhong);
 		
 		JButton btnCapNhat = new JButton("C\u1EADp nh\u1EADt");
@@ -136,7 +151,7 @@ public class frmDanhSachPhong extends JInternalFrame {
 		btnCapNhat.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnCapNhat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				boolean result = Phong_BUS.Update(new Phong_DTO(Integer.parseInt(txtMaPhong.getText()),Integer.parseInt(tx.getText())));
+				//boolean result = Phong_BUS.Update(new Phong_DTO(Integer.parseInt(txtMaPhong.getText()),Integer.parseInt(tx.getText())));
 				
 			}
 		});
@@ -149,10 +164,7 @@ public class frmDanhSachPhong extends JInternalFrame {
 		btnXoa.setBounds(690, 385, 150, 40);
 		getContentPane().add(btnXoa);
 		
-		JComboBox cbLoaiPhong = new JComboBox();
-		cbLoaiPhong.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		cbLoaiPhong.setBounds(605, 305, 150, 30);
-		getContentPane().add(cbLoaiPhong);
+		
 		
 		JLabel lblQunLPhng = new JLabel("Qu\u1EA3n l\u00FD ph\u00F2ng");
 		lblQunLPhng.setForeground(Color.BLUE);

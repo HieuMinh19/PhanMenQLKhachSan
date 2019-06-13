@@ -32,15 +32,17 @@ public class LoaiPhong_DAL {
 	}
 	public static boolean Insert(LoaiPhong_DTO loaiphong) {
 		PreparedStatement ptmt = null; 
-		String query = "INSERT INTO LOAIPHONG(TenLoaiPhong, GiaPhong) VALUES (?, ?)";
+		String query = "INSERT INTO LOAIPHONG(TenLoaiPhong, GiaPhong, MoTa) VALUES (?, ?, ?)";
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
 		Connection conn = mycon.getConnection();
 		String TenLoaiPhong = loaiphong.getTenLoaiPhong();
+		String MoTa = loaiphong.getMoTa();
 		int GiaPhong = loaiphong.getGiaPhong();
 		try {
 			ptmt = conn.prepareStatement(query);
 			ptmt.setString(1, TenLoaiPhong);
 			ptmt.setInt(2, GiaPhong);
+			ptmt.setString(3, MoTa);
 			if(ptmt.executeUpdate() !=0 ) {
 				System.err.println("thÃªm loáº¡i phÃ²ng thÃ nh cÃ´ng! ");
 				return true;
@@ -71,8 +73,8 @@ public class LoaiPhong_DAL {
 				LoaiPhong_DTO lp = new LoaiPhong_DTO();
 				lp.setMaLoaiPhong(rs.getInt("MaLoaiPhong"));
 				lp.setTenLoaiPhong(rs.getString("TenLoaiPhong"));
-				lp.setGiaPhong(rs.getInt("GiaPhong"));
-				lp.setMoTa(rs.getString("MoTa"));
+				//lp.setGiaPhong(rs.getInt("GiaPhong"));
+				//lp.setMoTa(rs.getString("MoTa"));
 				ds.add(lp);
 			}
 			return ds;

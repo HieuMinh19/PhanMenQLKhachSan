@@ -88,10 +88,20 @@ public class frmTimKiemNV extends JInternalFrame {
 				        m.removeRow(i);
 				    }
 				}
-				System.err.println("txt Nhap"+ txtTenNhanVien.getText());
-				System.err.println("dt Ngay Vao Lam"+ dtNgayVaoLam.getDate());
+				
+				System.err.println("Ten NV can tim: "+" "+ txtTenNhanVien.getText());
+				System.err.println("Ngay Vao Lam"+ dtNgayVaoLam.getDate());
+			if(dtNgayVaoLam.getDate() == null) {
+				ArrayList<NhanVien_DTO> dsnv = bus.SearchNV1(txtTenNhanVien.getText());
+				dsnv.forEach(nv -> m.addRow(new Object[]{nv.getMaNhanVien(), nv.getTenNhanVien(),nv.getNgaySinh(), nv.getCMND(),nv.getNgayVaoLam()}));
+			}else {
 				ArrayList<NhanVien_DTO> dsnv = bus.SearchNV(txtTenNhanVien.getText(), new Date(dtNgayVaoLam.getDate().getTime()));
 				dsnv.forEach(nv -> m.addRow(new Object[]{nv.getMaNhanVien(), nv.getTenNhanVien(),nv.getNgaySinh(), nv.getCMND(),nv.getNgayVaoLam()}));
+			}
+				//ArrayList<NhanVien_DTO> dsnv = bus.SearchNV(txtTenNhanVien.getText(), new Date(dtNgayVaoLam.getDate().getTime()));
+				//dsnv.forEach(nv -> m.addRow(new Object[]{nv.getMaNhanVien(), nv.getTenNhanVien(),nv.getNgaySinh(), nv.getCMND(),nv.getNgayVaoLam()}));
+				
+				
 			}
 		}); 
 		btnTimKiem.setBackground(Color.GREEN);

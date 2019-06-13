@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import QuanLyKS_DTO.LoaiPhong_DTO;
+import QuanLyKS_DTO.NhanVien_DTO;
 import QuanLyKS_DTO.Phong_DTO;
 
 public class Phong_DAL {
@@ -104,7 +105,34 @@ public class Phong_DAL {
 		}
 		return null;
 	}
-	
+	public static boolean Insert(Phong_DTO p)  {
+		PreparedStatement ptmt = null; 
+		String query = "INSERT INTO PHONG(MaPhong, MaLoaiPhong) VALUES (?, ?)";
+		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
+		Connection conn = mycon.getConnection();
+
+		try {
+			ptmt = conn.prepareStatement(query);
+			ptmt.setInt(1, p.getMaPhong());
+			ptmt.setInt(2, p.getMaLoaiPhong());
+			
+			if( ptmt.executeUpdate() != 0) {
+				System.err.println("insert thanh cong nhan vien");
+				return true;
+			}
+				
+			else {
+				System.err.println("khoi tao nhan vien that bai");
+				return false;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false;
+	} 
 	public static int getGiaPhong(int iMaPhong) {
 		int iGiaPhong = 1;
 		PreparedStatement ptmt = null; 

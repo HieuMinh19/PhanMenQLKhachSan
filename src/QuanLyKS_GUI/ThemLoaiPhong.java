@@ -25,6 +25,7 @@ public class ThemLoaiPhong extends JInternalFrame {
 	private JTextField txtTenLoaiPhong;
 	private JTextField txtGiaPhong;
 	private LoaiPhong_DTO loaiphongDTO;
+	private JTextField txtMoTa;
 
 	/**
 	 * Launch the application.
@@ -77,17 +78,19 @@ public class ThemLoaiPhong extends JInternalFrame {
 		txtThemLoaiPhong.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				loaiphongDTO = new LoaiPhong_DTO(); 
-
 				loaiphongDTO.setTenLoaiPhong(txtTenLoaiPhong.getText());
 				loaiphongDTO.setGiaPhong(Integer.parseInt(txtGiaPhong.getText()));
-
+				loaiphongDTO.setMoTa(txtMoTa.getText());
+				System.err.println("Tên Loai Phong là: "+" "+ txtTenLoaiPhong.getText());
+				System.err.println("Giá Phong là: "+" "+ txtGiaPhong.getText());
+				System.err.println("Mô Tả là: "+" "+ txtMoTa.getText());
 				 if(LoaiPhong_BUS.Insert(loaiphongDTO) == true)
-					 JOptionPane.showMessageDialog(null, "tạo loại phòng thành công", "Notice !", JOptionPane.INFORMATION_MESSAGE);
+					 JOptionPane.showMessageDialog(null, "Tạo loại phòng thành công", "Notice !", JOptionPane.INFORMATION_MESSAGE);
 				 else
 					 JOptionPane.showMessageDialog(null, "Tạo loại phòng thất bại", "Notice !", JOptionPane.CLOSED_OPTION);
 			}
 		});
-		txtThemLoaiPhong.setBounds(373, 214, 200, 40);
+		txtThemLoaiPhong.setBounds(372, 283, 200, 40);
 		getContentPane().add(txtThemLoaiPhong);
 		
 		JLabel lblThmLoiPhng = new JLabel("Thêm loại phòng");
@@ -95,6 +98,17 @@ public class ThemLoaiPhong extends JInternalFrame {
 		lblThmLoiPhng.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lblThmLoiPhng.setBounds(357, 13, 188, 37);
 		getContentPane().add(lblThmLoiPhng);
+		
+		JLabel lblMT = new JLabel("Mô Tả");
+		lblMT.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblMT.setBounds(215, 205, 81, 22);
+		getContentPane().add(lblMT);
+		
+		txtMoTa = new JTextField();
+		txtMoTa.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtMoTa.setColumns(10);
+		txtMoTa.setBounds(314, 207, 300, 30);
+		getContentPane().add(txtMoTa);
 
 	}
 }

@@ -92,7 +92,7 @@ public class frmLogin extends JFrame {
 					frmDashboard main = new frmDashboard(acc);
 					_self.setVisible(false);
 					main.setVisible(true);
-					main.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+					//main.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 				}
 				else
 				{

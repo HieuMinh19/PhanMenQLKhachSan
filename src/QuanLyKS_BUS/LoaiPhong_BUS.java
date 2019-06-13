@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import QuanLyKS_DAL.LoaiPhong_DAL;
 import QuanLyKS_DAL.NhanVien_DAL;
+import QuanLyKS_DTO.ChucVu_DTO;
 import QuanLyKS_DTO.LoaiPhong_DTO;
 import QuanLyKS_DTO.NhanVien_DTO;
 
