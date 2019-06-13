@@ -57,8 +57,9 @@ public class frmBooking_Step2 extends JInternalFrame {
 	 */
 	
 	static ArrayList<CTDichVu_DTO> listBookingDV = new ArrayList<CTDichVu_DTO>();
-	public frmBooking_Step2(CTDatPhong_DTO ctdp) {
-		this.ctdp = ctdp;
+//	public frmBooking_Step2(CTDatPhong_DTO ctdp) {
+	public frmBooking_Step2() {
+//		this.ctdp = ctdp;
 		setBounds(100, 100, 900, 700); 
 		getContentPane().setLayout(null);
 		
@@ -75,21 +76,21 @@ public class frmBooking_Step2 extends JInternalFrame {
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				for(int i = 0; i < isAdd.length; i++) {
-					if(isAdd[i]) {
-						int iSL = Integer.parseInt( ((JEditorPane)Rows[i][2]).getText() );
-						int iMaCTDatPhong = ctdp.getMaCTDatPhong();
-						int iDonGia = listDV.get(i).getGiaDichVu();
-						int iThanhTien = iSL * iDonGia;
-						int iMaDV = listDV.get(i).getMaDichVu();
-						CTDichVu_DTO dvTemp = new CTDichVu_DTO(iSL, iMaCTDatPhong, iThanhTien, iMaDV);
-						
-						listBookingDV.add(dvTemp);
-					}
-				}
+//				for(int i = 0; i < isAdd.length; i++) {
+//					if(isAdd[i]) {
+//						int iSL = Integer.parseInt( ((JEditorPane)Rows[i][2]).getText() );
+//						int iMaCTDatPhong = ctdp.getMaCTDatPhong();
+//						int iDonGia = listDV.get(i).getGiaDichVu();
+//						int iThanhTien = iSL * iDonGia;
+//						int iMaDV = listDV.get(i).getMaDichVu();
+//						CTDichVu_DTO dvTemp = new CTDichVu_DTO(iSL, iMaCTDatPhong, iThanhTien, iMaDV);
+//						
+//						listBookingDV.add(dvTemp);
+//					}
+//				}
 				
 				
-				frmDashboard.frmBooking3 =  new frmBooking_Step3(ctdp, listBookingDV);
+//				frmDashboard.frmBooking3 =  new frmBooking_Step3(listBookingDV);
 				frmDashboard.controlFrame(frmDashboard.FRM_BOOKING3);
 			}
 		});
@@ -101,7 +102,7 @@ public class frmBooking_Step2 extends JInternalFrame {
 		btnBack.setBackground(Color.ORANGE);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				frmDashboard.frmBooking1 = new frmBooking_Step1(ctdp);
+//				frmDashboard.frmBooking1 = new frmBooking_Step1(ctdp);
 				frmDashboard.controlFrame(frmDashboard.FRM_BOOKING1);
 			}
 		});

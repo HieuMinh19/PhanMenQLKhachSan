@@ -2,14 +2,19 @@ package QuanLyKS_GUI;
 
 import java.awt.EventQueue;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 import com.ibm.icu.text.SimpleDateFormat;
+import com.sun.org.apache.xerces.internal.impl.dv.xs.ListDV;
 
 import QuanLyKS_DTO.BangPhanCong_DTO;
 import QuanLyKS_DTO.CTDatPhong_DTO;
@@ -28,6 +33,7 @@ import QuanLyKS_BUS.Phong_BUS;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
@@ -38,6 +44,8 @@ import javax.swing.JLabel;
 public class frmBooking_Step4 extends JInternalFrame {
 	private JTable tbThongTinChung;
 	private JTable tbThongTinDichVu;
+	private int selectedRow;
+	private int selectedMaCTDP;
 
 	/**
 	 * Launch the application.
@@ -57,7 +65,7 @@ public class frmBooking_Step4 extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frmBooking_Step4(CTDatPhong_DTO ctdp, ArrayList<CTDichVu_DTO> listCTDV, KhachHang_DTO khDTO) {
+	public frmBooking_Step4(ArrayList<ArrayList<CTDichVu_DTO>> listCTDVs, KhachHang_DTO khDTO) {
 		setBounds(100, 100, 900, 700);
 		getContentPane().setLayout(null);
 		
@@ -73,18 +81,7 @@ public class frmBooking_Step4 extends JInternalFrame {
 		tbThongTinChung = new JTable(modelBooking); 
 		scrBooking.setViewportView(tbThongTinChung);
 		getContentPane().add(scrBooking);
-		
-		ArrayList<LoaiPhong_DTO>  listLP = LoaiPhong_BUS.LoadListLP();
-		
-		String strTenLoaiPhong = Phong_BUS.getTenLoaiPhong(ctdp.getMaPhong());
-		int iGiaPhong = Phong_BUS.getGiaPhong(ctdp.getMaPhong());
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
- 		String NgayNhan = sdf.format( ctdp.getNgayNhan());
- 	 	String NgayTra = sdf.format( ctdp.getNgayTra() );
-		String NgayThucHien = sdf.format( ctdp.getdtNgayThucHien() );
-		modelBooking.addRow(new Object[] {ctdp.getMaPhong(), khDTO.getTenKH(), strTenLoaiPhong, iGiaPhong, NgayNhan, NgayTra});
-		 
-		
+
 		JScrollPane scrDV = new JScrollPane();
 		scrDV.setBounds(153, 318, 556, 98);
 		DefaultTableModel modelDV = new DefaultTableModel(
@@ -98,15 +95,61 @@ public class frmBooking_Step4 extends JInternalFrame {
 		scrDV.setViewportView(tbThongTinDichVu);
 		getContentPane().add(scrDV);
 		
-		ArrayList<DichVu_DTO> listDV = DichVu_BUS.getListDV();
-		for(int i = 0; i < listCTDV.size(); i++) {
-			for(int j = 0; j < listDV.size(); j++){
-				if(listDV.get(j).getMaDichVu() == listCTDV.get(i).getMaDichVu())
-					modelDV.addRow(new Object[] {listDV.get(j).getTenDichVu(), listCTDV.get(i).getSoLuong(), 
-							listCTDV.get(i).getTongTienDichVu()});
-			}
-			
-		}		
+		ListSelectionModel cellSelectionModel = tbThongTinChung.getSelectionModel();
+	    cellSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+	    cellSelectionModel.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent e) {
+				selectedRow = tbThongTinChung.getSelectedRow() < 0 ? 0 : tbThongTinChung.getSelectedRow();
+//			    int[] selectedRowColums = tbThongTinChung.getSelectedRows();
+			    int maCTDP = frmBooking_Step1.listCTDP.get(selectedRow).getMaCTDatPhong();
+//		        ArrayList<DichVu_DTO> _listDV = new ArrayList<DichVu_DTO>();
+				if (modelDV.getRowCount() > 0) {
+				    for (int i = modelDV.getRowCount() - 1; i > -1; i--) {
+				    	modelDV.removeRow(i);
+				    }
+				}
+				for (int i = 0; i < frmBooking_Step1.listBookingDVs.size(); i++) {
+		        	ArrayList<CTDichVu_DTO> listDV = frmBooking_Step1.listBookingDVs.get(i);
+		        	boolean isMatched = false;
+		        	for (int j = 0; j < listDV.size(); j++) {
+		        		isMatched = listDV.get(j).getMaCTDatPhong() == maCTDP;
+		        		if(isMatched) break;
+					}
+	        		if(isMatched) {
+	        			listDV.forEach(dv -> {
+	        				DichVu_DTO _dv = DichVu_BUS.getListDV(dv.getMaDichVu());
+		        			modelDV.addRow(new Object[] {_dv != null ? _dv.getTenDichVu() : "", dv.getSoLuong(), dv.getTongTienDichVu()});
+	        			});
+	        			break;
+	        		}
+		        }
+			  }
+
+        });
+	    tbThongTinChung.setRowSelectionAllowed(true);
+	    scrBooking.setViewportView(tbThongTinChung);
+		
+		frmBooking_Step1.listCTDP.forEach(ctdp -> {
+			String strTenLoaiPhong = Phong_BUS.getTenLoaiPhong(ctdp.getMaPhong());
+			int iGiaPhong = Phong_BUS.getGiaPhong(ctdp.getMaPhong());
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	 		String NgayNhan = sdf.format( ctdp.getNgayNhan());
+	 	 	String NgayTra = sdf.format( ctdp.getNgayTra() );
+//			String NgayThucHien = sdf.format( ctdp.getdtNgayThucHien() );
+			modelBooking.addRow(new Object[] {ctdp.getMaPhong(), khDTO.getTenKH(), strTenLoaiPhong, iGiaPhong, NgayNhan, NgayTra});
+		});
+		
+		 
+		
+//		ArrayList<DichVu_DTO> listDV = DichVu_BUS.getListDV();
+//		for(int i = 0; i < listCTDV.size(); i++) {
+//			for(int j = 0; j < listDV.size(); j++){
+//				if(listDV.get(j).getMaDichVu() == listCTDV.get(i).getMaDichVu())
+//					modelDV.addRow(new Object[] {listDV.get(j).getTenDichVu(), listCTDV.get(i).getSoLuong(), 
+//							listCTDV.get(i).getTongTienDichVu()});
+//			}
+//			
+//		}		
 		
 		JButton btnDatPhong = new JButton("\u0110\u1EB7t ph\u00F2ng");
 		btnDatPhong.setBackground(Color.ORANGE);
@@ -114,26 +157,28 @@ public class frmBooking_Step4 extends JInternalFrame {
 		btnDatPhong.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-					
-					String strTenLoaiPhong = Phong_BUS.getTenLoaiPhong(ctdp.getMaPhong());
-					int iGiaPhong = Phong_BUS.getGiaPhong(ctdp.getMaPhong());
-					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			 		String NgayNhan = sdf.format( ctdp.getNgayNhan());
-			 	 	String NgayTra = sdf.format( ctdp.getNgayTra() );
-					String NgayThucHien = sdf.format( ctdp.getdtNgayThucHien() );
-					
-					System.err.println("NgayThucHien trong str4" +""+ NgayThucHien);
+				frmBooking_Step1.listCTDP.forEach(ctdp -> {
+//					String strTenLoaiPhong = Phong_BUS.getTenLoaiPhong(ctdp.getMaPhong());
+//					int iGiaPhong = Phong_BUS.getGiaPhong(ctdp.getMaPhong());
+//					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//			 		String NgayNhan = sdf.format( ctdp.getNgayNhan());
+//			 	 	String NgayTra = sdf.format( ctdp.getNgayTra() );
+//					String NgayThucHien = sdf.format( ctdp.getdtNgayThucHien() );
+//					
+//					System.err.println("NgayThucHien trong str4" +""+ NgayThucHien);
 					
 					
 				//	dtngaysinh.getDate().getTime()
-					modelBooking.addRow(new Object[] {ctdp.getMaPhong(), khDTO.getTenKH(), strTenLoaiPhong, iGiaPhong, NgayNhan, NgayTra});
+//					modelBooking.addRow(new Object[] {ctdp.getMaPhong(), khDTO.getTenKH(), strTenLoaiPhong, iGiaPhong, NgayNhan, NgayTra});
 					
 					ctdp.setMaKhachHang(khDTO.getMaKH());
 					CTDatPhong_BUS.Insert(ctdp);
-					for(int i = 0; i < listCTDV.size(); i++) {
-						CTDichVu_BUS.Insert(listCTDV.get(i));
-					}
-					KhachHang_BUS.Insert(khDTO);
+					frmBooking_Step1.listBookingDVs.forEach(listCTDV -> {
+						listCTDV.forEach(ctdv -> CTDichVu_BUS.Insert(ctdv));
+					});
+				});
+				KhachHang_BUS.Insert(khDTO);
+					
 					
 					JOptionPane.showMessageDialog(null, "Dat Phong Thanh Cong", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);
 				

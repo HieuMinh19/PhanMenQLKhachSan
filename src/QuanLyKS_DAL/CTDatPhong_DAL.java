@@ -75,20 +75,17 @@ public class CTDatPhong_DAL {
 		Connection conn = mycon.getConnection();
 		
 		try {
-			int nextID = 0;
 			ptmt = conn.prepareStatement(query);
 			ResultSet rs = ptmt.executeQuery();
-			while(rs.next()) 
-				nextID = rs.getInt("MaCTDatPhong") + 1;
-			
-			return nextID;
+			rs.next();
+			return rs.getInt("MaCTDatPhong") + 1;
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block 
 			e.printStackTrace();
+			return 1;
 		}
 		
-		return 0;
 	}
 	
 	public static ArrayList<CTDatPhong_DTO> searchKH(int maPhong, Date ng) {

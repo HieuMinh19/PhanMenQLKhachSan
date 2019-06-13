@@ -61,6 +61,30 @@ public class DichVu_DAL {
 		}
 		return null;	
 	}
+
+	public static DichVu_DTO getDVById (int maDV){
+		//get connection
+		PreparedStatement ptmt = null; 
+		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
+		Connection conn = mycon.getConnection();
+		
+		String query = "SELECT MaDichVu,TenDichVu,GiaDichVu FROM DichVu where MaDichVu = ?";
+		try {
+			ptmt = conn.prepareStatement(query);
+			ptmt.setInt(1, maDV);
+			ResultSet rs = ptmt.executeQuery();
+			rs.next();
+			DichVu_DTO dv = new DichVu_DTO();
+			dv.setMaDichVu(rs.getInt("MaDichVu"));
+			dv.setTenDichVu(rs.getString("TenDichVu"));
+			dv.setGiaDichVu(rs.getInt("GiaDichVu"));
+			return dv;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;	
+		}
+	}
 	
 	public static ArrayList<DichVu_DTO> getallDV(){
 		 ArrayList<DichVu_DTO> dvList = new ArrayList<>();
