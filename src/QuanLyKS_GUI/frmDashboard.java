@@ -65,7 +65,7 @@ public class frmDashboard extends JFrame {
 	// 13
 	static frmBooking_Step1 frmBooking1 = new frmBooking_Step1();
 	// 14
-	static frmBooking_Step2 frmBooking2 = new frmBooking_Step2(ctdp);
+	static frmBooking_Step2 frmBooking2 = new frmBooking_Step2();
 	// 15
 	static frmThanhToan frmThanhToan = new frmThanhToan();
 	// 16
@@ -75,7 +75,7 @@ public class frmDashboard extends JFrame {
 	// 18
 //	static frmDashboard frame = new frmDashboard(null);
 	//19
-	static frmBooking_Step3 frmBooking3 = new frmBooking_Step3(ctdp, listCTDV);
+	static frmBooking_Step3 frmBooking3 = new frmBooking_Step3();
 	static frmBooking_Step4 frmBooking4;
 	
 	static frmThemPhong frmThemPhong = new frmThemPhong();

@@ -26,22 +26,42 @@ import com.ibm.icu.text.SimpleDateFormat;
 import com.toedter.calendar.JDateChooser;
 
 import QuanLyKS_BUS.CTDatPhong_BUS;
+import QuanLyKS_BUS.DichVu_BUS;
 import QuanLyKS_BUS.LoaiPhong_BUS;
 import QuanLyKS_BUS.Phong_BUS;
 import QuanLyKS_DAL.Phong_DAL;
 import QuanLyKS_DTO.CTDatPhong_DTO;
+import QuanLyKS_DTO.CTDichVu_DTO;
+import QuanLyKS_DTO.DichVu_DTO;
 import QuanLyKS_DTO.LoaiPhong_DTO;
 import QuanLyKS_DTO.Phong_DTO;
 import QuanLyKS_GUI.frmLogin;
 import java.awt.Color;
+import java.awt.Component;
 
 
 public class frmBooking_Step1 extends JInternalFrame {
 	ArrayList<LoaiPhong_DTO> listLP = LoaiPhong_BUS.LoadListLP();
 	ArrayList<Phong_DTO> listPhong = new ArrayList<Phong_DTO>();
-	public static CTDatPhong_DTO ctdpDTO = new CTDatPhong_DTO();
+	ArrayList<CTDichVu_DTO> listBookingDV = new ArrayList<CTDichVu_DTO>();
+	public static ArrayList<CTDatPhong_DTO> listCTDP = new ArrayList<CTDatPhong_DTO>();
+	public static ArrayList<ArrayList<CTDichVu_DTO>> listBookingDVs = new ArrayList<ArrayList<CTDichVu_DTO>>();
 	
 	private int iMaPhong = 0;
+	
+	ArrayList<Component> dataRows = new ArrayList<Component>();
+	ArrayList<DichVu_DTO> listDV;
+	Component Rows [][];
+	boolean isAdd [];
+	//ArrayList<JButton> pages = new ArrayList<JButton>();
+	
+	int page = 0, pageSize = 5, total = 0;
+	int pageCount = 0;
+	int rowHeight = 30;
+	int marginTop = 20;
+	int marginLeft = 20;
+	int iCTDP = 1;
+
 	/**
 	 * Launch the application.
 	 */
@@ -64,7 +84,7 @@ public class frmBooking_Step1 extends JInternalFrame {
 	 */
 	public frmBooking_Step1() {
 		getContentPane().setFont(new Font("Times New Roman", Font.PLAIN, 13));
-		setBounds(100, 100, 900, 700);
+		setBounds(100, 100, 900, 800);
 		getContentPane().setLayout(null);
 		
 		JDateChooser date_NgayNhanPhong = new JDateChooser();
@@ -132,9 +152,10 @@ public class frmBooking_Step1 extends JInternalFrame {
 	 	btnTiepTuc.setBackground(Color.ORANGE);
 	 	btnTiepTuc.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnTiepTuc.addActionListener(new ActionListener() { 
-			public void actionPerformed(ActionEvent e) {					 
+			public void actionPerformed(ActionEvent e) {			
+				//-----------------------Them CTDP----------------------------------------------------------------------------------------------
 			 	 System.err.println("update thanh cong dich vu" + date_NgayNhanPhong.getDate().getTime());
-			 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
+//			 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
 			 	 Date NgayNhan = date_NgayNhanPhong.getDate();
 			 	 Date NgayTra = date_NgayTraPhong.getDate();
 			 	 
@@ -144,11 +165,13 @@ public class frmBooking_Step1 extends JInternalFrame {
 			 		JOptionPane.showMessageDialog(null, "Ngày nhận và ngày trả không phù hợp", "Success: " + "Warning Message", JOptionPane.INFORMATION_MESSAGE);
 			 		 return;
 			 	 }
-			 		 
 			 	 
+			 	 CTDatPhong_DTO ctdpDTO = new CTDatPhong_DTO();
+			 		 
 			   	ctdpDTO.setNgayNhan( date_NgayNhanPhong.getDate());
 				ctdpDTO.setNgayTra(date_NgayTraPhong.getDate());
-				ctdpDTO.setMaNhanVien(frmLogin.acc.getMaNhanVien());
+//				ctdpDTO.setMaNhanVien(frmLogin.acc.getMaNhanVien());
+				ctdpDTO.setMaNhanVien(frmDashboard.user.getMaNhanVien());
 				
 				//get current date   	 	
 				ctdpDTO.setdtNgayThucHien( currentDate);
@@ -156,15 +179,35 @@ public class frmBooking_Step1 extends JInternalFrame {
 				Object obj = cbxMaPhong.getSelectedItem();
 				int iMaPhong = Integer.parseInt(obj.toString());
 				ctdpDTO.setMaPhong(iMaPhong);
-				int iCTDP = CTDatPhong_BUS.getnextID();
-				ctdpDTO.setMaCTDatPhong(iCTDP);
-					
+				if(iCTDP > 0) ctdpDTO.setMaCTDatPhong(++iCTDP);
+				else {
+					iCTDP = CTDatPhong_BUS.getnextID();
+					ctdpDTO.setMaCTDatPhong(iCTDP);
+				}
+
+				for(int i = 0; i < isAdd.length; i++) {
+					if(isAdd[i]) {
+						int iSL = Integer.parseInt( ((JEditorPane)Rows[i][2]).getText() );
+						int iMaCTDatPhong = ctdpDTO.getMaCTDatPhong();
+						int iDonGia = listDV.get(i).getGiaDichVu();
+						int iThanhTien = iSL * iDonGia;
+						int iMaDV = listDV.get(i).getMaDichVu();
+						CTDichVu_DTO dvTemp = new CTDichVu_DTO(iSL, iMaCTDatPhong, iThanhTien, iMaDV);
+						
+						listBookingDV.add(dvTemp);
+					}
+				}
+				listBookingDVs.add(listBookingDV);
 				
-				frmDashboard.frmBooking2 = new frmBooking_Step2(ctdpDTO);
-				frmDashboard.controlFrame(frmDashboard.FRM_BOOKING2);
+			 	frmBooking_Step1.listCTDP.add(ctdpDTO);
+				
+//				frmDashboard.frmBooking2 = new frmBooking_Step2(ctdpDTO);
+				//-----------------------End Them CTDP----------------------------------------------------------------------------------------------
+				frmDashboard.controlFrame(frmDashboard.FRM_BOOKING3);
+//				frmDashboard.controlFrame(frmDashboard.FRM_BOOKING2);
 			}
 		});
-		btnTiepTuc.setBounds(375, 433, 150, 40);
+		btnTiepTuc.setBounds(499, 520 + (pageSize - 1) * (marginTop + rowHeight) + marginTop + rowHeight, 150, 40);
 		getContentPane().add(btnTiepTuc);
 		
 		getContentPane().add(cbxMaPhong);
@@ -272,6 +315,70 @@ public class frmBooking_Step1 extends JInternalFrame {
 		lblGi.setBounds(450, 191, 38, 25);
 		getContentPane().add(lblGi);
 		
+		JButton btnDatThem = new JButton("Đặt thêm");
+		btnDatThem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//-----------------------Them CTDP----------------------------------------------------------------------------------------------
+			 	 System.err.println("update thanh cong dich vu" + date_NgayNhanPhong.getDate().getTime());
+//			 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
+			 	 Date NgayNhan = date_NgayNhanPhong.getDate();
+			 	 Date NgayTra = date_NgayTraPhong.getDate();
+			 	 
+			 	 //break if NgayNhan > NgayTra
+			 	Date currentDate = new Date();
+			 	 if(NgayNhan.compareTo(NgayTra) > 0 || NgayNhan.compareTo(currentDate) < 0) {
+			 		JOptionPane.showMessageDialog(null, "Ngày nhận và ngày trả không phù hợp", "Success: " + "Warning Message", JOptionPane.INFORMATION_MESSAGE);
+			 		 return;
+			 	 }
+			 	 
+			 	 CTDatPhong_DTO ctdpDTO = new CTDatPhong_DTO();
+			 		 
+			   	ctdpDTO.setNgayNhan( date_NgayNhanPhong.getDate());
+				ctdpDTO.setNgayTra(date_NgayTraPhong.getDate());
+//				ctdpDTO.setMaNhanVien(frmLogin.acc.getMaNhanVien());
+				ctdpDTO.setMaNhanVien(frmDashboard.user.getMaNhanVien());
+				
+				//get current date   	 	
+				ctdpDTO.setdtNgayThucHien( currentDate);
+								
+				Object obj = cbxMaPhong.getSelectedItem();
+				int iMaPhong = Integer.parseInt(obj.toString());
+				ctdpDTO.setMaPhong(iMaPhong);
+				if(iCTDP > 0) ctdpDTO.setMaCTDatPhong(++iCTDP);
+				else {
+					iCTDP = CTDatPhong_BUS.getnextID();
+					ctdpDTO.setMaCTDatPhong(iCTDP);
+				}
+
+				for(int i = 0; i < isAdd.length; i++) {
+					if(isAdd[i]) {
+						int iSL = Integer.parseInt( ((JEditorPane)Rows[i][2]).getText() );
+						int iMaCTDatPhong = ctdpDTO.getMaCTDatPhong();
+						int iDonGia = listDV.get(i).getGiaDichVu();
+						int iThanhTien = iSL * iDonGia;
+						int iMaDV = listDV.get(i).getMaDichVu();
+						CTDichVu_DTO dvTemp = new CTDichVu_DTO(iSL, iMaCTDatPhong, iThanhTien, iMaDV);
+						
+						listBookingDV.add(dvTemp);
+					}
+				}
+				listBookingDVs.add(listBookingDV);
+				for(int i = 0; i < listDV.size(); i++)
+					isAdd[i] = false;
+				
+			 	frmBooking_Step1.listCTDP.add(ctdpDTO);
+			 	
+				JOptionPane.showMessageDialog(null, "Nhập thông tin phòng tiếp theo", "Thông báo", JOptionPane.CLOSED_OPTION);
+			 	
+			 
+				//-----------------------End Them CTDP----------------------------------------------------------------------------------------------
+			}
+		});
+		btnDatThem.setBackground(Color.ORANGE);
+		btnDatThem.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnDatThem.setBounds(208, 520 + (pageSize - 1) * (marginTop + rowHeight) + marginTop + rowHeight, 150, 40);
+		getContentPane().add(btnDatThem);
+		
 		
 
 		date_NgayNhanPhong.addInputMethodListener(new InputMethodListener() {
@@ -316,251 +423,121 @@ public class frmBooking_Step1 extends JInternalFrame {
 				
 			}
 		});
+
+		//define
+				listDV = DichVu_BUS.getListDV();
+				Rows = new Component [listDV.size()][5];
+				isAdd = new boolean [listDV.size()];
+				//creta default value
+				for(int i = 0; i < listDV.size(); i++)
+					isAdd[i] = false;
+				
+		JLabel lblDichVu = new JLabel("Th\u00EAm c\u00E1c d\u1ECBch v\u1EE5 theo y\u00EAu c\u1EA7u kh\u00E1ch h\u00E0ng");
+		lblDichVu.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblDichVu.setBounds(197, 437, 489, 33);
+		getContentPane().add(lblDichVu);
 		
+		JLabel lblNewLabel_3 = new JLabel("Tên dịch vụ");
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_3.setBounds(122, 483, 83, 25);
+		getContentPane().add(lblNewLabel_3);
+		
+		JLabel lblGiTin = new JLabel("Giá tiền");
+		lblGiTin.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblGiTin.setBounds(359, 483, 54, 25);
+		getContentPane().add(lblGiTin);
+		
+		JLabel lblSLng = new JLabel("Số lượng");
+		lblSLng.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblSLng.setBounds(481, 483, 64, 25);
+		getContentPane().add(lblSLng);
+		
+		render(listDV);
 	}
 
-	public frmBooking_Step1(CTDatPhong_DTO ctdp){
-		setBounds(100, 100, 729, 593);
-		getContentPane().setLayout(null);
-		
-		JDateChooser date_NgayNhanPhong = new JDateChooser();
-		 
-		date_NgayNhanPhong.setBounds(208, 121, 142, 25);
-		getContentPane().add(date_NgayNhanPhong);
-		date_NgayNhanPhong.setDateFormatString("yyyy-MM-dd");
-		
-		
-		JDateChooser date_NgayTraPhong = new JDateChooser();
-		
-		date_NgayTraPhong.setBounds(420, 121, 133, 25);
-		getContentPane().add(date_NgayTraPhong);
-		date_NgayTraPhong.setDateFormatString("yyyy-MM-dd");
-		
-		
-		//set Default NgayNhanPhong
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");        	 	
-		
-		date_NgayNhanPhong.setDate(ctdp.getNgayNhan());
-		Date dtNgayNhan =  new Date(date_NgayNhanPhong.getDate().getTime());
-		String strNgayNhan = sdf.format(dtNgayNhan);
-		
-		//set Default NgayTraPhong
-		date_NgayTraPhong.setDate(ctdp.getNgayTra());
-		date_NgayNhanPhong.setDate(ctdp.getNgayNhan());
-		Date dtNgayTra =  new Date(date_NgayTraPhong.getDate().getTime());
-		String strNgayTra = sdf.format(dtNgayTra);
-		
-		
-		
-		
-		
-		
-		JLabel lblNewLabel = new JLabel("Ng\u00E0y nh\u1EADn ph\u00F2ng");
-		lblNewLabel.setBounds(224, 85, 110, 25);
-		getContentPane().add(lblNewLabel);
-		
-		JLabel lblNgyTrPhng = new JLabel("Ng\u00E0y tr\u1EA3 ph\u00F2ng");
-		lblNgyTrPhng.setBounds(435, 85, 110, 25);
-		getContentPane().add(lblNgyTrPhng);
-		
-		JLabel lblNewLabel_1 = new JLabel("CH\u00C0O M\u1EEANG B\u1EA0N \u0110\u1EB6T PH\u00D2NG");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel_1.setBounds(249, 27, 296, 37);
-		getContentPane().add(lblNewLabel_1);
-		
-		JEditorPane edMoTa = new JEditorPane();
-		edMoTa.setEditable(false);
-		edMoTa.setText("c,jbsjk");
-		edMoTa.setBounds(208, 266, 218, 37);
-		getContentPane().add(edMoTa);
-
-		JEditorPane edGia = new JEditorPane();
-		edGia.setEditable(false);
-	 	edGia.setBounds(435, 266, 118, 37);
-		getContentPane().add(edGia);
-		JComboBox cbxMaPhong = new JComboBox();
-		cbxMaPhong.setBounds(208, 352, 345, 20);
-
-		//btn Tiep Tuc
-	 	JButton btnTiepTuc = new JButton("Ti\u1EBFp t\u1EE5c");
-		btnTiepTuc.addActionListener(new ActionListener() { 
-			public void actionPerformed(ActionEvent e) {					 
-			 	 System.err.println("update thanh cong dich vu" + date_NgayNhanPhong.getDate().getTime());
-			 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
-			 	 Date NgayNhan = date_NgayNhanPhong.getDate();
-			 	 Date NgayTra = date_NgayTraPhong.getDate();
-			 	 
-			 	 //break if NgayNhan > NgayTra
-			 	 if(NgayNhan.compareTo(NgayTra) > 0) {
-			 		JOptionPane.showMessageDialog(null, "NgÃ y Nháº­n vÃ  ngÃ y tráº£ khÃ´ng phÃ¹ há»£p", "Success: " + "Warning Message", JOptionPane.INFORMATION_MESSAGE);
-			 		 return;
-			 	 }
-			 		 
-			 	 
-			   	ctdpDTO.setNgayNhan( date_NgayNhanPhong.getDate());
-				ctdpDTO.setNgayTra(date_NgayTraPhong.getDate());
-				ctdpDTO.setMaNhanVien(frmLogin.acc.getMaNhanVien());
-				
-				//get current date   	 	
-				Date currentDate = new Date();
-				ctdpDTO.setdtNgayThucHien( currentDate);
-								
-				Object obj = cbxMaPhong.getSelectedItem();
-				int iMaPhong = Integer.parseInt(obj.toString());
-				ctdpDTO.setMaPhong(iMaPhong);
-				int iCTDP = CTDatPhong_BUS.getnextID();
-				ctdpDTO.setMaCTDatPhong(iCTDP);
-					
-				
-				frmDashboard.frmBooking2 = new frmBooking_Step2(ctdpDTO);
-				frmDashboard.controlFrame(frmDashboard.FRM_BOOKING2);
-			}
-		});
-		btnTiepTuc.setBounds(309, 427, 133, 25);
-		getContentPane().add(btnTiepTuc);
-		
-		getContentPane().add(cbxMaPhong);
-		JComboBox cbxLoaiPhong = new JComboBox();
-	  //Load list LoaiPhong
-		for(int i = 0; i < listLP.size(); i++) {
-			cbxLoaiPhong.addItem(listLP.get(i).getTenLoaiPhong());
-			cbxLoaiPhong.getSelectedItem();
-		}
-		cbxLoaiPhong.addItemListener(new ItemListener() {
-			public void itemStateChanged(ItemEvent arg0) {
-				String nameLP = (String) cbxLoaiPhong.getSelectedItem();
-				int iMaLoaiPhong = 0;
-				for(int i = 0; i < listLP.size(); i++) {
-					LoaiPhong_DTO lpCompare = listLP.get(i);
-        			if(nameLP.equals( lpCompare.getTenLoaiPhong() ) ) {
-        				int Gia = lpCompare.getGiaPhong();
-        				edGia.setText(String.valueOf(Gia));
-        				edMoTa.setText(lpCompare.getMoTa());
-        				iMaLoaiPhong = lpCompare.getMaLoaiPhong();
-        			}
-        				  
-				}
-				//set Default NgayNhanPhong
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");        	 	
-				Date dtNgayNhan =  new Date(date_NgayNhanPhong.getDate().getTime());
-				String strNgayNhan = sdf.format(dtNgayNhan);
-				
-				//set Default NgayTraPhong
-				Date dtNgayTra =  new Date(date_NgayTraPhong.getDate().getTime());
-				String strNgayTra = sdf.format(dtNgayTra);
-							
-				ResultSet rslistPhong = Phong_DAL.selectCondition(iMaLoaiPhong, strNgayNhan, strNgayTra);
-				try {
-					cbxMaPhong.removeAllItems();
-					while(rslistPhong.next() ) {
-					 		cbxMaPhong.addItem(rslistPhong.getInt("MaPhong"));
-					 		cbxMaPhong.getSelectedItem();
-					   }
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-               	  
-         		
-			}
-		});
-		cbxLoaiPhong.setBounds(208, 195, 345, 20);
-		getContentPane().add(cbxLoaiPhong);
-		
-		//autoload MaPong Validated
-		String nameLP = (String) cbxLoaiPhong.getSelectedItem();
-		int iMaLoaiPhong = 0;
-		for(int i = 0; i < listLP.size(); i++) {
-			LoaiPhong_DTO lpCompare = listLP.get(i);
-			if(nameLP.equals( lpCompare.getTenLoaiPhong() ) ) {
-				int Gia = lpCompare.getGiaPhong();
-				edGia.setText(String.valueOf(Gia));
-				edMoTa.setText(lpCompare.getMoTa());
-				iMaLoaiPhong = lpCompare.getMaLoaiPhong();
-			}
-				 
-		}				
-		ResultSet rslistPhong = Phong_DAL.selectCondition(iMaLoaiPhong, strNgayNhan, strNgayTra);
-		try {
-			cbxMaPhong.removeAllItems();
-			while(rslistPhong.next() ) {
-			 		cbxMaPhong.addItem(rslistPhong.getInt("MaPhong"));
-			 		cbxMaPhong.getSelectedItem();
-			   }
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-       	  ///////end autoload
-		
-		JLabel lblDchV = new JLabel("Lo\u1EA1i ph\u00F2ng");
-		lblDchV.setBounds(336, 157, 110, 25);
-		getContentPane().add(lblDchV);
+	void render(ArrayList<DichVu_DTO> data) {
+//		page = 0;
+		pageCount = (int) data.size() / pageSize;
+		pageCount += data.size() % pageSize > 0 ? 1 : 0;
+		for(int i = 0; i < pageSize && (pageSize * page + i) < (data.size()); i++) {
+			//if((pageSize * page + i) >= (data.size() -1) ) break;
+			final int j = i;
+			JEditorPane edDV01 = new JEditorPane();
+			edDV01.setEditable(false);
+			edDV01.setBounds(53, 520 + i * (marginTop + rowHeight), 235, rowHeight);
+			getContentPane().add(edDV01);
+			Rows[pageSize * page + i][0] = edDV01;
 			
-		DefaultTableModel m = new DefaultTableModel(
-				new Object[][] {
-				}, 
-				new String[] {
-					"MaNhanVien", "TenNhanVien", "NgaySinh", "CMND", "NgayVaoLam", "TenChucVu"
+			JEditorPane edSLDV01 = new JEditorPane();
+			edSLDV01.setEditable(true);
+			edSLDV01.setBounds(476, 520 + i * (marginTop + rowHeight), 71, rowHeight);
+			getContentPane().add(edSLDV01);
+			Rows[pageSize * page + i][2] = edSLDV01;
+			
+			JEditorPane edGiaDV01 = new JEditorPane();
+			edGiaDV01.setEditable(false);
+			edGiaDV01.setBounds(325, 520 + i * (marginTop + rowHeight), 128, rowHeight);
+			getContentPane().add(edGiaDV01);
+			Rows[pageSize * page + i][1] = edGiaDV01;
+			
+			edDV01.setText(data.get(pageSize * page + i).getTenDichVu());
+			String  strGiaDV =  String.valueOf(data.get(pageSize * page + i).getGiaDichVu());
+			edGiaDV01.setText(strGiaDV);
+			
+			JButton btnAddDV01 = new JButton("Add");
+			btnAddDV01.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					//btnRemove01.setEnabled(true);
+					Rows[pageSize * page + j][4].setEnabled(true);
+					Rows[pageSize * page + j][3].setEnabled(false);
+					Rows[pageSize * page + j][2].setEnabled(false);
+					isAdd[pageSize * page + j] = true;
+					
 				}
-			);
-		
-		 
-		
-		JLabel lblNewLabel_2 = new JLabel("S\u1ED1 ph\u00F2ng");
-		lblNewLabel_2.setBounds(208, 327, 67, 14);
-		getContentPane().add(lblNewLabel_2);
-		
-		JLabel lblMT = new JLabel("M\u00F4 t\u1EA3");
-		lblMT.setBounds(229, 230, 61, 25);
-		getContentPane().add(lblMT);
-		
-		JLabel lblGi = new JLabel("Gi\u00E1");
-		lblGi.setBounds(435, 230, 61, 25);
-		getContentPane().add(lblGi);
-		
-		
-
-		date_NgayNhanPhong.addInputMethodListener(new InputMethodListener() {
-			public void caretPositionChanged(InputMethodEvent arg0) {
-			}
-			public void inputMethodTextChanged(InputMethodEvent arg0) {
-				//autoload MaPhong Validated
-				String nameLP = (String) cbxLoaiPhong.getSelectedItem();
-				int iMaLoaiPhong = 0;
-				for(int i = 0; i < listLP.size(); i++) {
-					LoaiPhong_DTO lpCompare = listLP.get(i);
-					if(nameLP.equals( lpCompare.getTenLoaiPhong() ) ) {
-						int Gia = lpCompare.getGiaPhong();
-						edGia.setText(String.valueOf(Gia));
-						edMoTa.setText(lpCompare.getMoTa());
-						iMaLoaiPhong = lpCompare.getMaLoaiPhong();
-					}
-						 
-				}	
-				
-				//set Default NgayNhanPhong
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");        	 	
-				Date dtNgayNhan =  new Date(date_NgayNhanPhong.getDate().getTime());
-				String strNgayNhan = sdf.format(dtNgayNhan);
-				
-				//set Default NgayTraPhong
-				Date dtNgayTra =  new Date(date_NgayTraPhong.getDate().getTime());
-				String strNgayTra = sdf.format(dtNgayTra);
-				
-				ResultSet rslistPhong = Phong_DAL.selectCondition(iMaLoaiPhong, strNgayNhan, strNgayTra);
-				try {
-					cbxMaPhong.removeAllItems();
-					while(rslistPhong.next() ) {
-					 		cbxMaPhong.addItem(rslistPhong.getInt("MaPhong"));
-					 		cbxMaPhong.getSelectedItem();
-					   }
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+			});
+			
+			btnAddDV01.setBounds(593, 520 + i * (marginTop + rowHeight), 84, rowHeight);
+			getContentPane().add(btnAddDV01);
+			Rows[pageSize * page + i][3] = btnAddDV01;
+			//dataRows.add(btnAddDV01);
+			
+			JButton btnRemove01 = new JButton("Remove");
+			btnRemove01.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					Rows[pageSize * page + j][4].setEnabled(false);
+					Rows[pageSize * page + j][3].setEnabled(true);
+					Rows[pageSize * page + j][2].setEnabled(true);
+					isAdd[pageSize * page + j] = false;
+					
 				}
-		       	  ///////end autoload
-				
+			});
+			btnRemove01.setEnabled(false);
+			btnRemove01.setBounds(700, 520 + i * (marginTop + rowHeight), 84, rowHeight);
+			getContentPane().add(btnRemove01);
+			Rows[pageSize * page + i][4] = btnRemove01;
+			
+			
+		}
+		
+		for(int i = 0; i < pageCount && pageCount > 1; i++) {
+			final int j = i;
+//			int m = data.size() % pageSize;
+			JButton button = new JButton(Integer.toString(i + 1));
+			button.setBounds(53 + i * (50 + marginLeft), 520 + (pageSize - 1) * (marginTop + rowHeight) + marginTop + rowHeight, 50, 39);
+			getContentPane().add(button);
+			dataRows.add(button);
+			if(page == i) {
+				button.setEnabled(false);
 			}
-		});
+			button.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					dataRows.forEach(p -> getContentPane().remove(p));
+					getContentPane().revalidate();
+					getContentPane().repaint();
+					page = j;
+					render(data);
+				}
+			});
+		}
 	}
 }

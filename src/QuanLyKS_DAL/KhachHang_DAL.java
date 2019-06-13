@@ -16,21 +16,15 @@ public class KhachHang_DAL {
 		Connection conn = mycon.getConnection();
 		 
 		try {
-			int nextID = 0;
 			ptmt = conn.prepareStatement(query);
 			ResultSet rs = ptmt.executeQuery();
-			if(rs == null)
-				return 1;
-			else
-				while(rs.next()) 
-					nextID = rs.getInt("MaKhachHang") + 1;
-			
-			return nextID;
+			rs.next();
+			return rs.getInt("MaKhachHang") + 1;
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return 0;
+			return 1;
 		}
 		
 	}
