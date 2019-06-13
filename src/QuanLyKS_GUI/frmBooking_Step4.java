@@ -43,7 +43,6 @@ import javax.swing.JLabel;
 
 public class frmBooking_Step4 extends JInternalFrame {
 	private JTable tbThongTinChung;
-	private JTable tbThongTinDichVu;
 	private int selectedRow;
 	private int selectedMaCTDP;
 
@@ -70,7 +69,7 @@ public class frmBooking_Step4 extends JInternalFrame {
 		getContentPane().setLayout(null);
 		
 		JScrollPane scrBooking = new JScrollPane();
-		scrBooking.setBounds(42, 133, 800, 150);
+		scrBooking.setBounds(42, 133, 800, 280);
 		DefaultTableModel modelBooking = new DefaultTableModel(
 				new Object[][] {
 				},
@@ -81,9 +80,6 @@ public class frmBooking_Step4 extends JInternalFrame {
 		tbThongTinChung = new JTable(modelBooking); 
 		scrBooking.setViewportView(tbThongTinChung);
 		getContentPane().add(scrBooking);
-
-		JScrollPane scrDV = new JScrollPane();
-		scrDV.setBounds(153, 318, 556, 98);
 		DefaultTableModel modelDV = new DefaultTableModel(
 				new Object[][] {
 				},
@@ -91,9 +87,6 @@ public class frmBooking_Step4 extends JInternalFrame {
 					"Tên dịch vụ", "Số lượng", "Tổng tiền dịch vụ"
 				}
 			);
-		tbThongTinDichVu = new JTable(modelDV);
-		scrDV.setViewportView(tbThongTinDichVu);
-		getContentPane().add(scrDV);
 		
 		ListSelectionModel cellSelectionModel = tbThongTinChung.getSelectionModel();
 	    cellSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

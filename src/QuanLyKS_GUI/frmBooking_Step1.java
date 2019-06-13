@@ -367,10 +367,11 @@ public class frmBooking_Step1 extends JInternalFrame {
 					isAdd[i] = false;
 				
 			 	frmBooking_Step1.listCTDP.add(ctdpDTO);
-				
-//				frmDashboard.frmBooking2 = new frmBooking_Step2(ctdpDTO);
+			 	
+				JOptionPane.showMessageDialog(null, "Nhập thông tin phòng tiếp theo", "Thông báo", JOptionPane.CLOSED_OPTION);
+			 	
+			 
 				//-----------------------End Them CTDP----------------------------------------------------------------------------------------------
-//				frmDashboard.frmBooking1 = new frmBooking_Step1();
 			}
 		});
 		btnDatThem.setBackground(Color.ORANGE);
