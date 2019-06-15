@@ -20,6 +20,26 @@ public class DichVu_DAL {
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
 		Connection conn = mycon.getConnection();
 		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
 		String query = "SELECT * FROM DICHVU";
 		try {
 			ptmt = conn.prepareStatement(query);

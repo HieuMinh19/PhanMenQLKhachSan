@@ -60,8 +60,8 @@ public class frmBooking_Step1 extends JInternalFrame {
 	int rowHeight = 30;
 	int marginTop = 20;
 	int marginLeft = 20;
-	int iCTDP = 1;
-
+	int iCTDP = CTDatPhong_BUS.getnextID();
+	static int iMaLoaiPhong = 0;
 	/**
 	 * Launch the application.
 	 */
@@ -113,11 +113,6 @@ public class frmBooking_Step1 extends JInternalFrame {
 		Date dtNgayTra =  new Date(date_NgayTraPhong.getDate().getTime());
 		String strNgayTra = sdf.format(dtNgayTra);
 		
-		
-		
-		
-		
-		
 		JLabel lblNewLabel = new JLabel("Ng\u00E0y nh\u1EADn ph\u00F2ng");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel.setBounds(208, 83, 142, 25);
@@ -154,12 +149,10 @@ public class frmBooking_Step1 extends JInternalFrame {
 		btnTiepTuc.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e) {			
 				//-----------------------Them CTDP----------------------------------------------------------------------------------------------
-			 	 System.err.println("update thanh cong dich vu" + date_NgayNhanPhong.getDate().getTime());
-//			 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
+
 			 	 Date NgayNhan = date_NgayNhanPhong.getDate();
 			 	 Date NgayTra = date_NgayTraPhong.getDate();
-			 	 
-			 	 //break if NgayNhan > NgayTra
+
 			 	Date currentDate = new Date();
 			 	 if(NgayNhan.compareTo(NgayTra) > 0 || NgayNhan.compareTo(currentDate) < 0) {
 			 		JOptionPane.showMessageDialog(null, "Ngày nhận và ngày trả không phù hợp", "Success: " + "Warning Message", JOptionPane.INFORMATION_MESSAGE);
@@ -167,24 +160,24 @@ public class frmBooking_Step1 extends JInternalFrame {
 			 	 }
 			 	 
 			 	 CTDatPhong_DTO ctdpDTO = new CTDatPhong_DTO();
-			 		 
 			   	ctdpDTO.setNgayNhan( date_NgayNhanPhong.getDate());
 				ctdpDTO.setNgayTra(date_NgayTraPhong.getDate());
 //				ctdpDTO.setMaNhanVien(frmLogin.acc.getMaNhanVien());
 				ctdpDTO.setMaNhanVien(frmDashboard.user.getMaNhanVien());
-				
 				//get current date   	 	
 				ctdpDTO.setdtNgayThucHien( currentDate);
 								
 				Object obj = cbxMaPhong.getSelectedItem();
 				int iMaPhong = Integer.parseInt(obj.toString());
 				ctdpDTO.setMaPhong(iMaPhong);
-				if(iCTDP > 0) ctdpDTO.setMaCTDatPhong(++iCTDP);
+
+				if(iCTDP > 0) {
+					ctdpDTO.setMaCTDatPhong(++iCTDP);
+				}
 				else {
 					iCTDP = CTDatPhong_BUS.getnextID();
 					ctdpDTO.setMaCTDatPhong(iCTDP);
 				}
-
 				for(int i = 0; i < isAdd.length; i++) {
 					if(isAdd[i]) {
 						int iSL = Integer.parseInt( ((JEditorPane)Rows[i][2]).getText() );
@@ -192,19 +185,30 @@ public class frmBooking_Step1 extends JInternalFrame {
 						int iDonGia = listDV.get(i).getGiaDichVu();
 						int iThanhTien = iSL * iDonGia;
 						int iMaDV = listDV.get(i).getMaDichVu();
+						System.err.println("So Luong" +" "+  iSL);
+						System.err.println("MaCTDatPhong" +" "+  iMaCTDatPhong);
+						System.err.println("Don Gia" +" "+  iDonGia);
+						System.err.println("Thanh Tien" +" "+  iThanhTien);
+						System.err.println("Ma Dich Vu" +" "+  iMaDV);
 						CTDichVu_DTO dvTemp = new CTDichVu_DTO(iSL, iMaCTDatPhong, iThanhTien, iMaDV);
-						
 						listBookingDV.add(dvTemp);
 					}
 				}
 				listBookingDVs.add(listBookingDV);
 				
 			 	frmBooking_Step1.listCTDP.add(ctdpDTO);
-				
+				for(int i = 0 ;  i < listCTDP.size(); i++ ) {
+					System.err.println("getMaCTDatPhong:" +" "+ listCTDP.get(i).getMaCTDatPhong());
+					System.err.println("getdtNgayThucHien:" +"  "+listCTDP.get(i).getdtNgayThucHien().getTime());
+					System.err.println("getNgayNhan:" +"  "+listCTDP.get(i).getNgayNhan());
+					System.err.println("getNgayTra:" +"  "+listCTDP.get(i).getNgayTra().getTime());
+					System.err.println("getMaNhanVien:" +"  "+listCTDP.get(i).getMaNhanVien());
+					System.err.println("ssss" +" sss");
+				}
 //				frmDashboard.frmBooking2 = new frmBooking_Step2(ctdpDTO);
 				//-----------------------End Them CTDP----------------------------------------------------------------------------------------------
 				frmDashboard.controlFrame(frmDashboard.FRM_BOOKING3);
-//				frmDashboard.controlFrame(frmDashboard.FRM_BOOKING2);
+				//frmDashboard.controlFrame(frmDashboard.FRM_BOOKING2);
 			}
 		});
 		btnTiepTuc.setBounds(499, 520 + (pageSize - 1) * (marginTop + rowHeight) + marginTop + rowHeight, 150, 40);
@@ -221,7 +225,7 @@ public class frmBooking_Step1 extends JInternalFrame {
 		cbxLoaiPhong.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
 				String nameLP = (String) cbxLoaiPhong.getSelectedItem();
-				int iMaLoaiPhong = 0;
+				//int iMaLoaiPhong = 0;
 				for(int i = 0; i < listLP.size(); i++) {
 					LoaiPhong_DTO lpCompare = listLP.get(i);
         			if(nameLP.equals( lpCompare.getTenLoaiPhong() ) ) {
@@ -245,9 +249,37 @@ public class frmBooking_Step1 extends JInternalFrame {
 				try {
 					cbxMaPhong.removeAllItems();
 					while(rslistPhong.next() ) {
-					 		cbxMaPhong.addItem(rslistPhong.getInt("MaPhong"));
-					 		cbxMaPhong.getSelectedItem();
+						
+//					if(rslistPhong.getInt("MaPhong") >= 0) {
+//						for(int i =0; i < listCTDP.size();i++) {
+//							if(listCTDP.get(i).getMaPhong() == rslistPhong.getInt("MaPhong")) {
+//								cbxMaPhong.removeItem(rslistPhong.getInt("MaPhong"));
+//								//cbxMaPhong.addItem(rslistPhong.getInt("MaPhong"));
+//						 		//cbxMaPhong.getSelectedItem();
+//							}
+//						}
+//					}
+						cbxMaPhong.addItem(rslistPhong.getInt("MaPhong"));
+				 		cbxMaPhong.getSelectedItem();
+						if( listCTDP.size() > 0) {
+							for(int i =0; i < listCTDP.size();i++) {				
+								if(listCTDP.get(i).getMaPhong() == rslistPhong.getInt("MaPhong")) {
+									cbxMaPhong.removeItem(rslistPhong.getInt("MaPhong"));
+								}
+							}
+						}
+					//cbxMaPhong.addItem(rslistPhong.getInt("MaPhong"));
+				 	//cbxMaPhong.getSelectedItem();
+					 		
+//					 		for(int i =0; i < listCTDP.size();i++) {
+//								if(listCTDP.get(i).getMaPhong() != rslistPhong.getInt("MaPhong")) {
+//									//cbxMaPhong.removeItem(rslistPhong.getInt("MaPhong"));
+//									cbxMaPhong.addItem(rslistPhong.getInt("MaPhong"));
+//							 		cbxMaPhong.getSelectedItem();
+//								}
+//							}
 					   }
+					
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -256,12 +288,13 @@ public class frmBooking_Step1 extends JInternalFrame {
          		
 			}
 		});
+		
 		cbxLoaiPhong.setBounds(208, 191, 218, 30);
 		getContentPane().add(cbxLoaiPhong);
 		
 		//autoload MaPong Validated
 		String nameLP = (String) cbxLoaiPhong.getSelectedItem();
-		int iMaLoaiPhong = 0;
+		//int iMaLoaiPhong = 0;
 		for(int i = 0; i < listLP.size(); i++) {
 			LoaiPhong_DTO lpCompare = listLP.get(i);
 			if(nameLP.equals( lpCompare.getTenLoaiPhong() ) ) {
@@ -276,8 +309,8 @@ public class frmBooking_Step1 extends JInternalFrame {
 		try {
 			cbxMaPhong.removeAllItems();
 			while(rslistPhong.next() ) {
-			 		cbxMaPhong.addItem(rslistPhong.getInt("MaPhong"));
-			 		cbxMaPhong.getSelectedItem();
+						cbxMaPhong.addItem(rslistPhong.getInt("MaPhong"));
+				 		cbxMaPhong.getSelectedItem();				
 			   }
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -297,9 +330,6 @@ public class frmBooking_Step1 extends JInternalFrame {
 					"MaNhanVien", "TenNhanVien", "NgaySinh", "CMND", "NgayVaoLam", "TenChucVu"
 				}
 			);
-		
-		 
-		
 		JLabel lblNewLabel_2 = new JLabel("S\u1ED1 ph\u00F2ng");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel_2.setBounds(111, 372, 76, 24);
@@ -319,11 +349,10 @@ public class frmBooking_Step1 extends JInternalFrame {
 		btnDatThem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//-----------------------Them CTDP----------------------------------------------------------------------------------------------
-			 	 System.err.println("update thanh cong dich vu" + date_NgayNhanPhong.getDate().getTime());
+			 	// System.err.println("update thanh cong dich vu" + date_NgayNhanPhong.getDate().getTime());
 //			 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
 			 	 Date NgayNhan = date_NgayNhanPhong.getDate();
 			 	 Date NgayTra = date_NgayTraPhong.getDate();
-			 	 
 			 	 //break if NgayNhan > NgayTra
 			 	Date currentDate = new Date();
 			 	 if(NgayNhan.compareTo(NgayTra) > 0 || NgayNhan.compareTo(currentDate) < 0) {
@@ -332,18 +361,19 @@ public class frmBooking_Step1 extends JInternalFrame {
 			 	 }
 			 	 
 			 	 CTDatPhong_DTO ctdpDTO = new CTDatPhong_DTO();
-			 		 
 			   	ctdpDTO.setNgayNhan( date_NgayNhanPhong.getDate());
 				ctdpDTO.setNgayTra(date_NgayTraPhong.getDate());
 //				ctdpDTO.setMaNhanVien(frmLogin.acc.getMaNhanVien());
-				ctdpDTO.setMaNhanVien(frmDashboard.user.getMaNhanVien());
-				
+				ctdpDTO.setMaNhanVien(frmDashboard.user.getMaNhanVien());	
 				//get current date   	 	
-				ctdpDTO.setdtNgayThucHien( currentDate);
-								
+				ctdpDTO.setdtNgayThucHien( currentDate);						
 				Object obj = cbxMaPhong.getSelectedItem();
 				int iMaPhong = Integer.parseInt(obj.toString());
 				ctdpDTO.setMaPhong(iMaPhong);
+				
+
+				
+				
 				if(iCTDP > 0) ctdpDTO.setMaCTDatPhong(++iCTDP);
 				else {
 					iCTDP = CTDatPhong_BUS.getnextID();
@@ -357,8 +387,12 @@ public class frmBooking_Step1 extends JInternalFrame {
 						int iDonGia = listDV.get(i).getGiaDichVu();
 						int iThanhTien = iSL * iDonGia;
 						int iMaDV = listDV.get(i).getMaDichVu();
+						System.err.println("Ngay Nhan la" +" "+  iSL);
+						System.err.println("Ngay Tra la" +" "+  iMaCTDatPhong);
+						System.err.println("Ma Nhan Vien thuc hien la" +" "+  iDonGia);
+						System.err.println("ngay  thuc hien dat phong la" +" "+  iThanhTien);
+						System.err.println("ma phong la" +" "+  iMaDV);
 						CTDichVu_DTO dvTemp = new CTDichVu_DTO(iSL, iMaCTDatPhong, iThanhTien, iMaDV);
-						
 						listBookingDV.add(dvTemp);
 					}
 				}
@@ -372,8 +406,39 @@ public class frmBooking_Step1 extends JInternalFrame {
 			 	
 			 
 				//-----------------------End Them CTDP----------------------------------------------------------------------------------------------
+//				
+				for(int i = 0; i < listLP.size(); i++) {
+					LoaiPhong_DTO lpCompare = listLP.get(i);
+					if(nameLP.equals( lpCompare.getTenLoaiPhong() ) ) {
+						int Gia = lpCompare.getGiaPhong();
+						edGia.setText(String.valueOf(Gia));
+						edMoTa.setText(lpCompare.getMoTa());
+						iMaLoaiPhong = lpCompare.getMaLoaiPhong();
+					}
+						 
+				}				
+				ResultSet rslistPhong = Phong_DAL.selectCondition(iMaLoaiPhong, strNgayNhan, strNgayTra);
+				try {
+					cbxMaPhong.removeAllItems();
+					while(rslistPhong.next() ) {
+						for(int i =0; i < listCTDP.size();i++) {
+							if(listCTDP.get(i).getMaPhong() == rslistPhong.getInt("MaPhong")) {
+							cbxMaPhong.removeItem(rslistPhong.getInt("MaPhong"));
+//cbxMaPhong.addItem(rslistPhong.getInt("MaPhong"));
+//cbxMaPhong.getSelectedItem();
+							}
+						}
+							
+					   }
+				} catch (SQLException ex) {
+					// TODO Auto-generated catch block
+					ex.printStackTrace();
+				}
+			
 			}
 		});
+		
+		
 		btnDatThem.setBackground(Color.ORANGE);
 		btnDatThem.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnDatThem.setBounds(208, 520 + (pageSize - 1) * (marginTop + rowHeight) + marginTop + rowHeight, 150, 40);
@@ -424,6 +489,8 @@ public class frmBooking_Step1 extends JInternalFrame {
 			}
 		});
 
+		
+		
 		//define
 				listDV = DichVu_BUS.getListDV();
 				Rows = new Component [listDV.size()][5];

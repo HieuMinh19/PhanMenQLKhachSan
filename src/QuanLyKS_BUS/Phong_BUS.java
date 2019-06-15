@@ -3,7 +3,9 @@ package QuanLyKS_BUS;
 import java.sql.Date;
 import java.util.ArrayList;
 
+import QuanLyKS_DAL.NhanVien_DAL;
 import QuanLyKS_DAL.Phong_DAL;
+import QuanLyKS_DTO.NhanVien_DTO;
 import QuanLyKS_DTO.Phong_DTO;
 
 public class Phong_BUS {
@@ -26,6 +28,9 @@ public class Phong_BUS {
 
 	public static int getGiaPhong(int iMaPhong) {
 		return Phong_DAL.getGiaPhong(iMaPhong);
+	}
+	public static boolean Insert(Phong_DTO phong) {
+		return Phong_DAL.Insert(phong);
 	}
 }
  
