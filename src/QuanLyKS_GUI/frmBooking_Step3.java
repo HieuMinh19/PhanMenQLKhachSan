@@ -1,7 +1,9 @@
 package QuanLyKS_GUI;
 
 import java.awt.EventQueue;
-
+import javax.swing.text.AttributeSet; 
+import javax.swing.text.BadLocationException; 
+import javax.swing.text.PlainDocument; 
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -20,6 +22,10 @@ import QuanLyKS_DTO.CTDatPhong_DTO;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.event.InputMethodListener;
+import java.awt.event.InputMethodEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class frmBooking_Step3 extends JInternalFrame {
 
@@ -41,8 +47,6 @@ public class frmBooking_Step3 extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
-	
-	
 	public frmBooking_Step3() {
 		//ArrayList<CTDichVu_DTO> listCTDV
 		setBounds(100, 100, 810, 540);
@@ -85,11 +89,36 @@ public class frmBooking_Step3 extends JInternalFrame {
 		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblEmail.setBounds(114, 218, 64, 34);
 		getContentPane().add(lblEmail);
+			
 		
 		JTextPane txtSDT = new JTextPane();
+		txtSDT.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				
+			}
+			@Override
+			public void keyTyped(KeyEvent a) {
+				char vchar = a.getKeyChar();
+				if(!(Character.isDigit(vchar)) 
+						|| (vchar == KeyEvent.VK_BACK_SPACE) 
+						|| (vchar == KeyEvent.VK_DELETE)){
+					a.consume();
+				}
+			}
+		});
+		txtSDT.addInputMethodListener(new InputMethodListener() {
+			public void caretPositionChanged(InputMethodEvent arg0) {
+			}
+			public void inputMethodTextChanged(InputMethodEvent arg0) {
+				
+			}
+		});
 		txtSDT.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		txtSDT.setBounds(205, 277, 225, 30);
+		//txtSDT.setDocument(new DigitsDocument());
 		getContentPane().add(txtSDT);
+		//
 		
 		JLabel lblPhone = new JLabel("S\u1ED1 \u0111i\u1EC7n tho\u1EA1i");
 		lblPhone.setHorizontalAlignment(SwingConstants.CENTER);
@@ -98,6 +127,17 @@ public class frmBooking_Step3 extends JInternalFrame {
 		getContentPane().add(lblPhone);
 		
 		JTextPane txtCMND = new JTextPane();
+		txtCMND.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char vchar = e.getKeyChar();
+				if(!(Character.isDigit(vchar)) 
+						|| (vchar == KeyEvent.VK_BACK_SPACE) 
+						|| (vchar == KeyEvent.VK_DELETE)){
+					e.consume();
+				}
+			}
+		});
 		txtCMND.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		txtCMND.setBounds(205, 341, 225, 30);
 		getContentPane().add(txtCMND);
