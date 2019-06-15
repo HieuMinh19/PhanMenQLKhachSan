@@ -172,7 +172,12 @@ public class frmBooking_Step4 extends JInternalFrame {
 				});
 				KhachHang_BUS.Insert(khDTO);
 					
+				
 					
+				///delete lisst da save
+				frmBooking_Step1.listCTDP.clear();
+				frmBooking_Step1.listBookingDVs.clear();
+				///
 					JOptionPane.showMessageDialog(null, "Dat Phong Thanh Cong", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);
 				
 					frmDashboard.frmBooking4.setVisible(false);

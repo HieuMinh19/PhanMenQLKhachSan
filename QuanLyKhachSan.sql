@@ -65,11 +65,12 @@ go
 /*create Chi Tiet Dich Vu*/
 create table CTDICHVU
 (
-	MaCTDichVu int identity(1,1) primary key,
+	MaCTDichVu int ,
 	MaDichVu int,
 	SoLuong int,
 	MaCTDatPhong int,
 	TongTienDichVu int,
+	constraint  PK_CTDATPhong primary key (MaDichVu, MaCTDatPhong) 
 )
 go
 /*create Dich Vu*/
@@ -107,6 +108,43 @@ create table CTDATPHONG(
 	MaPhong int,
 	MaNhanVien int,
 )
+/*create table Chi Tiet Dat Phong
+go
+INSERT INTO CTDATPHONG(MaCTDatPhong, NgayThucHien, MaKhachHang, NgayNhan, NgayTra, MaPhong, MaNhanVien) 
+values (1,'1998-11-15', 1, '2019-05-05','2019-05-07', 101, 2)
+INSERT INTO CTDATPHONG(MaCTDatPhong, NgayThucHien, MaKhachHang, NgayNhan, NgayTra, MaPhong, MaNhanVien) 
+values (2,'1998-11-15', 2, '2019-05-06','2019-05-08', 102, 2)
+INSERT INTO CTDATPHONG(MaCTDatPhong, NgayThucHien, MaKhachHang, NgayNhan, NgayTra, MaPhong, MaNhanVien) 
+values (3,'1998-11-15', 3, '2019-05-08','2019-05-10', 201, 3)
+INSERT INTO CTDATPHONG(MaCTDatPhong, NgayThucHien, MaKhachHang, NgayNhan, NgayTra, MaPhong, MaNhanVien) 
+values (4,'1998-11-15', 4, '2019-05-08','2019-05-10', 103, 3)
+INSERT INTO CTDATPHONG(MaCTDatPhong, NgayThucHien, MaKhachHang, NgayNhan, NgayTra, MaPhong, MaNhanVien) 
+values (5,'1998-11-15', 5, '2019-06-11','2019-06-13', 201, 3)
+
+go
+INSERT INTO KHACHHANG(MaKhachHang, HoTen, Email, DiaChi, DienThoai, CMND) 
+values (1,'Le Van Teo', 'teo@gmail.com', 'Ha Noi',123123132, 258963147)
+INSERT INTO KHACHHANG(MaKhachHang, HoTen, Email, DiaChi, DienThoai, CMND) 
+values (2,'Le Van Tí', 'ti@gmail.com', 'Ho Chi Minh',123253132, 258963147)
+INSERT INTO KHACHHANG(MaKhachHang, HoTen, Email, DiaChi, DienThoai, CMND) 
+values (3,'Le Van Kheo', 'khoe@gmail.com', 'Da Nang',123169132, 258963147)
+INSERT INTO KHACHHANG(MaKhachHang, HoTen, Email, DiaChi, DienThoai, CMND) 
+values (4,'Nguyen Phuc Duc', 'duc@gmail.com', 'Da Nang',123169132, 258963147)
+INSERT INTO KHACHHANG(MaKhachHang, HoTen, Email, DiaChi, DienThoai, CMND) 
+values (5,'Le Minh Hieu', 'hieu@gmail.com', 'Long An',253169132, 258925647)
+
+go
+INSERT INTO HOADON(NgayThuTien, SoTienThu, MaCTDatPhong, MaNhanVien) 
+values ('2019-05-09',150000, 2, 2)
+INSERT INTO HOADON(NgayThuTien, SoTienThu, MaCTDatPhong, MaNhanVien) 
+values ('2019-05-10',200000, 2, 3)
+INSERT INTO HOADON(NgayThuTien, SoTienThu, MaCTDatPhong, MaNhanVien) 
+values ('2019-05-11',3000000, 3, 4)
+INSERT INTO HOADON(NgayThuTien, SoTienThu, MaCTDatPhong, MaNhanVien) 
+values ('2019-05-11',350000, 3, 4)
+INSERT INTO HOADON(NgayThuTien, SoTienThu, MaCTDatPhong, MaNhanVien) 
+values ('2019-06-12',350000, 5, 2)
+*/
 go
 INSERT INTO NHANVIEN(Username, Password, TenNhanVien, NgaySinh, CMND, NgayVaoLam, MaChucVu) 
 values ('hieu', '1', 'Le Minh Hieu', '1998-11-15', 225786369, '2019-05-05', 1)
