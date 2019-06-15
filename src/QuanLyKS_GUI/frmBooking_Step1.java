@@ -61,7 +61,7 @@ public class frmBooking_Step1 extends JInternalFrame {
 	int marginTop = 20;
 	int marginLeft = 20;
 	int iCTDP = CTDatPhong_BUS.getnextID();
-
+	static int iMaLoaiPhong = 0;
 	/**
 	 * Launch the application.
 	 */
@@ -225,7 +225,7 @@ public class frmBooking_Step1 extends JInternalFrame {
 		cbxLoaiPhong.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
 				String nameLP = (String) cbxLoaiPhong.getSelectedItem();
-				int iMaLoaiPhong = 0;
+				//int iMaLoaiPhong = 0;
 				for(int i = 0; i < listLP.size(); i++) {
 					LoaiPhong_DTO lpCompare = listLP.get(i);
         			if(nameLP.equals( lpCompare.getTenLoaiPhong() ) ) {
@@ -249,9 +249,37 @@ public class frmBooking_Step1 extends JInternalFrame {
 				try {
 					cbxMaPhong.removeAllItems();
 					while(rslistPhong.next() ) {
-					 		cbxMaPhong.addItem(rslistPhong.getInt("MaPhong"));
-					 		cbxMaPhong.getSelectedItem();
+						
+//					if(rslistPhong.getInt("MaPhong") >= 0) {
+//						for(int i =0; i < listCTDP.size();i++) {
+//							if(listCTDP.get(i).getMaPhong() == rslistPhong.getInt("MaPhong")) {
+//								cbxMaPhong.removeItem(rslistPhong.getInt("MaPhong"));
+//								//cbxMaPhong.addItem(rslistPhong.getInt("MaPhong"));
+//						 		//cbxMaPhong.getSelectedItem();
+//							}
+//						}
+//					}
+						cbxMaPhong.addItem(rslistPhong.getInt("MaPhong"));
+				 		cbxMaPhong.getSelectedItem();
+						if( listCTDP.size() > 0) {
+							for(int i =0; i < listCTDP.size();i++) {				
+								if(listCTDP.get(i).getMaPhong() == rslistPhong.getInt("MaPhong")) {
+									cbxMaPhong.removeItem(rslistPhong.getInt("MaPhong"));
+								}
+							}
+						}
+					//cbxMaPhong.addItem(rslistPhong.getInt("MaPhong"));
+				 	//cbxMaPhong.getSelectedItem();
+					 		
+//					 		for(int i =0; i < listCTDP.size();i++) {
+//								if(listCTDP.get(i).getMaPhong() != rslistPhong.getInt("MaPhong")) {
+//									//cbxMaPhong.removeItem(rslistPhong.getInt("MaPhong"));
+//									cbxMaPhong.addItem(rslistPhong.getInt("MaPhong"));
+//							 		cbxMaPhong.getSelectedItem();
+//								}
+//							}
 					   }
+					
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -260,12 +288,13 @@ public class frmBooking_Step1 extends JInternalFrame {
          		
 			}
 		});
+		
 		cbxLoaiPhong.setBounds(208, 191, 218, 30);
 		getContentPane().add(cbxLoaiPhong);
 		
 		//autoload MaPong Validated
 		String nameLP = (String) cbxLoaiPhong.getSelectedItem();
-		int iMaLoaiPhong = 0;
+		//int iMaLoaiPhong = 0;
 		for(int i = 0; i < listLP.size(); i++) {
 			LoaiPhong_DTO lpCompare = listLP.get(i);
 			if(nameLP.equals( lpCompare.getTenLoaiPhong() ) ) {
@@ -280,8 +309,8 @@ public class frmBooking_Step1 extends JInternalFrame {
 		try {
 			cbxMaPhong.removeAllItems();
 			while(rslistPhong.next() ) {
-			 		cbxMaPhong.addItem(rslistPhong.getInt("MaPhong"));
-			 		cbxMaPhong.getSelectedItem();
+						cbxMaPhong.addItem(rslistPhong.getInt("MaPhong"));
+				 		cbxMaPhong.getSelectedItem();				
 			   }
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -301,9 +330,6 @@ public class frmBooking_Step1 extends JInternalFrame {
 					"MaNhanVien", "TenNhanVien", "NgaySinh", "CMND", "NgayVaoLam", "TenChucVu"
 				}
 			);
-		
-		 
-		
 		JLabel lblNewLabel_2 = new JLabel("S\u1ED1 ph\u00F2ng");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel_2.setBounds(111, 372, 76, 24);
@@ -347,7 +373,7 @@ public class frmBooking_Step1 extends JInternalFrame {
 				
 
 				
-				System.err.println("iCTDP" +" "+  iCTDP);
+				
 				if(iCTDP > 0) ctdpDTO.setMaCTDatPhong(++iCTDP);
 				else {
 					iCTDP = CTDatPhong_BUS.getnextID();
@@ -380,8 +406,39 @@ public class frmBooking_Step1 extends JInternalFrame {
 			 	
 			 
 				//-----------------------End Them CTDP----------------------------------------------------------------------------------------------
+//				
+				for(int i = 0; i < listLP.size(); i++) {
+					LoaiPhong_DTO lpCompare = listLP.get(i);
+					if(nameLP.equals( lpCompare.getTenLoaiPhong() ) ) {
+						int Gia = lpCompare.getGiaPhong();
+						edGia.setText(String.valueOf(Gia));
+						edMoTa.setText(lpCompare.getMoTa());
+						iMaLoaiPhong = lpCompare.getMaLoaiPhong();
+					}
+						 
+				}				
+				ResultSet rslistPhong = Phong_DAL.selectCondition(iMaLoaiPhong, strNgayNhan, strNgayTra);
+				try {
+					cbxMaPhong.removeAllItems();
+					while(rslistPhong.next() ) {
+						for(int i =0; i < listCTDP.size();i++) {
+							if(listCTDP.get(i).getMaPhong() == rslistPhong.getInt("MaPhong")) {
+							cbxMaPhong.removeItem(rslistPhong.getInt("MaPhong"));
+//cbxMaPhong.addItem(rslistPhong.getInt("MaPhong"));
+//cbxMaPhong.getSelectedItem();
+							}
+						}
+							
+					   }
+				} catch (SQLException ex) {
+					// TODO Auto-generated catch block
+					ex.printStackTrace();
+				}
+			
 			}
 		});
+		
+		
 		btnDatThem.setBackground(Color.ORANGE);
 		btnDatThem.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnDatThem.setBounds(208, 520 + (pageSize - 1) * (marginTop + rowHeight) + marginTop + rowHeight, 150, 40);
@@ -432,6 +489,8 @@ public class frmBooking_Step1 extends JInternalFrame {
 			}
 		});
 
+		
+		
 		//define
 				listDV = DichVu_BUS.getListDV();
 				Rows = new Component [listDV.size()][5];
