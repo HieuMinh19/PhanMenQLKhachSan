@@ -22,6 +22,14 @@ public class CTDatPhong_BUS {
 		
 		return 0; 
 	}
+	
+	public static ArrayList<CTDatPhong_DTO> loadPhongChuaThanhToan(Date ng){
+		return CTDatPhong_DAL.loadPhongChuaThanhToan(ng);
+	}
+	
+	public static CTDatPhong_DTO loadTableCTDP(int MaPhong){
+		return CTDatPhong_DAL.loadTableCTDP(MaPhong);
+	}
 //	
 //	private static int tinhThanhTien(String strDateFrom, String strDateTo, int iMaPhong) {
 //		int iSoNgay = 0;

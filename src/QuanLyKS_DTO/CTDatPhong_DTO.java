@@ -11,6 +11,7 @@ public class CTDatPhong_DTO {
 	private int iMaNhanVien;
 	private int iThanhTien;
 	private KhachHang_DTO kh;
+	private LoaiPhong_DTO lp;
 	
 	
 	public CTDatPhong_DTO() {
@@ -97,4 +98,11 @@ public class CTDatPhong_DTO {
 		this.kh = kh; 
 	}
 
+	public LoaiPhong_DTO getLoaiPhong() {
+		return lp;
+	}
+
+	public void setLoaiPhong(LoaiPhong_DTO lp) {
+		this.lp = lp; 
+	}
 }
