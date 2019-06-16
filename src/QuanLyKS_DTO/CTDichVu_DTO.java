@@ -6,6 +6,7 @@ public class CTDichVu_DTO {
 	private int iSoLuong;
 	private int iMaCTDatPhong;
 	private int iTongTienDichVu; 
+	private DichVu_DTO dv;
 	
 	public CTDichVu_DTO( int iSoLuong, int iMaCTDatPhong, int iTongTienDichVu, int iMaDichVu) {
 		this.iSoLuong = iSoLuong;
@@ -60,4 +61,11 @@ public class CTDichVu_DTO {
 		this.iTongTienDichVu = iTongTienDichVu;
 	}
 
+	public DichVu_DTO getDichVu() {
+		return dv;
+	}
+
+	public void setDichVu(DichVu_DTO dv) {
+		this.dv = dv;
+	}
 }

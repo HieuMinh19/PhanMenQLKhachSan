@@ -130,6 +130,7 @@ public class frmCapNhatLoaiPhong extends JInternalFrame {
         });
 		table.setRowSelectionAllowed(true);
 		srcListLoaiPhong.setViewportView(table);
+		
 		JButton btnLoadDanhSach = new JButton("Danh sách loại phòng");
 		btnLoadDanhSach.setBackground(Color.GREEN);
 		btnLoadDanhSach.setForeground(Color.BLACK);
