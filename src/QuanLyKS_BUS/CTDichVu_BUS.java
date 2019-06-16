@@ -16,7 +16,6 @@ public class CTDichVu_BUS {
 	
 	public static boolean Insert(CTDichVu_DTO ctdv) {
 		return CTDichVu_DAL.Insert(ctdv);
-	
 	}
 	
 	public static ArrayList<CTDichVu_DTO> loadTableDV(int MaCTDP) {

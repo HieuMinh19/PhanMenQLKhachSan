@@ -72,7 +72,7 @@ public class frmDanhSachPhong extends JInternalFrame {
 
 		JComboBox cbLoaiPhong = new JComboBox();
 		cbLoaiPhong.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		cbLoaiPhong.setBounds(649, 266, 191, 30);
+		cbLoaiPhong.setBounds(649, 266, 225, 30);
 		getContentPane().add(cbLoaiPhong);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -101,9 +101,10 @@ public class frmDanhSachPhong extends JInternalFrame {
 		    for (int i = 0; i < selectedRowColums.length; i++) {
 		    	
 		        txtMaPhong.setText(table.getValueAt(selectedRowColums[i], 0).toString());
+		        selectedChucVuIndex = dscv.indexOf(dsp.get(selectedRow).getLoaiPhong());
+			    cbLoaiPhong.setSelectedIndex(selectedChucVuIndex);
 		    }
-		    selectedChucVuIndex = dscv.indexOf(dsp.get(selectedRow).getLoaiPhong());
-		    cbLoaiPhong.setSelectedIndex(selectedChucVuIndex);//(table.getValueAt(selectedRowColums[i], 5));
+		   
 			}
         });
 		table.setRowSelectionAllowed(true);
@@ -123,7 +124,7 @@ public class frmDanhSachPhong extends JInternalFrame {
 				    }
 				}
 				dsp = Phong_BUS.LoadListPhong();
-				dsp.forEach(p -> m.addRow(new Object[]{p.getMaPhong(), p.getLoaiPhong().getTenLoaiPhong()}));
+				dsp.forEach(p -> m.addRow(new Object[]{p.getMaPhong(), p.getLoaiPhong()}));
 				
 			}
 		});

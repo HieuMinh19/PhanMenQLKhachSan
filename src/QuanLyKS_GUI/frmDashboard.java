@@ -78,7 +78,7 @@ public class frmDashboard extends JFrame {
 	static frmBooking_Step3 frmBooking3 = new frmBooking_Step3();
 	static frmBooking_Step4 frmBooking4;
 	
-	static frmThemPhong frmThemPhong = new frmThemPhong();
+	//static //frmThemPhong //frmThemPhong = new //frmThemPhong();
 	private Image backgroundImage;
 
 	// deifne static varriable cho frame
@@ -128,13 +128,13 @@ public class frmDashboard extends JFrame {
 			QLBangPhanCong.setVisible(false);
 			// set current frame
 
-			contentPane.add(frmThemPhong);
-			frmThemPhong.setVisible(true);
+			//contentPane.add(//frmThemPhong);
+			//frmThemPhong.setVisible(true);
 			break;
 
 		case 3:
 			// close another frame
-			frmThemPhong.setVisible(false);
+			//frmThemPhong.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
 			frmTimKiemNV.setVisible(false);
@@ -156,7 +156,7 @@ public class frmDashboard extends JFrame {
 
 		case 5:
 			// close another frame
-			frmThemPhong.setVisible(false);
+			//frmThemPhong.setVisible(false);
 			frmThemNhanVien.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDanhGia.setVisible(false);
@@ -178,7 +178,7 @@ public class frmDashboard extends JFrame {
 
 		case 6:
 			// close another frame
-			frmThemPhong.setVisible(false);
+			//frmThemPhong.setVisible(false);
 			frmThemNhanVien.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmDanhGia.setVisible(false);
@@ -201,7 +201,7 @@ public class frmDashboard extends JFrame {
 			// close another frame
 			
 			
-			frmThemPhong.setVisible(false);
+			//frmThemPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmDanhGia.setVisible(false);
@@ -222,7 +222,7 @@ public class frmDashboard extends JFrame {
 			break;
 		case 8:
 			// close another frame
-			frmThemPhong.setVisible(false);
+			//frmThemPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -264,7 +264,7 @@ public class frmDashboard extends JFrame {
 //			break;
 		case 10:
 			// close another frame
-			frmThemPhong.setVisible(false);
+			//frmThemPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -286,7 +286,7 @@ public class frmDashboard extends JFrame {
 
 		case 11:
 			// close another fram
-			frmThemPhong.setVisible(false);
+			//frmThemPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -308,7 +308,7 @@ public class frmDashboard extends JFrame {
 
 		case 12:
 			// close another frame
-			frmThemPhong.setVisible(false);
+			//frmThemPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -329,7 +329,7 @@ public class frmDashboard extends JFrame {
 			break;
 		case 13:
 			// close another frame
-			frmThemPhong.setVisible(false);
+			//frmThemPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -351,7 +351,7 @@ public class frmDashboard extends JFrame {
 
 		case 14:
 			// close another frame
-			frmThemPhong.setVisible(false);
+			//frmThemPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -374,7 +374,7 @@ public class frmDashboard extends JFrame {
 
 		case 15:
 			// close another frame
-			frmThemPhong.setVisible(false);
+			//frmThemPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -396,7 +396,7 @@ public class frmDashboard extends JFrame {
 		case 16:
 			// close another frame
 
-			frmThemPhong.setVisible(false);
+			//frmThemPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -418,7 +418,7 @@ public class frmDashboard extends JFrame {
 		case 17:
 			// close another frame
 
-			frmThemPhong.setVisible(false);
+			//frmThemPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -439,7 +439,7 @@ public class frmDashboard extends JFrame {
 			break;
 		case 18:
 			// close another frame
-			frmThemPhong.setVisible(false);
+			//frmThemPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -460,7 +460,7 @@ public class frmDashboard extends JFrame {
 			break;
 		case 19:
 			//close another frame
-			frmThemPhong.setVisible(false);
+			//frmThemPhong.setVisible(false);
 			frmQLDV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmTimKiemNV.setVisible(false);
@@ -481,7 +481,7 @@ public class frmDashboard extends JFrame {
 			
 		case 20:
 			// close another frame
-			frmThemPhong.setVisible(false);
+			//frmThemPhong.setVisible(false);
 			frmTimKiemNV.setVisible(false);
 			frmDichVu.setVisible(false);
 			frmThemNhanVien.setVisible(false);
@@ -504,19 +504,6 @@ public class frmDashboard extends JFrame {
 		}
 	}
 
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-//					frame.setUndecorated(true);
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	/**
 	 * Create the frame.
@@ -695,13 +682,6 @@ public class frmDashboard extends JFrame {
 			mntmTimKiemNV.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 			mnTimKiem.add(mntmTimKiemNV);
 
-			JMenuItem mntmTimKiemLP = new JMenuItem("Loại phòng");
-			mntmTimKiemLP.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-			mnTimKiem.add(mntmTimKiemLP);
-
-			JMenuItem mntmTimKiemDV = new JMenuItem("Dịch vụ");
-			mntmTimKiemDV.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-			mnTimKiem.add(mntmTimKiemDV);
 			break;
 		default:
 			break;
