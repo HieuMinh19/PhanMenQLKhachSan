@@ -77,12 +77,14 @@ import java.awt.Color;
 			getContentPane().setLayout(null);
 			
 			JTextPane txtTongTienThanhToan = new JTextPane();
+			txtTongTienThanhToan.setEditable(false);
 			txtTongTienThanhToan.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			txtTongTienThanhToan.setBounds(594, 456, 170, 30);
 			getContentPane().add(txtTongTienThanhToan);
 			
 			
 			JTextPane txtTongTienPhong = new JTextPane();
+			txtTongTienPhong.setEditable(false);
 			txtTongTienPhong.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			txtTongTienPhong.setBounds(594, 339, 170, 30);
 			getContentPane().add(txtTongTienPhong);
@@ -98,6 +100,7 @@ import java.awt.Color;
 			getContentPane().add(txtPhong);
 			
 			JTextPane txtTongTienDichVu = new JTextPane();
+			txtTongTienDichVu.setEditable(false);
 			txtTongTienDichVu.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			txtTongTienDichVu.setBounds(594, 400, 170, 30);
 			getContentPane().add(txtTongTienDichVu);

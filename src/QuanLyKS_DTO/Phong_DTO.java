@@ -3,7 +3,7 @@ package QuanLyKS_DTO;
 public class Phong_DTO {
     private int iMaPhong;
 	private int iMaLoaiPhong;
-	private LoaiPhong_DTO loaiphong;
+	private String loaiphong;
     public Phong_DTO() {
 		//
     }
@@ -13,7 +13,7 @@ public class Phong_DTO {
 		
     }
     
-    public Phong_DTO(int iMaPhong, LoaiPhong_DTO loaiphong) {
+    public Phong_DTO(int iMaPhong, String loaiphong) {
   		this.iMaPhong = iMaPhong;
   		this.loaiphong = loaiphong;
       }
@@ -32,11 +32,11 @@ public class Phong_DTO {
 		this.iMaLoaiPhong = iMaLoaiPhong;
     }
 	
-	public LoaiPhong_DTO getLoaiPhong() {
+	public String getLoaiPhong() {
 		return loaiphong;
 	}
 	public void setLoaiPhong(LoaiPhong_DTO loaiphong) {
-		this.loaiphong = loaiphong;
+		this.loaiphong = loaiphong.getTenLoaiPhong();
     }
 	
 }

@@ -84,7 +84,7 @@ public class frmBooking_Step1 extends JInternalFrame {
 	 */
 	public frmBooking_Step1() {
 		getContentPane().setFont(new Font("Times New Roman", Font.PLAIN, 13));
-		setBounds(100, 100, 900, 800);
+		setBounds(100, 100, 900, 1070);
 		getContentPane().setLayout(null);
 		
 		JDateChooser date_NgayNhanPhong = new JDateChooser();
@@ -211,7 +211,7 @@ public class frmBooking_Step1 extends JInternalFrame {
 				//frmDashboard.controlFrame(frmDashboard.FRM_BOOKING2);
 			}
 		});
-		btnTiepTuc.setBounds(499, 520 + (pageSize - 1) * (marginTop + rowHeight) + marginTop + rowHeight, 150, 40);
+		btnTiepTuc.setBounds(724, 411, 150, 40);
 		getContentPane().add(btnTiepTuc);
 		
 		getContentPane().add(cbxMaPhong);
@@ -441,7 +441,7 @@ public class frmBooking_Step1 extends JInternalFrame {
 		
 		btnDatThem.setBackground(Color.ORANGE);
 		btnDatThem.setFont(new Font("Tahoma", Font.BOLD, 18));
-		btnDatThem.setBounds(208, 520 + (pageSize - 1) * (marginTop + rowHeight) + marginTop + rowHeight, 150, 40);
+		btnDatThem.setBounds(724, 462, 150, 40);
 		getContentPane().add(btnDatThem);
 		
 		

@@ -73,8 +73,8 @@ public class LoaiPhong_DAL {
 				LoaiPhong_DTO lp = new LoaiPhong_DTO();
 				lp.setMaLoaiPhong(rs.getInt("MaLoaiPhong"));
 				lp.setTenLoaiPhong(rs.getString("TenLoaiPhong"));
-				//lp.setGiaPhong(rs.getInt("GiaPhong"));
-				//lp.setMoTa(rs.getString("MoTa"));
+				lp.setGiaPhong(rs.getInt("GiaPhong"));
+				lp.setMoTa(rs.getString("MoTa"));
 				ds.add(lp);
 			}
 			return ds;
