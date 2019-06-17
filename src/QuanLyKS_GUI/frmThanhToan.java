@@ -102,41 +102,12 @@ import java.beans.PropertyChangeEvent;
 			
 			setBounds(100, 100, 900, 700);
 			getContentPane().setLayout(null);
-			
-			JTextPane txtTongTienThanhToan = new JTextPane();
-			txtTongTienThanhToan.setEditable(false);
-			txtTongTienThanhToan.setFont(new Font("Tahoma", Font.PLAIN, 16));
-			txtTongTienThanhToan.setBounds(594, 456, 170, 30);
-			getContentPane().add(txtTongTienThanhToan);
-			
-			
-			JTextPane txtTongTienPhong = new JTextPane();
-			txtTongTienPhong.setEditable(false);
-			txtTongTienPhong.setFont(new Font("Tahoma", Font.PLAIN, 16));
-			txtTongTienPhong.setBounds(594, 339, 170, 30);
-			getContentPane().add(txtTongTienPhong);
 			//txtTongTien.setText("ds");
-			JLabel lblTngTin = new JLabel("T\u1ED5ng ti\u1EC1n ph\u00F2ng");
+			JLabel lblTngTin = new JLabel("Tiền phòng");
 
 			lblTngTin.setFont(new Font("Tahoma", Font.PLAIN, 18));
 			lblTngTin.setBounds(492, 431, 90, 30);
 			getContentPane().add(lblTngTin);
-			
-			JTextPane txtPhong = new JTextPane();
-			txtPhong.setFont(new Font("Tahoma", Font.PLAIN, 16));
-			txtPhong.setBounds(253, 88, 150, 30);
-			getContentPane().add(txtPhong);
-			
-			JTextPane txtTongTienDichVu = new JTextPane();
-			txtTongTienDichVu.setEditable(false);
-			txtTongTienDichVu.setFont(new Font("Tahoma", Font.PLAIN, 16));
-			txtTongTienDichVu.setBounds(594, 400, 170, 30);
-			getContentPane().add(txtTongTienDichVu);
-			
-			JLabel lblNewLabel = new JLabel("Room");
-			lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
-			lblNewLabel.setBounds(165, 88, 52, 29);
-			getContentPane().add(lblNewLabel);
 
 			JScrollPane scrlistthanhtoan = new JScrollPane();
 			scrlistthanhtoan.setBounds(12, 265, 800, 143);
@@ -147,7 +118,7 @@ import java.beans.PropertyChangeEvent;
 					new Object[][] {
 					},
 					new String[] {
-							"Ma phong", "Ten khach hang", "Ten loai phong","Gia phong", "Ngay nhan", "Ngay tra"
+							"Mã phòng", "Tên khách hàng", "Tên loại phòng","Giá phòng", "Ngày nhận", "Ngày trả"
 					}
 				);
 				table = new JTable(m);
