@@ -137,17 +137,16 @@ public class QLBangPhanCong extends JInternalFrame {
 			    int[] selectedRowColums = table.getSelectedRows();
 			
 			    for (int i = 0; i < selectedRowColums.length; i++) {
-//			    	System.out.println(selectedColumns.length);
 			    	selectedMaNhanVien = (int) table.getValueAt(selectedRowColums[i], 0);
 			        txtTenCongViec.setText((String) table.getValueAt(selectedRowColums[i], 2));
-			    //    txtTenCongViec.setText(table.getValueAt(selectedRowColums[i], 3).toString());
+			 
 			        dtNgayLamViec.setDate((Date) table.getValueAt(selectedRowColums[i], 1));
 			        cbxTenNhanVien.setSelectedIndex(selectedChucVuIndex);
 			    //    date_NgaySinh.setDate((Date) table.getValueAt(selectedRowColums[i], 2));   
 //			        (string) table.getValueAt(selectedRow[i], 5);
 			    }
 			   selectedChucVuIndex = dscv.indexOf(dsnv.get(selectedRow).getNhanVien());
-		        cbxTenNhanVien.setSelectedIndex(selectedChucVuIndex);//(table.getValueAt(selectedRowColums[i], 5));
+		        cbxTenNhanVien.setSelectedIndex(selectedChucVuIndex);
 			  }
 
         });

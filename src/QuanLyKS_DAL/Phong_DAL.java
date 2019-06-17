@@ -180,7 +180,7 @@ public class Phong_DAL {
 		return null;	
 	}
 	
-	public static boolean Update(Phong_DTO phong)  {
+	public static boolean Update(Phong_DTO phong, int iMaPhong)  {
 		PreparedStatement ptmt = null; 
 		String query = "UPDATE PHONG SET MaPhong = ? , MaLoaiPhong= ? WHERE MaPhong = ?";
 		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
@@ -190,7 +190,7 @@ public class Phong_DAL {
 			ptmt = conn.prepareStatement(query);
 			ptmt.setInt(1,phong.getMaPhong());
 			ptmt.setInt(2, phong.getMaLoaiPhong());
-			ptmt.setInt(3,phong.getMaPhong());
+			ptmt.setInt(3,iMaPhong);
 			
 			if( ptmt.executeUpdate() != 0) {
 				JOptionPane.showMessageDialog(null, "cap nhat phong thanh cong", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);
@@ -201,17 +201,44 @@ public class Phong_DAL {
 			else {
 				JOptionPane.showMessageDialog(null, "cap nhat phong that bai", "FAIL:" + "Fail Mesage", JOptionPane.INFORMATION_MESSAGE);
 				System.err.println("update Loai Phong That Bai");
-				return false;
+				//return false;
 			}
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.err.println(e);
+			//e.printStackTrace();
 		}
 		
 		return false;
 	}
 	
-	
+	public static boolean Delete(int iMaPhong) {
+		PreparedStatement ptmt = null; 
+		String query = "DELETE FROM PHONG WHERE MaPhong = ?";
+		MyConnection mycon = new QuanLyKS_DAL.MyConnection();
+		Connection conn = mycon.getConnection();
+
+		try {
+			ptmt = conn.prepareStatement(query);
+			ptmt.setInt(1, iMaPhong);
+
+			if( ptmt.executeUpdate() != 0) {
+				System.err.println("delete thanh cong phong");
+				return true;
+			}
+
+			else {
+				System.err.println("xoa phong that bai");
+				return false;
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return false;
+	}
 	
 }

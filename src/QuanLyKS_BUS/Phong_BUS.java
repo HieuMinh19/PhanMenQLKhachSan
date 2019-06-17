@@ -18,8 +18,8 @@ public class Phong_BUS {
 		return Phong_DAL.getListCondition(MaLoaiPhong, NgayNhan, NgayTra);
 	}
 	
-	public static boolean Update(Phong_DTO phong) {
-		return Phong_DAL.Update(phong);
+	public static boolean Update(Phong_DTO phong, int iMaPhong) {
+		return Phong_DAL.Update(phong, iMaPhong);
 	}
 
 	public static String getTenLoaiPhong(int iMaPhong) {
@@ -31,6 +31,10 @@ public class Phong_BUS {
 	}
 	public static boolean Insert(Phong_DTO phong) {
 		return Phong_DAL.Insert(phong);
+	}
+	
+	public static boolean Delete(int phong) {
+		return Phong_DAL.Delete(phong);
 	}
 }
  
