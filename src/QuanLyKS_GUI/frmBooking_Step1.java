@@ -394,6 +394,10 @@ public class frmBooking_Step1 extends JInternalFrame {
 						System.err.println("ma phong la" +" "+  iMaDV);
 						CTDichVu_DTO dvTemp = new CTDichVu_DTO(iSL, iMaCTDatPhong, iThanhTien, iMaDV);
 						listBookingDV.add(dvTemp);
+						
+						Rows[i][4].setEnabled(false);
+						Rows[i][3].setEnabled(true);
+						Rows[i][2].setEnabled(true);
 					}
 				}
 				listBookingDVs.add(listBookingDV);
