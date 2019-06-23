@@ -1,0 +1,12 @@
+diff a/src/QuanLyKS_GUI/frmThanhToan.java b/src/QuanLyKS_GUI/frmThanhToan.java	(rejected hunks)
+@@ -30,7 +30,9 @@
+ 	import java.awt.event.ActionListener;
+ 	import java.sql.Date;
+ 	import java.util.ArrayList;
+-	import java.awt.event.ActionEvent;
++import java.util.Locale;
++import java.util.Optional;
++import java.awt.event.ActionEvent;
+ 	import javax.swing.event.ListSelectionEvent;
+ 	import javax.swing.event.ListSelectionListener;
+ 	import java.text.DateFormat;
