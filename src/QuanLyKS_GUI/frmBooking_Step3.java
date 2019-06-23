@@ -1,33 +1,50 @@
 package QuanLyKS_GUI;
 
 import java.awt.EventQueue;
-import javax.swing.text.AttributeSet; 
-import javax.swing.text.BadLocationException; 
-import javax.swing.text.PlainDocument; 
-import javax.swing.JInternalFrame;
-import javax.swing.JLabel;
-import java.awt.Font;
 import java.util.ArrayList;
+import java.util.Iterator;
 
-import javax.swing.JTextPane;
-import javax.swing.SwingConstants;
+import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 
+import com.ibm.icu.text.SimpleDateFormat;
+import com.sun.org.apache.xerces.internal.impl.dv.xs.ListDV;
+
+import QuanLyKS_DTO.BangPhanCong_DTO;
+import QuanLyKS_DTO.CTDatPhong_DTO;
+import QuanLyKS_DTO.CTDichVu_DTO;
+import QuanLyKS_DTO.DichVu_DTO;
+import QuanLyKS_DTO.KhachHang_DTO;
+import QuanLyKS_DTO.LoaiPhong_DTO;
+import QuanLyKS_DTO.NhanVien_DTO;
+import QuanLyKS_BUS.CTDatPhong_BUS;
+import QuanLyKS_BUS.CTDichVu_BUS;
+import QuanLyKS_BUS.DichVu_BUS;
+import QuanLyKS_BUS.HoaDon_BUS;
 import QuanLyKS_BUS.KhachHang_BUS;
+import QuanLyKS_BUS.LoaiPhong_BUS;
+import QuanLyKS_BUS.Phong_BUS;
 
 import javax.swing.JButton;
-
-import QuanLyKS_DTO.CTDichVu_DTO;
-import QuanLyKS_DTO.KhachHang_DTO;
-import QuanLyKS_DTO.CTDatPhong_DTO;
 import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 import java.awt.Color;
-import java.awt.event.InputMethodListener;
-import java.awt.event.InputMethodEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import javax.swing.JLabel;
 
 public class frmBooking_Step3 extends JInternalFrame {
+	private JTable tbThongTinChung;
+	private int selectedRow;
+	private int selectedMaCTDP;
 
 	/**
 	 * Launch the application.
@@ -36,7 +53,7 @@ public class frmBooking_Step3 extends JInternalFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					
+				
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -47,132 +64,134 @@ public class frmBooking_Step3 extends JInternalFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frmBooking_Step3() {
-		//ArrayList<CTDichVu_DTO> listCTDV
-		setBounds(100, 100, 810, 540);
+	public frmBooking_Step3(ArrayList<ArrayList<CTDichVu_DTO>> listCTDVs, KhachHang_DTO khDTO) {
+		setBounds(100, 100, 900, 700);
 		getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Ti\u1EBFp nh\u1EADn th\u00F4ng tin kh\u00E1ch h\u00E0ng");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		lblNewLabel.setBounds(220, 23, 361, 34);
-		getContentPane().add(lblNewLabel);
-		
-		JTextPane txtHoTen = new JTextPane();
-		txtHoTen.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txtHoTen.setBounds(205, 101, 437, 30);
-		getContentPane().add(txtHoTen);
-		
-		JLabel lblNewLabel_1 = new JLabel("H\u1ECD t\u00EAn");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_1.setBounds(102, 101, 76, 34);
-		getContentPane().add(lblNewLabel_1);
-		
-		JTextPane txtDiaChi = new JTextPane();
-		txtDiaChi.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txtDiaChi.setBounds(205, 158, 437, 30);
-		getContentPane().add(txtDiaChi);
-		
-		JLabel lblAddress = new JLabel("\u0110\u1ECBa ch\u1EC9");
-		lblAddress.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAddress.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblAddress.setBounds(107, 158, 71, 34);
-		getContentPane().add(lblAddress);
-		
-		JTextPane txtEmail = new JTextPane();
-		txtEmail.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txtEmail.setBounds(205, 218, 437, 30);
-		getContentPane().add(txtEmail);
-		
-		JLabel lblEmail = new JLabel("Email");
-		lblEmail.setHorizontalAlignment(SwingConstants.CENTER);
-		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblEmail.setBounds(114, 218, 64, 34);
-		getContentPane().add(lblEmail);
-			
-		
-		JTextPane txtSDT = new JTextPane();
-		txtSDT.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyPressed(KeyEvent arg0) {
-				
-			}
-			@Override
-			public void keyTyped(KeyEvent a) {
-				char vchar = a.getKeyChar();
-				if(!(Character.isDigit(vchar)) 
-						|| (vchar == KeyEvent.VK_BACK_SPACE) 
-						|| (vchar == KeyEvent.VK_DELETE)){
-					a.consume();
+		JScrollPane scrBooking = new JScrollPane();
+		scrBooking.setBounds(42, 133, 800, 280);
+		DefaultTableModel modelBooking = new DefaultTableModel(
+				new Object[][] {
+				},
+				new String[] {
+					"Mã phòng", "Tên khách hàng", "Tên loại phòng","Giá phòng", "Ngày nhận", "Ngày trả"
 				}
-			}
-		});
-		txtSDT.addInputMethodListener(new InputMethodListener() {
-			public void caretPositionChanged(InputMethodEvent arg0) {
-			}
-			public void inputMethodTextChanged(InputMethodEvent arg0) {
-				
-			}
-		});
-		txtSDT.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txtSDT.setBounds(205, 277, 225, 30);
-		//txtSDT.setDocument(new DigitsDocument());
-		getContentPane().add(txtSDT);
-		//
-		
-		JLabel lblPhone = new JLabel("S\u1ED1 \u0111i\u1EC7n tho\u1EA1i");
-		lblPhone.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPhone.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblPhone.setBounds(62, 277, 116, 34);
-		getContentPane().add(lblPhone);
-		
-		JTextPane txtCMND = new JTextPane();
-		txtCMND.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent e) {
-				char vchar = e.getKeyChar();
-				if(!(Character.isDigit(vchar)) 
-						|| (vchar == KeyEvent.VK_BACK_SPACE) 
-						|| (vchar == KeyEvent.VK_DELETE)){
-					e.consume();
+			);
+		tbThongTinChung = new JTable(modelBooking); 
+		scrBooking.setViewportView(tbThongTinChung);
+		getContentPane().add(scrBooking);
+		DefaultTableModel modelDV = new DefaultTableModel(
+				new Object[][] {
+				},
+				new String[] {
+					"Tên dịch vụ", "Số lượng", "Tổng tiền dịch vụ"
 				}
-			}
-		});
-		txtCMND.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txtCMND.setBounds(205, 341, 225, 30);
-		getContentPane().add(txtCMND);
+			);
 		
-		JLabel lblSCmnd = new JLabel("S\u1ED1 CMND");
-		lblSCmnd.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSCmnd.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblSCmnd.setBounds(88, 341, 90, 34);
-		getContentPane().add(lblSCmnd);
-		
-		JButton btnContinue = new JButton("Ti\u1EBFp t\u1EE5c");
-		btnContinue.setBackground(Color.ORANGE);
-		btnContinue.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				String strHoten = txtHoTen.getText();
-				String strEmail = txtEmail.getText();
-				String strDiaChi = txtDiaChi.getText();
-				String strSDT = txtSDT.getText();
-				String strCMND = txtCMND.getText();
-				int iMaKH = KhachHang_BUS.getnextMaKH();
-			
-				 KhachHang_DTO khDTO = new KhachHang_DTO(iMaKH, strHoten, strSDT, strCMND, strDiaChi, strEmail);
-				
-				frmDashboard.frmBooking4 = new frmBooking_Step4(frmBooking_Step1.listBookingDVs, khDTO);
-				frmDashboard.controlFrame(frmDashboard.FRM_BOOKING4);
-				
-			}
-		});
-		btnContinue.setFont(new Font("Tahoma", Font.BOLD, 18));
-		btnContinue.setBounds(309, 419, 150, 40);
-		getContentPane().add(btnContinue);
-		
-		
-		
-		
-	}
+		ListSelectionModel cellSelectionModel = tbThongTinChung.getSelectionModel();
+	    cellSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+	    cellSelectionModel.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent e) {
+				selectedRow = tbThongTinChung.getSelectedRow() < 0 ? 0 : tbThongTinChung.getSelectedRow();
+//			    int[] selectedRowColums = tbThongTinChung.getSelectedRows();
+			    int maCTDP = frmBooking_Step1.listCTDP.get(selectedRow).getMaCTDatPhong();
+//		        ArrayList<DichVu_DTO> _listDV = new ArrayList<DichVu_DTO>();
+				if (modelDV.getRowCount() > 0) {
+				    for (int i = modelDV.getRowCount() - 1; i > -1; i--) {
+				    	modelDV.removeRow(i);
+				    }
+				}
+				for (int i = 0; i < frmBooking_Step1.listBookingDVs.size(); i++) {
+		        	ArrayList<CTDichVu_DTO> listDV = frmBooking_Step1.listBookingDVs.get(i);
+		        	boolean isMatched = false;
+		        	for (int j = 0; j < listDV.size(); j++) {
+		        		isMatched = listDV.get(j).getMaCTDatPhong() == maCTDP;
+		        		if(isMatched) break;
+					}
+	        		if(isMatched) {
+	        			listDV.forEach(dv -> {
+	        				DichVu_DTO _dv = DichVu_BUS.getListDV(dv.getMaDichVu());
+		        			modelDV.addRow(new Object[] {_dv != null ? _dv.getTenDichVu() : "", dv.getSoLuong(), dv.getTongTienDichVu()});
+	        			});
+	        			break;
+	        		}
+		        }
+			  }
 
+        });
+	    tbThongTinChung.setRowSelectionAllowed(true);
+	    scrBooking.setViewportView(tbThongTinChung);
+		
+		frmBooking_Step1.listCTDP.forEach(ctdp -> {
+			String strTenLoaiPhong = Phong_BUS.getTenLoaiPhong(ctdp.getMaPhong());
+			int iGiaPhong = Phong_BUS.getGiaPhong(ctdp.getMaPhong());
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	 		String NgayNhan = sdf.format( ctdp.getNgayNhan());
+	 	 	String NgayTra = sdf.format( ctdp.getNgayTra() );
+//			String NgayThucHien = sdf.format( ctdp.getdtNgayThucHien() );
+			modelBooking.addRow(new Object[] {ctdp.getMaPhong(), khDTO.getTenKH(), strTenLoaiPhong, iGiaPhong, NgayNhan, NgayTra});
+		});
+		
+		 
+		
+//		ArrayList<DichVu_DTO> listDV = DichVu_BUS.getListDV();
+//		for(int i = 0; i < listCTDV.size(); i++) {
+//			for(int j = 0; j < listDV.size(); j++){
+//				if(listDV.get(j).getMaDichVu() == listCTDV.get(i).getMaDichVu())
+//					modelDV.addRow(new Object[] {listDV.get(j).getTenDichVu(), listCTDV.get(i).getSoLuong(), 
+//							listCTDV.get(i).getTongTienDichVu()});
+//			}
+//			
+//		}		
+		
+		JButton btnDatPhong = new JButton("\u0110\u1EB7t ph\u00F2ng");
+		btnDatPhong.setBackground(Color.ORANGE);
+		btnDatPhong.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnDatPhong.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				frmBooking_Step1.listCTDP.forEach(ctdp -> {
+//					String strTenLoaiPhong = Phong_BUS.getTenLoaiPhong(ctdp.getMaPhong());
+//					int iGiaPhong = Phong_BUS.getGiaPhong(ctdp.getMaPhong());
+//					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//			 		String NgayNhan = sdf.format( ctdp.getNgayNhan());
+//			 	 	String NgayTra = sdf.format( ctdp.getNgayTra() );
+//					String NgayThucHien = sdf.format( ctdp.getdtNgayThucHien() );
+//					
+//					System.err.println("NgayThucHien trong str4" +""+ NgayThucHien);
+					
+					
+				//	dtngaysinh.getDate().getTime()
+//					modelBooking.addRow(new Object[] {ctdp.getMaPhong(), khDTO.getTenKH(), strTenLoaiPhong, iGiaPhong, NgayNhan, NgayTra});
+					
+					ctdp.setMaKhachHang(khDTO.getMaKH());
+					CTDatPhong_BUS.Insert(ctdp);
+					frmBooking_Step1.listBookingDVs.forEach(listCTDV -> {
+						listCTDV.forEach(ctdv -> CTDichVu_BUS.Insert(ctdv));
+					});
+				});
+				KhachHang_BUS.Insert(khDTO);
+					
+				
+					
+				///delete lisst da save
+				frmBooking_Step1.listCTDP.clear();
+				frmBooking_Step1.listBookingDVs.clear();
+				///
+					JOptionPane.showMessageDialog(null, "Dat Phong Thanh Cong", "Success: " + "Success Mesage", JOptionPane.INFORMATION_MESSAGE);
+				
+					frmDashboard.frmBooking4.setVisible(false);
+				
+			}
+		});
+		btnDatPhong.setBounds(334, 463, 248, 40);
+		getContentPane().add(btnDatPhong);
+		
+		JLabel lblNewLabel = new JLabel("Ki\u1EC3m tra l\u1EA1i th\u00F4ng tin \u0111\u1EB7t ph\u00F2ng");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblNewLabel.setForeground(Color.RED);
+		lblNewLabel.setBounds(236, 37, 366, 40);
+		getContentPane().add(lblNewLabel);
+
+	}
 }

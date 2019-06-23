@@ -207,7 +207,7 @@ public class frmBooking_Step1 extends JInternalFrame {
 				}
 //				frmDashboard.frmBooking2 = new frmBooking_Step2(ctdpDTO);
 				//-----------------------End Them CTDP----------------------------------------------------------------------------------------------
-				frmDashboard.controlFrame(frmDashboard.FRM_BOOKING3);
+				frmDashboard.controlFrame(frmDashboard.FRM_BOOKING2);
 				//frmDashboard.controlFrame(frmDashboard.FRM_BOOKING2);
 			}
 		});
@@ -268,16 +268,6 @@ public class frmBooking_Step1 extends JInternalFrame {
 								}
 							}
 						}
-					//cbxMaPhong.addItem(rslistPhong.getInt("MaPhong"));
-				 	//cbxMaPhong.getSelectedItem();
-					 		
-//					 		for(int i =0; i < listCTDP.size();i++) {
-//								if(listCTDP.get(i).getMaPhong() != rslistPhong.getInt("MaPhong")) {
-//									//cbxMaPhong.removeItem(rslistPhong.getInt("MaPhong"));
-//									cbxMaPhong.addItem(rslistPhong.getInt("MaPhong"));
-//							 		cbxMaPhong.getSelectedItem();
-//								}
-//							}
 					   }
 					
 				} catch (SQLException e) {
@@ -345,7 +335,7 @@ public class frmBooking_Step1 extends JInternalFrame {
 		lblGi.setBounds(450, 191, 38, 25);
 		getContentPane().add(lblGi);
 		
-		JButton btnDatThem = new JButton("Đặt thêm");
+		JButton btnDatThem = new JButton("Đặt phòng");
 		btnDatThem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//-----------------------Them CTDP----------------------------------------------------------------------------------------------
